@@ -47,7 +47,7 @@ function wggithubCommentsUpdate($itemId, $itemNumb)
  * @param mixed $comment
  * @return bool
  */
-function wggithubCommentsApprove(&$comment)
+function wggithubCommentsApprove($comment)
 {
 	// Notification event
 	// Get instance of module
