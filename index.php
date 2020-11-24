@@ -89,7 +89,7 @@ switch ($op) {
         }
         unset($crRequests);
 
-        $github = GitHub::getInstance();
+        $github = Github::getInstance();
         $start = Request::getInt('start', 0);
         $limit = Request::getInt('limit', $helper->getConfig('userpager'));
         $menu  = Request::getInt('menu', 0);
@@ -210,7 +210,7 @@ require __DIR__ . '/footer.php';
  */
 function executeUpdate(){
 
-    $github = GitHub::getInstance();
+    $github = Github::getInstance();
     $helper = Helper::getInstance();
     $directoriesHandler = $helper->getHandler('Directories');
     $crDirectories = new \CriteriaCompo();
