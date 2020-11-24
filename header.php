@@ -19,7 +19,7 @@
  * @min_xoops      2.5.10
  * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
-include \dirname(\dirname(__DIR__)) . '/mainfile.php';
+include dirname(__DIR__, 2) . '/mainfile.php';
 include __DIR__ . '/include/common.php';
 $moduleDirName = \basename(__DIR__);
 // Breadcrumbs

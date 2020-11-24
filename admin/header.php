@@ -19,7 +19,7 @@
  * @min_xoops      2.5.10
  * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
-include \dirname(\dirname(\dirname(__DIR__))) . '/include/cp_header.php';
+include dirname(__DIR__, 3) . '/include/cp_header.php';
 include_once \dirname(__DIR__) . '/include/common.php';
 
 $sysPathIcon16   = '../' . $GLOBALS['xoopsModule']->getInfo('sysicons16');
