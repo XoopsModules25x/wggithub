@@ -23,7 +23,7 @@ namespace XoopsModules\Wggithub\Github;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\{
     Helper,
-    Constants,
+    Constants
 };
 
 /**
