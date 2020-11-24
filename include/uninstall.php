@@ -34,10 +34,8 @@ function xoops_module_uninstall_wggithub(\XoopsModule $module)
 
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-    /** @var Wggithub\Helper $helper */
     $helper = Wggithub\Helper::getInstance();
 
-    /** @var Wggithub\Utility $utility */
     $utility = new Wggithub\Utility();
 
     $success = true;
