@@ -29,7 +29,7 @@ use XoopsModules\Wggithub\{
 /**
  * Class GitHub
  */
-class GitHub
+class Github
 {
 
     public const BASE_URL = 'https://api.github.com/';
