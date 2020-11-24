@@ -25,11 +25,12 @@ namespace XoopsModules\Wggithub\Github;
  */
 class Repositories extends GitHubClient
 {
-
     /**
      * Get repositories of given user
      *
-     * @param $username
+     * @param     $username
+     * @param int $per_page
+     * @param int $page
      * @return array
      */
     public function getUserRepositories($username, $per_page = 100, $page = 1)
@@ -42,7 +43,9 @@ class Repositories extends GitHubClient
     /**
      * Get repositories of given organisation
      *
-     * @param $org
+     * @param     $org
+     * @param int $per_page
+     * @param int $page
      * @return array
      */
     public function getOrgRepositories($org, $per_page = 100, $page = 1)

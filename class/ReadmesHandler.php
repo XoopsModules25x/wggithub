@@ -125,8 +125,6 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
     /**
      * Update table requests
      *
-     * @param string $request
-     * @param string $result
      * @return boolean
      */
     public function updateTableReadmes()
@@ -181,12 +179,12 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         return true;
     }
 
-
     /**
      * Update table requests
      *
-     * @param string $request
-     * @param string $result
+     * @param $repoId
+     * @param $userName
+     * @param $repoName
      * @return boolean
      */
     public function updateReadmes($repoId, $userName, $repoName)

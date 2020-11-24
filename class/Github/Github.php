@@ -84,6 +84,8 @@ class Github
      * Get data of all repositories of given user
      *
      * @param string $user
+     * @param int    $per_page
+     * @param int    $page
      * @return array
      */
     public function readUserRepositories($user, $per_page = 100, $page = 1)
@@ -94,11 +96,12 @@ class Github
         return $repos;
     }
 
-
     /**
      * Get data of all repositories of given organisation
      *
-     * @param $org
+     * @param     $org
+     * @param int $per_page
+     * @param int $page
      * @return array
      */
     public function readOrgRepositories($org, $per_page = 100, $page = 1)
@@ -113,6 +116,8 @@ class Github
      * update all related tables after reading repositories
      *
      * @param string $user
+     * @param        $repos
+     * @param        $updateAddtionals
      * @return boolean
      */
     public function updateTables($user, $repos, $updateAddtionals)
@@ -156,6 +161,9 @@ class Github
     /**
      * Update table repositories
      *
+     * @param       $user
+     * @param array $repos
+     * @param bool  $updateAddtionals
      * @return int
      */
     public function updateTableRepositories($user, $repos = [], $updateAddtionals = true)

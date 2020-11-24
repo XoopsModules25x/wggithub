@@ -125,8 +125,6 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
     /**
      * Update table requests
      *
-     * @param string $request
-     * @param string $result
      * @return boolean
      */
     public function updateTableReleases()
@@ -192,8 +190,9 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
     /**
      * Update table requests
      *
-     * @param string $request
-     * @param string $result
+     * @param $repoId
+     * @param $userName
+     * @param $repoName
      * @return boolean
      */
     public function updateReleases($repoId, $userName, $repoName)
