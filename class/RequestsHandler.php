@@ -127,7 +127,7 @@ class RequestsHandler extends \XoopsPersistableObjectHandler
      *
      * @param string $request
      * @param string $result
-     * @return boolean
+     * @return bool
      */
     public function updateTableRequests($request, $result)
     {
