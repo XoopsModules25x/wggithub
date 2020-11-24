@@ -64,8 +64,8 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 		if (0 == $currentuid) {
 			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
 		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);;
-		}
+			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
 		if ($grouppermHandler->checkRight('wggithub_ac', 4, $my_group_ids, $mid)) {
 			return true;
 		}
@@ -95,8 +95,8 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 		if (0 == $currentuid) {
 			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
 		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);;
-		}
+			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
 		if ($this->getGlobalApprove()) {
 			return true;
 		}
@@ -129,8 +129,8 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 		if (0 == $currentuid) {
 			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
 		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);;
-		}
+			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
 		if ($this->getGlobalApprove()) {
 			return true;
 		}
