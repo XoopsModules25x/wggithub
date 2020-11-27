@@ -101,31 +101,6 @@ switch ($op) {
 		$repositoriesObj->setVar('repo_submitter', Request::getInt('repo_submitter', 0));
 		// Insert Data
 		if ($repositoriesHandler->insert($repositoriesObj)) {
-			$newRepoId = $repositoriesObj->getNewInsertedIdRepositories();
-			$permId = isset($_REQUEST['repo_id']) ? $repoId : $newRepoId;
-			$grouppermHandler = \xoops_getHandler('groupperm');
-			$mid = $GLOBALS['xoopsModule']->getVar('mid');
-			// Permission to view_repositories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_view_repositories', $permId);
-			if (isset($_POST['groups_view_repositories'])) {
-				foreach ($_POST['groups_view_repositories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_view_repositories', $permId, $onegroupId, $mid);
-				}
-			}
-			// Permission to submit_repositories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_submit_repositories', $permId);
-			if (isset($_POST['groups_submit_repositories'])) {
-				foreach ($_POST['groups_submit_repositories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_submit_repositories', $permId, $onegroupId, $mid);
-				}
-			}
-			// Permission to approve_repositories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_approve_repositories', $permId);
-			if (isset($_POST['groups_approve_repositories'])) {
-				foreach ($_POST['groups_approve_repositories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_approve_repositories', $permId, $onegroupId, $mid);
-				}
-			}
 			\redirect_header('repositories.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
 		}
 		// Get Form

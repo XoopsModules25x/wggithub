@@ -3,6 +3,7 @@
 ===================================================================
  - implemented filter and sorting (mage/goffy)
  - updated permission rules (goffy)
+ - added field repo_readme (goffy)
 
 ==============================================================
 1.0 [2020/11/21 11:35:55]

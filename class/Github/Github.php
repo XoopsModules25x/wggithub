@@ -144,18 +144,17 @@ class Github
         foreach ($repos as $key => $repo) {
             $crRepositories = new \CriteriaCompo();
             $crRepositories->add(new \Criteria('repo_nodeid', $repo['node_id']));
-            $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
             $repoId = 0;
-            if ($repositoriesCount > 0) {
-                $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
-                foreach (\array_keys($repositoriesAll) as $i) {
-                    $repoId = $repositoriesAll[$i]->getVar('repo_id');
-                }
-                unset($crRepositories, $repositoriesAll);
-                $repositoriesObj = $repositoriesHandler->get($repoId);
-                $updatedAtOld = $repositoriesObj->getVar('repo_updatedat');
+            $status = 0;
+            $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+            foreach (\array_keys($repositoriesAll) as $i) {
+                $repoId = $repositoriesAll[$i]->getVar('repo_id');
+                $updatedAtOld = $repositoriesAll[$i]->getVar('repo_updatedat');
                 $updatedAtNew = 0;
-                $status = $repositoriesObj->getVar('repo_status');
+                $status = $repositoriesAll[$i]->getVar('repo_status');
+                $repositoriesObj = $repositoriesAll[$i];
+            }
+            if ($repoId > 0) {
                 if (is_string($repo['updated_at'])) {
                     $updatedAtNew = \strtotime($repo['updated_at']);
                 }
@@ -231,7 +230,7 @@ class Github
         }
 
         if (0 == \count($setting)) {
-            \redirect_header('settings.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
+            \redirect_header(XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
         $this->userAuth = $setting['user'];
         $this->tokenAuth = $setting['token'];

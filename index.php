@@ -73,6 +73,7 @@ switch ($op) {
         if ($permGlobalRead && $requestsCount < 60 && 'list' == $op) {
             executeUpdate();
         }
+
         unset($crRequests);
         $crRequests = new \CriteriaCompo();
         $crRequests->add(new \Criteria('req_result', 'OK'));
@@ -121,12 +122,6 @@ switch ($op) {
                 $dirName = $directoriesAll[$i]->getVar('dir_name');
                 $dirFilterRelease = (bool)$directoriesAll[$i]->getVar('dir_filterrelease');
                 $repos = [];
-                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                    //$github->readOrgRepositories($dirName, 100, 1);
-                    //$github->readOrgRepositories($dirName, 100, 2);
-                } else {
-                    //$github->readUserRepositories($dirName);
-                }
                 $crRepositories = new \CriteriaCompo();
                 $crRepositories->add(new \Criteria('repo_user', $dirName));
                 $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
@@ -157,21 +152,19 @@ switch ($op) {
                         $repoId = $repositoriesAll[$j]->getVar('repo_id');
                         $repos[$j] = $repositoriesAll[$j]->getValuesRepositories();
                         $repos[$j]['readme'] = ['content_clean' => _MA_WGGITHUB_README_NOFILE];
-                        $crReadmes = new \CriteriaCompo();
-                        $crReadmes->add(new \Criteria('rm_repoid', $repoId));
-                        $readmesCount = $readmesHandler->getCount($crReadmes);
-                        if ($readmesCount > 0) {
+                        if ($repositoriesAll[$j]->getVar('repo_readme') > 0) {
+                            $crReadmes = new \CriteriaCompo();
+                            $crReadmes->add(new \Criteria('rm_repoid', $repoId));
                             $readmesAll = $readmesHandler->getAll($crReadmes);
                             foreach ($readmesAll as $readme) {
                                 $repos[$j]['readme'] = $readme->getValuesReadmes();
                             }
                             unset($crReadmes, $readmesAll);
                         }
-                        //$repos[$j]['releases'] = [];
-                        $crReleases = new \CriteriaCompo();
-                        $crReleases->add(new \Criteria('rel_repoid', $repoId));
-                        $releasesCount = $releasesHandler->getCount($crReleases);
-                        if ($releasesCount > 0) {
+                        if ($repositoriesAll[$j]->getVar('repo_prerelease') > 0 || $repositoriesAll[$j]->getVar('repo_release') > 0) {
+                            //$repos[$j]['releases'] = [];
+                            $crReleases = new \CriteriaCompo();
+                            $crReleases->add(new \Criteria('rel_repoid', $repoId));
                             $releasesAll = $releasesHandler->getAll($crReleases);
                             foreach ($releasesAll as $release) {
                                 $repos[$j]['releases'][] = $release->getValuesReleases();
@@ -258,6 +251,7 @@ function executeUpdate(){
     $helper = Helper::getInstance();
     $directoriesHandler = $helper->getHandler('Directories');
     $releasesHandler = $helper->getHandler('Releases');
+    $readmesHandler = $helper->getHandler('Readmes');
     $crDirectories = new \CriteriaCompo();
     $crDirectories->add(new \Criteria('dir_autoupdate', 1));
     $crDirectories->add(new \Criteria('dir_online', 1));
@@ -266,32 +260,36 @@ function executeUpdate(){
     $directories = [];
     foreach (\array_keys($directoriesAll) as $i) {
         $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
-        $dirName = $directoriesAll[$i]->getVar('dir_name');
-        $repos = [];
-        for ($j = 1; $j <= 9; $j++) {
-            $repos[$j] = [];
-            if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                $repos = $github->readOrgRepositories($dirName, 100, $j);
-            } else {
-                $repos = $github->readUserRepositories($dirName, 100, $j);
-            }
-            if (false === $repos) {
-                return false;
-                break 1;
-            }
-            if (count($repos) > 0) {
-                $github->updateTableRepositories($dirName, $repos, false);
-            } else {
-                break 1;
-            }
-            if (count($repos) < 100) {
-                break 1;
+        if (1 === (int) $directoriesAll[$i]->getVar('dir_autoupdate')) {
+            $dirName = $directoriesAll[$i]->getVar('dir_name');
+            $repos = [];
+            for ($j = 1; $j <= 9; $j++) {
+                $repos[$j] = [];
+                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
+                    $repos = $github->readOrgRepositories($dirName, 100, $j);
+                } else {
+                    $repos = $github->readUserRepositories($dirName, 100, $j);
+                }
+                if (false === $repos) {
+                    return false;
+                    break 1;
+                }
+                if (count($repos) > 0) {
+                    $github->updateTableRepositories($dirName, $repos, true);
+                } else {
+                    break 1;
+                }
+                if (count($repos) < 100) {
+                    break 1;
+                }
             }
         }
     }
     unset($directories);
 
     $releasesHandler->updateRepoReleases();
+    $readmesHandler->updateRepoReadme();
+
 
     return true;
 }

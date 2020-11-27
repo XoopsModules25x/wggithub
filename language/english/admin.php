@@ -88,6 +88,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_REPOSITORY_CREATEDAT', 'Createdat');
 \define('_AM_WGGITHUB_REPOSITORY_UPDATEDAT', 'Updatedat');
 \define('_AM_WGGITHUB_REPOSITORY_HTMLURL', 'Htmlurl');
+\define('_AM_WGGITHUB_REPOSITORY_README', 'Readme');
 \define('_AM_WGGITHUB_REPOSITORY_PRERELEASE', 'Pre-Release');
 \define('_AM_WGGITHUB_REPOSITORY_RELEASE', 'Release');
 \define('_AM_WGGITHUB_REPOSITORY_STATUS', 'Status');

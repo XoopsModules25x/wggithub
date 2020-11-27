@@ -64,6 +64,7 @@ CREATE TABLE `wggithub_repositories` (
   `repo_createdat` INT(11) NOT NULL DEFAULT '0',
   `repo_updatedat` INT(11) NOT NULL DEFAULT '0',
   `repo_htmlurl` VARCHAR(255) NOT NULL DEFAULT '',
+  `repo_readme` INT(1) NOT NULL DEFAULT '0',
   `repo_prerelease` INT(1) NOT NULL DEFAULT '0',
   `repo_release` INT(1) NOT NULL DEFAULT '0',
   `repo_status` INT(1) NOT NULL DEFAULT '0',
