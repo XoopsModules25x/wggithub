@@ -85,10 +85,7 @@ class Directories extends \XoopsObject
 			$action = $_SERVER['REQUEST_URI'];
 		}
 		$isAdmin = $GLOBALS['xoopsUser']->isAdmin($GLOBALS['xoopsModule']->mid());
-		// Permissions for uploader
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$groups = \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getGroups() : \XOOPS_GROUP_ANONYMOUS;
-		$permissionUpload = $grouppermHandler->checkRight('upload_groups', 32, $groups, $GLOBALS['xoopsModule']->getVar('mid')) ? true : false;
+
 		// Title
 		$title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_DIRECTORY_ADD) : \sprintf(\_AM_WGGITHUB_DIRECTORY_EDIT);
 		// Get Theme Form
@@ -118,35 +115,6 @@ class Directories extends \XoopsObject
 		$form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_DIRECTORY_DATECREATED, 'dir_datecreated', '', $dirDatecreated));
 		// Form Select User dirSubmitter
 		$form->addElement(new \XoopsFormSelectUser(\_AM_WGGITHUB_DIRECTORY_SUBMITTER, 'dir_submitter', false, $this->getVar('dir_submitter')));
-		// Permissions
-		$memberHandler = \xoops_getHandler('member');
-		$groupList = $memberHandler->getGroupList();
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$fullList[] = \array_keys($groupList);
-		if (!$this->isNew()) {
-			$groupsIdsApprove = $grouppermHandler->getGroupIds('wggithub_approve_directories', $this->getVar('dir_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsApprove[] = \array_values($groupsIdsApprove);
-			$groupsCanApproveCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_APPROVE, 'groups_approve_directories[]', $groupsIdsApprove);
-			$groupsIdsSubmit = $grouppermHandler->getGroupIds('wggithub_submit_directories', $this->getVar('dir_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsSubmit[] = \array_values($groupsIdsSubmit);
-			$groupsCanSubmitCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_SUBMIT, 'groups_submit_directories[]', $groupsIdsSubmit);
-			$groupsIdsView = $grouppermHandler->getGroupIds('wggithub_view_directories', $this->getVar('dir_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsView[] = \array_values($groupsIdsView);
-			$groupsCanViewCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_VIEW, 'groups_view_directories[]', $groupsIdsView);
-		} else {
-			$groupsCanApproveCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_APPROVE, 'groups_approve_directories[]', $fullList);
-			$groupsCanSubmitCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_SUBMIT, 'groups_submit_directories[]', $fullList);
-			$groupsCanViewCheckbox = new \XoopsFormCheckBox(\_AM_WGGITHUB_PERMISSIONS_VIEW, 'groups_view_directories[]', $fullList);
-		}
-		// To Approve
-		$groupsCanApproveCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanApproveCheckbox);
-		// To Submit
-		$groupsCanSubmitCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanSubmitCheckbox);
-		// To View
-		$groupsCanViewCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanViewCheckbox);
 		// To Save
 		$form->addElement(new \XoopsFormHidden('op', 'save'));
 		$form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));

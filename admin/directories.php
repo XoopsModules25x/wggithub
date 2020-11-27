@@ -94,31 +94,6 @@ switch ($op) {
 		$directoriesObj->setVar('dir_submitter', Request::getInt('dir_submitter', 0));
 		// Insert Data
 		if ($directoriesHandler->insert($directoriesObj)) {
-			$newDirId = $directoriesObj->getNewInsertedIdDirectories();
-			$permId = isset($_REQUEST['dir_id']) ? $dirId : $newDirId;
-			$grouppermHandler = \xoops_getHandler('groupperm');
-			$mid = $GLOBALS['xoopsModule']->getVar('mid');
-			// Permission to view_directories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_view_directories', $permId);
-			if (isset($_POST['groups_view_directories'])) {
-				foreach ($_POST['groups_view_directories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_view_directories', $permId, $onegroupId, $mid);
-				}
-			}
-			// Permission to submit_directories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_submit_directories', $permId);
-			if (isset($_POST['groups_submit_directories'])) {
-				foreach ($_POST['groups_submit_directories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_submit_directories', $permId, $onegroupId, $mid);
-				}
-			}
-			// Permission to approve_directories
-			$grouppermHandler->deleteByModule($mid, 'wggithub_approve_directories', $permId);
-			if (isset($_POST['groups_approve_directories'])) {
-				foreach ($_POST['groups_approve_directories'] as $onegroupId) {
-					$grouppermHandler->addRight('wggithub_approve_directories', $permId, $onegroupId, $mid);
-				}
-			}
 			\redirect_header('directories.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
 		}
 		// Get Form

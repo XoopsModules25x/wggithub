@@ -34,9 +34,18 @@ require __DIR__ . '/header.php';
 $GLOBALS['xoopsOption']['template_main'] = 'wggithub_index.tpl';
 include_once \XOOPS_ROOT_PATH . '/header.php';
 
+// Permissions
+$permGlobalView = $permissionsHandler->getPermGlobalView();
+if (!$permGlobalView) {
+    $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+    require __DIR__ . '/footer.php';
+}
+$permGlobalRead = $permissionsHandler->getPermGlobalRead();
+$permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
+
 $op            = Request::getCmd('op', 'list');
-$filterRelease = Request::getCmd('release', 'all');
-$filterSortby  = Request::getCmd('sortby', 'update');
+$filterRelease = Request::getString('release', 'all');
+$filterSortby  = Request::getString('sortby', 'update');
 
 $GLOBALS['xoopsTpl']->assign('release', $filterRelease);
 $GLOBALS['xoopsTpl']->assign('sortby', $filterSortby);
@@ -50,6 +59,7 @@ $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_image_url', WGGITHUB_IMAGE_URL);
 //
+$GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permissionsHandler->getPermReadmeUpdate());
 
 switch ($op) {
     case 'show':
@@ -60,7 +70,7 @@ switch ($op) {
         $crRequests = new \CriteriaCompo();
         $crRequests->add(new \Criteria('req_datecreated', (time() - 3600), '>'));
         $requestsCount = $requestsHandler->getCount($crRequests);
-        if ($requestsCount < 60 && 'list' == $op) {
+        if ($permGlobalRead && $requestsCount < 60 && 'list' == $op) {
             executeUpdate();
         }
         unset($crRequests);
@@ -202,7 +212,23 @@ switch ($op) {
 
         break;
     case 'update':
+        // Permissions
+        if (!$permGlobalRead) {
+            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            require __DIR__ . '/footer.php';
+        }
         executeUpdate();
+        break;
+    case 'update_readme':
+        // Permissions
+        if (!$permReadmeUpdate) {
+            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            require __DIR__ . '/footer.php';
+        }
+        $repoId = Request::getInt('repo_id', 0);
+        $repoUser  = Request::getString('repo_user', 'none');
+        $repoName  = Request::getString('repo_name', 'none');
+        $res = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
         break;
 }
 

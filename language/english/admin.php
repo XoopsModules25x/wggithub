@@ -156,17 +156,11 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_DELETE', 'Clear');
 // ---------------- Admin Permissions ----------------
 // Permissions
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Permissions global');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_DESC', 'Permissions global to check type of.');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_4', 'Permissions global to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_8', 'Permissions global to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_16', 'Permissions global to view');
-\define('_AM_WGGITHUB_PERMISSIONS_APPROVE', 'Permissions to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_APPROVE_DESC', 'Permissions to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_SUBMIT', 'Permissions to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_SUBMIT_DESC', 'Permissions to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_VIEW', 'Permissions to view');
-\define('_AM_WGGITHUB_PERMISSIONS_VIEW_DESC', 'Permissions to view');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Global permissions');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_DESC', 'Set global permissions global for different groups');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_VIEW', 'Permissions to view');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_READ', 'Permissions to read new data from GitHub');
+\define('_AM_WGGITHUB_PERMISSIONS_README_UPDATE', 'Permissions to update existing readme with data from GitHub');
 \define('_AM_WGGITHUB_NO_PERMISSIONS_SET', 'No permission set');
 // ---------------- Admin Others ----------------
 \define('_AM_WGGITHUB_ABOUT_MAKE_DONATION', 'Submit');
