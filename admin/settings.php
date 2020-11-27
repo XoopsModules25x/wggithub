@@ -93,6 +93,11 @@ switch ($op) {
 		$settingsObj->setVar('set_submitter', Request::getInt('set_submitter', 0));
 		// Insert Data
 		if ($settingsHandler->insert($settingsObj)) {
+            if (Request::getInt('set_primary', 0) > 0) {
+                $newSetId = $settingsObj->getNewInsertedIdSettings();
+                $setId = $setId > 0 ? $setId : $newSetId;
+                $settingsHandler->setPrimarySetting($setId);
+            }
 			\redirect_header('settings.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
 		}
 		// Get Form
