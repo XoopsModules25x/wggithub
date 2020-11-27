@@ -22,7 +22,7 @@
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$directory.id}></td>
 				<td class='center'><{$directory.name}></td>
-				<td class='center'><{$directory.type}></td>
+				<td class='center'><{$directory.type_text}></td>
 				<td class='center'><{$directory.autoupdate}></td>
 				<td class='center'><{$directory.online}></td>
 				<td class='center'><{$directory.filterrelease}></td>

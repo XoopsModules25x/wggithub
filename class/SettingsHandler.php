@@ -140,4 +140,33 @@ class SettingsHandler extends \XoopsPersistableObjectHandler
 
         return $setting;
     }
+
+    /**
+     * Set given setting as primary
+     * @param int $asId
+     * @return bool
+     */
+    public function setPrimarySetting($setId)
+    {
+        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
+        $settingsObj = null;
+        $settingsHandler = $helper->getHandler('Settings');
+        if (isset($setId)) {
+            $settingsObj = $settingsHandler->get($setId);
+        } else {
+            \redirect_header('settings.php', 3, 'missing Id');
+        }
+
+        // reset all
+        $strSQL = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_settings') . ' SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_settings') . '.set_primary = 0';
+        $GLOBALS['xoopsDB']->queryF($strSQL);
+        // Set Vars
+        $settingsObj->setVar('set_primary', 1);
+        // Insert Data
+        if ($settingsHandler->insert($settingsObj)) {
+            return true;
+        }
+        return false;
+
+    }
 }
