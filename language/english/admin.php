@@ -17,7 +17,7 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 include_once __DIR__ . '/common.php';
@@ -88,6 +88,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_REPOSITORY_CREATEDAT', 'Createdat');
 \define('_AM_WGGITHUB_REPOSITORY_UPDATEDAT', 'Updatedat');
 \define('_AM_WGGITHUB_REPOSITORY_HTMLURL', 'Htmlurl');
+\define('_AM_WGGITHUB_REPOSITORY_README', 'Readme');
 \define('_AM_WGGITHUB_REPOSITORY_PRERELEASE', 'Pre-Release');
 \define('_AM_WGGITHUB_REPOSITORY_RELEASE', 'Release');
 \define('_AM_WGGITHUB_REPOSITORY_STATUS', 'Status');
@@ -104,6 +105,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_DIRECTORY_TYPE_ORG', 'Organisation');
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Autoupdate');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
+\define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Apply Filter Release');
 \define('_AM_WGGITHUB_DIRECTORY_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_DIRECTORY_SUBMITTER', 'Submitter');
 // Request add/edit
@@ -155,17 +157,11 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_DELETE', 'Clear');
 // ---------------- Admin Permissions ----------------
 // Permissions
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Permissions global');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_DESC', 'Permissions global to check type of.');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_4', 'Permissions global to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_8', 'Permissions global to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_16', 'Permissions global to view');
-\define('_AM_WGGITHUB_PERMISSIONS_APPROVE', 'Permissions to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_APPROVE_DESC', 'Permissions to approve');
-\define('_AM_WGGITHUB_PERMISSIONS_SUBMIT', 'Permissions to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_SUBMIT_DESC', 'Permissions to submit');
-\define('_AM_WGGITHUB_PERMISSIONS_VIEW', 'Permissions to view');
-\define('_AM_WGGITHUB_PERMISSIONS_VIEW_DESC', 'Permissions to view');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Global permissions');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_DESC', 'Set global permissions global for different groups');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_VIEW', 'Permissions to view');
+\define('_AM_WGGITHUB_PERMISSIONS_GLOBAL_READ', 'Permissions to read new data from GitHub');
+\define('_AM_WGGITHUB_PERMISSIONS_README_UPDATE', 'Permissions to update existing readme with data from GitHub');
 \define('_AM_WGGITHUB_NO_PERMISSIONS_SET', 'No permission set');
 // ---------------- Admin Others ----------------
 \define('_AM_WGGITHUB_ABOUT_MAKE_DONATION', 'Submit');

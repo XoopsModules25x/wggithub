@@ -20,10 +20,11 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use XoopsModules\Wggithub;
+use XoopsModules\Wggithub\Constants;
 
 \defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
@@ -42,13 +43,13 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 	}
 
 	/**
-	 * @public function permGlobalApprove
-	 * returns right for global approve
+	 * @public function getPermGlobalRead
+	 * returns global right for reading from github
 	 *
 	 * @param null
 	 * @return bool
 	 */
-	public function getPermGlobalApprove()
+	public function getPermGlobalRead()
 	{
 		global $xoopsUser, $xoopsModule;
 		$currentuid = 0;
@@ -65,8 +66,8 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
 		} else {
 			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
-		if ($grouppermHandler->checkRight('wggithub_ac', 4, $my_group_ids, $mid)) {
+		}
+		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_READ, $my_group_ids, $mid)) {
 			return true;
 		}
 		return false;
@@ -74,40 +75,6 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 
 	/**
 	 * @public function permGlobalSubmit
-	 * returns right for global submit
-	 *
-	 * @param null
-	 * @return bool
-	 */
-	public function getPermGlobalSubmit()
-	{
-		global $xoopsUser, $xoopsModule;
-		$currentuid = 0;
-		if (isset($xoopsUser) && \is_object($xoopsUser)) {
-			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-				return true;
-			}
-			$currentuid = $xoopsUser->uid();
-		}
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$mid = $xoopsModule->mid();
-		$memberHandler = \xoops_getHandler('member');
-		if (0 == $currentuid) {
-			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
-		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
-		if ($this->getGlobalApprove()) {
-			return true;
-		}
-		if ($grouppermHandler->checkRight('wggithub_ac', 8, $my_group_ids, $mid)) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * @public function permGlobalView
 	 * returns right for global view
 	 *
 	 * @param null
@@ -116,6 +83,11 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 	public function getPermGlobalView()
 	{
 		global $xoopsUser, $xoopsModule;
+
+        if ($this->getPermGlobalRead()) {
+            return true;
+        }
+
 		$currentuid = 0;
 		if (isset($xoopsUser) && \is_object($xoopsUser)) {
 			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
@@ -130,14 +102,39 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
 			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
 		} else {
 			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-        }
-		if ($this->getGlobalApprove()) {
+		}
+		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_VIEW, $my_group_ids, $mid)) {
 			return true;
 		}
-		if ($this->getGlobalSubmit()) {
-			return true;
+		return false;
+	}
+
+	/**
+	 * @public function getPermReadmeUpdate
+	 * returns right for updating existing readme
+	 *
+	 * @param null
+	 * @return bool
+	 */
+	public function getPermReadmeUpdate()
+	{
+		global $xoopsUser, $xoopsModule;
+		$currentuid = 0;
+		if (isset($xoopsUser) && \is_object($xoopsUser)) {
+			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
+				return true;
+			}
+			$currentuid = $xoopsUser->uid();
 		}
-		if ($grouppermHandler->checkRight('wggithub_ac', 16, $my_group_ids, $mid)) {
+		$grouppermHandler = \xoops_getHandler('groupperm');
+		$mid = $xoopsModule->mid();
+		$memberHandler = \xoops_getHandler('member');
+		if (0 == $currentuid) {
+			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+		} else {
+			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+		}
+		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_README_UPDATE, $my_group_ids, $mid)) {
 			return true;
 		}
 		return false;

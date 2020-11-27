@@ -10,6 +10,7 @@
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_TYPE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_AUTOUPDATE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_ONLINE}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_FILTERRELEASE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_DATECREATED}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_SUBMITTER}></th>
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
@@ -24,6 +25,7 @@
 				<td class='center'><{$directory.type_text}></td>
 				<td class='center'><{$directory.autoupdate}></td>
 				<td class='center'><{$directory.online}></td>
+				<td class='center'><{$directory.filterrelease}></td>
 				<td class='center'><{$directory.datecreated}></td>
 				<td class='center'><{$directory.submitter}></td>
 				<td class="center  width5">

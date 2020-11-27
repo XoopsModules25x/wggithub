@@ -20,11 +20,15 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
+use XoopsModules\Wggithub\{
+    Constants,
+    MDParser
+};
+
 
 /**
  * Class Object Handler Readmes
@@ -179,6 +183,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         return true;
     }
 
+
     /**
      * Update table requests
      *
@@ -190,7 +195,6 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
     public function updateReadmes($repoId, $userName, $repoName)
     {
         $helper = Wggithub\Helper::getInstance();
-        $repositoriesHandler = $helper->getHandler('Repositories');
         $readmesHandler = $helper->getHandler('Readmes');
 
         $libRepositories = new Wggithub\Github\Repositories();
@@ -223,6 +227,16 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
             $readmesObj->setVar('rm_repoid', $repoId);
             $readmesObj->setVar('rm_name', $readme['name']);
             $readmesObj->setVar('rm_type', $readme['type']);
+            /*
+             * TODO
+            $contentDecoded = base64_decode($this->getVar('rm_content', 'n'));
+            if ('.MD' == substr(strtoupper($readme['name']), -3)) {
+                $contentClean = convertMD($contentDecoded);
+            } else {
+                $contentClean = $contentDecoded;
+            }
+            $readmesObj->setVar('rm_content', $contentClean);
+            */
             $readmesObj->setVar('rm_content', $readme['content']);
             $readmesObj->setVar('rm_encoding', $readme['encoding']);
             $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
@@ -233,6 +247,42 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
                 return false;
             }
         }
+
+        return true;
+    }
+
+    /**
+     * TODO
+     * convert md file content into clean text
+     * and replace relative path for images into full path
+     *
+     * @param $contentDecoded
+     * @return string
+     */
+    public function convertMD($contentDecoded)
+    {
+        // parse MD file
+        $Parsedown = new MDParser\Parsedown();
+        $contentClean = $Parsedown->text($contentDecoded);
+
+        //replace image links
+
+        return $contentClean;
+    }
+
+    /**
+     * Update table repositories with readme information
+     *
+     * @return boolean
+     */
+    public function updateRepoReadme()
+    {
+        // update repo_readme
+        $sql = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . ' INNER JOIN ' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes');
+        $sql .= ' ON ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_id = ' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes') . '.rm_repoid ';
+        $sql .= 'SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_readme = 1 ';
+        $sql .= 'WHERE (((' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes') . '.rm_id)>0));';
+        $GLOBALS['xoopsDB']->queryF($sql);
 
         return true;
     }

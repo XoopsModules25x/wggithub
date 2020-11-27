@@ -20,7 +20,7 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use XoopsModules\Wggithub;
@@ -47,6 +47,7 @@ class Repositories extends \XoopsObject
 		$this->initVar('repo_createdat', XOBJ_DTYPE_INT);
 		$this->initVar('repo_updatedat', XOBJ_DTYPE_INT);
 		$this->initVar('repo_htmlurl', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_readme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('repo_prerelease', XOBJ_DTYPE_TXTBOX);
         $this->initVar('repo_release', XOBJ_DTYPE_TXTBOX);
 		$this->initVar('repo_status', XOBJ_DTYPE_INT);
@@ -110,6 +111,8 @@ class Repositories extends \XoopsObject
 		$form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_REPOSITORY_UPDATEDAT, 'repo_updatedat', '', $repoUpdatedat));
 		// Form Text repoHtmlurl
 		$form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_HTMLURL, 'repo_htmlurl', 50, 255, $this->getVar('repo_htmlurl')));
+        // Form Text repoReadme
+        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_README, 'repo_readme', 50, 255, $this->getVar('repo_readme')));
         // Form Text repoPrerelease
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_PRERELEASE, 'repo_prerelease', 50, 255, $this->getVar('repo_prerelease')));
         // Form Text repoRelease
@@ -126,35 +129,6 @@ class Repositories extends \XoopsObject
 		$form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_REPOSITORY_DATECREATED, 'repo_datecreated', '', $repoDatecreated));
 		// Form Select User repoSubmitter
 		$form->addElement(new \XoopsFormSelectUser(_AM_WGGITHUB_REPOSITORY_SUBMITTER, 'repo_submitter', false, $this->getVar('repo_submitter')));
-		// Permissions
-		$memberHandler = \xoops_getHandler('member');
-		$groupList = $memberHandler->getGroupList();
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$fullList[] = \array_keys($groupList);
-		if (!$this->isNew()) {
-			$groupsIdsApprove = $grouppermHandler->getGroupIds('wggithub_approve_repositories', $this->getVar('repo_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsApprove[] = \array_values($groupsIdsApprove);
-			$groupsCanApproveCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_APPROVE, 'groups_approve_repositories[]', $groupsIdsApprove);
-			$groupsIdsSubmit = $grouppermHandler->getGroupIds('wggithub_submit_repositories', $this->getVar('repo_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsSubmit[] = \array_values($groupsIdsSubmit);
-			$groupsCanSubmitCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_SUBMIT, 'groups_submit_repositories[]', $groupsIdsSubmit);
-			$groupsIdsView = $grouppermHandler->getGroupIds('wggithub_view_repositories', $this->getVar('repo_id'), $GLOBALS['xoopsModule']->getVar('mid'));
-			$groupsIdsView[] = \array_values($groupsIdsView);
-			$groupsCanViewCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_VIEW, 'groups_view_repositories[]', $groupsIdsView);
-		} else {
-			$groupsCanApproveCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_APPROVE, 'groups_approve_repositories[]', $fullList);
-			$groupsCanSubmitCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_SUBMIT, 'groups_submit_repositories[]', $fullList);
-			$groupsCanViewCheckbox = new \XoopsFormCheckBox(_AM_WGGITHUB_PERMISSIONS_VIEW, 'groups_view_repositories[]', $fullList);
-		}
-		// To Approve
-		$groupsCanApproveCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanApproveCheckbox);
-		// To Submit
-		$groupsCanSubmitCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanSubmitCheckbox);
-		// To View
-		$groupsCanViewCheckbox->addOptionArray($groupList);
-		$form->addElement($groupsCanViewCheckbox);
 		// To Save
 		$form->addElement(new \XoopsFormHidden('op', 'save'));
 		$form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
@@ -179,6 +153,9 @@ class Repositories extends \XoopsObject
 		$ret['createdat']   = \formatTimestamp($this->getVar('repo_createdat'), 'm');
 		$ret['updatedat']   = \formatTimestamp($this->getVar('repo_updatedat'), 'm');
 		$ret['htmlurl']     = $this->getVar('repo_htmlurl');
+        $ret['readme']      = $this->getVar('repo_readme');
+        $ret['prerelease']  = $this->getVar('repo_prerelease');
+        $ret['release']     = $this->getVar('repo_release');
 		$status             = $this->getVar('repo_status');
 		$ret['status']      = $status;
 		switch ($status) {

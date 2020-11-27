@@ -29,7 +29,6 @@ class Migrate extends \Xmf\Database\Migrate
     private $renameTables;
 
     /**
-     * Migrate constructor.
      * @param \XoopsModules\Wggithub\Common\Configurator|null $configurator
      */
     public function __construct(Common\Configurator $configurator = null)

@@ -20,7 +20,7 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use XoopsModules\Wggithub;
@@ -250,4 +250,30 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
 
         return true;
     }
+
+    /**
+     * Update table repositories with release information
+     *
+     * @return boolean
+     */
+    public function updateRepoReleases()
+    {
+        // update repo_prerelease
+        $sql = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . ' INNER JOIN ' . $GLOBALS['xoopsDB']->prefix('wggithub_releases');
+        $sql .= ' ON ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_id = ' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '.rel_repoid ';
+        $sql .= 'SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_prerelease = 1 ';
+        $sql .= 'WHERE (((' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '.rel_prerelease)=1));';
+        $GLOBALS['xoopsDB']->queryF($sql);
+
+        // update repo_release
+        $sql = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . ' INNER JOIN ' . $GLOBALS['xoopsDB']->prefix('wggithub_releases');
+        $sql .= ' ON ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_id = ' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '.rel_repoid ';
+        $sql .= 'SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_release = 1 ';
+        $sql .= 'WHERE (((' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '.rel_prerelease)=0));';
+        $GLOBALS['xoopsDB']->queryF($sql);
+
+        return true;
+    }
+
+
 }

@@ -19,6 +19,7 @@
  * @min_xoops      2.5.9
  * @author         XOOPS - Website:<https://xoops.org>
  */
+
 $moduleDirName      = \basename(dirname(__DIR__, 2));
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 

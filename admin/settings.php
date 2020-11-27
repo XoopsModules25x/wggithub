@@ -17,7 +17,7 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use Xmf\Request;
@@ -93,6 +93,11 @@ switch ($op) {
 		$settingsObj->setVar('set_submitter', Request::getInt('set_submitter', 0));
 		// Insert Data
 		if ($settingsHandler->insert($settingsObj)) {
+            if (Request::getInt('set_primary', 0) > 0) {
+                $newSetId = $settingsObj->getNewInsertedIdSettings();
+                $setId = $setId > 0 ? $setId : $newSetId;
+                $settingsHandler->setPrimarySetting($setId);
+            }
 			\redirect_header('settings.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
 		}
 		// Get Form

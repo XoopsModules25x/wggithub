@@ -25,6 +25,7 @@ namespace XoopsModules\Wggithub\Github;
  */
 class Repositories extends GitHubClient
 {
+
     /**
      * Get repositories of given user
      *

@@ -20,7 +20,7 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 /**
@@ -46,9 +46,9 @@ interface Constants
 	public const STATUS_UPTODATE = 3;
 
 	// Constants for permissions
-	public const PERM_GLOBAL_NONE    = 0;
-	public const PERM_GLOBAL_VIEW    = 1;
-	public const PERM_GLOBAL_SUBMIT  = 2;
-	public const PERM_GLOBAL_APPROVE = 3;
+	public const PERM_GLOBAL_NONE   = 0;
+	public const PERM_GLOBAL_VIEW   = 1;
+	public const PERM_GLOBAL_READ   = 2;
+	public const PERM_README_UPDATE = 3;
 
 }

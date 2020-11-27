@@ -30,6 +30,7 @@ use XoopsModules\Wggithub\Common;
 function xoops_module_pre_install_wggithub(\XoopsModule $module)
 {
     require \dirname(__DIR__) . '/preloads/autoloader.php';
+
     $utility = new Wggithub\Utility();
 
     //check for minimum XOOPS version

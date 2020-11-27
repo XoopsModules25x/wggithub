@@ -17,7 +17,7 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 // 
@@ -26,9 +26,9 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
 	'name'                => _MI_WGGITHUB_NAME,
-	'version'             => 1.0,
+	'version'             => 1.01,
 	'description'         => _MI_WGGITHUB_DESC,
-	'author'              => 'TDM XOOPS',
+	'author'              => 'Goffy - XOOPS Development Team',
 	'author_mail'         => 'goffy@wedega.com',
 	'author_website_url'  => 'https://wedega.com',
 	'author_website_name' => 'XOOPS on Wedega',

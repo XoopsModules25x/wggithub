@@ -17,7 +17,7 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 include_once __DIR__ . '/admin.php';
@@ -37,6 +37,14 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_NO', 'No');
 \define('_MA_WGGITHUB_DETAILS', 'Show details');
 \define('_MA_WGGITHUB_BROKEN', 'Notify broken');
+// ---------------- Filter ----------------
+\define('_MA_WGGITHUB_FILTER_RELEASE', 'Filter by release');
+\define('_MA_WGGITHUB_FILTER_RELEASE_FINAL', 'Only final');
+\define('_MA_WGGITHUB_FILTER_RELEASE_ANY', 'Any release');
+\define('_MA_WGGITHUB_FILTER_RELEASE_ALL', 'All (not released included)');
+\define('_MA_WGGITHUB_FILTER_SORTBY', 'Sort by');
+\define('_MA_WGGITHUB_FILTER_SORTBY_NAME', 'Name');
+\define('_MA_WGGITHUB_FILTER_SORTBY_UPDATE', 'Last Update');
 // ---------------- Contents ----------------
 // Repository
 \define('_MA_WGGITHUB_REPOSITORY', 'Repository');
@@ -45,7 +53,8 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_REPOSITORIES_DESC', 'Repositories description');
 \define('_MA_WGGITHUB_REPOSITORIES_LIST', 'List of Repositories');
 \define('_MA_WGGITHUB_REPOSITORY_GOTO', 'Goto GitHub Repository');
-\define('_MA_WGGITHUB_REPOSITORIES_COUNT', 'Directory %s contains %r Repositories');
+\define('_MA_WGGITHUB_REPOSITORIES_COUNT1', 'Directory %s: %r of %t Repositories');
+\define('_MA_WGGITHUB_REPOSITORIES_COUNT2', 'Directory %s: %t Repositories');
 // Caption of Repository
 \define('_MA_WGGITHUB_REPOSITORY_ID', 'Id');
 \define('_MA_WGGITHUB_REPOSITORY_NODEID', 'Nodeid');
@@ -76,6 +85,7 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_READMES_DESC', 'Readmes description');
 \define('_MA_WGGITHUB_READMES_LIST', 'List of Readmes');
 \define('_MA_WGGITHUB_README_NOFILE', 'Sorry - there is no readme file available');
+\define('_MA_WGGITHUB_README_UPDATE', 'Update Readme');
 // Caption of Readme
 \define('_MA_WGGITHUB_README_ID', 'Id');
 \define('_MA_WGGITHUB_README_NAME', 'Name');

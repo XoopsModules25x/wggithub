@@ -3,7 +3,7 @@
 # http://www.phpmyadmin.net
 #
 # Host: localhost
-# Generated on: Tue Nov 24, 2020 to 07:20:24
+# Generated on: Wed Nov 25, 2020 to 13:33:56
 # Server version: 5.5.5-10.4.10-MariaDB
 # PHP Version: 7.3.12
 
@@ -23,7 +23,7 @@ CREATE TABLE `wggithub_settings` (
 ) ENGINE=InnoDB;
 
 #
-# Structure table for `wggithub_directories` 7
+# Structure table for `wggithub_directories` 8
 #
 
 CREATE TABLE `wggithub_directories` (
@@ -32,6 +32,7 @@ CREATE TABLE `wggithub_directories` (
   `dir_type` INT(10) NOT NULL DEFAULT '0',
   `dir_autoupdate` INT(1) NOT NULL DEFAULT '0',
   `dir_online` INT(1) NOT NULL DEFAULT '0',
+  `dir_filterrelease` INT(1) NOT NULL DEFAULT '0',
   `dir_datecreated` INT(11) NOT NULL DEFAULT '0',
   `dir_submitter` INT(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dir_id`)
@@ -51,7 +52,7 @@ CREATE TABLE `wggithub_requests` (
 ) ENGINE=InnoDB;
 
 #
-# Structure table for `wggithub_repositories` 11
+# Structure table for `wggithub_repositories` 13
 #
 
 CREATE TABLE `wggithub_repositories` (
@@ -63,6 +64,9 @@ CREATE TABLE `wggithub_repositories` (
   `repo_createdat` INT(11) NOT NULL DEFAULT '0',
   `repo_updatedat` INT(11) NOT NULL DEFAULT '0',
   `repo_htmlurl` VARCHAR(255) NOT NULL DEFAULT '',
+  `repo_readme` INT(1) NOT NULL DEFAULT '0',
+  `repo_prerelease` INT(1) NOT NULL DEFAULT '0',
+  `repo_release` INT(1) NOT NULL DEFAULT '0',
   `repo_status` INT(1) NOT NULL DEFAULT '0',
   `repo_datecreated` INT(11) NOT NULL DEFAULT '0',
   `repo_submitter` INT(10) NOT NULL DEFAULT '0',

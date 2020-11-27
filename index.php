@@ -17,7 +17,7 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use Xmf\Request;
@@ -27,15 +27,28 @@ use XoopsModules\Wggithub\{
     Helper,
     Github\Github,
     Github\Repositories,
-    Github\Releases,
+    Github\Releases
 };
 
 require __DIR__ . '/header.php';
 $GLOBALS['xoopsOption']['template_main'] = 'wggithub_index.tpl';
 include_once \XOOPS_ROOT_PATH . '/header.php';
 
-$op    = Request::getCmd('op', 'list');
+// Permissions
+$permGlobalView = $permissionsHandler->getPermGlobalView();
+if (!$permGlobalView) {
+    $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+    require __DIR__ . '/footer.php';
+}
+$permGlobalRead = $permissionsHandler->getPermGlobalRead();
+$permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
 
+$op            = Request::getCmd('op', 'list');
+$filterRelease = Request::getString('release', 'all');
+$filterSortby  = Request::getString('sortby', 'update');
+
+$GLOBALS['xoopsTpl']->assign('release', $filterRelease);
+$GLOBALS['xoopsTpl']->assign('sortby', $filterSortby);
 
 // Define Stylesheet
 $GLOBALS['xoTheme']->addStylesheet($style, null);
@@ -46,6 +59,7 @@ $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_image_url', WGGITHUB_IMAGE_URL);
 //
+$GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permissionsHandler->getPermReadmeUpdate());
 
 switch ($op) {
     case 'show':
@@ -56,9 +70,10 @@ switch ($op) {
         $crRequests = new \CriteriaCompo();
         $crRequests->add(new \Criteria('req_datecreated', (time() - 3600), '>'));
         $requestsCount = $requestsHandler->getCount($crRequests);
-        if ($requestsCount < 60 && 'list' == $op) {
+        if ($permGlobalRead && $requestsCount < 60 && 'list' == $op) {
             executeUpdate();
         }
+
         unset($crRequests);
         $crRequests = new \CriteriaCompo();
         $crRequests->add(new \Criteria('req_result', 'OK'));
@@ -105,42 +120,51 @@ switch ($op) {
             foreach (\array_keys($directoriesAll) as $i) {
                 $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
                 $dirName = $directoriesAll[$i]->getVar('dir_name');
+                $dirFilterRelease = (bool)$directoriesAll[$i]->getVar('dir_filterrelease');
                 $repos = [];
-                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                    //$github->readOrgRepositories($dirName, 100, 1);
-                    //$github->readOrgRepositories($dirName, 100, 2);
-                } else {
-                    //$github->readUserRepositories($dirName);
-                }
-
                 $crRepositories = new \CriteriaCompo();
                 $crRepositories->add(new \Criteria('repo_user', $dirName));
+                $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
+                if ('any' === $filterRelease && $dirFilterRelease) {
+                    $crRepositories->add(new \Criteria('repo_prerelease', 1) );
+                    $crRepositories->add(new \Criteria('repo_release', 1), 'OR');
+                }
+                if ('final' === $filterRelease && $dirFilterRelease) {
+                    $crRepositories->add(new \Criteria('repo_release', 1));
+                }
                 $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
                 $crRepositories->setStart($start);
                 $crRepositories->setLimit($limit);
-                $crRepositories->setSort('repo_name');
-                $crRepositories->setOrder('ASC');
+                switch ($filterSortby) {
+                    case 'name':
+                    default:
+                        $crRepositories->setSort('repo_name');
+                        $crRepositories->setOrder('ASC');
+                        break;
+                    case 'update':
+                        $crRepositories->setSort('repo_updatedat');
+                        $crRepositories->setOrder('DESC');
+                        break;
+                }
                 if ($repositoriesCount > 0) {
                     $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
                     foreach (\array_keys($repositoriesAll) as $j) {
                         $repoId = $repositoriesAll[$j]->getVar('repo_id');
                         $repos[$j] = $repositoriesAll[$j]->getValuesRepositories();
                         $repos[$j]['readme'] = ['content_clean' => _MA_WGGITHUB_README_NOFILE];
-                        $crReadmes = new \CriteriaCompo();
-                        $crReadmes->add(new \Criteria('rm_repoid', $repoId));
-                        $readmesCount = $readmesHandler->getCount($crReadmes);
-                        if ($readmesCount > 0) {
+                        if ($repositoriesAll[$j]->getVar('repo_readme') > 0) {
+                            $crReadmes = new \CriteriaCompo();
+                            $crReadmes->add(new \Criteria('rm_repoid', $repoId));
                             $readmesAll = $readmesHandler->getAll($crReadmes);
                             foreach ($readmesAll as $readme) {
                                 $repos[$j]['readme'] = $readme->getValuesReadmes();
                             }
                             unset($crReadmes, $readmesAll);
                         }
-                        //$repos[$j]['releases'] = [];
-                        $crReleases = new \CriteriaCompo();
-                        $crReleases->add(new \Criteria('rel_repoid', $repoId));
-                        $releasesCount = $releasesHandler->getCount($crReleases);
-                        if ($releasesCount > 0) {
+                        if ($repositoriesAll[$j]->getVar('repo_prerelease') > 0 || $repositoriesAll[$j]->getVar('repo_release') > 0) {
+                            //$repos[$j]['releases'] = [];
+                            $crReleases = new \CriteriaCompo();
+                            $crReleases->add(new \Criteria('rel_repoid', $repoId));
                             $releasesAll = $releasesHandler->getAll($crReleases);
                             foreach ($releasesAll as $release) {
                                 $repos[$j]['releases'][] = $release->getValuesReleases();
@@ -150,12 +174,16 @@ switch ($op) {
                     }
                     unset($crRepositories, $repositoriesAll);
                 }
-                $directories[$i]['countRepos'] = str_replace(['%s', '%r'], [$dirName, $repositoriesCount], _MA_WGGITHUB_REPOSITORIES_COUNT);
+                if ($repositoriesCount === $repositoriesCountTotal) {
+                    $directories[$i]['countRepos'] = str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT2);
+                } else {
+                    $directories[$i]['countRepos'] = str_replace(['%s', '%r', '%t'], [$dirName, $repositoriesCount, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT1);
+                }
                 $directories[$i]['repos'] = $repos;
                 $directories[$i]['previousRepos'] = $start > 0;
-                $directories[$i]['previousOp'] = '&amp;start=' . ($start - $limit) . '&amp;limit=' . $limit;
-                $directories[$i]['nextRepos'] = $repositoriesCount > $limit;
-                $directories[$i]['nextOp'] = '&amp;start=' . ($start + $limit) . '&amp;limit=' . $limit;
+                $directories[$i]['previousOp'] = '&amp;start=' . ($start - $limit) . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+                $directories[$i]['nextRepos'] = ($repositoriesCount - $start) > $limit;
+                $directories[$i]['nextOp'] = '&amp;start=' . ($start + $limit) . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
                 $GLOBALS['xoopsTpl']->assign('start', $start);
                 $GLOBALS['xoopsTpl']->assign('limit', $limit);
                 $GLOBALS['xoopsTpl']->assign('menu', $menu);
@@ -177,16 +205,25 @@ switch ($op) {
 
         break;
     case 'update':
+        // Permissions
+        if (!$permGlobalRead) {
+            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            require __DIR__ . '/footer.php';
+        }
         executeUpdate();
         break;
+    case 'update_readme':
+        // Permissions
+        if (!$permReadmeUpdate) {
+            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            require __DIR__ . '/footer.php';
+        }
+        $repoId = Request::getInt('repo_id', 0);
+        $repoUser  = Request::getString('repo_user', 'none');
+        $repoName  = Request::getString('repo_name', 'none');
+        $res = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
+        break;
 }
-
-
-
-
-
-
-
 
 $GLOBALS['xoopsTpl']->assign('table_type', $helper->getConfig('table_type'));
 // Breadcrumbs
@@ -213,6 +250,8 @@ function executeUpdate(){
     $github = Github::getInstance();
     $helper = Helper::getInstance();
     $directoriesHandler = $helper->getHandler('Directories');
+    $releasesHandler = $helper->getHandler('Releases');
+    $readmesHandler = $helper->getHandler('Readmes');
     $crDirectories = new \CriteriaCompo();
     $crDirectories->add(new \Criteria('dir_autoupdate', 1));
     $crDirectories->add(new \Criteria('dir_online', 1));
@@ -221,27 +260,36 @@ function executeUpdate(){
     $directories = [];
     foreach (\array_keys($directoriesAll) as $i) {
         $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
-        $dirName = $directoriesAll[$i]->getVar('dir_name');
-        $repos = [];
-        for ($j = 1; $j <= 9; $j++) {
-            $repos[$j] = [];
-            if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                $repos = $github->readOrgRepositories($dirName, 100, $j);
-            } else {
-                $repos = $github->readUserRepositories($dirName, 100, $j);
-            }
-            if (false === $repos) {
-                return false;
-                break 1;
-            }
-            if (count($repos) > 0) {
-                $github->updateTableRepositories($dirName, $repos, false);
-            } else {
-                break 1;
+        if (1 === (int) $directoriesAll[$i]->getVar('dir_autoupdate')) {
+            $dirName = $directoriesAll[$i]->getVar('dir_name');
+            $repos = [];
+            for ($j = 1; $j <= 9; $j++) {
+                $repos[$j] = [];
+                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
+                    $repos = $github->readOrgRepositories($dirName, 100, $j);
+                } else {
+                    $repos = $github->readUserRepositories($dirName, 100, $j);
+                }
+                if (false === $repos) {
+                    return false;
+                    break 1;
+                }
+                if (count($repos) > 0) {
+                    $github->updateTableRepositories($dirName, $repos, true);
+                } else {
+                    break 1;
+                }
+                if (count($repos) < 100) {
+                    break 1;
+                }
             }
         }
     }
     unset($directories);
+
+    $releasesHandler->updateRepoReleases();
+    $readmesHandler->updateRepoReadme();
+
 
     return true;
 }

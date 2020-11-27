@@ -13,6 +13,9 @@
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_CREATEDAT}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_UPDATEDAT}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_HTMLURL}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_README}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_PRERELEASE}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_RELEASE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_STATUS}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_DATECREATED}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_SUBMITTER}></th>
@@ -31,6 +34,9 @@
 				<td class='center'><{$repository.createdat}></td>
 				<td class='center'><{$repository.updatedat}></td>
 				<td class='center'><{$repository.htmlurl}></td>
+				<td class='center'><{$repository.readme}></td>
+				<td class='center'><{$repository.prerelease}></td>
+				<td class='center'><{$repository.release}></td>
 				<td class='center'><img src="<{$modPathIcon16}>status<{$repository.status}>.png" alt="<{$repository.status_text}>" title="<{$repository.status_text}>" /></td>
 				<td class='center'><{$repository.datecreated}></td>
 				<td class='center'><{$repository.submitter}></td>

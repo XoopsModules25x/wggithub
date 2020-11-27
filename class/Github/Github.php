@@ -27,30 +27,44 @@ use XoopsModules\Wggithub\{
 };
 
 /**
- * Class GitHub
+ * Class Github
  */
 class Github
 {
-
+    /**
+     * @var string
+     */
     public const BASE_URL = 'https://api.github.com/';
+
     /**
      * @var string
      */
     public $userAuth = 'myusername';
+
     /**
      * @var string
      */
     public $tokenAuth = 'mytoken';
+
     /**
      * Verbose debugging for curl (when putting)
      * @var bool
      */
     public $debug = false;
 
+    /**
+     * @var object
+     */
     private $helper = null;
 
+    /**
+     * @var bool
+     */
     public $apiErrorLimit = false;
 
+    /**
+     * @var bool
+     */
     public $apiErrorMisc = false;
 
     /**
@@ -99,9 +113,9 @@ class Github
     /**
      * Get data of all repositories of given organisation
      *
-     * @param     $org
-     * @param int $per_page
-     * @param int $page
+     * @param $org
+     * @param int    $per_page
+     * @param int    $page
      * @return array
      */
     public function readOrgRepositories($org, $per_page = 100, $page = 1)
@@ -110,52 +124,6 @@ class Github
         $repos = $libRepositories->getOrgRepositories($org, $per_page, $page);
 
         return $repos;
-    }
-
-    /**
-     * update all related tables after reading repositories
-     *
-     * @param string $user
-     * @param        $repos
-     * @param        $updateAddtionals
-     * @return boolean
-     */
-    public function updateTables($user, $repos, $updateAddtionals)
-    {
-
-       //deprecated
-
-
-        $errors = 0;
-
-        // add/update all items from table repositories
-        $res = $this->updateTableRepositories($user, $repos);
-        if (false === $res) {
-            $errors++;
-        }
-
-
-
-        return (0 == $errors);
-
-//rest sollte obsolet sein
-
-
-
-
-        // add/update table readmes
-        $res = $this->helper->getHandler('Readmes')->updateTableReadmes();
-        if (false === $res) {
-            $errors++;
-        }
-
-        // add/update table repositories with release
-        $res = $this->helper->getHandler('Releases')->updateTableReleases();
-        if (false === $res) {
-            $errors++;
-        }
-
-        return (0 == $errors);
     }
 
     /**
@@ -176,18 +144,17 @@ class Github
         foreach ($repos as $key => $repo) {
             $crRepositories = new \CriteriaCompo();
             $crRepositories->add(new \Criteria('repo_nodeid', $repo['node_id']));
-            $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
             $repoId = 0;
-            if ($repositoriesCount > 0) {
-                $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
-                foreach (\array_keys($repositoriesAll) as $i) {
-                    $repoId = $repositoriesAll[$i]->getVar('repo_id');
-                }
-                unset($crRepositories, $repositoriesAll);
-                $repositoriesObj = $repositoriesHandler->get($repoId);
-                $updatedAtOld = $repositoriesObj->getVar('repo_updatedat');
+            $status = 0;
+            $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+            foreach (\array_keys($repositoriesAll) as $i) {
+                $repoId = $repositoriesAll[$i]->getVar('repo_id');
+                $updatedAtOld = $repositoriesAll[$i]->getVar('repo_updatedat');
                 $updatedAtNew = 0;
-                $status = $repositoriesObj->getVar('repo_status');
+                $status = $repositoriesAll[$i]->getVar('repo_status');
+                $repositoriesObj = $repositoriesAll[$i];
+            }
+            if ($repoId > 0) {
                 if (is_string($repo['updated_at'])) {
                     $updatedAtNew = \strtotime($repo['updated_at']);
                 }
@@ -237,7 +204,6 @@ class Github
                         $repositoriesObj->setVar('repo_status', Constants::STATUS_UPTODATE);
                         $repositoriesHandler->insert($repositoriesObj, true);
                     }
-
                 } else {
                     return false;
                 }
@@ -256,13 +222,6 @@ class Github
      */
     private function getSetting($user = false)
     {
-
-        $this->userAuth = 'ggoffy';
-        //Token_wgGitHub_XoopsModules25x
-        $this->tokenAuth = '8a133fddc559d068f';
-
-        return true;
-
         $settingsHandler = $this->helper->getHandler('Settings');
         if ($user) {
             $setting = $settingsHandler->getRequestSetting();
@@ -271,11 +230,11 @@ class Github
         }
 
         if (0 == \count($setting)) {
-            \redirect_header('settings.php', 3, \_AM_WGTRANSIFEX_THEREARENT_SETTINGS);
+            \redirect_header(XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
+        $this->userAuth = $setting['user'];
+        $this->tokenAuth = $setting['token'];
 
         return $setting;
     }
-
-
 }

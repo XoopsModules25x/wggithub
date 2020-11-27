@@ -17,8 +17,9 @@
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
+
 include dirname(__DIR__, 2) . '/mainfile.php';
 include __DIR__ . '/include/common.php';
 $moduleDirName = \basename(__DIR__);

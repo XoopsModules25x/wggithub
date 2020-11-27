@@ -20,7 +20,7 @@ namespace XoopsModules\Wggithub;
  * @package        wggithub
  * @since          1.0
  * @min_xoops      2.5.10
- * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
+ * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
 use XoopsModules\Wggithub;
@@ -121,4 +121,52 @@ class SettingsHandler extends \XoopsPersistableObjectHandler
 		$crSettings->setOrder($order);
 		return $crSettings;
 	}
+
+    /**
+     * Get Primary Setting
+     * @return array
+     */
+    public function getPrimarySetting()
+    {
+        $setting = [];
+        $crSettings = new \CriteriaCompo();
+        $crSettings->add(new \Criteria('set_primary', 1));
+        $crSettings->setLimit(1);
+        $settingsAll = $this->getAll($crSettings);
+        foreach (\array_keys($settingsAll) as $i) {
+            $setting['user'] = $settingsAll[$i]->getVar('set_username');
+            $setting['token'] = $settingsAll[$i]->getVar('set_token');
+        }
+
+        return $setting;
+    }
+
+    /**
+     * Set given setting as primary
+     * @param int $asId
+     * @return bool
+     */
+    public function setPrimarySetting($setId)
+    {
+        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
+        $settingsObj = null;
+        $settingsHandler = $helper->getHandler('Settings');
+        if (isset($setId)) {
+            $settingsObj = $settingsHandler->get($setId);
+        } else {
+            \redirect_header('settings.php', 3, 'missing Id');
+        }
+
+        // reset all
+        $strSQL = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_settings') . ' SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_settings') . '.set_primary = 0';
+        $GLOBALS['xoopsDB']->queryF($strSQL);
+        // Set Vars
+        $settingsObj->setVar('set_primary', 1);
+        // Insert Data
+        if ($settingsHandler->insert($settingsObj)) {
+            return true;
+        }
+        return false;
+
+    }
 }

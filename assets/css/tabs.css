@@ -6,6 +6,9 @@
  * License: MIT
  */
 
+.tab-filter {
+  margin-bottom:20px;
+}
 
 .tabcontent-content {
   border-top:1px solid #ccc;
