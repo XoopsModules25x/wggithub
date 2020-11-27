@@ -154,3 +154,51 @@ function exportSchema()
     }
 
 }
+
+/**
+ * loadTableFromArrayWithReplace
+ *
+ * @param string $table  value with should be used insead of original value of $search
+ *
+ * @param array  $data   array of rows to insert
+ *                       Each element of the outer array represents a single table row.
+ *                       Each row is an associative array in 'column' => 'value' format.
+ * @param string $search name of column for which the value should be replaced
+ * @param        $replace
+ * @return int number of rows inserted
+ */
+function loadTableFromArrayWithReplace($table, $data, $search, $replace)
+{
+    /** @var \XoopsDatabase */
+    $db = \XoopsDatabaseFactory::getDatabaseConnection();
+    $prefixedTable = $db->prefix($table);
+    $count = 0;
+    $sql = 'DELETE FROM ' . $prefixedTable . ' WHERE `' . $search . '`=' . $db->quote($replace);
+    $db->queryF($sql);
+    foreach ($data as $row) {
+        $insertInto = 'INSERT INTO ' . $prefixedTable . ' (';
+        $valueClause = ' VALUES (';
+        $first = true;
+        foreach ($row as $column => $value) {
+            if ($first) {
+                $first = false;
+            } else {
+                $insertInto .= ', ';
+                $valueClause .= ', ';
+            }
+            $insertInto .= $column;
+            if ($search === $column) {
+                $valueClause .= $db->quote($replace);
+            } else {
+                $valueClause .= $db->quote($value);
+            }
+        }
+        $sql = $insertInto . ') ' . $valueClause . ')';
+        $result = $db->queryF($sql);
+        if (false !== $result) {
+            ++$count;
+        }
+    }
+
+    return $count;
+}

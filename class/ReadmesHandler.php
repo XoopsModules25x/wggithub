@@ -195,7 +195,6 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
     public function updateReadmes($repoId, $userName, $repoName)
     {
         $helper = Wggithub\Helper::getInstance();
-        $repositoriesHandler = $helper->getHandler('Repositories');
         $readmesHandler = $helper->getHandler('Readmes');
 
         $libRepositories = new Wggithub\Github\Repositories();
@@ -262,7 +261,6 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
      */
     public function convertMD($contentDecoded)
     {
-        $contentClean = '';
         // parse MD file
         $Parsedown = new MDParser\Parsedown();
         $contentClean = $Parsedown->text($contentDecoded);
