@@ -24,7 +24,11 @@ namespace XoopsModules\Wggithub;
  */
 
 use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
+use XoopsModules\Wggithub\{
+    Constants,
+    MDParser
+};
+
 
 /**
  * Class Object Handler Readmes
@@ -224,6 +228,16 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
             $readmesObj->setVar('rm_repoid', $repoId);
             $readmesObj->setVar('rm_name', $readme['name']);
             $readmesObj->setVar('rm_type', $readme['type']);
+            /*
+             * TODO
+            $contentDecoded = base64_decode($this->getVar('rm_content', 'n'));
+            if ('.MD' == substr(strtoupper($readme['name']), -3)) {
+                $contentClean = convertMD($contentDecoded);
+            } else {
+                $contentClean = $contentDecoded;
+            }
+            $readmesObj->setVar('rm_content', $contentClean);
+            */
             $readmesObj->setVar('rm_content', $readme['content']);
             $readmesObj->setVar('rm_encoding', $readme['encoding']);
             $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
@@ -236,5 +250,25 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         }
 
         return true;
+    }
+
+    /**
+     * TODO
+     * convert md file content into clean text
+     * and replace relative path for images into full path
+     *
+     * @param $contentDecoded
+     * @return string
+     */
+    public function convertMD($contentDecoded)
+    {
+        $contentClean = '';
+        // parse MD file
+        $Parsedown = new MDParser\Parsedown();
+        $contentClean = $Parsedown->text($contentDecoded);
+
+        //replace image links
+
+        return $contentClean;
     }
 }

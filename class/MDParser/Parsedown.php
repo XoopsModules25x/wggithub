@@ -217,9 +217,7 @@ class Parsedown
                     $CurrentBlock = $Block;
 
                     continue;
-                }
-                else
-                {
+                } else {
                     if ($this->isBlockCompletable($CurrentBlock['type']))
                     {
                         $methodName = 'block' . $CurrentBlock['type'] . 'Complete';
@@ -286,9 +284,7 @@ class Parsedown
             if (isset($Block))
             {
                 $CurrentBlock = $Block;
-            }
-            else
-            {
+            } else {
                 if (isset($CurrentBlock))
                 {
                     $Elements[] = $this->extractElement($CurrentBlock);
@@ -327,9 +323,7 @@ class Parsedown
             if (isset($Component['markup']))
             {
                 $Component['element'] = array('rawHtml' => $Component['markup']);
-            }
-            elseif (isset($Component['hidden']))
-            {
+            } elseif (isset($Component['hidden'])) {
                 $Component['element'] = array();
             }
         }
@@ -588,9 +582,7 @@ class Parsedown
                 $contentIndent -= 1;
                 $matches[1] = substr($matches[1], 0, -$contentIndent);
                 $matches[3] = str_repeat(' ', $contentIndent) . $matches[3];
-            }
-            elseif ($contentIndent === 0)
-            {
+            } elseif ($contentIndent === 0) {
                 $matches[1] .= ' ';
             }
 
@@ -664,8 +656,7 @@ class Parsedown
                 )
             )
         ) {
-            if (isset($Block['interrupted']))
-            {
+            if (isset($Block['interrupted'])) {
                 $Block['li']['handler']['argument'] []= '';
 
                 $Block['loose'] = true;
@@ -691,19 +682,15 @@ class Parsedown
             $Block['element']['elements'] []= & $Block['li'];
 
             return $Block;
-        }
-        elseif ($Line['indent'] < $requiredIndent and $this->blockList($Line))
-        {
+        } elseif ($Line['indent'] < $requiredIndent and $this->blockList($Line)) {
             return null;
         }
 
-        if ($Line['text'][0] === '[' and $this->blockReference($Line))
-        {
+        if ($Line['text'][0] === '[' and $this->blockReference($Line)) {
             return $Block;
         }
 
-        if ($Line['indent'] >= $requiredIndent)
-        {
+        if ($Line['indent'] >= $requiredIndent) {
             if (isset($Block['interrupted']))
             {
                 $Block['li']['handler']['argument'] []= '';
@@ -720,8 +707,7 @@ class Parsedown
             return $Block;
         }
 
-        if ( ! isset($Block['interrupted']))
-        {
+        if ( ! isset($Block['interrupted'])) {
             $text = preg_replace('/^[ ]{0,'.$requiredIndent.'}+/', '', $Line['body']);
 
             $Block['li']['handler']['argument'] []= $text;
@@ -732,8 +718,7 @@ class Parsedown
 
     protected function blockListComplete(array $Block)
     {
-        if (isset($Block['loose']))
-        {
+        if (isset($Block['loose'])) {
             foreach ($Block['element']['elements'] as &$li)
             {
                 if (end($li['handler']['argument']) !== '')
@@ -751,8 +736,7 @@ class Parsedown
 
     protected function blockQuote($Line)
     {
-        if (preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))
-        {
+        if (preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
             $Block = array(
                 'element' => array(
                     'name' => 'blockquote',
@@ -770,20 +754,17 @@ class Parsedown
 
     protected function blockQuoteContinue($Line, array $Block)
     {
-        if (isset($Block['interrupted']))
-        {
+        if (isset($Block['interrupted'])) {
             return;
         }
 
-        if ($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))
-        {
+        if ($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
             $Block['element']['handler']['argument'] []= $matches[1];
 
             return $Block;
         }
 
-        if ( ! isset($Block['interrupted']))
-        {
+        if ( ! isset($Block['interrupted'])) {
             $Block['element']['handler']['argument'] []= $Line['text'];
 
             return $Block;
@@ -797,8 +778,7 @@ class Parsedown
     {
         $marker = $Line['text'][0];
 
-        if (substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], " $marker") === '')
-        {
+        if (substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], " $marker") === '') {
             $Block = array(
                 'element' => array(
                     'name' => 'hr',
@@ -814,13 +794,11 @@ class Parsedown
 
     protected function blockSetextHeader($Line, array $Block = null)
     {
-        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))
-        {
+        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted'])) {
             return;
         }
 
-        if ($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')
-        {
+        if ($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '') {
             $Block['element']['name'] = $Line['text'][0] === '=' ? 'h1' : 'h2';
 
             return $Block;
@@ -832,17 +810,14 @@ class Parsedown
 
     protected function blockMarkup($Line)
     {
-        if ($this->markupEscaped or $this->safeMode)
-        {
+        if ($this->markupEscaped or $this->safeMode) {
             return;
         }
 
-        if (preg_match('/^<[\/]?+(\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\/)?>/', $Line['text'], $matches))
-        {
+        if (preg_match('/^<[\/]?+(\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\/)?>/', $Line['text'], $matches)) {
             $element = strtolower($matches[1]);
 
-            if (in_array($element, $this->textLevelElements))
-            {
+            if (in_array($element, $this->textLevelElements)) {
                 return;
             }
 
@@ -860,8 +835,7 @@ class Parsedown
 
     protected function blockMarkupContinue($Line, array $Block)
     {
-        if (isset($Block['closed']) or isset($Block['interrupted']))
-        {
+        if (isset($Block['closed']) or isset($Block['interrupted'])) {
             return;
         }
 
@@ -900,8 +874,7 @@ class Parsedown
 
     protected function blockTable($Line, array $Block = null)
     {
-        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))
-        {
+        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted'])) {
             return;
         }
 
@@ -914,8 +887,7 @@ class Parsedown
             return;
         }
 
-        if (chop($Line['text'], ' -:|') !== '')
-        {
+        if (chop($Line['text'], ' -:|') !== '') {
             return;
         }
 
@@ -928,24 +900,20 @@ class Parsedown
 
         $dividerCells = explode('|', $divider);
 
-        foreach ($dividerCells as $dividerCell)
-        {
+        foreach ($dividerCells as $dividerCell) {
             $dividerCell = trim($dividerCell);
 
-            if ($dividerCell === '')
-            {
+            if ($dividerCell === '') {
                 return;
             }
 
             $alignment = null;
 
-            if ($dividerCell[0] === ':')
-            {
+            if ($dividerCell[0] === ':') {
                 $alignment = 'left';
             }
 
-            if (substr($dividerCell, - 1) === ':')
-            {
+            if (substr($dividerCell, - 1) === ':') {
                 $alignment = $alignment === 'left' ? 'center' : 'right';
             }
 
@@ -963,13 +931,11 @@ class Parsedown
 
         $headerCells = explode('|', $header);
 
-        if (count($headerCells) !== count($alignments))
-        {
+        if (count($headerCells) !== count($alignments)) {
             return;
         }
 
-        foreach ($headerCells as $index => $headerCell)
-        {
+        foreach ($headerCells as $index => $headerCell) {
             $headerCell = trim($headerCell);
 
             $HeaderElement = array(
@@ -981,8 +947,7 @@ class Parsedown
                 )
             );
 
-            if (isset($alignments[$index]))
-            {
+            if (isset($alignments[$index])) {
                 $alignment = $alignments[$index];
 
                 $HeaderElement['attributes'] = array(
@@ -1023,8 +988,7 @@ class Parsedown
 
     protected function blockTableContinue($Line, array $Block)
     {
-        if (isset($Block['interrupted']))
-        {
+        if (isset($Block['interrupted'])) {
             return;
         }
 

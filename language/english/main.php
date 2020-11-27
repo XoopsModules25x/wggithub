@@ -85,6 +85,7 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_READMES_DESC', 'Readmes description');
 \define('_MA_WGGITHUB_READMES_LIST', 'List of Readmes');
 \define('_MA_WGGITHUB_README_NOFILE', 'Sorry - there is no readme file available');
+\define('_MA_WGGITHUB_README_UPDATE', 'Update Readme');
 // Caption of Readme
 \define('_MA_WGGITHUB_README_ID', 'Id');
 \define('_MA_WGGITHUB_README_NAME', 'Name');

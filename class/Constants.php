@@ -46,9 +46,9 @@ interface Constants
 	public const STATUS_UPTODATE = 3;
 
 	// Constants for permissions
-	public const PERM_GLOBAL_NONE    = 0;
-	public const PERM_GLOBAL_VIEW    = 1;
-	public const PERM_GLOBAL_SUBMIT  = 2;
-	public const PERM_GLOBAL_APPROVE = 3;
+	public const PERM_GLOBAL_NONE   = 0;
+	public const PERM_GLOBAL_VIEW   = 1;
+	public const PERM_GLOBAL_READ   = 2;
+	public const PERM_README_UPDATE = 3;
 
 }
