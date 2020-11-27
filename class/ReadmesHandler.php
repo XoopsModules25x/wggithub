@@ -269,4 +269,21 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
 
         return $contentClean;
     }
+
+    /**
+     * Update table repositories with readme information
+     *
+     * @return boolean
+     */
+    public function updateRepoReadme()
+    {
+        // update repo_readme
+        $sql = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . ' INNER JOIN ' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes');
+        $sql .= ' ON ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_id = ' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes') . '.rm_repoid ';
+        $sql .= 'SET ' . $GLOBALS['xoopsDB']->prefix('wggithub_repositories') . '.repo_readme = 1 ';
+        $sql .= 'WHERE (((' . $GLOBALS['xoopsDB']->prefix('wggithub_readmes') . '.rm_id)>0));';
+        $GLOBALS['xoopsDB']->queryF($sql);
+
+        return true;
+    }
 }
