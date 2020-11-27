@@ -146,11 +146,12 @@ class Github
             $crRepositories->add(new \Criteria('repo_nodeid', $repo['node_id']));
             $repoId = 0;
             $status = 0;
+            $updatedAtOld = 0;
+            $updatedAtNew = 0;
             $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
             foreach (\array_keys($repositoriesAll) as $i) {
                 $repoId = $repositoriesAll[$i]->getVar('repo_id');
                 $updatedAtOld = $repositoriesAll[$i]->getVar('repo_updatedat');
-                $updatedAtNew = 0;
                 $status = $repositoriesAll[$i]->getVar('repo_status');
                 $repositoriesObj = $repositoriesAll[$i];
             }
@@ -230,7 +231,7 @@ class Github
         }
 
         if (0 == \count($setting)) {
-            \redirect_header(XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
+            \redirect_header(\XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
         $this->userAuth = $setting['user'];
         $this->tokenAuth = $setting['token'];
