@@ -43,7 +43,7 @@ $adminmenu[] = [
 ];
 $adminmenu[] = [
 	'title' => _MI_WGGITHUB_ADMENU4,
-	'link' => 'admin/requests.php',
+	'link' => 'admin/logs.php',
 	'icon' => 'assets/icons/32/blank.gif',
 ];
 $adminmenu[] = [

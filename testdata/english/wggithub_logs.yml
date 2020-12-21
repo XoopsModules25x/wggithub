@@ -1,0 +1,49 @@
+-
+    log_id: '1'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1608536055'
+    log_submitter: '1'
+-
+    log_id: '2'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=1'
+    log_result: ''
+    log_datecreated: '1608536055'
+    log_submitter: '1'
+-
+    log_id: '3'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=2'
+    log_result: ''
+    log_datecreated: '1608536057'
+    log_submitter: '1'
+-
+    log_id: '4'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1608536057'
+    log_submitter: '1'
+-
+    log_id: '5'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1608536087'
+    log_submitter: '1'
+-
+    log_id: '6'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsThemes/repos?per_page=100&page=1'
+    log_result: ''
+    log_datecreated: '1608536087'
+    log_submitter: '1'
+-
+    log_id: '7'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1608536088'
+    log_submitter: '1'

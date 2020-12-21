@@ -170,20 +170,20 @@ function wggithub_check_db($module)
         }
     }
 
-
-/*
     // Example: create new table
-    $table   = $GLOBALS['xoopsDB']->prefix('wggithub_categories');
+    $table   = $GLOBALS['xoopsDB']->prefix('wggithub_logs');
     $check   = $GLOBALS['xoopsDB']->queryF("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='$table'");
     $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
     if (!$numRows) {
-        // create new table 'wggithub_categories'
+        // create new table
         $sql = "CREATE TABLE `$table` (
-                  `cat_id`        INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-                  `cat_text`      VARCHAR(100)    NOT NULL DEFAULT '',
-                  `cat_date`      INT(8)          NOT NULL DEFAULT '0',
-                  `cat_submitter` INT(8)          NOT NULL DEFAULT '0',
-                  PRIMARY KEY (`cat_id`)
+              `log_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+              `log_type` INT(1) NOT NULL DEFAULT '0',
+              `log_details` VARCHAR(255) NOT NULL DEFAULT '',
+              `log_result` TEXT NOT NULL ,
+              `log_datecreated` INT(11) NOT NULL DEFAULT '0',
+              `log_submitter` INT(10) NOT NULL DEFAULT '0',
+              PRIMARY KEY (`log_id`)
                 ) ENGINE=InnoDB;";
         if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
             xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
@@ -191,6 +191,6 @@ function wggithub_check_db($module)
             $ret = false;
         }
     }
-    */
+
     return $ret;
 }

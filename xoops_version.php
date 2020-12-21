@@ -78,7 +78,7 @@ $modversion['templates'] = [
 	['file' => 'wggithub_admin_settings.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wggithub_admin_repositories.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wggithub_admin_directories.tpl', 'description' => '', 'type' => 'admin'],
-	['file' => 'wggithub_admin_requests.tpl', 'description' => '', 'type' => 'admin'],
+	['file' => 'wggithub_admin_logs.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wggithub_admin_readmes.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'wggithub_admin_releases.tpl', 'description' => '', 'type' => 'admin'],
 	['file' => 'wggithub_admin_permissions.tpl', 'description' => '', 'type' => 'admin'],
@@ -106,7 +106,7 @@ $modversion['tables'] = [
 	'wggithub_settings',
 	'wggithub_repositories',
 	'wggithub_directories',
-	'wggithub_requests',
+	'wggithub_logs',
 	'wggithub_readmes',
     'wggithub_releases',
 ];

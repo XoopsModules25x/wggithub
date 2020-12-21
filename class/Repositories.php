@@ -118,7 +118,6 @@ class Repositories extends \XoopsObject
         // Form Text repoRelease
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_RELEASE, 'repo_release', 50, 255, $this->getVar('repo_prelease')));
         // Form Select Status repoStatus
-        $permissionsHandler = $helper->getHandler('Permissions');
         $repoStatusSelect = new \XoopsFormSelect(_AM_WGGITHUB_REPOSITORY_STATUS, 'repo_status', $this->getVar('repo_status'));
         $repoStatusSelect->addOption(Constants::STATUS_NONE, _AM_WGGITHUB_STATUS_NONE);
         $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, _AM_WGGITHUB_STATUS_UPTODATE);

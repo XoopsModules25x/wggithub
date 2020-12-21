@@ -20,116 +20,207 @@ namespace XoopsModules\Wggithub\Github;
  * @author       Goffy - XOOPS Development Team
  */
 
-use XoopsModules\Wggithub\Helper;
+use XoopsModules\Wggithub;
+use XoopsModules\Wggithub\{
+    Helper,
+    Constants,
+    Github
+};
 
 /**
- * Class GitHubClient
+ * Class GithubClient
  */
-class GitHubClient extends Github
+class GithubClient extends Api
 {
     /**
-     * GitHub::_get()
-     *
-     * @param string $url
-     * @param bool   $checkOnly
-     * @param bool   $throwError
-     * @throws \RuntimeException Exception.
-     * @return array/bool
+     * @var string
      */
-    protected function _get($url, $checkOnly = false, $throwError = true)
+    public const BASE_URL = 'https://api.github.com/';
+
+    /**
+     * @var string
+     */
+    public $userAuth = 'myusername';
+
+    /**
+     * @var string
+     */
+    public $tokenAuth = 'mytoken';
+
+    /**
+     * @var string
+     */
+    public $requestType = 'curl';
+
+    /**
+     * Verbose debugging for curl (when putting)
+     * @var bool
+     */
+    public $debug = false;
+
+    /**
+     * @var object
+     */
+    private $helper = null;
+
+    /**
+     * @var bool
+     */
+    public $apiErrorLimit = false;
+
+    /**
+     * @var bool
+     */
+    public $apiErrorMisc = false;
+
+    /**
+     * Constructor
+     *
+     * @param null
+     */
+    public function __construct()
     {
-        if ($this->apiErrorLimit || $this->apiErrorMisc) {
-            return [];
-        }
-        $error = false;
-        $ch = \curl_init();
-        //set the url, number of POST vars, POST data
-        \curl_setopt($ch, \CURLOPT_URL, $url);
-        \curl_setopt($ch, \CURLOPT_HTTPAUTH, 'token ' . $this->tokenAuth);
-        \curl_setopt($ch, \CURLOPT_USERPWD, $this->userAuth . ':' . $this->tokenAuth);
-        \curl_setopt($ch, \CURLOPT_CUSTOMREQUEST, 'GET');
-        \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
-        \curl_setopt($ch, \CURLOPT_CONNECTTIMEOUT, 25);
-        \curl_setopt($ch, \CURLOPT_TIMEOUT, 25);
-        \curl_setopt($ch, \CURLOPT_USERAGENT, $this->userAuth);
-        if ($this->debug) {
-            \curl_setopt($ch, \CURLOPT_VERBOSE, true);
-        }
-        \curl_setopt($ch, \CURLOPT_SSL_VERIFYHOST, false);
-        \curl_setopt($ch, \CURLOPT_SSL_VERIFYPEER, false);
-        \curl_setopt($ch, \CURLOPT_POST, 1);
-        $result = \curl_exec($ch);
-        $info = \curl_getinfo($ch);
-        if (($errMsg = \curl_error($ch)) || !\in_array((int)$info['http_code'], [200, 201], true)) {
-            $error = $throwError;
-        }
-        \curl_close($ch);
+        $this->helper = \XoopsModules\Wggithub\Helper::getInstance();
+        $this->getSetting();
+    }
 
-        $helper = Helper::getInstance();
-        $requestsHandler = $helper->getHandler('Requests');
-        $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
-        $requestsObj = $requestsHandler->create();
-        // Set Vars
-        $requestsObj->setVar('req_request', $url);
-        $requestsObj->setVar('req_result', 'OK');
-        $requestsObj->setVar('req_datecreated', time());
-        $requestsObj->setVar('req_submitter', $submitter);
-        // Insert Data
-        if ($requestsHandler->insert($requestsObj, true)) {
-            $reqId = $requestsObj->getNewInsertedIdRequests();
+    /**
+     * @static function &getInstance
+     *
+     * @param null
+     * @return GitHubClient of Api
+     */
+    public static function getInstance()
+    {
+        static $instance = false;
+        if (!$instance) {
+            $instance = new self();
+        }
+
+        return $instance;
+    }
+
+    /**
+     * Get repositories of given user
+     *
+     * @param     $username
+     * @param int $per_page
+     * @param int $page
+     * @return array
+     */
+    public function getUserRepositories($username, $per_page = 100, $page = 1)
+    {
+        $url = static::BASE_URL . 'users/' . \rawurlencode($username) . '/repos?per_page=' . $per_page . '&page=' . $page;
+
+        return $this->_get($url);
+    }
+
+    /**
+     * Get repositories of given organisation
+     *
+     * @param     $org
+     * @param int $per_page
+     * @param int $page
+     * @return array
+     */
+    public function getOrgRepositories($org, $per_page = 100, $page = 1)
+    {
+        $url = static::BASE_URL . 'orgs/' . \rawurlencode($org) . '/repos?per_page=' . $per_page . '&page=' . $page;
+
+        return $this->_get($url);
+    }
+
+    /**
+     * Get the readme content for a repository by its username and repository name.
+     *
+     * @link http://developer.github.com/v3/repos/contents/#get-the-readme
+     *
+     * @param string $username   the user who owns the repository
+     * @param string $repository the name of the repository
+     *
+     * @return string|array the readme content
+     */
+    public function getReadme($username, $repository)
+    {
+        $url = static::BASE_URL . 'repos/' . \rawurlencode($username) . '/' . \rawurlencode($repository) . '/readme';
+
+        return $this->_get($url, false, false);
+    }
+
+    /**
+     * Get all releases
+     *
+     * @param $user
+     * @param $repository
+     * @return array
+     */
+    public function getReleases($user, $repository)
+    {
+        $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases';
+
+        return $this->_get($url);
+    }
+
+    /**
+     * Get latest release
+     *
+     * @param $user
+     * @param $repository
+     * @param bool $prerelease
+     * @return array
+     */
+    public function getLatestRelease($user, $repository, $prerelease = false)
+    {
+        if ($prerelease) {
+            $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases';
         } else {
-            throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_INSERTREQ . '"');
+            $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases/latest';
         }
-        unset($requestsObj);
+        $result = $this->_get($url);
 
-        if ($checkOnly) {
-            return (false == $error);
+        if ($prerelease) {
+            if (\is_array($result)) {
+                return $result[0];
+            } else {
+                return [];
+            }
         }
-        if ($error) {
-            // update table requests
-            $requestsObj = $requestsHandler->get($reqId);
-            $requestsObj->setVar('req_result', $result);
-            if (!$requestsHandler->insert($requestsObj, true)) {
-                throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_INSERTREQ . '"');
-            }
-            unset($requestsObj);
 
-            if ($this->debug) {
-                echo '<br>Error:' . $result;
-            }
+        return $result;
+    }
 
-            //catch common errors
-            switch ((int)$info['http_code']) {
-                case 401:
-                    $this->apiErrorMisc = true;
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_401 . '"');
-                    break;
-                case 403:
-                    if (\strpos($result, 'API rate limit exceeded') > 0) {
-                        $GLOBALS['xoopsTpl']->assign('apiexceed', true);
-                        $this->apiErrorLimit = true;
-                        return false;
-                    } else {
-                        $this->apiErrorMisc = true;
-                        throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_403 . '"');
-                    }
-                    break;
-                case 404:
-                    $this->apiErrorMisc = true;
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_404 . '"');
-                    break;
-                case 405:
-                    $this->apiErrorMisc = true;
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_405 . '"');
-                    break;
-                case 0:
-                default:
-                    $this->apiErrorMisc = true;
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API . ': ' . $errMsg . '"');
-                    break;
-            }
-        } else {
-            return \json_decode($result, true);
+    public function _get($url)
+    {
+        $logsHandler = $this->helper->getHandler('Logs');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, '');
+
+        $api = new Github\Api;
+        $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo']);
+        $api->setToken($token);
+        $request = $api->createRequest('GET', $url, [], [], '');
+        $response = $api->request($request);
+        $data = (array)$api->decode($response);
+
+        return $data;
+    }
+
+    /**
+     * Get primary setting
+     *
+     * @param bool $user
+     * @return bool|array
+     */
+    private function getSetting($user = false)
+    {
+        $settingsHandler = $this->helper->getHandler('Settings');
+        $setting = $settingsHandler->getPrimarySetting();
+
+        if (0 == \count($setting)) {
+            \redirect_header(\XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
+        $this->userAuth = $setting['user'];
+        $this->tokenAuth = $setting['token'];
+
+        return true;
     }
 }

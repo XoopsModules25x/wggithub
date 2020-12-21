@@ -44,7 +44,14 @@
 		</div>
 		<{foreach item=directory from=$directories}>
 		<div id="menu<{$directory.id}>" class="maintab tab-pane fade <{if $menu == $directory.id}>in active<{/if}>">
-			<div class="col-xs-12 tab-content-info"><h4><{$directory.countRepos}></h4></div>
+			<div class="col-xs-12 tab-content-info">
+				<h4>
+					<{$directory.countRepos}>
+					<{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
+					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
+					<{/if}>
+				</h4>
+			</div>
 			<div class="col-xs-3"> <!-- required for floating -->
 				<!-- Nav tabs for each directory -->
 				<ul class="nav nav-tabs tabs-left sideways">

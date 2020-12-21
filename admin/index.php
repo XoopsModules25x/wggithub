@@ -32,7 +32,7 @@ $templateMain = 'wggithub_admin_index.tpl';
 // Count elements
 $countSettings = $settingsHandler->getCount();
 $countDirectories = $directoriesHandler->getCount();
-$countRequests = $requestsHandler->getCount();
+$countLogs = $logsHandler->getCount();
 $countRepositories = $repositoriesHandler->getCount();
 $countReadmes = $readmesHandler->getCount();
 $countReleases = $releasesHandler->getCount();
@@ -42,7 +42,7 @@ $adminObject->addInfoBox(_AM_WGGITHUB_STATISTICS);
 // Info elements
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_SETTINGS . '</label>', $countSettings));
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_DIRECTORIES . '</label>', $countDirectories));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_REQUESTS . '</label>', $countRequests));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_LOGS . '</label>', $countLogs));
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_REPOSITORIES . '</label>', $countRepositories));
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_READMES . '</label>', $countReadmes));
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));

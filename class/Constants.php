@@ -51,4 +51,9 @@ interface Constants
 	public const PERM_GLOBAL_READ   = 2;
 	public const PERM_README_UPDATE = 3;
 
+    // Constants for log type
+    public const LOG_TYPE_NONE  = 0;
+    public const LOG_TYPE_UPDATE_START = 1;
+    public const LOG_TYPE_UPDATE_END   = 2;
+    public const LOG_TYPE_REQUEST      = 3;
 }
