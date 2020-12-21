@@ -197,11 +197,11 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         $helper = Wggithub\Helper::getInstance();
         $readmesHandler = $helper->getHandler('Readmes');
 
-        $libRepositories = new Wggithub\Github\Repositories();
+        $githubClient = new Wggithub\Github\GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
-        $readme = $libRepositories->getReadme($userName, $repoName);
+        $readme = $githubClient->getReadme($userName, $repoName);
         if (false === $readme) {
             return false;
         }

@@ -96,7 +96,7 @@
 								</div>
 							<{/if}>
 							<div class="col-xs-12 col-sm-12 tabcontent-headline">
-								<p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
+								<p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
 							</div>
 							<div class="col-xs-12 sm-12 tabcontent-content">
 								<{if $permReadmeUpdate}>

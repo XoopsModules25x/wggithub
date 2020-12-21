@@ -144,7 +144,7 @@ class GithubClient extends Api
     {
         $url = static::BASE_URL . 'repos/' . \rawurlencode($username) . '/' . \rawurlencode($repository) . '/readme';
 
-        return $this->_get($url, false, false);
+        return $this->_get($url);
     }
 
     /**

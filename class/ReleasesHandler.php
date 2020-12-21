@@ -133,7 +133,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
-        $libReleases = new Wggithub\Github\Releases();
+        $githubClient = new Wggithub\Github\GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
@@ -147,7 +147,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                 $crReleases->add(new \Criteria('rel_repoid', $repoId));
                 $releasesCount = $releasesHandler->getCount($crReleases);
                 if (Constants::STATUS_NEW === $repoStatus || Constants::STATUS_UPDATED === $repoStatus || 0 == $releasesCount) {
-                    $ghReleases = $libReleases->getReleases($repositoriesAll[$i]->getVar('repo_user'), $repositoriesAll[$i]->getVar('repo_name'));
+                    $ghReleases = $githubClient->getReleases($repositoriesAll[$i]->getVar('repo_user'), $repositoriesAll[$i]->getVar('repo_name'));
                     if ($releasesCount > 0) {
                         $sql = 'DELETE FROM `' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '` WHERE `rel_repoid` = ' . $repoId;
                         if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
@@ -201,11 +201,11 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
-        $libReleases = new Wggithub\Github\Releases();
+        $githubClient = new Wggithub\Github\GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
-        $ghReleases = $libReleases->getReleases($userName, $repoName);
+        $ghReleases = $githubClient->getReleases($userName, $repoName);
         if (false === $ghReleases) {
             return false;
         }
