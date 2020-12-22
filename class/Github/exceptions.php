@@ -2,12 +2,12 @@
 
 
 /**
- * All XoopsModules\Wggithub\Github\ exceptions at one place. Whole library does not throw anything else.
+ * All Milo\Github exceptions at one place. Whole library does not throw anything else.
  *
  * @author  Miloslav Hůla (https://github.com/milo)
  */
 
-namespace XoopsModules\Wggithub\Github\ {
+namespace XoopsModules\Wggithub\Github {
 	/**
 	 * Marker interface.
 	 */
@@ -139,8 +139,8 @@ namespace XoopsModules\Wggithub\Github\ {
 }
 
 
-namespace XoopsModules\Wggithub\Github\Http {
-	use XoopsModules\Wggithub\Github;
+namespace Milo\Github\Http {
+	use Milo\Github;
 
 
 	/**
@@ -152,8 +152,8 @@ namespace XoopsModules\Wggithub\Github\Http {
 }
 
 
-namespace XoopsModules\Wggithub\Github\OAuth {
-	use XoopsModules\Wggithub\Github;
+namespace Milo\Github\OAuth {
+	use Milo\Github;
 
 	/**
 	 * Something fails during the token obtaining.
@@ -164,8 +164,8 @@ namespace XoopsModules\Wggithub\Github\OAuth {
 }
 
 
-namespace XoopsModules\Wggithub\Github\Storages {
-	use XoopsModules\Wggithub\Github;
+namespace Milo\Github\Storages {
+	use Milo\Github;
 
 	/**
 	 * Directory is missing and/or cannot be created.

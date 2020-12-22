@@ -229,7 +229,7 @@ switch ($op) {
         $repoId = Request::getInt('repo_id', 0);
         $repoUser  = Request::getString('repo_user', 'none');
         $repoName  = Request::getString('repo_name', 'none');
-        $res = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
+        $result = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
         $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);

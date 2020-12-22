@@ -118,6 +118,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_LOG_TYPE_UPDATE_START', 'Start update');
 \define('_AM_WGGITHUB_LOG_TYPE_UPDATE_END', 'End update');
 \define('_AM_WGGITHUB_LOG_TYPE_REQUEST', 'Request');
+\define('_AM_WGGITHUB_LOG_TYPE_ERROR', 'Error');
 \define('_AM_WGGITHUB_LOG_DETAILS', 'Details');
 \define('_AM_WGGITHUB_LOG_RESULT', 'Result');
 \define('_AM_WGGITHUB_LOG_DATECREATED', 'Datecreated');

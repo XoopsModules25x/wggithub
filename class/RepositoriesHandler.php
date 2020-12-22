@@ -210,6 +210,4 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
 
         return $reposNb;
     }
-
-
 }

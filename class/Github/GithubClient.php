@@ -40,7 +40,7 @@ class GithubClient extends Api
     /**
      * @var string
      */
-    public $userAuth = 'myusername';
+    //public $userAuth = 'myusername';
 
     /**
      * @var string
@@ -48,30 +48,9 @@ class GithubClient extends Api
     public $tokenAuth = 'mytoken';
 
     /**
-     * @var string
-     */
-    public $requestType = 'curl';
-
-    /**
-     * Verbose debugging for curl (when putting)
-     * @var bool
-     */
-    public $debug = false;
-
-    /**
      * @var object
      */
     private $helper = null;
-
-    /**
-     * @var bool
-     */
-    public $apiErrorLimit = false;
-
-    /**
-     * @var bool
-     */
-    public $apiErrorMisc = false;
 
     /**
      * Constructor
@@ -98,6 +77,34 @@ class GithubClient extends Api
         }
 
         return $instance;
+    }
+
+    public function testMilo($url) {
+        $api = new Github\Api;
+        $response = $api->get(static::BASE_URL . $url);
+        $data = $api->decode($response);
+        
+        return $data;
+    }
+
+    public function testMilo2($url) {
+        $api = new Github\Api;
+
+        $token = new Github\OAuth\Token('{myKey}', 'bearer', ['repo', 'user', 'public_repo']);
+        $api->setToken($token);
+        $response = $api->get(static::BASE_URL . $url);
+
+        $data = $api->decode($response);
+
+        /*
+        $api = new Github\Api;
+
+        $request = $api->createRequest('GET', $url, [], [], '');
+        $response = $api->request($request);
+        $data = (array)$api->decode($response);
+        */
+
+        return $data;
     }
 
     /**
@@ -133,11 +140,8 @@ class GithubClient extends Api
     /**
      * Get the readme content for a repository by its username and repository name.
      *
-     * @link http://developer.github.com/v3/repos/contents/#get-the-readme
-     *
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
-     *
      * @return string|array the readme content
      */
     public function getReadme($username, $repository)
@@ -150,13 +154,13 @@ class GithubClient extends Api
     /**
      * Get all releases
      *
-     * @param $user
-     * @param $repository
+     * @param string $username   the user who owns the repository
+     * @param string $repository the name of the repository
      * @return array
      */
-    public function getReleases($user, $repository)
+    public function getReleases($username, $repository)
     {
-        $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases';
+        $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases';
 
         return $this->_get($url);
     }
@@ -164,17 +168,17 @@ class GithubClient extends Api
     /**
      * Get latest release
      *
-     * @param $user
-     * @param $repository
-     * @param bool $prerelease
+     * @param string $username   the user who owns the repository
+     * @param string $repository the name of the repository
+     * @param bool   $prerelease
      * @return array
      */
-    public function getLatestRelease($user, $repository, $prerelease = false)
+    public function getLatestRelease($username, $repository, $prerelease = false)
     {
         if ($prerelease) {
-            $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases';
+            $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases';
         } else {
-            $url = static::BASE_URL . 'repos/' . $user . '/' . $repository . '/releases/latest';
+            $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases/latest';
         }
         $result = $this->_get($url);
 
@@ -189,16 +193,57 @@ class GithubClient extends Api
         return $result;
     }
 
+    /**
+     * Get github content
+     *
+     * @param $url
+     * @return array
+     */
     public function _get($url)
     {
+        $error = false;
+
         $logsHandler = $this->helper->getHandler('Logs');
-        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, '');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START');
 
         $api = new Github\Api;
-        $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo']);
+        $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo', 'user', 'public_repo']);
         $api->setToken($token);
-        $request = $api->createRequest('GET', $url, [], [], '');
-        $response = $api->request($request);
+        $response = $api->get($url);
+        $code = $response->getCode();
+        if (\in_array($code, [200, 201], true)) {
+            $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'OK');
+        } else {
+            $error = true;
+            $errMsg = $response->getContent();
+            $logsHandler->updateTableLogs(Constants::LOG_TYPE_ERROR, $errMsg, 'ERROR ' . $code);
+        }
+        if ($error) {
+            //catch common errors
+            switch ($code) {
+                case 401:
+                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_401 . '"');
+                    break;
+                case 403:
+                    /*
+                    if (\strpos($errMsg, 'API rate limit exceeded') > 0) {
+                        $GLOBALS['xoopsTpl']->assign('apiexceed', true);
+                    }
+                    */
+                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_403 . '"');
+                    break;
+                case 404:
+                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_404 . '"');
+                    break;
+                case 405:
+                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_405 . '"');
+                    break;
+                case 0:
+                default:
+                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API . $errMsg . '"');
+                    break;
+            }
+        }
         $data = (array)$api->decode($response);
 
         return $data;
@@ -207,10 +252,9 @@ class GithubClient extends Api
     /**
      * Get primary setting
      *
-     * @param bool $user
      * @return bool|array
      */
-    private function getSetting($user = false)
+    private function getSetting()
     {
         $settingsHandler = $this->helper->getHandler('Settings');
         $setting = $settingsHandler->getPrimarySetting();
@@ -218,7 +262,7 @@ class GithubClient extends Api
         if (0 == \count($setting)) {
             \redirect_header(\XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
-        $this->userAuth = $setting['user'];
+        //$this->userAuth = $setting['user'];
         $this->tokenAuth = $setting['token'];
 
         return true;

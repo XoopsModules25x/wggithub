@@ -92,6 +92,8 @@ class Logs extends \XoopsObject
         $logTypeSelect->addOption(Constants::LOG_TYPE_NONE, _AM_WGGITHUB_LOG_TYPE_NONE);
         $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_START, _AM_WGGITHUB_LOG_TYPE_UPDATE_START);
         $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_END, _AM_WGGITHUB_LOG_TYPE_UPDATE_END);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_REQUEST, _AM_WGGITHUB_LOG_TYPE_REQUEST);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_ERROR, _AM_WGGITHUB_LOG_TYPE_ERROR);
         $form->addElement($logTypeSelect);
 		// Form Text logDetails
 		$form->addElement(new \XoopsFormText(_AM_WGGITHUB_LOG_DETAILS, 'log_details', 50, 255, $this->getVar('log_details')), true);
@@ -136,6 +138,9 @@ class Logs extends \XoopsObject
                 break;
             case Constants::LOG_TYPE_REQUEST:
                 $type_text = \_AM_WGGITHUB_LOG_TYPE_REQUEST;
+                break;
+            case Constants::LOG_TYPE_ERROR:
+                $type_text = \_AM_WGGITHUB_LOG_TYPE_ERROR;
                 break;
         }
         $ret['type_text']    = $type_text;

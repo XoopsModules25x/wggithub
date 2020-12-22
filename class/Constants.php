@@ -56,4 +56,6 @@ interface Constants
     public const LOG_TYPE_UPDATE_START = 1;
     public const LOG_TYPE_UPDATE_END   = 2;
     public const LOG_TYPE_REQUEST      = 3;
+    public const LOG_TYPE_ERROR        = 4;
+
 }
