@@ -20,10 +20,10 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 if (!\defined('XOOPS_ICONS32_PATH')) {
-	\define('XOOPS_ICONS32_PATH', XOOPS_ROOT_PATH . '/Frameworks/moduleclasses/icons/32');
+    \define('XOOPS_ICONS32_PATH', XOOPS_ROOT_PATH . '/Frameworks/moduleclasses/icons/32');
 }
 if (!\defined('XOOPS_ICONS32_URL')) {
-	\define('XOOPS_ICONS32_URL', XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
+    \define('XOOPS_ICONS32_URL', XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
 }
 \define('WGGITHUB_DIRNAME', 'wggithub');
 \define('WGGITHUB_PATH', XOOPS_ROOT_PATH . '/modules/' . WGGITHUB_DIRNAME);

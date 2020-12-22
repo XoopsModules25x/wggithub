@@ -31,94 +31,94 @@ use XoopsModules\Wggithub;
  */
 class DirectoriesHandler extends \XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param \XoopsDatabase $db
-	 */
-	public function __construct(\XoopsDatabase $db)
-	{
-		parent::__construct($db, 'wggithub_directories', Directories::class, 'dir_id', 'dir_name');
-	}
+    /**
+     * Constructor
+     *
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db)
+    {
+        parent::__construct($db, 'wggithub_directories', Directories::class, 'dir_id', 'dir_name');
+    }
 
-	/**
-	 * @param bool $isNew
-	 *
-	 * @return object
-	 */
-	public function create($isNew = true)
-	{
-		return parent::create($isNew);
-	}
+    /**
+     * @param bool $isNew
+     *
+     * @return object
+     */
+    public function create($isNew = true)
+    {
+        return parent::create($isNew);
+    }
 
-	/**
-	 * retrieve a field
-	 *
-	 * @param int $i field id
-	 * @param null fields
-	 * @return mixed reference to the {@link Get} object
-	 */
-	public function get($i = null, $fields = null)
-	{
-		return parent::get($i, $fields);
-	}
+    /**
+     * retrieve a field
+     *
+     * @param int $i field id
+     * @param null fields
+     * @return mixed reference to the {@link Get} object
+     */
+    public function get($i = null, $fields = null)
+    {
+        return parent::get($i, $fields);
+    }
 
-	/**
-	 * get inserted id
-	 *
-	 * @param null
-	 * @return int reference to the {@link Get} object
-	 */
-	public function getInsertId()
-	{
-		return $this->db->getInsertId();
-	}
+    /**
+     * get inserted id
+     *
+     * @param null
+     * @return int reference to the {@link Get} object
+     */
+    public function getInsertId()
+    {
+        return $this->db->getInsertId();
+    }
 
-	/**
-	 * Get Count Directories in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	public function getCountDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
-	{
-		$crCountDirectories = new \CriteriaCompo();
-		$crCountDirectories = $this->getDirectoriesCriteria($crCountDirectories, $start, $limit, $sort, $order);
-		return $this->getCount($crCountDirectories);
-	}
+    /**
+     * Get Count Directories in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    public function getCountDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
+    {
+        $crCountDirectories = new \CriteriaCompo();
+        $crCountDirectories = $this->getDirectoriesCriteria($crCountDirectories, $start, $limit, $sort, $order);
+        return $this->getCount($crCountDirectories);
+    }
 
-	/**
-	 * Get All Directories in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return array
-	 */
-	public function getAllDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
-	{
-		$crAllDirectories = new \CriteriaCompo();
-		$crAllDirectories = $this->getDirectoriesCriteria($crAllDirectories, $start, $limit, $sort, $order);
-		return $this->getAll($crAllDirectories);
-	}
+    /**
+     * Get All Directories in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return array
+     */
+    public function getAllDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
+    {
+        $crAllDirectories = new \CriteriaCompo();
+        $crAllDirectories = $this->getDirectoriesCriteria($crAllDirectories, $start, $limit, $sort, $order);
+        return $this->getAll($crAllDirectories);
+    }
 
-	/**
-	 * Get Criteria Directories
-	 * @param        $crDirectories
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	private function getDirectoriesCriteria($crDirectories, $start, $limit, $sort, $order)
-	{
-		$crDirectories->setStart($start);
-		$crDirectories->setLimit($limit);
-		$crDirectories->setSort($sort);
-		$crDirectories->setOrder($order);
-		return $crDirectories;
-	}
+    /**
+     * Get Criteria Directories
+     * @param        $crDirectories
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    private function getDirectoriesCriteria($crDirectories, $start, $limit, $sort, $order)
+    {
+        $crDirectories->setStart($start);
+        $crDirectories->setLimit($limit);
+        $crDirectories->setSort($sort);
+        $crDirectories->setOrder($order);
+        return $crDirectories;
+    }
 }

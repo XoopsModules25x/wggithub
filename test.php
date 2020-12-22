@@ -25,9 +25,7 @@ use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\{
     Constants,
     Helper,
-    Github\Github,
-    Github\Repositories,
-    Github\Releases,
+    Github\GithubClient
 };
 
 require __DIR__ . '/header.php';
@@ -41,10 +39,13 @@ $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
 //
 
-$libRepositories = new Repositories();
-$libReleases = new Releases();
+$libRepositories = new GithubClient();
+$libReleases = new GithubClient();
 
+$releases = $libReleases->getReleases('XoopsModules25x', 'modulebuilder');
+var_dump($releases);
 
+/*
 $content = 'IVthbHQgWE9PUFMgQ01TXShodHRwczovL3hvb3BzLm9yZy9pbWFnZXMvbG9n
 b1hvb3BzNEdpdGh1YlJlcG9zaXRvcnkucG5nKQojIyBDb250YWN0IG1vZHVs
 ZSBmb3IgW1hPT1BTIENNUyAyLjUuOCtdKGh0dHBzOi8veG9vcHMub3JnKQpb
@@ -94,7 +95,7 @@ IGF0OiBodHRwczovL2dpdGh1Yi5jb20vWE9PUFMK
 $contentDecoded = base64_decode($content);
 
 $res = $helper->getHandler('Readmes')->convertMD($contentDecoded);
-
+*/
 
 
 /*

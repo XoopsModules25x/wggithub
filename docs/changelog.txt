@@ -5,8 +5,12 @@
  - updated permission rules (goffy)
  - added field repo_readme (goffy)
  - added set primary for settings (goffy)
+ - rebuild github access (goffy)
+ - added manually start update (goffy)
+ - replaced table requests by table logs (goffy)
+ - added manually start update directory in admin area (goffy)
 
 ==============================================================
 1.0 [2020/11/21 11:35:55]
 ==============================================================
- - Original release wggithub (TDM XOOPS)
+ - Original release wggithub (goffy)

@@ -42,13 +42,14 @@ CREATE TABLE `wggithub_directories` (
 # Structure table for `wggithub_requests` 5
 #
 
-CREATE TABLE `wggithub_requests` (
-  `req_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `req_request` VARCHAR(255) NOT NULL DEFAULT '',
-  `req_result` TEXT NOT NULL ,
-  `req_datecreated` INT(11) NOT NULL DEFAULT '0',
-  `req_submitter` INT(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`req_id`)
+CREATE TABLE `wggithub_logs` (
+  `log_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `log_type` INT(1) NOT NULL DEFAULT '0',
+  `log_details` VARCHAR(255) NOT NULL DEFAULT '',
+  `log_result` TEXT NOT NULL ,
+  `log_datecreated` INT(11) NOT NULL DEFAULT '0',
+  `log_submitter` INT(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`log_id`)
 ) ENGINE=InnoDB;
 
 #

@@ -25,9 +25,7 @@ use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\{
     Constants,
     Helper,
-    Github\Github,
-    Github\Repositories,
-    Github\Releases
+    Github\GithubClient
 };
 
 require __DIR__ . '/header.php';
@@ -40,7 +38,7 @@ if (!$permGlobalView) {
     $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
     require __DIR__ . '/footer.php';
 }
-$permGlobalRead = $permissionsHandler->getPermGlobalRead();
+$permGlobalRead   = $permissionsHandler->getPermGlobalRead();
 $permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
 
 $op            = Request::getCmd('op', 'list');
@@ -59,7 +57,8 @@ $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_image_url', WGGITHUB_IMAGE_URL);
 //
-$GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permissionsHandler->getPermReadmeUpdate());
+$GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permReadmeUpdate);
+$GLOBALS['xoopsTpl']->assign('permGlobalRead', $permGlobalRead);
 
 switch ($op) {
     case 'show':
@@ -67,44 +66,46 @@ switch ($op) {
     case 'apiexceed':
     default:
         //check number of API calls
-        $crRequests = new \CriteriaCompo();
-        $crRequests->add(new \Criteria('req_datecreated', (time() - 3600), '>'));
-        $requestsCount = $requestsHandler->getCount($crRequests);
-        if ($permGlobalRead && $requestsCount < 60 && 'list' == $op) {
-            executeUpdate();
+        $lastUpdate = 0;
+        $crLogs = new \CriteriaCompo();
+        $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
+        $logsCount = $logsHandler->getCount($crLogs);
+        if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
+            $githubClient = GithubClient::getInstance();
+            $githubClient->executeUpdate();
         }
 
-        unset($crRequests);
-        $crRequests = new \CriteriaCompo();
-        $crRequests->add(new \Criteria('req_result', 'OK'));
-        $crRequests->setStart(0);
-        $crRequests->setLimit(1);
-        $crRequests->setSort('req_id');
-        $crRequests->setOrder('DESC');
-        $requestsAll = $requestsHandler->getAll($crRequests);
-        foreach (\array_keys($requestsAll) as $i) {
-            $lastUpdate = $requestsAll[$i]->getVar('req_datecreated');
+        unset($crLogs);
+        $crLogs = new \CriteriaCompo();
+        $crLogs->add(new \Criteria('log_type', Constants::LOG_TYPE_UPDATE_END));
+        $crLogs->add(new \Criteria('log_result', 'OK'));
+        $crLogs->setStart(0);
+        $crLogs->setLimit(1);
+        $crLogs->setSort('log_id');
+        $crLogs->setOrder('DESC');
+        $logsAll = $logsHandler->getAll($crLogs);
+        foreach (\array_keys($logsAll) as $i) {
+            $lastUpdate = $logsAll[$i]->getVar('log_datecreated');
             $GLOBALS['xoopsTpl']->assign('lastUpdate', \formatTimestamp($lastUpdate, 'm'));
         }
-        unset($crRequests);
-        $crRequests = new \CriteriaCompo();
-        $crRequests->setStart(0);
-        $crRequests->setLimit(1);
-        $crRequests->setSort('req_id');
-        $crRequests->setOrder('DESC');
-        $requestsAll = $requestsHandler->getAll($crRequests);
-        foreach (\array_keys($requestsAll) as $i) {
-            if ($lastUpdate < $requestsAll[$i]->getVar('req_datecreated')) {
-                if (\strpos($requestsAll[$i]->getVar('req_result'), 'API rate limit exceeded') > 0) {
+        unset($crLogs);
+        $crLogs = new \CriteriaCompo();
+        $crLogs->setStart(0);
+        $crLogs->setLimit(1);
+        $crLogs->setSort('log_id');
+        $crLogs->setOrder('DESC');
+        $logsAll = $logsHandler->getAll($crLogs);
+        foreach (\array_keys($logsAll) as $i) {
+            if ($lastUpdate < $logsAll[$i]->getVar('log_datecreated')) {
+                if (\strpos($logsAll[$i]->getVar('log_result'), 'API rate limit exceeded') > 0) {
                     $GLOBALS['xoopsTpl']->assign('apiexceed', true);
                 } else {
                     $GLOBALS['xoopsTpl']->assign('apierror', true);
                 }
             }
         }
-        unset($crRequests);
+        unset($crLogs);
 
-        $github = Github::getInstance();
         $start = Request::getInt('start', 0);
         $limit = Request::getInt('limit', $helper->getConfig('userpager'));
         $menu  = Request::getInt('menu', 0);
@@ -194,7 +195,7 @@ switch ($op) {
             unset($crDirectories, $directories);
             // Display Navigation
             if ($directoriesCount > $limit) {
-                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
+                require_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($directoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
@@ -204,24 +205,39 @@ switch ($op) {
         }
 
         break;
-    case 'update':
+    case 'update_dir':
         // Permissions
         if (!$permGlobalRead) {
-            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            $GLOBALS['xoopsTpl']->assign('error', \_NOPERM);
             require __DIR__ . '/footer.php';
         }
-        executeUpdate();
+        $dirName = Request::getString('dir_name', '');
+        $githubClient = GithubClient::getInstance();
+        $result = $githubClient->executeUpdate($dirName);
+        $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        if ($result) {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
+        } else {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
+        }
+
         break;
     case 'update_readme':
         // Permissions
         if (!$permReadmeUpdate) {
-            $GLOBALS['xoopsTpl']->assign('error', _NOPERM);
+            $GLOBALS['xoopsTpl']->assign('error', \_NOPERM);
             require __DIR__ . '/footer.php';
         }
         $repoId = Request::getInt('repo_id', 0);
         $repoUser  = Request::getString('repo_user', 'none');
         $repoName  = Request::getString('repo_name', 'none');
-        $res = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
+        $result = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
+        $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        if ($result) {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
+        } else {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
+        }
         break;
 }
 
@@ -237,59 +253,3 @@ $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGGITHUB_URL.'/index.php');
 $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
 require __DIR__ . '/footer.php';
-
-
-
-/**
- * Execute update of repositories and all related tables
- *
- * @return bool
- */
-function executeUpdate(){
-
-    $github = Github::getInstance();
-    $helper = Helper::getInstance();
-    $directoriesHandler = $helper->getHandler('Directories');
-    $releasesHandler = $helper->getHandler('Releases');
-    $readmesHandler = $helper->getHandler('Readmes');
-    $crDirectories = new \CriteriaCompo();
-    $crDirectories->add(new \Criteria('dir_autoupdate', 1));
-    $crDirectories->add(new \Criteria('dir_online', 1));
-    $directoriesAll = $directoriesHandler->getAll($crDirectories);
-    // Get All Directories
-    $directories = [];
-    foreach (\array_keys($directoriesAll) as $i) {
-        $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
-        if (1 === (int) $directoriesAll[$i]->getVar('dir_autoupdate')) {
-            $dirName = $directoriesAll[$i]->getVar('dir_name');
-            $repos = [];
-            for ($j = 1; $j <= 9; $j++) {
-                $repos[$j] = [];
-                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                    $repos = $github->readOrgRepositories($dirName, 100, $j);
-                } else {
-                    $repos = $github->readUserRepositories($dirName, 100, $j);
-                }
-                if (false === $repos) {
-                    return false;
-                    break 1;
-                }
-                if (count($repos) > 0) {
-                    $github->updateTableRepositories($dirName, $repos, true);
-                } else {
-                    break 1;
-                }
-                if (count($repos) < 100) {
-                    break 1;
-                }
-            }
-        }
-    }
-    unset($directories);
-
-    $releasesHandler->updateRepoReleases();
-    $readmesHandler->updateRepoReadme();
-
-
-    return true;
-}

@@ -27,52 +27,52 @@ $moduleInfo    = $moduleHandler->get($xoopsModule->getVar('mid'));
 $sysPathIcon32 = $moduleInfo->getInfo('sysicons32');
 
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU1,
-	'link' => 'admin/index.php',
-	'icon' => $sysPathIcon32.'/dashboard.png',
+    'title' => _MI_WGGITHUB_ADMENU1,
+    'link' => 'admin/index.php',
+    'icon' => 'assets/icons/32/dashboard.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU2,
-	'link' => 'admin/settings.php',
-	'icon' => 'assets/icons/32/blank.gif',
+    'title' => _MI_WGGITHUB_ADMENU2,
+    'link' => 'admin/settings.php',
+    'icon' => 'assets/icons/32/settings.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU3,
-	'link' => 'admin/directories.php',
-	'icon' => 'assets/icons/32/blank.gif',
+    'title' => _MI_WGGITHUB_ADMENU3,
+    'link' => 'admin/directories.php',
+    'icon' => 'assets/icons/32/directories.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU4,
-	'link' => 'admin/requests.php',
-	'icon' => 'assets/icons/32/blank.gif',
+    'title' => _MI_WGGITHUB_ADMENU4,
+    'link' => 'admin/logs.php',
+    'icon' => 'assets/icons/32/logs.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU5,
-	'link' => 'admin/repositories.php',
-	'icon' => 'assets/icons/32/blank.gif',
+    'title' => _MI_WGGITHUB_ADMENU5,
+    'link' => 'admin/repositories.php',
+    'icon' => 'assets/icons/32/repositories.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU6,
-	'link' => 'admin/readmes.php',
-	'icon' => 'assets/icons/32/addlink.png',
+    'title' => _MI_WGGITHUB_ADMENU6,
+    'link' => 'admin/readmes.php',
+    'icon' => 'assets/icons/32/readmes.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU7,
-	'link' => 'admin/releases.php',
-	'icon' => 'assets/icons/32/blank.gif',
+    'title' => _MI_WGGITHUB_ADMENU7,
+    'link' => 'admin/releases.php',
+    'icon' => 'assets/icons/32/releases.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU8,
-	'link' => 'admin/permissions.php',
-	'icon' => $sysPathIcon32.'/permissions.png',
+    'title' => _MI_WGGITHUB_ADMENU8,
+    'link' => 'admin/permissions.php',
+    'icon' => 'assets/icons/32/permissions.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ADMENU9,
-	'link' => 'admin/feedback.php',
-	'icon' => $sysPathIcon32.'/mail_foward.png',
+    'title' => _MI_WGGITHUB_ADMENU9,
+    'link' => 'admin/feedback.php',
+    'icon' => 'assets/icons/32/feedback.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_WGGITHUB_ABOUT,
-	'link' => 'admin/about.php',
-	'icon' => $sysPathIcon32.'/about.png',
+    'title' => _MI_WGGITHUB_ABOUT,
+    'link' => 'admin/about.php',
+    'icon' => 'assets/icons/32/about.png',
 ];

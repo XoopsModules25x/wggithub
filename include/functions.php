@@ -28,16 +28,16 @@
  */
 function wggithub_block_addCatSelect($cats)
 {
-	$cat_sql = '(';
-	if (\is_array($cats)) {
-		$cat_sql .= current($cats);
-		array_shift($cats);
-		foreach ($cats as $cat) {
-			$cat_sql .= ',' . $cat;
-		}
-	}
-	$cat_sql .= ')';
-	return $cat_sql;
+    $cat_sql = '(';
+    if (\is_array($cats)) {
+        $cat_sql .= current($cats);
+        array_shift($cats);
+        foreach ($cats as $cat) {
+            $cat_sql .= ',' . $cat;
+        }
+    }
+    $cat_sql .= ')';
+    return $cat_sql;
 }
 
 /**
@@ -49,17 +49,17 @@ function wggithub_block_addCatSelect($cats)
  */
 function wggithubGetMyItemIds($permtype, $dirname)
 {
-	global $xoopsUser;
-	static $permissions = [];
-	if (\is_array($permissions) && \array_key_exists($permtype, $permissions)) {
-		return $permissions[$permtype];
-	}
-	$moduleHandler = \xoops_getHandler('module');
-	$wggithubModule = $moduleHandler->getByDirname($dirname);
-	$groups = \is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
-	$grouppermHandler = \xoops_getHandler('groupperm');
-	$itemIds = $grouppermHandler->getItemIds($permtype, $groups, $wggithubModule->getVar('mid'));
-	return $itemIds;
+    global $xoopsUser;
+    static $permissions = [];
+    if (\is_array($permissions) && \array_key_exists($permtype, $permissions)) {
+        return $permissions[$permtype];
+    }
+    $moduleHandler = \xoops_getHandler('module');
+    $wggithubModule = $moduleHandler->getByDirname($dirname);
+    $groups = \is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
+    $grouppermHandler = \xoops_getHandler('groupperm');
+    $itemIds = $grouppermHandler->getItemIds($permtype, $groups, $wggithubModule->getVar('mid'));
+    return $itemIds;
 }
 
 /**
@@ -207,6 +207,6 @@ function wggithub_Filter($url, $type = '') {
     $url .= htmlentities($url, ENT_COMPAT, 'utf-8');
     $url .= \preg_replace('`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', "\1", $url);
     $url .= \preg_replace(array($regular_expression, '`[-]+`'), '-', $url);
-    $url = ($url == '') ? $type : strtolower(	rim($url, '-'));
+    $url = ($url == '') ? $type : strtolower(    rim($url, '-'));
     return $url;
 }

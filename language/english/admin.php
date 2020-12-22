@@ -29,7 +29,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_THEREARE_SETTINGS', "There are <span class='bold'>%s</span> settings in the database");
 \define('_AM_WGGITHUB_THEREARE_REPOSITORIES', "There are <span class='bold'>%s</span> repositories in the database");
 \define('_AM_WGGITHUB_THEREARE_DIRECTORIES', "There are <span class='bold'>%s</span> directories in the database");
-\define('_AM_WGGITHUB_THEREARE_REQUESTS', "There are <span class='bold'>%s</span> requests in the database");
+\define('_AM_WGGITHUB_THEREARE_LOGS', "There are <span class='bold'>%s</span> logs in the database");
 \define('_AM_WGGITHUB_THEREARE_READMES', "There are <span class='bold'>%s</span> readmes in the database");
 \define('_AM_WGGITHUB_THEREARE_RELEASES', "There are <span class='bold'>%s</span> releases in the database");
 // ---------------- Admin Files ----------------
@@ -37,7 +37,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_THEREARENT_SETTINGS', "There aren't settings");
 \define('_AM_WGGITHUB_THEREARENT_REPOSITORIES', "There aren't repositories");
 \define('_AM_WGGITHUB_THEREARENT_DIRECTORIES', "There aren't directories");
-\define('_AM_WGGITHUB_THEREARENT_REQUESTS', "There aren't requests");
+\define('_AM_WGGITHUB_THEREARENT_LOGS', "There aren't logs");
 \define('_AM_WGGITHUB_THEREARENT_READMES', "There aren't readmes");
 \define('_AM_WGGITHUB_THEREARENT_RELEASES', "There aren't releases");
 // Save/Delete
@@ -45,8 +45,9 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_DELETE_OK', 'Successfully deleted');
 \define('_AM_WGGITHUB_FORM_SURE_DELETE', "Are you sure to delete: <b><span style='color : Red;'>%s </span></b>");
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Are you sure to update: <b><span style='color : Red;'>%s </span></b>");
+\define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Are you sure to delete all items of table: <b><span style='color : Red;'>%s </span></b>");
 // Status
-\define('_AM_WGGITHUB_STATUS_NONE', 'NONE');
+\define('_AM_WGGITHUB_STATUS_NONE', 'None');
 \define('_AM_WGGITHUB_STATUS_NEW', 'New');
 \define('_AM_WGGITHUB_STATUS_UPTODATE', 'Up to date');
 \define('_AM_WGGITHUB_STATUS_UPDATED', 'Updated');
@@ -54,14 +55,14 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_ADD_SETTING', 'Add New Setting');
 \define('_AM_WGGITHUB_ADD_REPOSITORY', 'Add New Repository');
 \define('_AM_WGGITHUB_ADD_DIRECTORY', 'Add New Directory');
-\define('_AM_WGGITHUB_ADD_REQUEST', 'Add New Request');
+\define('_AM_WGGITHUB_ADD_LOG', 'Add New Log');
 \define('_AM_WGGITHUB_ADD_README', 'Add New Readme');
 \define('_AM_WGGITHUB_ADD_RELEASE', 'Add New Release');
 // Lists
 \define('_AM_WGGITHUB_SETTINGS_LIST', 'List of Settings');
 \define('_AM_WGGITHUB_REPOSITORIES_LIST', 'List of Repositories');
 \define('_AM_WGGITHUB_DIRECTORIES_LIST', 'List of Directories');
-\define('_AM_WGGITHUB_REQUESTS_LIST', 'List of Requests');
+\define('_AM_WGGITHUB_LOGS_LIST', 'List of Logs');
 \define('_AM_WGGITHUB_READMES_LIST', 'List of Readmes');
 \define('_AM_WGGITHUB_RELEASES_LIST', 'List of Releases');
 // ---------------- Admin Classes ----------------
@@ -109,14 +110,21 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_DIRECTORY_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_DIRECTORY_SUBMITTER', 'Submitter');
 // Request add/edit
-\define('_AM_WGGITHUB_REQUEST_ADD', 'Add Request');
-\define('_AM_WGGITHUB_REQUEST_EDIT', 'Edit Request');
+\define('_AM_WGGITHUB_LOG_ADD', 'Add Log');
+\define('_AM_WGGITHUB_LOG_EDIT', 'Edit Log');
+\define('_AM_WGGITHUB_LOG_CLEAR', 'Clear table');
 // Elements of Request
-\define('_AM_WGGITHUB_REQUEST_ID', 'Id');
-\define('_AM_WGGITHUB_REQUEST_REQUEST', 'Request');
-\define('_AM_WGGITHUB_REQUEST_RESULT', 'Result');
-\define('_AM_WGGITHUB_REQUEST_DATECREATED', 'Datecreated');
-\define('_AM_WGGITHUB_REQUEST_SUBMITTER', 'Submitter');
+\define('_AM_WGGITHUB_LOG_ID', 'Id');
+\define('_AM_WGGITHUB_LOG_TYPE', 'Type');
+\define('_AM_WGGITHUB_LOG_TYPE_NONE', 'None');
+\define('_AM_WGGITHUB_LOG_TYPE_UPDATE_START', 'Start update');
+\define('_AM_WGGITHUB_LOG_TYPE_UPDATE_END', 'End update');
+\define('_AM_WGGITHUB_LOG_TYPE_REQUEST', 'Request');
+\define('_AM_WGGITHUB_LOG_TYPE_ERROR', 'Error');
+\define('_AM_WGGITHUB_LOG_DETAILS', 'Details');
+\define('_AM_WGGITHUB_LOG_RESULT', 'Result');
+\define('_AM_WGGITHUB_LOG_DATECREATED', 'Datecreated');
+\define('_AM_WGGITHUB_LOG_SUBMITTER', 'Submitter');
 // Readme add/edit
 \define('_AM_WGGITHUB_README_ADD', 'Add Readme');
 \define('_AM_WGGITHUB_README_EDIT', 'Edit Readme');

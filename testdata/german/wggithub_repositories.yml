@@ -275,13 +275,13 @@
     repo_name: wfdownloads
     repo_fullname: XoopsModules25x/wfdownloads
     repo_createdat: '1381203728'
-    repo_updatedat: '1470634282'
+    repo_updatedat: '1607760490'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wfdownloads'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606089738'
+    repo_datecreated: '1607846053'
     repo_submitter: '1'
 -
     repo_id: '20'
@@ -440,13 +440,13 @@
     repo_name: newbb
     repo_fullname: XoopsModules25x/newbb
     repo_createdat: '1381204543'
-    repo_updatedat: '1581915252'
+    repo_updatedat: '1607653006'
     repo_htmlurl: 'https://github.com/XoopsModules25x/newbb'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1606113935'
+    repo_datecreated: '1607846053'
     repo_submitter: '1'
 -
     repo_id: '31'
@@ -515,13 +515,13 @@
     repo_name: smallworld
     repo_fullname: XoopsModules25x/smallworld
     repo_createdat: '1381204750'
-    repo_updatedat: '1586871126'
+    repo_updatedat: '1608558155'
     repo_htmlurl: 'https://github.com/XoopsModules25x/smallworld'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606114325'
+    repo_datecreated: '1608634851'
     repo_submitter: '1'
 -
     repo_id: '36'
@@ -620,13 +620,13 @@
     repo_name: pedigree
     repo_fullname: XoopsModules25x/pedigree
     repo_createdat: '1381215168'
-    repo_updatedat: '1571806850'
+    repo_updatedat: '1608293492'
     repo_htmlurl: 'https://github.com/XoopsModules25x/pedigree'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606114329'
+    repo_datecreated: '1608299693'
     repo_submitter: '1'
 -
     repo_id: '43'
@@ -665,13 +665,13 @@
     repo_name: publisher
     repo_fullname: XoopsModules25x/publisher
     repo_createdat: '1381215660'
-    repo_updatedat: '1604407283'
+    repo_updatedat: '1608388178'
     repo_htmlurl: 'https://github.com/XoopsModules25x/publisher'
     repo_readme: '1'
     repo_prerelease: '1'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1606114331'
+    repo_datecreated: '1608454409'
     repo_submitter: '1'
 -
     repo_id: '46'
@@ -680,13 +680,13 @@
     repo_name: moduleinstaller
     repo_fullname: XoopsModules25x/moduleinstaller
     repo_createdat: '1381215798'
-    repo_updatedat: '1601181181'
+    repo_updatedat: '1606850812'
     repo_htmlurl: 'https://github.com/XoopsModules25x/moduleinstaller'
     repo_readme: '1'
     repo_prerelease: '1'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1606114331'
+    repo_datecreated: '1607846054'
     repo_submitter: '1'
 -
     repo_id: '47'
@@ -4460,13 +4460,13 @@
     repo_name: wgtransifex
     repo_fullname: XoopsModules25x/wgtransifex
     repo_createdat: '1592743053'
-    repo_updatedat: '1603727835'
+    repo_updatedat: '1607885531'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wgtransifex'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1606159419'
+    repo_datecreated: '1608299696'
     repo_submitter: '1'
 -
     repo_id: '301'
@@ -4490,13 +4490,13 @@
     repo_name: moduleimages
     repo_fullname: XoopsModules25x/moduleimages
     repo_createdat: '1594403953'
-    repo_updatedat: '1605004504'
+    repo_updatedat: '1607943144'
     repo_htmlurl: 'https://github.com/XoopsModules25x/moduleimages'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606159419'
+    repo_datecreated: '1608299696'
     repo_submitter: '1'
 -
     repo_id: '303'
@@ -15419,17 +15419,32 @@
     repo_datecreated: '1606159445'
     repo_submitter: '1'
 -
-    repo_id: '1032'
+    repo_id: '1037'
+    repo_nodeid: MDEwOlJlcG9zaXRvcnkxMTA4MjY0MDA=
+    repo_user: XoopsModules25x
+    repo_name: shiori
+    repo_fullname: XoopsModules25x/shiori
+    repo_createdat: '1510746308'
+    repo_updatedat: '1607775093'
+    repo_htmlurl: 'https://github.com/XoopsModules25x/shiori'
+    repo_readme: '1'
+    repo_prerelease: '0'
+    repo_release: '0'
+    repo_status: '3'
+    repo_datecreated: '1608539534'
+    repo_submitter: '1'
+-
+    repo_id: '1038'
     repo_nodeid: MDEwOlJlcG9zaXRvcnkzMTYyMjc3MzI=
     repo_user: XoopsModules25x
     repo_name: wggithub
     repo_fullname: XoopsModules25x/wggithub
     repo_createdat: '1606394485'
-    repo_updatedat: '1606480859'
+    repo_updatedat: '1606669201'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wggithub'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606493623'
+    repo_datecreated: '1608539535'
     repo_submitter: '1'

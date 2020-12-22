@@ -45,38 +45,38 @@ $keywords = [];
 $GLOBALS['xoopsTpl']->assign('showItem', $rmId > 0);
 
 switch ($op) {
-	case 'show':
-	case 'list':
-	default:
-		$crReadmes = new \CriteriaCompo();
-		if ($rmId > 0) {
-			$crReadmes->add(new \Criteria('rm_id', $rmId));
-		}
-		$readmesCount = $readmesHandler->getCount($crReadmes);
-		$GLOBALS['xoopsTpl']->assign('readmesCount', $readmesCount);
-		$crReadmes->setStart($start);
-		$crReadmes->setLimit($limit);
-		$readmesAll = $readmesHandler->getAll($crReadmes);
-		if ($readmesCount > 0) {
-			$readmes = [];
-			// Get All Readmes
-			foreach (\array_keys($readmesAll) as $i) {
-				$readmes[$i] = $readmesAll[$i]->getValuesReadmes();
-				$keywords[$i] = $readmesAll[$i]->getVar('rm_name');
-			}
-			$GLOBALS['xoopsTpl']->assign('readmes', $readmes);
-			unset($readmes);
-			// Display Navigation
-			if ($readmesCount > $limit) {
-				include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-				$pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
-				$GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-			}
-			$GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
-			$GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
-			$GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
-		}
-		break;
+    case 'show':
+    case 'list':
+    default:
+        $crReadmes = new \CriteriaCompo();
+        if ($rmId > 0) {
+            $crReadmes->add(new \Criteria('rm_id', $rmId));
+        }
+        $readmesCount = $readmesHandler->getCount($crReadmes);
+        $GLOBALS['xoopsTpl']->assign('readmesCount', $readmesCount);
+        $crReadmes->setStart($start);
+        $crReadmes->setLimit($limit);
+        $readmesAll = $readmesHandler->getAll($crReadmes);
+        if ($readmesCount > 0) {
+            $readmes = [];
+            // Get All Readmes
+            foreach (\array_keys($readmesAll) as $i) {
+                $readmes[$i] = $readmesAll[$i]->getValuesReadmes();
+                $keywords[$i] = $readmesAll[$i]->getVar('rm_name');
+            }
+            $GLOBALS['xoopsTpl']->assign('readmes', $readmes);
+            unset($readmes);
+            // Display Navigation
+            if ($readmesCount > $limit) {
+                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                $pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+            }
+            $GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
+            $GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
+            $GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
+        }
+        break;
 }
 
 // Breadcrumbs

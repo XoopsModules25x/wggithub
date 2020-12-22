@@ -29,7 +29,7 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_ADMENU1', 'Dashboard');
 \define('_MI_WGGITHUB_ADMENU2', 'Settings');
 \define('_MI_WGGITHUB_ADMENU3', 'Directories');
-\define('_MI_WGGITHUB_ADMENU4', 'Requests');
+\define('_MI_WGGITHUB_ADMENU4', 'Logs');
 \define('_MI_WGGITHUB_ADMENU5', 'Repositories');
 \define('_MI_WGGITHUB_ADMENU6', 'Readmes');
 \define('_MI_WGGITHUB_ADMENU7', 'Releases');

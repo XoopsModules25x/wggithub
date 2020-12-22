@@ -31,96 +31,96 @@ use XoopsModules\Wggithub;
  */
 class ReleasesHandler extends \XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param \XoopsDatabase $db
-	 */
-	public function __construct(\XoopsDatabase $db)
-	{
-		parent::__construct($db, 'wggithub_releases', Releases::class, 'rel_id', 'rel_name');
-	}
+    /**
+     * Constructor
+     *
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db)
+    {
+        parent::__construct($db, 'wggithub_releases', Releases::class, 'rel_id', 'rel_name');
+    }
 
-	/**
-	 * @param bool $isNew
-	 *
-	 * @return object
-	 */
-	public function create($isNew = true)
-	{
-		return parent::create($isNew);
-	}
+    /**
+     * @param bool $isNew
+     *
+     * @return object
+     */
+    public function create($isNew = true)
+    {
+        return parent::create($isNew);
+    }
 
-	/**
-	 * retrieve a field
-	 *
-	 * @param int $i field id
-	 * @param null fields
-	 * @return mixed reference to the {@link Get} object
-	 */
-	public function get($i = null, $fields = null)
-	{
-		return parent::get($i, $fields);
-	}
+    /**
+     * retrieve a field
+     *
+     * @param int $i field id
+     * @param null fields
+     * @return mixed reference to the {@link Get} object
+     */
+    public function get($i = null, $fields = null)
+    {
+        return parent::get($i, $fields);
+    }
 
-	/**
-	 * get inserted id
-	 *
-	 * @param null
-	 * @return int reference to the {@link Get} object
-	 */
-	public function getInsertId()
-	{
-		return $this->db->getInsertId();
-	}
+    /**
+     * get inserted id
+     *
+     * @param null
+     * @return int reference to the {@link Get} object
+     */
+    public function getInsertId()
+    {
+        return $this->db->getInsertId();
+    }
 
-	/**
-	 * Get Count Releases in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	public function getCountReleases($start = 0, $limit = 0, $sort = 'rel_id ASC, rel_name', $order = 'ASC')
-	{
-		$crCountReleases = new \CriteriaCompo();
-		$crCountReleases = $this->getReleasesCriteria($crCountReleases, $start, $limit, $sort, $order);
-		return $this->getCount($crCountReleases);
-	}
+    /**
+     * Get Count Releases in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    public function getCountReleases($start = 0, $limit = 0, $sort = 'rel_id ASC, rel_name', $order = 'ASC')
+    {
+        $crCountReleases = new \CriteriaCompo();
+        $crCountReleases = $this->getReleasesCriteria($crCountReleases, $start, $limit, $sort, $order);
+        return $this->getCount($crCountReleases);
+    }
 
-	/**
-	 * Get All Releases in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return array
-	 */
-	public function getAllReleases($start = 0, $limit = 0, $sort = 'rel_id ASC, rel_name', $order = 'ASC')
-	{
-		$crAllReleases = new \CriteriaCompo();
-		$crAllReleases = $this->getReleasesCriteria($crAllReleases, $start, $limit, $sort, $order);
-		return $this->getAll($crAllReleases);
-	}
+    /**
+     * Get All Releases in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return array
+     */
+    public function getAllReleases($start = 0, $limit = 0, $sort = 'rel_id ASC, rel_name', $order = 'ASC')
+    {
+        $crAllReleases = new \CriteriaCompo();
+        $crAllReleases = $this->getReleasesCriteria($crAllReleases, $start, $limit, $sort, $order);
+        return $this->getAll($crAllReleases);
+    }
 
-	/**
-	 * Get Criteria Releases
-	 * @param        $crReleases
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	private function getReleasesCriteria($crReleases, $start, $limit, $sort, $order)
-	{
-		$crReleases->setStart($start);
-		$crReleases->setLimit($limit);
-		$crReleases->setSort($sort);
-		$crReleases->setOrder($order);
-		return $crReleases;
-	}
+    /**
+     * Get Criteria Releases
+     * @param        $crReleases
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    private function getReleasesCriteria($crReleases, $start, $limit, $sort, $order)
+    {
+        $crReleases->setStart($start);
+        $crReleases->setLimit($limit);
+        $crReleases->setSort($sort);
+        $crReleases->setOrder($order);
+        return $crReleases;
+    }
 
     /**
      * Update table requests
@@ -133,7 +133,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
-        $libReleases = new Wggithub\Github\Releases();
+        $githubClient = new Wggithub\Github\GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
@@ -147,7 +147,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                 $crReleases->add(new \Criteria('rel_repoid', $repoId));
                 $releasesCount = $releasesHandler->getCount($crReleases);
                 if (Constants::STATUS_NEW === $repoStatus || Constants::STATUS_UPDATED === $repoStatus || 0 == $releasesCount) {
-                    $ghReleases = $libReleases->getReleases($repositoriesAll[$i]->getVar('repo_user'), $repositoriesAll[$i]->getVar('repo_name'));
+                    $ghReleases = $githubClient->getReleases($repositoriesAll[$i]->getVar('repo_user'), $repositoriesAll[$i]->getVar('repo_name'));
                     if ($releasesCount > 0) {
                         $sql = 'DELETE FROM `' . $GLOBALS['xoopsDB']->prefix('wggithub_releases') . '` WHERE `rel_repoid` = ' . $repoId;
                         if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
@@ -201,11 +201,11 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
-        $libReleases = new Wggithub\Github\Releases();
+        $githubClient = new Wggithub\Github\GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
-        $ghReleases = $libReleases->getReleases($userName, $repoName);
+        $ghReleases = $githubClient->getReleases($userName, $repoName);
         if (false === $ghReleases) {
             return false;
         }

@@ -78,6 +78,7 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_DIRECTORY_TYPE', 'Type');
 \define('_MA_WGGITHUB_DIRECTORY_DATECREATED', 'Datecreated');
 \define('_MA_WGGITHUB_DIRECTORY_SUBMITTER', 'Submitter');
+\define('_MA_WGGITHUB_DIRECTORY_UPDATE', 'Update Directory');
 // Readme
 \define('_MA_WGGITHUB_README', 'Readme');
 \define('_MA_WGGITHUB_READMES', 'Readmes');
@@ -100,6 +101,8 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_RELEASE_ZIP', 'Zip');
 \define('_MA_WGGITHUB_RELEASE_TAR', 'Tar');
 // Read data from Github
+\define('_MA_WGGITHUB_READGH_DIRECTORY', 'Read this directory from GitHub');
+\define('_MA_WGGITHUB_READGH_SUCCESS', 'Loading data from GitHub successfully finished');
 \define('_MA_WGGITHUB_READGH_ERROR_INSERTREQ', 'Error saving request when loading data from GitHub');
 \define('_MA_WGGITHUB_READGH_ERROR_API', 'Error exchange data with GitHub');
 \define('_MA_WGGITHUB_READGH_ERROR_API_401', 'Error exchange data with GitHub: Unauthorized');

@@ -2,10 +2,10 @@
     dir_id: '1'
     dir_name: XoopsModules25x
     dir_type: '2'
-    dir_autoupdate: '1'
+    dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '1'
-    dir_datecreated: '1606024458'
+    dir_datecreated: '1606065860'
     dir_submitter: '1'
 -
     dir_id: '2'
@@ -38,8 +38,8 @@
     dir_id: '5'
     dir_name: XoopsThemes
     dir_type: '2'
-    dir_autoupdate: '1'
+    dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '0'
-    dir_datecreated: '1606024480'
+    dir_datecreated: '1606028516'
     dir_submitter: '1'
