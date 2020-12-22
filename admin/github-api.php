@@ -33,6 +33,15 @@ use XoopsModules\Wggithub\Github;
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
 
+/*
+$data = [];
+$api = new Github\Api;
+$response = $api->get('/emojis');
+$data = $api->decode($response);
+foreach ($data as $emoji) {
+    echo '<img src="' . $emoji . '">';
+}
+*/
 
 $data = [];
 $url = '/orgs/XoopsModules25x/repos?per_page=100&page=1';
