@@ -40,6 +40,7 @@ switch ($op) {
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_LOG, 'logs.php?op=new', 'add');
+        $adminObject->addItemButton(_AM_WGGITHUB_LOG_CLEAR, 'logs.php?op=clear', 'delete');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         $logsCount = $logsHandler->getCountLogs();
         $logsAll = $logsHandler->getAllLogs($start, $limit);
@@ -114,7 +115,6 @@ switch ($op) {
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
         $logsObj = $logsHandler->get($logId);
-        $reqRequest = $logsObj->getVar('log_details');
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('logs.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -129,6 +129,26 @@ switch ($op) {
                 ['ok' => 1, 'log_id' => $logId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_details')));
+            $form = $xoopsconfirm->getFormXoopsConfirm();
+            $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        }
+        break;
+    case 'clear':
+        $templateMain = 'wggithub_admin_logs.tpl';
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
+        $adminObject->addItemButton(_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
+        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
+        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
+            if (!$GLOBALS['xoopsSecurity']->check()) {
+                \redirect_header('logs.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
+            }
+            $logsHandler->deleteAll(null, true);
+            \redirect_header('logs.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+        } else {
+            $xoopsconfirm = new Common\XoopsConfirm(
+                ['ok' => 1, 'op' => 'clear'],
+                $_SERVER['REQUEST_URI'],
+                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETEALL, 'wggithub_logs'));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

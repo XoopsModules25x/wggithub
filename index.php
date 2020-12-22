@@ -71,7 +71,8 @@ switch ($op) {
         $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
         $logsCount = $logsHandler->getCount($crLogs);
         if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
-            executeUpdate();
+            $githubClient = GithubClient::getInstance();
+            $githubClient->executeUpdate();
         }
 
         unset($crLogs);
@@ -211,7 +212,8 @@ switch ($op) {
             require __DIR__ . '/footer.php';
         }
         $dirName = Request::getString('dir_name', '');
-        $result = executeUpdate($dirName);
+        $githubClient = GithubClient::getInstance();
+        $result = $githubClient->executeUpdate($dirName);
         $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
@@ -251,65 +253,3 @@ $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGGITHUB_URL.'/index.php');
 $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
 $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
 require __DIR__ . '/footer.php';
-
-
-/**
- * Execute update of repositories and all related tables
- * @param string $dirName
- * @return bool
- */
-function executeUpdate($dirName = ''){
-
-    $githubClient = GithubClient::getInstance();
-    $helper = Helper::getInstance();
-    $directoriesHandler = $helper->getHandler('Directories');
-    $repositoriesHandler = $helper->getHandler('Repositories');
-    $releasesHandler = $helper->getHandler('Releases');
-    $readmesHandler = $helper->getHandler('Readmes');
-    $logsHandler = $helper->getHandler('Logs');
-
-    $logsHandler->updateTableLogs(Constants::LOG_TYPE_UPDATE_START, '', 'OK');
-    $crDirectories = new \CriteriaCompo();
-    if ('' !== $dirName) {
-        $crDirectories->add(new \Criteria('dir_name', $dirName));
-    } else {
-        $crDirectories->add(new \Criteria('dir_autoupdate', 1));
-    }
-    $crDirectories->add(new \Criteria('dir_online', 1));
-    $directoriesAll = $directoriesHandler->getAll($crDirectories);
-    // Get All Directories
-    $directories = [];
-    foreach (\array_keys($directoriesAll) as $i) {
-        $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
-        $dirName = $directoriesAll[$i]->getVar('dir_name');
-        $repos = [];
-        for ($j = 1; $j <= 9; $j++) {
-            $repos[$j] = [];
-            if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
-                $repos = $githubClient->getOrgRepositories($dirName, 100, $j);
-            } else {
-                $repos = $githubClient->getUserRepositories($dirName, 100, $j);
-            }
-            if (false === $repos) {
-                return false;
-                break 1;
-            }
-            if (count($repos) > 0) {
-                $repositoriesHandler->updateTableRepositories($dirName, $repos, true);
-            } else {
-                break 1;
-            }
-            if (count($repos) < 100) {
-                break 1;
-            }
-        }
-    }
-    unset($directories);
-
-    $releasesHandler->updateRepoReleases();
-    $readmesHandler->updateRepoReadme();
-
-    $logsHandler->updateTableLogs(Constants::LOG_TYPE_UPDATE_END, '', 'OK');
-
-    return true;
-}

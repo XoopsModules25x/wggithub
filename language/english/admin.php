@@ -45,6 +45,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_DELETE_OK', 'Successfully deleted');
 \define('_AM_WGGITHUB_FORM_SURE_DELETE', "Are you sure to delete: <b><span style='color : Red;'>%s </span></b>");
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Are you sure to update: <b><span style='color : Red;'>%s </span></b>");
+\define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Are you sure to delete all items of table: <b><span style='color : Red;'>%s </span></b>");
 // Status
 \define('_AM_WGGITHUB_STATUS_NONE', 'None');
 \define('_AM_WGGITHUB_STATUS_NEW', 'New');
@@ -111,6 +112,7 @@ include_once __DIR__ . '/main.php';
 // Request add/edit
 \define('_AM_WGGITHUB_LOG_ADD', 'Add Log');
 \define('_AM_WGGITHUB_LOG_EDIT', 'Edit Log');
+\define('_AM_WGGITHUB_LOG_CLEAR', 'Clear table');
 // Elements of Request
 \define('_AM_WGGITHUB_LOG_ID', 'Id');
 \define('_AM_WGGITHUB_LOG_TYPE', 'Type');

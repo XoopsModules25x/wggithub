@@ -251,6 +251,66 @@ class GithubClient extends Api
     }
 
     /**
+     * Execute update of repositories and all related tables
+     * @param string $dirName
+     * @return bool
+     */
+    public function executeUpdate($dirName = '')
+    {
+        $helper = Helper::getInstance();
+        $directoriesHandler = $helper->getHandler('Directories');
+        $repositoriesHandler = $helper->getHandler('Repositories');
+        $releasesHandler = $helper->getHandler('Releases');
+        $readmesHandler = $helper->getHandler('Readmes');
+        $logsHandler = $helper->getHandler('Logs');
+
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_UPDATE_START, '', 'OK');
+        $crDirectories = new \CriteriaCompo();
+        if ('' !== $dirName) {
+            $crDirectories->add(new \Criteria('dir_name', $dirName));
+        } else {
+            $crDirectories->add(new \Criteria('dir_autoupdate', 1));
+        }
+        $crDirectories->add(new \Criteria('dir_online', 1));
+        $directoriesAll = $directoriesHandler->getAll($crDirectories);
+        // Get All Directories
+        $directories = [];
+        foreach (\array_keys($directoriesAll) as $i) {
+            $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
+            $dirName = $directoriesAll[$i]->getVar('dir_name');
+            $repos = [];
+            for ($j = 1; $j <= 9; $j++) {
+                $repos[$j] = [];
+                if (Constants::DIRECTORY_TYPE_ORG == $directoriesAll[$i]->getVar('dir_type')) {
+                    $repos = $this->getOrgRepositories($dirName, 100, $j);
+                } else {
+                    $repos = $this->getUserRepositories($dirName, 100, $j);
+                }
+                if (false === $repos) {
+                    return false;
+                    break 1;
+                }
+                if (count($repos) > 0) {
+                    $repositoriesHandler->updateTableRepositories($dirName, $repos, true);
+                } else {
+                    break 1;
+                }
+                if (count($repos) < 100) {
+                    break 1;
+                }
+            }
+        }
+        unset($directories);
+
+        $releasesHandler->updateRepoReleases();
+        $readmesHandler->updateRepoReadme();
+
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_UPDATE_END, '', 'OK');
+
+        return true;
+    }
+
+    /**
      * Get primary setting
      *
      * @return bool|array

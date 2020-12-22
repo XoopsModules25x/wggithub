@@ -22,8 +22,10 @@
 
 use Xmf\Request;
 use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
-use XoopsModules\Wggithub\Common;
+use XoopsModules\Wggithub\ {
+    Common,
+    Github\GithubClient
+};
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
@@ -46,6 +48,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('directories_count', $directoriesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', WGGITHUB_ICONS_URL . '/16');
         // Table view directories
         if ($directoriesCount > 0) {
             foreach (\array_keys($directoriesAll) as $i) {
@@ -130,9 +133,21 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'dir_id' => $dirId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $directoriesObj->getVar('dir_name')));
+                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $dirName));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        }
+        break;
+    case 'readgh':
+        $directoriesObj = $directoriesHandler->get($dirId);
+        $dirName = $directoriesObj->getVar('dir_name');
+        $githubClient = GithubClient::getInstance();
+        $result = $githubClient->executeUpdate($dirName);
+        $redir = 'index.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit;
+        if ($result) {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
+        } else {
+            \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
         }
         break;
 }
