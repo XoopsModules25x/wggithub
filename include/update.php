@@ -39,7 +39,7 @@ function xoops_module_update_wggithub($module, $prev_version = null)
     $ret = wggithub_check_db($module);
 
     //check upload directory
-	include_once __DIR__ . '/install.php';
+    include_once __DIR__ . '/install.php';
     $ret = xoops_module_install_wggithub($module);
 
     $errors = $module->getErrors();
@@ -113,7 +113,7 @@ function update_wggithub_v10($module)
 function wggithub_check_db($module)
 {
     $ret = true;
-	//insert here code for database check
+    //insert here code for database check
 
     // Example: update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_repositories');

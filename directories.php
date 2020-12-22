@@ -47,38 +47,38 @@ $GLOBALS['xoopsTpl']->assign('permEdit', $permEdit);
 $GLOBALS['xoopsTpl']->assign('showItem', $dirId > 0);
 
 switch ($op) {
-	case 'show':
-	case 'list':
-	default:
-		$crDirectories = new \CriteriaCompo();
-		if ($dirId > 0) {
-			$crDirectories->add(new \Criteria('dir_id', $dirId));
-		}
-		$directoriesCount = $directoriesHandler->getCount($crDirectories);
-		$GLOBALS['xoopsTpl']->assign('directoriesCount', $directoriesCount);
-		$crDirectories->setStart($start);
-		$crDirectories->setLimit($limit);
-		$directoriesAll = $directoriesHandler->getAll($crDirectories);
-		if ($directoriesCount > 0) {
-			$directories = [];
-			// Get All Directories
-			foreach (\array_keys($directoriesAll) as $i) {
-				$directories[$i] = $directoriesAll[$i]->getValuesDirectories();
-				$keywords[$i] = $directoriesAll[$i]->getVar('dir_name');
-			}
-			$GLOBALS['xoopsTpl']->assign('directories', $directories);
-			unset($directories);
-			// Display Navigation
-			if ($directoriesCount > $limit) {
-				include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
-				$pagenav = new \XoopsPageNav($directoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
-				$GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-			}
-			$GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
-			$GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
-			$GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
-		}
-		break;
+    case 'show':
+    case 'list':
+    default:
+        $crDirectories = new \CriteriaCompo();
+        if ($dirId > 0) {
+            $crDirectories->add(new \Criteria('dir_id', $dirId));
+        }
+        $directoriesCount = $directoriesHandler->getCount($crDirectories);
+        $GLOBALS['xoopsTpl']->assign('directoriesCount', $directoriesCount);
+        $crDirectories->setStart($start);
+        $crDirectories->setLimit($limit);
+        $directoriesAll = $directoriesHandler->getAll($crDirectories);
+        if ($directoriesCount > 0) {
+            $directories = [];
+            // Get All Directories
+            foreach (\array_keys($directoriesAll) as $i) {
+                $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
+                $keywords[$i] = $directoriesAll[$i]->getVar('dir_name');
+            }
+            $GLOBALS['xoopsTpl']->assign('directories', $directories);
+            unset($directories);
+            // Display Navigation
+            if ($directoriesCount > $limit) {
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
+                $pagenav = new \XoopsPageNav($directoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+            }
+            $GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
+            $GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
+            $GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
+        }
+        break;
 }
 
 // Breadcrumbs

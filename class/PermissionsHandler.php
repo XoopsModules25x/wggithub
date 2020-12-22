@@ -33,110 +33,110 @@ use XoopsModules\Wggithub\Constants;
  */
 class PermissionsHandler extends \XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param null
-	 */
-	public function __construct()
-	{
-	}
+    /**
+     * Constructor
+     *
+     * @param null
+     */
+    public function __construct()
+    {
+    }
 
-	/**
-	 * @public function getPermGlobalRead
-	 * returns global right for reading from github
-	 *
-	 * @param null
-	 * @return bool
-	 */
-	public function getPermGlobalRead()
-	{
-		global $xoopsUser, $xoopsModule;
-		$currentuid = 0;
-		if (isset($xoopsUser) && \is_object($xoopsUser)) {
-			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-				return true;
-			}
-			$currentuid = $xoopsUser->uid();
-		}
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$mid = $xoopsModule->mid();
-		$memberHandler = \xoops_getHandler('member');
-		if (0 == $currentuid) {
-			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
-		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-		}
-		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_READ, $my_group_ids, $mid)) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @public function getPermGlobalRead
+     * returns global right for reading from github
+     *
+     * @param null
+     * @return bool
+     */
+    public function getPermGlobalRead()
+    {
+        global $xoopsUser, $xoopsModule;
+        $currentuid = 0;
+        if (isset($xoopsUser) && \is_object($xoopsUser)) {
+            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
+                return true;
+            }
+            $currentuid = $xoopsUser->uid();
+        }
+        $grouppermHandler = \xoops_getHandler('groupperm');
+        $mid = $xoopsModule->mid();
+        $memberHandler = \xoops_getHandler('member');
+        if (0 == $currentuid) {
+            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+        } else {
+            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
+        if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_READ, $my_group_ids, $mid)) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * @public function permGlobalSubmit
-	 * returns right for global view
-	 *
-	 * @param null
-	 * @return bool
-	 */
-	public function getPermGlobalView()
-	{
-		global $xoopsUser, $xoopsModule;
+    /**
+     * @public function permGlobalSubmit
+     * returns right for global view
+     *
+     * @param null
+     * @return bool
+     */
+    public function getPermGlobalView()
+    {
+        global $xoopsUser, $xoopsModule;
 
         if ($this->getPermGlobalRead()) {
             return true;
         }
 
-		$currentuid = 0;
-		if (isset($xoopsUser) && \is_object($xoopsUser)) {
-			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-				return true;
-			}
-			$currentuid = $xoopsUser->uid();
-		}
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$mid = $xoopsModule->mid();
-		$memberHandler = \xoops_getHandler('member');
-		if (0 == $currentuid) {
-			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
-		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-		}
-		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_VIEW, $my_group_ids, $mid)) {
-			return true;
-		}
-		return false;
-	}
+        $currentuid = 0;
+        if (isset($xoopsUser) && \is_object($xoopsUser)) {
+            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
+                return true;
+            }
+            $currentuid = $xoopsUser->uid();
+        }
+        $grouppermHandler = \xoops_getHandler('groupperm');
+        $mid = $xoopsModule->mid();
+        $memberHandler = \xoops_getHandler('member');
+        if (0 == $currentuid) {
+            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+        } else {
+            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
+        if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_GLOBAL_VIEW, $my_group_ids, $mid)) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * @public function getPermReadmeUpdate
-	 * returns right for updating existing readme
-	 *
-	 * @param null
-	 * @return bool
-	 */
-	public function getPermReadmeUpdate()
-	{
-		global $xoopsUser, $xoopsModule;
-		$currentuid = 0;
-		if (isset($xoopsUser) && \is_object($xoopsUser)) {
-			if ($xoopsUser->isAdmin($xoopsModule->mid())) {
-				return true;
-			}
-			$currentuid = $xoopsUser->uid();
-		}
-		$grouppermHandler = \xoops_getHandler('groupperm');
-		$mid = $xoopsModule->mid();
-		$memberHandler = \xoops_getHandler('member');
-		if (0 == $currentuid) {
-			$my_group_ids = [XOOPS_GROUP_ANONYMOUS];
-		} else {
-			$my_group_ids = $memberHandler->getGroupsByUser($currentuid);
-		}
-		if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_README_UPDATE, $my_group_ids, $mid)) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @public function getPermReadmeUpdate
+     * returns right for updating existing readme
+     *
+     * @param null
+     * @return bool
+     */
+    public function getPermReadmeUpdate()
+    {
+        global $xoopsUser, $xoopsModule;
+        $currentuid = 0;
+        if (isset($xoopsUser) && \is_object($xoopsUser)) {
+            if ($xoopsUser->isAdmin($xoopsModule->mid())) {
+                return true;
+            }
+            $currentuid = $xoopsUser->uid();
+        }
+        $grouppermHandler = \xoops_getHandler('groupperm');
+        $mid = $xoopsModule->mid();
+        $memberHandler = \xoops_getHandler('member');
+        if (0 == $currentuid) {
+            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+        } else {
+            $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
+        }
+        if ($grouppermHandler->checkRight('wggithub_ac', Constants::PERM_README_UPDATE, $my_group_ids, $mid)) {
+            return true;
+        }
+        return false;
+    }
 }

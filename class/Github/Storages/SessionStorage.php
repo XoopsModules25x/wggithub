@@ -12,75 +12,75 @@ use XoopsModules\Wggithub\Github;
  */
 class SessionStorage extends Github\Sanity implements ISessionStorage
 {
-	const SESSION_KEY = 'milo.github-api';
+    const SESSION_KEY = 'milo.github-api';
 
-	/** @var string */
-	private $sessionKey;
-
-
-	/**
-	 * @param  string
-	 */
-	public function __construct($sessionKey = self::SESSION_KEY)
-	{
-		$this->sessionKey = $sessionKey;
-	}
+    /** @var string */
+    private $sessionKey;
 
 
-	/**
-	 * @param  string
-	 * @param  mixed
-	 * @return self
-	 */
-	public function set($name, $value)
-	{
-		if ($value === NULL) {
-			return $this->remove($name);
-		}
-
-		$this->check(__METHOD__);
-		$_SESSION[$this->sessionKey][$name] = $value;
-
-		return $this;
-	}
+    /**
+     * @param  string
+     */
+    public function __construct($sessionKey = self::SESSION_KEY)
+    {
+        $this->sessionKey = $sessionKey;
+    }
 
 
-	/**
-	 * @param  string
-	 * @return mixed
-	 */
-	public function get($name)
-	{
-		$this->check(__METHOD__);
+    /**
+     * @param  string
+     * @param  mixed
+     * @return self
+     */
+    public function set($name, $value)
+    {
+        if ($value === NULL) {
+            return $this->remove($name);
+        }
 
-		return isset($_SESSION[$this->sessionKey][$name])
-			? $_SESSION[$this->sessionKey][$name]
-			: NULL;
-	}
+        $this->check(__METHOD__);
+        $_SESSION[$this->sessionKey][$name] = $value;
 
-
-	/**
-	 * @param  string
-	 * @return self
-	 */
-	public function remove($name)
-	{
-		$this->check(__METHOD__);
-
-		unset($_SESSION[$this->sessionKey][$name]);
-
-		return $this;
-	}
+        return $this;
+    }
 
 
-	/**
-	 * @param  string
-	 */
-	private function check($method)
-	{
-		if (!isset($_SESSION)) {
-			trigger_error("Start session before using $method().", E_USER_WARNING);
-		}
-	}
+    /**
+     * @param  string
+     * @return mixed
+     */
+    public function get($name)
+    {
+        $this->check(__METHOD__);
+
+        return isset($_SESSION[$this->sessionKey][$name])
+            ? $_SESSION[$this->sessionKey][$name]
+            : NULL;
+    }
+
+
+    /**
+     * @param  string
+     * @return self
+     */
+    public function remove($name)
+    {
+        $this->check(__METHOD__);
+
+        unset($_SESSION[$this->sessionKey][$name]);
+
+        return $this;
+    }
+
+
+    /**
+     * @param  string
+     */
+    private function check($method)
+    {
+        if (!isset($_SESSION)) {
+            trigger_error("Start session before using $method().", E_USER_WARNING);
+        }
+    }
 
 }

@@ -28,7 +28,7 @@ namespace XoopsModules\Wggithub;
  */
 interface Constants
 {
-	// Constants for tables
+    // Constants for tables
     public const TABLE_SETTINGS = 0;
     public const TABLE_REPOSITORIES = 1;
     public const TABLE_DIRECTORIES = 2;
@@ -39,17 +39,17 @@ interface Constants
     public const DIRECTORY_TYPE_USER = 1;
     public const DIRECTORY_TYPE_ORG  = 2;
 
-	// Constants for status
-	public const STATUS_NONE     = 0;
+    // Constants for status
+    public const STATUS_NONE     = 0;
     public const STATUS_NEW      = 1;
     public const STATUS_UPDATED  = 2;
-	public const STATUS_UPTODATE = 3;
+    public const STATUS_UPTODATE = 3;
 
-	// Constants for permissions
-	public const PERM_GLOBAL_NONE   = 0;
-	public const PERM_GLOBAL_VIEW   = 1;
-	public const PERM_GLOBAL_READ   = 2;
-	public const PERM_README_UPDATE = 3;
+    // Constants for permissions
+    public const PERM_GLOBAL_NONE   = 0;
+    public const PERM_GLOBAL_VIEW   = 1;
+    public const PERM_GLOBAL_READ   = 2;
+    public const PERM_README_UPDATE = 3;
 
     // Constants for log type
     public const LOG_TYPE_NONE  = 0;

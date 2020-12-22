@@ -31,96 +31,96 @@ use XoopsModules\Wggithub;
  */
 class LogsHandler extends \XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param \XoopsDatabase $db
-	 */
-	public function __construct(\XoopsDatabase $db)
-	{
-		parent::__construct($db, 'wggithub_logs', Logs::class, 'log_id', 'log_detail');
-	}
+    /**
+     * Constructor
+     *
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db)
+    {
+        parent::__construct($db, 'wggithub_logs', Logs::class, 'log_id', 'log_detail');
+    }
 
-	/**
-	 * @param bool $isNew
-	 *
-	 * @return object
-	 */
-	public function create($isNew = true)
-	{
-		return parent::create($isNew);
-	}
+    /**
+     * @param bool $isNew
+     *
+     * @return object
+     */
+    public function create($isNew = true)
+    {
+        return parent::create($isNew);
+    }
 
-	/**
-	 * retrieve a field
-	 *
-	 * @param int $i field id
-	 * @param null fields
-	 * @return mixed reference to the {@link Get} object
-	 */
-	public function get($i = null, $fields = null)
-	{
-		return parent::get($i, $fields);
-	}
+    /**
+     * retrieve a field
+     *
+     * @param int $i field id
+     * @param null fields
+     * @return mixed reference to the {@link Get} object
+     */
+    public function get($i = null, $fields = null)
+    {
+        return parent::get($i, $fields);
+    }
 
-	/**
-	 * get inserted id
-	 *
-	 * @param null
-	 * @return int reference to the {@link Get} object
-	 */
-	public function getInsertId()
-	{
-		return $this->db->getInsertId();
-	}
+    /**
+     * get inserted id
+     *
+     * @param null
+     * @return int reference to the {@link Get} object
+     */
+    public function getInsertId()
+    {
+        return $this->db->getInsertId();
+    }
 
-	/**
-	 * Get Count Logs in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	public function getCountLogs($start = 0, $limit = 0, $sort = 'log_id', $order = 'ASC')
-	{
-		$crCountLogs = new \CriteriaCompo();
-		$crCountLogs = $this->getLogsCriteria($crCountLogs, $start, $limit, $sort, $order);
-		return $this->getCount($crCountLogs);
-	}
+    /**
+     * Get Count Logs in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    public function getCountLogs($start = 0, $limit = 0, $sort = 'log_id', $order = 'ASC')
+    {
+        $crCountLogs = new \CriteriaCompo();
+        $crCountLogs = $this->getLogsCriteria($crCountLogs, $start, $limit, $sort, $order);
+        return $this->getCount($crCountLogs);
+    }
 
-	/**
-	 * Get All Logs in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return array
-	 */
-	public function getAllLogs($start = 0, $limit = 0, $sort = 'log_id', $order = 'ASC')
-	{
-		$crAllLogs = new \CriteriaCompo();
-		$crAllLogs = $this->getLogsCriteria($crAllLogs, $start, $limit, $sort, $order);
-		return $this->getAll($crAllLogs);
-	}
+    /**
+     * Get All Logs in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return array
+     */
+    public function getAllLogs($start = 0, $limit = 0, $sort = 'log_id', $order = 'ASC')
+    {
+        $crAllLogs = new \CriteriaCompo();
+        $crAllLogs = $this->getLogsCriteria($crAllLogs, $start, $limit, $sort, $order);
+        return $this->getAll($crAllLogs);
+    }
 
-	/**
-	 * Get Criteria Logs
-	 * @param        $crLogs
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	private function getLogsCriteria($crLogs, $start, $limit, $sort, $order)
-	{
-		$crLogs->setStart($start);
-		$crLogs->setLimit($limit);
-		$crLogs->setSort($sort);
-		$crLogs->setOrder($order);
-		return $crLogs;
-	}
+    /**
+     * Get Criteria Logs
+     * @param        $crLogs
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    private function getLogsCriteria($crLogs, $start, $limit, $sort, $order)
+    {
+        $crLogs->setStart($start);
+        $crLogs->setLimit($limit);
+        $crLogs->setSort($sort);
+        $crLogs->setOrder($order);
+        return $crLogs;
+    }
 
     /**
      * Update table requests

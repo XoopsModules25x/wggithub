@@ -10,21 +10,21 @@ namespace XoopsModules\Wggithub\Github\Http;
  */
 interface IClient
 {
-	/**
-	 * @return Response
-	 */
-	function request(Request $request);
+    /**
+     * @return Response
+     */
+    function request(Request $request);
 
-	/**
-	 * @param  callable|NULL
-	 * @return self
-	 */
-	function onRequest($callback);
+    /**
+     * @param  callable|NULL
+     * @return self
+     */
+    function onRequest($callback);
 
-	/**
-	 * @param  callable|NULL
-	 * @return self
-	 */
-	function onResponse($callback);
+    /**
+     * @param  callable|NULL
+     * @return self
+     */
+    function onResponse($callback);
 
 }

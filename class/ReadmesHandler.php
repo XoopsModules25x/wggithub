@@ -35,96 +35,96 @@ use XoopsModules\Wggithub\{
  */
 class ReadmesHandler extends \XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param \XoopsDatabase $db
-	 */
-	public function __construct(\XoopsDatabase $db)
-	{
-		parent::__construct($db, 'wggithub_readmes', Readmes::class, 'rm_id', 'rm_name');
-	}
+    /**
+     * Constructor
+     *
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db)
+    {
+        parent::__construct($db, 'wggithub_readmes', Readmes::class, 'rm_id', 'rm_name');
+    }
 
-	/**
-	 * @param bool $isNew
-	 *
-	 * @return object
-	 */
-	public function create($isNew = true)
-	{
-		return parent::create($isNew);
-	}
+    /**
+     * @param bool $isNew
+     *
+     * @return object
+     */
+    public function create($isNew = true)
+    {
+        return parent::create($isNew);
+    }
 
-	/**
-	 * retrieve a field
-	 *
-	 * @param int $i field id
-	 * @param null fields
-	 * @return mixed reference to the {@link Get} object
-	 */
-	public function get($i = null, $fields = null)
-	{
-		return parent::get($i, $fields);
-	}
+    /**
+     * retrieve a field
+     *
+     * @param int $i field id
+     * @param null fields
+     * @return mixed reference to the {@link Get} object
+     */
+    public function get($i = null, $fields = null)
+    {
+        return parent::get($i, $fields);
+    }
 
-	/**
-	 * get inserted id
-	 *
-	 * @param null
-	 * @return int reference to the {@link Get} object
-	 */
-	public function getInsertId()
-	{
-		return $this->db->getInsertId();
-	}
+    /**
+     * get inserted id
+     *
+     * @param null
+     * @return int reference to the {@link Get} object
+     */
+    public function getInsertId()
+    {
+        return $this->db->getInsertId();
+    }
 
-	/**
-	 * Get Count Readmes in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	public function getCountReadmes($start = 0, $limit = 0, $sort = 'rm_id ASC, rm_name', $order = 'ASC')
-	{
-		$crCountReadmes = new \CriteriaCompo();
-		$crCountReadmes = $this->getReadmesCriteria($crCountReadmes, $start, $limit, $sort, $order);
-		return $this->getCount($crCountReadmes);
-	}
+    /**
+     * Get Count Readmes in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    public function getCountReadmes($start = 0, $limit = 0, $sort = 'rm_id ASC, rm_name', $order = 'ASC')
+    {
+        $crCountReadmes = new \CriteriaCompo();
+        $crCountReadmes = $this->getReadmesCriteria($crCountReadmes, $start, $limit, $sort, $order);
+        return $this->getCount($crCountReadmes);
+    }
 
-	/**
-	 * Get All Readmes in the database
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return array
-	 */
-	public function getAllReadmes($start = 0, $limit = 0, $sort = 'rm_id ASC, rm_name', $order = 'ASC')
-	{
-		$crAllReadmes = new \CriteriaCompo();
-		$crAllReadmes = $this->getReadmesCriteria($crAllReadmes, $start, $limit, $sort, $order);
-		return $this->getAll($crAllReadmes);
-	}
+    /**
+     * Get All Readmes in the database
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return array
+     */
+    public function getAllReadmes($start = 0, $limit = 0, $sort = 'rm_id ASC, rm_name', $order = 'ASC')
+    {
+        $crAllReadmes = new \CriteriaCompo();
+        $crAllReadmes = $this->getReadmesCriteria($crAllReadmes, $start, $limit, $sort, $order);
+        return $this->getAll($crAllReadmes);
+    }
 
-	/**
-	 * Get Criteria Readmes
-	 * @param        $crReadmes
-	 * @param int    $start
-	 * @param int    $limit
-	 * @param string $sort
-	 * @param string $order
-	 * @return int
-	 */
-	private function getReadmesCriteria($crReadmes, $start, $limit, $sort, $order)
-	{
-		$crReadmes->setStart($start);
-		$crReadmes->setLimit($limit);
-		$crReadmes->setSort($sort);
-		$crReadmes->setOrder($order);
-		return $crReadmes;
-	}
+    /**
+     * Get Criteria Readmes
+     * @param        $crReadmes
+     * @param int    $start
+     * @param int    $limit
+     * @param string $sort
+     * @param string $order
+     * @return int
+     */
+    private function getReadmesCriteria($crReadmes, $start, $limit, $sort, $order)
+    {
+        $crReadmes->setStart($start);
+        $crReadmes->setLimit($limit);
+        $crReadmes->setSort($sort);
+        $crReadmes->setOrder($order);
+        return $crReadmes;
+    }
 
     /**
      * Update table requests

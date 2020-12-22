@@ -47,38 +47,38 @@ $GLOBALS['xoopsTpl']->assign('permEdit', $permEdit);
 $GLOBALS['xoopsTpl']->assign('showItem', $repoId > 0);
 
 switch ($op) {
-	case 'show':
-	case 'list':
-	default:
-		$crRepositories = new \CriteriaCompo();
-		if ($repoId > 0) {
-			$crRepositories->add(new \Criteria('repo_id', $repoId));
-		}
-		$repositoriesCount = $repositoriesHandler->getCount($crRepositories);
-		$GLOBALS['xoopsTpl']->assign('repositoriesCount', $repositoriesCount);
-		$crRepositories->setStart($start);
-		$crRepositories->setLimit($limit);
-		$repositoriesAll = $repositoriesHandler->getAll($crRepositories);
-		if ($repositoriesCount > 0) {
-			$repositories = [];
-			// Get All Repositories
-			foreach (\array_keys($repositoriesAll) as $i) {
-				$repositories[$i] = $repositoriesAll[$i]->getValuesRepositories();
-				$keywords[$i] = $repositoriesAll[$i]->getVar('repo_name');
-			}
-			$GLOBALS['xoopsTpl']->assign('repositories', $repositories);
-			unset($repositories);
-			// Display Navigation
-			if ($repositoriesCount > $limit) {
-				include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-				$pagenav = new \XoopsPageNav($repositoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
-				$GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-			}
-			$GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
-			$GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
-			$GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
-		}
-		break;
+    case 'show':
+    case 'list':
+    default:
+        $crRepositories = new \CriteriaCompo();
+        if ($repoId > 0) {
+            $crRepositories->add(new \Criteria('repo_id', $repoId));
+        }
+        $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+        $GLOBALS['xoopsTpl']->assign('repositoriesCount', $repositoriesCount);
+        $crRepositories->setStart($start);
+        $crRepositories->setLimit($limit);
+        $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+        if ($repositoriesCount > 0) {
+            $repositories = [];
+            // Get All Repositories
+            foreach (\array_keys($repositoriesAll) as $i) {
+                $repositories[$i] = $repositoriesAll[$i]->getValuesRepositories();
+                $keywords[$i] = $repositoriesAll[$i]->getVar('repo_name');
+            }
+            $GLOBALS['xoopsTpl']->assign('repositories', $repositories);
+            unset($repositories);
+            // Display Navigation
+            if ($repositoriesCount > $limit) {
+                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                $pagenav = new \XoopsPageNav($repositoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+            }
+            $GLOBALS['xoopsTpl']->assign('type', $helper->getConfig('table_type'));
+            $GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
+            $GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
+        }
+        break;
 }
 
 // Breadcrumbs

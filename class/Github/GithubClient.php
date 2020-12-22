@@ -202,6 +202,7 @@ class GithubClient extends Api
     public function _get($url)
     {
         $error = false;
+        $errMsg = '';
 
         $logsHandler = $this->helper->getHandler('Logs');
         $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START');
