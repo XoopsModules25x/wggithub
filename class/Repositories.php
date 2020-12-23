@@ -122,6 +122,7 @@ class Repositories extends \XoopsObject
         $repoStatusSelect->addOption(Constants::STATUS_NONE, _AM_WGGITHUB_STATUS_NONE);
         $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, _AM_WGGITHUB_STATUS_UPTODATE);
         $repoStatusSelect->addOption(Constants::STATUS_UPDATED, _AM_WGGITHUB_STATUS_UPDATED);
+        $repoStatusSelect->addOption(Constants::STATUS_OFFLINE, _AM_WGGITHUB_STATUS_OFFLINE);
         $form->addElement($repoStatusSelect);
         // Form Text Date Select repoDatecreated
         $repoDatecreated = $this->isNew() ?: $this->getVar('repo_datecreated');
@@ -170,6 +171,9 @@ class Repositories extends \XoopsObject
                 break;
             case Constants::STATUS_UPDATED:
                 $status_text = \_AM_WGGITHUB_STATUS_UPDATED;
+                break;
+            case Constants::STATUS_OFFLINE:
+                $status_text = _AM_WGGITHUB_STATUS_OFFLINE;
                 break;
         }
         $ret['status_text'] = $status_text;

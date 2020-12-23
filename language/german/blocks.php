@@ -20,8 +20,8 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 // Admin Edit
-\define('_MB_WGGITHUB_DISPLAY', 'How Many Tables to Display');
-\define('_MB_WGGITHUB_TITLE_LENGTH', 'Title Length');
-\define('_MB_WGGITHUB_CATTODISPLAY', 'Categories to Display');
-\define('_MB_WGGITHUB_ALLCAT', 'All Categories');
+\define('_MB_WGGITHUB_DISPLAY', 'Wieviele Tabellen in der Anzeige');
+\define('_MB_WGGITHUB_TITLE_LENGTH', 'Titellänge');
+\define('_MB_WGGITHUB_CATTODISPLAY', 'Kategorie Anzeige');
+\define('_MB_WGGITHUB_ALLCAT', 'Alle Kategorien');
 // ---------------- End ----------------

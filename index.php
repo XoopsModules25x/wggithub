@@ -65,17 +65,23 @@ switch ($op) {
     case 'list':
     case 'apiexceed':
     default:
-        //check number of API calls
-        $lastUpdate = 0;
-        $crLogs = new \CriteriaCompo();
-        $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
-        $logsCount = $logsHandler->getCount($crLogs);
-        if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
-            $githubClient = GithubClient::getInstance();
-            $githubClient->executeUpdate();
+        //check number of directories with auto_update
+        $crDirectories = new \CriteriaCompo();
+        $crDirectories->add(new \Criteria('dir_autoupdate', 1));
+        $directoriesCount = $directoriesHandler->getCount($crDirectories);
+        if ($directoriesCount > 0) {
+            //check number of API calls
+            $lastUpdate = 0;
+            $crLogs = new \CriteriaCompo();
+            $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
+            $logsCount = $logsHandler->getCount($crLogs);
+            if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
+                $githubClient = GithubClient::getInstance();
+                $githubClient->executeUpdate();
+            }
+            unset($crLogs);
         }
-
-        unset($crLogs);
+        unset($crDirectories);
         $crLogs = new \CriteriaCompo();
         $crLogs->add(new \Criteria('log_type', Constants::LOG_TYPE_UPDATE_END));
         $crLogs->add(new \Criteria('log_result', 'OK'));
@@ -125,6 +131,8 @@ switch ($op) {
                 $repos = [];
                 $crRepositories = new \CriteriaCompo();
                 $crRepositories->add(new \Criteria('repo_user', $dirName));
+                $crRepositories->add(new \Criteria('repo_status', Constants::STATUS_UPDATED));
+                $crRepositories->add(new \Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
                 $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
                 if ('any' === $filterRelease && $dirFilterRelease) {
                     $crRepositories->add(new \Criteria('repo_prerelease', 1) );
@@ -188,7 +196,6 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('start', $start);
                 $GLOBALS['xoopsTpl']->assign('limit', $limit);
                 $GLOBALS['xoopsTpl']->assign('menu', $menu);
-
                 $GLOBALS['xoopsTpl']->assign('directories', $directories);
             }
 

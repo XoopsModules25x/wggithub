@@ -51,6 +51,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_STATUS_NEW', 'New');
 \define('_AM_WGGITHUB_STATUS_UPTODATE', 'Up to date');
 \define('_AM_WGGITHUB_STATUS_UPDATED', 'Updated');
+\define('_AM_WGGITHUB_STATUS_OFFLINE', 'Offline');
 // Buttons
 \define('_AM_WGGITHUB_ADD_SETTING', 'Add New Setting');
 \define('_AM_WGGITHUB_ADD_REPOSITORY', 'Add New Repository');

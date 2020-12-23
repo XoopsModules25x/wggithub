@@ -44,6 +44,7 @@ interface Constants
     public const STATUS_NEW      = 1;
     public const STATUS_UPDATED  = 2;
     public const STATUS_UPTODATE = 3;
+    public const STATUS_OFFLINE  = 4;
 
     // Constants for permissions
     public const PERM_GLOBAL_NONE   = 0;

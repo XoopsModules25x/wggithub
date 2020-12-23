@@ -1,4 +1,12 @@
 ===================================================================
+2020/12/23 Version 1.02 beta 1
+===================================================================
+ - removed unnecessary module settings (goffy)
+ - cleaned up lang files (goffy)
+ - added status offline (goffy)
+ - added autochange from http: into https: for image sources (goffy)
+
+===================================================================
 2020/10/11 Version 1.01 alpha
 ===================================================================
  - implemented filter and sorting (mage/goffy)
