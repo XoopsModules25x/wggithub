@@ -86,11 +86,4 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_FACEBOOK_COMMENTS_DESC', 'Allow Facebook comments in the single page');
 \define('_MI_WGGITHUB_DISQUS_COMMENTS', 'Disqus comments');
 \define('_MI_WGGITHUB_DISQUS_COMMENTS_DESC', 'Allow Disqus comments in the single page');
-// Permissions Groups
-\define('_MI_WGGITHUB_GROUPS', 'Groups access');
-\define('_MI_WGGITHUB_GROUPS_DESC', 'Select general access permission for groups.');
-\define('_MI_WGGITHUB_ADMIN_GROUPS', 'Admin Group Permissions');
-\define('_MI_WGGITHUB_ADMIN_GROUPS_DESC', 'Which groups have access to tools and permissions page');
-\define('_MI_WGGITHUB_UPLOAD_GROUPS', 'Upload Group Permissions');
-\define('_MI_WGGITHUB_UPLOAD_GROUPS_DESC', 'Which groups have permissions to upload files');
 // ---------------- End ----------------

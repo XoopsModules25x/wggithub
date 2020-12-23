@@ -124,6 +124,16 @@
 
 	el.parentNode.replaceChild(elClone, el);
 
+
+	var imgs = document.getElementsByTagName("img");
+	var imgSrc = '';
+
+	for (var i = 0; i < imgs.length; i++) {
+		imgSrc = imgs[i].src;
+		imgSrc = imgSrc.replace("http:", "https:");
+		imgs[i].src = imgSrc;
+	}
+
 </script>
 <script type="text/javascript">
 	var executeClick = function(el, group, href)

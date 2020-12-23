@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_WGGITHUB_NAME,
-    'version'             => 1.01,
+    'version'             => 1.02,
     'description'         => _MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',
@@ -201,52 +201,6 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 50,
 ];
-// Get groups
-$memberHandler = \xoops_getHandler('member');
-$xoopsGroups  = $memberHandler->getGroupList();
-$groups = [];
-foreach ($xoopsGroups as $key => $group) {
-    $groups[$group]  = $key;
-}
-// General access groups
-$modversion['config'][] = [
-    'name'        => 'groups',
-    'title'       => '_MI_WGGITHUB_GROUPS',
-    'description' => '_MI_WGGITHUB_GROUPS_DESC',
-    'formtype'    => 'select_multi',
-    'valuetype'   => 'array',
-    'default'     => $groups,
-    'options'     => $groups,
-];
-// Upload groups
-$modversion['config'][] = [
-    'name'        => 'upload_groups',
-    'title'       => '_MI_WGGITHUB_UPLOAD_GROUPS',
-    'description' => '_MI_WGGITHUB_UPLOAD_GROUPS_DESC',
-    'formtype'    => 'select_multi',
-    'valuetype'   => 'array',
-    'default'     => $groups,
-    'options'     => $groups,
-];
-// Get Admin groups
-$crGroups = new \CriteriaCompo();
-$crGroups->add(new \Criteria('group_type', 'Admin'));
-$memberHandler = \xoops_getHandler('member');
-$adminXoopsGroups  = $memberHandler->getGroupList($crGroups);
-$adminGroups = [];
-foreach ($adminXoopsGroups as $key => $adminGroup) {
-    $adminGroups[$adminGroup]  = $key;
-}
-$modversion['config'][] = [
-    'name'        => 'admin_groups',
-    'title'       => '_MI_WGGITHUB_ADMIN_GROUPS',
-    'description' => '_MI_WGGITHUB_ADMIN_GROUPS_DESC',
-    'formtype'    => 'select_multi',
-    'valuetype'   => 'array',
-    'default'     => $adminGroups,
-    'options'     => $adminGroups,
-];
-unset($crGroups);
 // Keywords
 $modversion['config'][] = [
     'name'        => 'keywords',
