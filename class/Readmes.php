@@ -87,7 +87,7 @@ class Readmes extends \XoopsObject
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
-        $isAdmin = $GLOBALS['xoopsUser']->isAdmin($GLOBALS['xoopsModule']->mid());
+
         // Title
         $title = $this->isNew() ? \sprintf(_AM_WGGITHUB_README_ADD) : \sprintf(_AM_WGGITHUB_README_EDIT);
         // Get Theme Form

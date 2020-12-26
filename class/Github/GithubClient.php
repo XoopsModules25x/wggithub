@@ -148,7 +148,7 @@ class GithubClient extends Api
     {
         $url = static::BASE_URL . 'repos/' . \rawurlencode($username) . '/' . \rawurlencode($repository) . '/readme';
 
-        return $this->_get($url);
+        return $this->_get($url, true);
     }
 
     /**
@@ -162,7 +162,7 @@ class GithubClient extends Api
     {
         $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases';
 
-        return $this->_get($url);
+        return $this->_get($url, true);
     }
 
     /**
@@ -199,14 +199,16 @@ class GithubClient extends Api
      * @param $url
      * @return array
      */
-    public function _get($url)
+    public function _get($url, $skipError = false)
     {
         $error = false;
         $errMsg = '';
 
         $logsHandler = $this->helper->getHandler('Logs');
         $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START');
-
+        if (strpos($url, 'xmcontact') > 0) {
+            echo 'ok';
+        }
         $api = new Github\Api;
         $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo', 'user', 'public_repo']);
         $api->setToken($token);
@@ -215,9 +217,14 @@ class GithubClient extends Api
         if (\in_array($code, [200, 201], true)) {
             $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'OK');
         } else {
-            $error = true;
-            $errMsg = $response->getContent();
-            $logsHandler->updateTableLogs(Constants::LOG_TYPE_ERROR, $errMsg, 'ERROR ' . $code);
+            if ($skipError) {
+                $logsHandler->updateTableLogs(Constants::LOG_TYPE_ERROR, $errMsg, 'Skipped');
+                return false;
+            } else {
+                $error = true;
+                $errMsg = $response->getContent();
+                $logsHandler->updateTableLogs(Constants::LOG_TYPE_ERROR, $errMsg, 'ERROR ' . $code);
+            }
         }
         if ($error) {
             //catch common errors

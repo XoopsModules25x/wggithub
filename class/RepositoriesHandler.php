@@ -188,15 +188,9 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $reposNb++;
                     if ($updateAddtionals && (Constants::STATUS_NEW == $status || Constants::STATUS_UPDATED == $status)) {
                         // add/update table readmes
-                        $res = $helper->getHandler('Readmes')->updateReadmes($repoId, $user, $repo['name']);
-                        if (false === $res) {
-                            return false;
-                        }
+                        $helper->getHandler('Readmes')->updateReadmes($repoId, $user, $repo['name']);
                         // add/update table release
-                        $res = $helper->getHandler('Releases')->updateReleases($repoId, $user, $repo['name']);
-                        if (false === $res) {
-                            return false;
-                        }
+                        $helper->getHandler('Releases')->updateReleases($repoId, $user, $repo['name']);
                         // change status to updated
                         $repositoriesObj = $repositoriesHandler->get($repoId);
                         $repositoriesObj->setVar('repo_status', Constants::STATUS_UPTODATE);

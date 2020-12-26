@@ -6,6 +6,7 @@
  - added status offline (goffy)
  - added autochange from http: into https: for image sources (goffy)
  - added start/limit to forms (goffy)
+ - ignore error when no readme/release exists (goffy)
 
 ===================================================================
 2020/10/11 Version 1.01 alpha
