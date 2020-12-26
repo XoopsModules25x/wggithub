@@ -53,8 +53,8 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_REPOSITORIES_DESC', 'Beschreibung Repositories');
 \define('_MA_WGGITHUB_REPOSITORIES_LIST', 'Liste der Repositories');
 \define('_MA_WGGITHUB_REPOSITORY_GOTO', 'Gehe zu GitHub Repository');
-\define('_MA_WGGITHUB_REPOSITORIES_COUNT1', 'Verzeichnis%s: %r von %t Repositories');
-\define('_MA_WGGITHUB_REPOSITORIES_COUNT2', 'Verzeichnis%s: %t Repositories');
+\define('_MA_WGGITHUB_REPOSITORIES_COUNT1', 'Verzeichnis %s: %r von %t Repositories');
+\define('_MA_WGGITHUB_REPOSITORIES_COUNT2', 'Verzeichnis %s: %t Repositories');
 // Caption of Repository
 \define('_MA_WGGITHUB_REPOSITORY_ID', 'Id');
 \define('_MA_WGGITHUB_REPOSITORY_NODEID', 'Nodeid');

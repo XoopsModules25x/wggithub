@@ -27,16 +27,18 @@ use XoopsModules\Wggithub\Common;
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
-$op = Request::getCmd('op', 'list');
-// Request log_id
+$op    = Request::getCmd('op', 'list');
 $logId = Request::getInt('log_id');
+$start = Request::getInt('start', 0);
+$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$GLOBALS['xoopsTpl']->assign('start', $start);
+$GLOBALS['xoopsTpl']->assign('limit', $limit);
+
 switch ($op) {
     case 'list':
     default:
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
-        $start = Request::getInt('start', 0);
-        $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_LOG, 'logs.php?op=new', 'add');
@@ -71,7 +73,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $logsObj = $logsHandler->create();
-        $form = $logsObj->getFormLogs();
+        $form = $logsObj->getFormLogs(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'save':
@@ -93,11 +95,11 @@ switch ($op) {
         $logsObj->setVar('log_submitter', Request::getInt('log_submitter', 0));
         // Insert Data
         if ($logsHandler->insert($logsObj)) {
-            \redirect_header('logs.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('logs.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $logsObj->getHtmlErrors());
-        $form = $logsObj->getFormLogs();
+        $form = $logsObj->getFormLogs(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'edit':
@@ -108,7 +110,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $logsObj = $logsHandler->get($logId);
-        $form = $logsObj->getFormLogs();
+        $form = $logsObj->getFormLogs(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'delete':

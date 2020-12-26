@@ -130,18 +130,29 @@ switch ($op) {
                 $dirFilterRelease = (bool)$directoriesAll[$i]->getVar('dir_filterrelease');
                 $repos = [];
                 $crRepositories = new \CriteriaCompo();
-                $crRepositories->add(new \Criteria('repo_user', $dirName));
-                $crRepositories->add(new \Criteria('repo_status', Constants::STATUS_UPDATED));
-                $crRepositories->add(new \Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
+                //first block/parentheses
+                $crRepo1 = new CriteriaCompo();
+                $crRepo1->add(new Criteria('repo_user', $dirName));
+                $crRepositories->add($crRepo1);
+                //second
+                $crRepo2 = new CriteriaCompo();
+                $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPDATED));
+                $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
+                $crRepositories->add($crRepo2);
                 $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
+                //third
                 if ('any' === $filterRelease && $dirFilterRelease) {
-                    $crRepositories->add(new \Criteria('repo_prerelease', 1) );
-                    $crRepositories->add(new \Criteria('repo_release', 1), 'OR');
-                }
-                if ('final' === $filterRelease && $dirFilterRelease) {
-                    $crRepositories->add(new \Criteria('repo_release', 1));
+                    $crRepo3 = new CriteriaCompo();
+                    $crRepo3->add(new Criteria('repo_prerelease', 1));
+                    $crRepo3->add(new Criteria('repo_release', 1), 'OR');
+                    $crRepositories->add($crRepo3);
+                } elseif ('final' === $filterRelease && $dirFilterRelease) {
+                    $crRepo3 = new CriteriaCompo();
+                    $crRepo3->add(new Criteria('repo_prerelease', 1));
+                    $crRepositories->add($crRepo3);
                 }
                 $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+
                 $crRepositories->setStart($start);
                 $crRepositories->setLimit($limit);
                 switch ($filterSortby) {
@@ -181,8 +192,9 @@ switch ($op) {
                             unset($crReleases, $releasesAll);
                         }
                     }
-                    unset($crRepositories, $repositoriesAll);
+                    unset($repositoriesAll);
                 }
+                unset($crRepo1, $crRepo2, $crRepo3, $crRepositories);
                 if ($repositoriesCount === $repositoriesCountTotal) {
                     $directories[$i]['countRepos'] = str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT2);
                 } else {

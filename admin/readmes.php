@@ -27,16 +27,18 @@ use XoopsModules\Wggithub\Common;
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
-$op = Request::getCmd('op', 'list');
-// Request rm_id
-$rmId = Request::getInt('rm_id');
+$op    = Request::getCmd('op', 'list');
+$rmId  = Request::getInt('rm_id');
+$start = Request::getInt('start', 0);
+$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$GLOBALS['xoopsTpl']->assign('start', $start);
+$GLOBALS['xoopsTpl']->assign('limit', $limit);
+
 switch ($op) {
     case 'list':
     default:
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
-        $start = Request::getInt('start', 0);
-        $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
@@ -70,7 +72,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $readmesObj = $readmesHandler->create();
-        $form = $readmesObj->getFormReadmes();
+        $form = $readmesObj->getFormReadmes(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'save':
@@ -95,11 +97,11 @@ switch ($op) {
         $readmesObj->setVar('rm_submitter', Request::getInt('rm_submitter', 0));
         // Insert Data
         if ($readmesHandler->insert($readmesObj)) {
-            \redirect_header('readmes.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('readmes.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
-        $form = $readmesObj->getFormReadmes();
+        $form = $readmesObj->getFormReadmes(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'edit':
@@ -110,7 +112,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $readmesObj = $readmesHandler->get($rmId);
-        $form = $readmesObj->getFormReadmes();
+        $form = $readmesObj->getFormReadmes(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'delete':
