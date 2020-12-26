@@ -77,9 +77,11 @@ class Readmes extends \XoopsObject
     /**
      * @public function getForm
      * @param bool $action
+     * @param int  $start
+     * @param int  $limit
      * @return \XoopsThemeForm
      */
-    public function getFormReadmes($action = false)
+    public function getFormReadmes($action = false, $start = 0, $limit = 0)
     {
         $helper = \XoopsModules\Wggithub\Helper::getInstance();
         if (!$action) {
@@ -114,6 +116,8 @@ class Readmes extends \XoopsObject
         $form->addElement(new \XoopsFormSelectUser(_AM_WGGITHUB_README_SUBMITTER, 'rm_submitter', false, $this->getVar('rm_submitter')));
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
         $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
         return $form;
     }

@@ -31,8 +31,8 @@
 				<td class='center'><{$readme.datecreated}></td>
 				<td class='center'><{$readme.submitter}></td>
 				<td class="center  width5">
-					<a href="readmes.php?op=edit&amp;rm_id=<{$readme.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> readmes" /></a>
-					<a href="readmes.php?op=delete&amp;rm_id=<{$readme.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> readmes" /></a>
+					<a href="readmes.php?op=edit&amp;rm_id=<{$readme.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> readmes" /></a>
+					<a href="readmes.php?op=delete&amp;rm_id=<{$readme.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> readmes" /></a>
 				</td>
 			</tr>
 			<{/foreach}>

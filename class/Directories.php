@@ -76,9 +76,11 @@ class Directories extends \XoopsObject
     /**
      * @public function getForm
      * @param bool $action
+     * @param int  $start
+     * @param int  $limit
      * @return \XoopsThemeForm
      */
-    public function getFormDirectories($action = false)
+    public function getFormDirectories($action = false, $start = 0, $limit = 0)
     {
         $helper = \XoopsModules\Wggithub\Helper::getInstance();
         if (!$action) {
@@ -117,6 +119,8 @@ class Directories extends \XoopsObject
         $form->addElement(new \XoopsFormSelectUser(\_AM_WGGITHUB_DIRECTORY_SUBMITTER, 'dir_submitter', false, $this->getVar('dir_submitter')));
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
         $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
         return $form;
     }

@@ -25,8 +25,8 @@
 				<td class='center'><{$log.datecreated}></td>
 				<td class='center'><{$log.submitter}></td>
 				<td class="center  width5">
-					<a href="logs.php?op=edit&amp;log_id=<{$log.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> log" /></a>
-					<a href="logs.php?op=delete&amp;log_id=<{$log.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> log" /></a>
+					<a href="logs.php?op=edit&amp;log_id=<{$log.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> log" /></a>
+					<a href="logs.php?op=delete&amp;log_id=<{$log.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> log" /></a>
 				</td>
 			</tr>
 			<{/foreach}>

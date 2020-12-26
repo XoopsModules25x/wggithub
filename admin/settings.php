@@ -27,9 +27,13 @@ use XoopsModules\Wggithub\Common;
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
-$op = Request::getCmd('op', 'list');
-// Request set_id
+$op    = Request::getCmd('op', 'list');
 $setId = Request::getInt('set_id');
+$start = Request::getInt('start', 0);
+$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$GLOBALS['xoopsTpl']->assign('start', $start);
+$GLOBALS['xoopsTpl']->assign('limit', $limit);
+
 switch ($op) {
     case 'list':
     default:
@@ -70,7 +74,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $settingsObj = $settingsHandler->create();
-        $form = $settingsObj->getFormSettings();
+        $form = $settingsObj->getFormSettings(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'save':
@@ -98,11 +102,11 @@ switch ($op) {
                 $setId = $setId > 0 ? $setId : $newSetId;
                 $settingsHandler->setPrimarySetting($setId);
             }
-            \redirect_header('settings.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('settings.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $settingsObj->getHtmlErrors());
-        $form = $settingsObj->getFormSettings();
+        $form = $settingsObj->getFormSettings(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'edit':
@@ -113,7 +117,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $settingsObj = $settingsHandler->get($setId);
-        $form = $settingsObj->getFormSettings();
+        $form = $settingsObj->getFormSettings(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'delete':

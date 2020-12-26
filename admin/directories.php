@@ -29,16 +29,18 @@ use XoopsModules\Wggithub\ {
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
-$op = Request::getCmd('op', 'list');
-// Request dir_id
+$op    = Request::getCmd('op', 'list');
 $dirId = Request::getInt('dir_id');
+$start = Request::getInt('start', 0);
+$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$GLOBALS['xoopsTpl']->assign('start', $start);
+$GLOBALS['xoopsTpl']->assign('limit', $limit);
+
 switch ($op) {
     case 'list':
     default:
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
-        $start = Request::getInt('start', 0);
-        $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
@@ -73,7 +75,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $directoriesObj = $directoriesHandler->create();
-        $form = $directoriesObj->getFormDirectories();
+        $form = $directoriesObj->getFormDirectories(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'save':
@@ -97,11 +99,11 @@ switch ($op) {
         $directoriesObj->setVar('dir_submitter', Request::getInt('dir_submitter', 0));
         // Insert Data
         if ($directoriesHandler->insert($directoriesObj)) {
-            \redirect_header('directories.php?op=list', 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $directoriesObj->getHtmlErrors());
-        $form = $directoriesObj->getFormDirectories();
+        $form = $directoriesObj->getFormDirectories(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'edit':
@@ -112,7 +114,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $directoriesObj = $directoriesHandler->get($dirId);
-        $form = $directoriesObj->getFormDirectories();
+        $form = $directoriesObj->getFormDirectories(false, $start, $limit);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'delete':
@@ -143,11 +145,21 @@ switch ($op) {
         $dirName = $directoriesObj->getVar('dir_name');
         $githubClient = GithubClient::getInstance();
         $result = $githubClient->executeUpdate($dirName);
-        $redir = 'index.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit;
+        $redir = 'directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit;
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
         } else {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
+        }
+        break;
+    case 'change_yn':
+        if ($dirId > 0) {
+            $directoriesObj = $directoriesHandler->get($dirId);
+            $directoriesObj->setVar(Request::getString('field'), Request::getInt('value', 0));
+            // Insert Data
+            if ($directoriesHandler->insert($directoriesObj, true)) {
+                \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            }
         }
         break;
 }
