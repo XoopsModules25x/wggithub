@@ -84,7 +84,6 @@ class Settings extends \XoopsObject
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
-        $isAdmin = $GLOBALS['xoopsUser']->isAdmin($GLOBALS['xoopsModule']->mid());
         // Title
         $title = $this->isNew() ? \sprintf(_AM_WGGITHUB_SETTING_ADD) : \sprintf(_AM_WGGITHUB_SETTING_EDIT);
         // Get Theme Form
