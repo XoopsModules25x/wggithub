@@ -196,8 +196,9 @@ class GithubClient extends Api
     /**
      * Get github content
      *
-     * @param $url
-     * @return array
+     * @param      $url
+     * @param bool $skipError
+     * @return array|bool
      */
     public function _get($url, $skipError = false)
     {
@@ -206,9 +207,6 @@ class GithubClient extends Api
 
         $logsHandler = $this->helper->getHandler('Logs');
         $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START');
-        if (strpos($url, 'xmcontact') > 0) {
-            echo 'ok';
-        }
         $api = new Github\Api;
         $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo', 'user', 'public_repo']);
         $api->setToken($token);
