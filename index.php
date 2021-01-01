@@ -148,7 +148,7 @@ switch ($op) {
                     $crRepositories->add($crRepo3);
                 } elseif ('final' === $filterRelease && $dirFilterRelease) {
                     $crRepo3 = new CriteriaCompo();
-                    $crRepo3->add(new Criteria('repo_prerelease', 1));
+                    $crRepo3->add(new Criteria('repo_release', 1));
                     $crRepositories->add($crRepo3);
                 }
                 $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
