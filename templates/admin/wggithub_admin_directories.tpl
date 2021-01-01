@@ -7,7 +7,9 @@
 			<tr class='head'>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_ID}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_NAME}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_DESCR}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_TYPE}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_CONTENT}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_AUTOUPDATE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_ONLINE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_FILTERRELEASE}></th>
@@ -22,7 +24,9 @@
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$directory.id}></td>
 				<td class='center'><{$directory.name}></td>
+				<td class='center'><{$directory.descr}></td>
 				<td class='center'><{$directory.type_text}></td>
+				<td class='center'><{$directory.content_shorttext}></td>
 				<td class='center'>
 					<{if $directory.dir_autoupdate == 1}>
 						<a href="directories.php?op=change_yn&amp;field=dir_autoupdate&amp;value=0&amp;dir_id=<{$directory.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETOFF}>"><img src="<{$wggithub_icons_url_16}>/on.png" alt="<{$smarty.const._AM_WGGITHUB_SETOFF}>" /></a>
@@ -65,8 +69,10 @@
 <{if $form}>
 	<{$form}>
 <{/if}>
-<{if $error}>
-	<div class="errorMsg"><strong><{$error}></strong></div>
+<{if $errors}>
+	<{foreach item=error from=$errors}>
+		<div class="errorMsg"><strong><{$error}></strong></div>
+	<{/foreach}>
 <{/if}>
 
 <!-- Footer -->

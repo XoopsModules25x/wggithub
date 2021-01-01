@@ -3319,56 +3319,6 @@
     rm_datecreated: '1606493623'
     rm_submitter: '1'
 -
-    rm_id: '333'
-    rm_repoid: '1032'
-    rm_name: README.md
-    rm_type: file
-    rm_content: "IVthbHQgWE9PUFMgQ01TXShodHRwczovL3hvb3BzLm9yZy9pbWFnZXMvbG9n\nb1hvb3BzNEdpdGh1YlJlcG9zaXRvcnkucG5nKQojIyB3Z0dpdGh1YiBtb2R1\nbGUgZm9yIFtYT09QUyBDTVMgMi41LjEwK10oaHR0cHM6Ly94b29wcy5vcmcp\nClshW1hPT1BTIENNUyBNb2R1bGVdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8v\nYmFkZ2UvWE9PUFMlMjBDTVMtTW9kdWxlLWJsdWUuc3ZnKV0oaHR0cHM6Ly94\nb29wcy5vcmcpClshW1NvZnR3YXJlIExpY2Vuc2VdKGh0dHBzOi8vaW1nLnNo\naWVsZHMuaW8vYmFkZ2UvbGljZW5zZS1HUEwtYnJpZ2h0Z3JlZW4uc3ZnP3N0\neWxlPWZsYXQpXShodHRwczovL3d3dy5nbnUub3JnL2xpY2Vuc2VzL2dwbC0y\nLjAuaHRtbCkKClshW1NjcnV0aW5pemVyIENvZGUgUXVhbGl0eV0oaHR0cHM6\nLy9pbWcuc2hpZWxkcy5pby9zY3J1dGluaXplci9nL21hbWJheDcvd2dnaXRo\ndWIuc3ZnP3N0eWxlPWZsYXQpXShodHRwczovL3NjcnV0aW5pemVyLWNpLmNv\nbS9nL1hvb3BzTW9kdWxlczI1eC93Z2dpdGh1Yi8/YnJhbmNoPW1hc3RlcikK\nWyFbTGF0ZXN0IFByZS1SZWxlYXNlXShodHRwczovL2ltZy5zaGllbGRzLmlv\nL2dpdGh1Yi90YWcvWG9vcHNNb2R1bGVzMjV4L3dnZ2l0aHViLnN2Zz9zdHls\nZT1mbGF0KV0oaHR0cHM6Ly9naXRodWIuY29tL1hvb3BzTW9kdWxlczI1eC93\nZ2dpdGh1Yi90YWdzLykKWyFbTGF0ZXN0IFZlcnNpb25dKGh0dHBzOi8vaW1n\nLnNoaWVsZHMuaW8vZ2l0aHViL3JlbGVhc2UvWG9vcHNNb2R1bGVzMjV4L3dn\nZ2l0aHViLnN2Zz9zdHlsZT1mbGF0KV0oaHR0cHM6Ly9naXRodWIuY29tL1hv\nb3BzTW9kdWxlczI1eC93Z2dpdGh1Yi9yZWxlYXNlcy8pCgoqKndnR2l0aHVi\nKiogbW9kdWxlIGZvciBbWE9PUFMgQ01TXShodHRwczovL3hvb3BzLm9yZykg\nY2FuIGJlIHVzZWQgdG8gYWNjZXNzIEdpdGh1YiBkYXRhLCBkb3dubG9hZCBy\nZXBvc2l0b3JpZXMgaW5mb3JtYXRpb24sIHJlbGVhc2VzIGluZm9ybWF0aW9u\nIGFuZCByZWFkbWUgZmlsZXMuCgpUaGUgaW5kZXggcGFnZSBwcm92aWRlIGFu\nIG92ZXJ2aWV3IGFib3V0IGFsbCByZXBvc2l0b3JpZXMgd2l0aCByZWxlYXNl\nIGluZm9ybWF0aW9uIGFuZCBzaG93IHRoZSBjb250ZW50IG9mIHRoZSByZWFk\nbWUgZmlsZS4KCkFkZGl0b25hbGx5IHlvdSBmaW5kIGxpbmtzIHRvIHRoZSBy\nZXBvc2l0b3JpZXMgYW5kIHJlbGVhc2VzIGZvciBxdWljayBhY2Nlc3MuCgpU\naGUgZGF0YWJhc2Ugd2lsbCBiZSB1cGRhdGVkIHdpdGggZWFjaCBhY2Nlc3Mg\ndG8gaW5kZXggcGFnZS4KCkZvciBhY2Nlc3MgdG8gR2l0SHViIHlvdSBuZWVk\nIGEgR2l0SHViIGFjY291bnQgYW5kIHlvdSBoYXZlIHRvIGVudGVyIHlvdXIg\ndXNlciBuYW1lIGFuZCBwcml2YXRlIGFjY2VzcyB0b2tlbiBpbiAic2V0dGlu\nZ3MiCgpbIVtUdXRvcmlhbCBBdmFpbGFibGVdKGh0dHBzOi8veG9vcHMub3Jn\nL2ltYWdlcy90dXRvcmlhbC1hdmFpbGFibGUtYmx1ZS5zdmcpXShodHRwczov\nL3hvb3BzLmdpdGJvb2suaW8vd2dnaXRodWItdHV0b3JpYWwvKSBUdXRvcmlh\nbDogc2VlIFtHaXRCb29rXShodHRwczovL3hvb3BzLmdpdGJvb2suaW8vd2dn\naXRodWItbW9kdWxlLXR1dG9yaWFsLykuClRvIGNvbnRyaWJ1dGUgdG8gdGhl\nIFR1dG9yaWFsLCBbZm9yayBpdCBvbiBHaXRIdWJdKGh0dHBzOi8vZ2l0aHVi\nLmNvbS9Yb29wc0RvY3Mvd2dnaXRodWItdHV0b3JpYWwpCgpbIVtUcmFuc2xh\ndGlvbnMgb24gVHJhbnNpZmV4XShodHRwczovL3hvb3BzLm9yZy9pbWFnZXMv\ndHJhbnNsYXRpb25zLWdpdGh1Yi1ibHVlLnN2ZyldKGh0dHBzOi8vd3d3LnRy\nYW5zaWZleC5jb20veG9vcHMpCgpQbGVhc2UgdmlzaXQgdXMgb24gaHR0cHM6\nLy94b29wcy5vcmcKCkN1cnJlbnQgYW5kIHVwY29taW5nICJuZXh0IGdlbmVy\nYXRpb24iIHZlcnNpb25zIG9mIFhPT1BTIENNUyBhcmUgY3JhZnRlZCBvbiBH\naXRIdWIgYXQ6IGh0dHBzOi8vZ2l0aHViLmNvbS9YT09QUwo=\n"
-    rm_encoding: base64
-    rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/wggithub/master/README.md'
-    rm_datecreated: '1607846058'
-    rm_submitter: '1'
--
-    rm_id: '334'
-    rm_repoid: '1033'
-    rm_name: README.md
-    rm_type: file
-    rm_content: ''
-    rm_encoding: base64
-    rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/shiori/master/README.md'
-    rm_datecreated: '1607846058'
-    rm_submitter: '1'
--
-    rm_id: '335'
-    rm_repoid: '1034'
-    rm_name: README.md
-    rm_type: file
-    rm_content: ''
-    rm_encoding: base64
-    rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/shiori/master/README.md'
-    rm_datecreated: '1608538830'
-    rm_submitter: '1'
--
-    rm_id: '336'
-    rm_repoid: '1035'
-    rm_name: README.md
-    rm_type: file
-    rm_content: ''
-    rm_encoding: base64
-    rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/shiori/master/README.md'
-    rm_datecreated: '1608539025'
-    rm_submitter: '1'
--
-    rm_id: '337'
-    rm_repoid: '1036'
-    rm_name: README.md
-    rm_type: file
-    rm_content: ''
-    rm_encoding: base64
-    rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/shiori/master/README.md'
-    rm_datecreated: '1608539459'
-    rm_submitter: '1'
--
     rm_id: '338'
     rm_repoid: '1037'
     rm_name: README.md
@@ -3387,4 +3337,84 @@
     rm_encoding: base64
     rm_downloadurl: 'https://raw.githubusercontent.com/XoopsModules25x/wggithub/master/README.md'
     rm_datecreated: '1608539535'
+    rm_submitter: '1'
+-
+    rm_id: '428'
+    rm_repoid: '1133'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB0aW55TUNFNUZvclhvb3BzClRpbnlNQ0UgNSBwb3VyIHhvb3BzCg==\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/tinymce5/master/README.md'
+    rm_datecreated: '1609506752'
+    rm_submitter: '1'
+-
+    rm_id: '429'
+    rm_repoid: '1134'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB4bWFydGljbGUKTW9kdWxlIHBvdXIgeG9vcHMgcGVybWV0dGFudCBsYSBn\nZXN0aW9uIGQnYXJ0aWNsZXMgZXQgZGUgbm9tZW5jbGF0dXJlcy4gQ2UgbW9k\ndWxlIHBldXQgcydpbnRlZmFjZXIgYXZlYyBkJ2F1dHJlcyBtb2R1bGVzIGRl\nIGxhIGZhbWlsbGUgWE0K\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmarticle/master/README.md'
+    rm_datecreated: '1609506753'
+    rm_submitter: '1'
+-
+    rm_id: '430'
+    rm_repoid: '1136'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB4bWNvbnRlbnQ=\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmcontent/master/README.md'
+    rm_datecreated: '1609506754'
+    rm_submitter: '1'
+-
+    rm_id: '431'
+    rm_repoid: '1137'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IVthbHQgWE9PUFMgQ01TXShodHRwczovL3hvb3BzLm9yZy9pbWFnZXMvbG9n\nb1hvb3BzNEdpdGh1YlJlcG9zaXRvcnkucG5nKQojIyB4bWRvYyBtb2R1bGUg\nZm9yIFtYT09QUyBDTVMgMi41LjEwK10oaHR0cHM6Ly94b29wcy5vcmcpClsh\nW1hPT1BTIENNUyBNb2R1bGVdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFk\nZ2UvWE9PUFMlMjBDTVMtTW9kdWxlLWJsdWUuc3ZnKV0oaHR0cHM6Ly93d3cu\nbW9ueG9vcHMuZnIpClshW1NvZnR3YXJlIExpY2Vuc2VdKGh0dHBzOi8vaW1n\nLnNoaWVsZHMuaW8vYmFkZ2UvbGljZW5zZS1HUEwtYnJpZ2h0Z3JlZW4uc3Zn\nP3N0eWxlPWZsYXQpXShodHRwczovL3d3dy5nbnUub3JnL2xpY2Vuc2VzL2dw\nbC0yLjAuaHRtbCkKClshW0xhdGVzdCBQcmUtUmVsZWFzZV0oaHR0cHM6Ly9p\nbWcuc2hpZWxkcy5pby9naXRodWIvdGFnL0dyZWdNYWdlL3htZG9jLnN2Zz9z\ndHlsZT1mbGF0KV0oaHR0cHM6Ly9naXRodWIuY29tL0dyZWdNYWdlL3htZG9j\nL3RhZ3MvKQpbIVtMYXRlc3QgVmVyc2lvbl0oaHR0cHM6Ly9pbWcuc2hpZWxk\ncy5pby9naXRodWIvcmVsZWFzZS9HcmVnTWFnZS94bWRvYy5zdmc/c3R5bGU9\nZmxhdCldKGh0dHBzOi8vZ2l0aHViLmNvbS9HcmVnTWFnZS94bWRvYy9yZWxl\nYXNlcy8pCgoqKnhtZG9jKiogbW9kdWxlIGZvciBbWE9PUFMgQ01TXShodHRw\nczovL3hvb3BzLm9yZykgaXMgYSBkb2N1bWVudHMgbWFuYWdlbWVudCBtb2R1\nbGUuCgpUaGlzIG1vZHVsZSBpcyBpbml0aWFsbHkgY29tcGxlbWVudGFyeSB0\nbyB0aGUgbW9kdWxlcyBvZiB0aGUgeG0tbW9kdWxlcyBzZXJpZXMuIEluIGZh\nY3QsIGFzc29jaWF0ZWQgd2l0aCB0aGVzZSwgaXQgd2lsbCBhbGxvdyB5b3Ug\ndG8gYWRkIGRvY3VtZW50cyB0byB5b3VyIGFydGljbGVzICh4bW5ld3MgbW9k\ndWxlKSBhbmQgdG8geW91ciBzdGF0aWMgcGFnZXMgKHhtY29udGVudCBtb2R1\nbGUpLiBJdCBpcyBwb3NzaWJsZSB0byBpbnRlZ3JhdGUgaW50byBhbnkgbW9k\ndWxlISBUbyBkbyB0aGlzLCBqdXN0IGZvbGxvdyB0aGUgdHV0b3JpYWwgb24g\naHR0cHM6Ly93d3cubW9ueG9vcHMuZnIuCgpIZXJlIGFyZSBzb21lIGludGVy\nZXN0aW5nIGVsZW1lbnRzIG9mIHRoZSBtb2R1bGU6CgogICAgRmluZSBtYW5h\nZ2VtZW50IG9mIHJpZ2h0cyBieSB1c2VyIGdyb3VwcywgZm9yIGVhY2ggY2F0\nZWdvcnkgKEFjY2VzcywgU3VnZ2VzdCwgRWRpdCBhbmQgQXBwcm92ZSwgRGVs\nZXRlKQogICAgQW50aS1sZWVjaGluZyBmaWx0ZXIgcG9zc2libGUgd2l0aCBs\naXN0IG9mIGF1dGhvcml6ZWQgc2l0ZXMKICAgIFBvc3NpYmxlIGxpbWl0YXRp\nb24gb2YgdGhlIG51bWJlciBvZiBkb3dubG9hZHMgZm9yIGVhY2ggZmlsZSBp\nbiAyNCBob3VycyBwZXIgdXNlcgogICAgQ2hvaWNlIG9mIGF1dGhvcml6ZWQg\nZXh0ZW5zaW9ucyAoZnJvbSBhIGxpc3Q+IDEwMCkKICAgIE11bHRpLWxhbmd1\nYWdlcyBGUiBHQi9VUwoKUGxlYXNlIHZpc2l0IHVzIG9uIGh0dHBzOi8vd3d3\nLm1vbnhvb3BzLmZyCgpDdXJyZW50IGFuZCB1cGNvbWluZyAibmV4dCBnZW5l\ncmF0aW9uIiB2ZXJzaW9ucyBvZiBYT09QUyBDTVMgYXJlIGNyYWZ0ZWQgb24g\nR2l0SHViIGF0OiBodHRwczovL2dpdGh1Yi5jb20vWE9PUFMK\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmdoc/master/README.md'
+    rm_datecreated: '1609506754'
+    rm_submitter: '1'
+-
+    rm_id: '432'
+    rm_repoid: '1139'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB4bW5ld3MKTW9kdWxlIGRlIGdlc3Rpb24gZCdhcnRpY2xlcyBwb3VyIHhv\nb3BzCgotIFRlbXBsYXRlcyBzdXBwbMOpbWVudGFpcmVzIGFkYXB0w6lzIGV0\nIG9wdGltaXPDqXMgcG91ciBsZXMgdGjDqG1lcyBlbiBib290c3RyYXA0CkRv\nc3NpZXIgInh0cmEiClBvdXIgbGVzIHV0aWxpc2VyLCBjb3BpZXogbGUgY29u\ndGVudSBkdSBkb3NzaWVyICIvZXh0cmEvVGVtcGxhdGVzIGZvciBib290c3Ry\nYXAgNCIgZGFucyB2b3RyZSB0aMOobWUgZW4gYm9vdHN0cmFwIDQgc291cyA6\nCi90aGVtZXMvdm90cmVfdGhlbWUvbW9kdWxlcwoKVm91cyBvYnRpZW5kcmV6\nIGRvbmMgdW5lIHN1cmNoYWdlIGR1IG1vZHVsZSB4bW5ld3Mgc3VyIHZvdHJl\nIHRow6htZSAvdGhlbWVzL3ZvdHJlX3RoZW1lL21vZHVsZXMveG1uZXdzKQoK\nSWwgZXhpc3RlIHVuZSB2YXJpYW50ZSBwb3VyIGxhIHByw6lzZW50YXRpb24g\nZGVzIGJsb2NzIHhtbmV3cy4gKGRvc3NpZXIgL3RoZW1lcy92b3RyZV90aGVt\nZS9tb2R1bGVzL3htbmV3cy9ibG9ja3MpCkNob2l4IHBhciBkw6lmYXV0IDog\nCkFmZmljaGFnZSBlbiBsaWduZSAoeG1uZXdzX2Jsb2NrLnRwbCwgc2F1dmVn\nYXJkZSA6IHhtbmV3c19ibG9ja19saWduZXMudHBsKSkKQXV0cmUgY2hvaXgg\ncG9zc2libGUgOiAKQWZmaWNoYWdlIGVuIGNvbG9ubmVzICh4bW5ld3NfYmxv\nY2tfY29sb25uZXMudHBsKQoKUG91ciBvYnRlbmlyIHVuIGFmZmljaGFnZSBl\nbiBjb2xvbm5lcyA6IApDb3BpZXogbGUgZmljaGllciB4bW5ld3NfYmxvY2tf\nY29sb25uZXMudHBsIHZlcnMgeG1uZXdzX2Jsb2NrLnRwbCAow6ljcmFzZW1l\nbnQgZGUgZmljaGllcikKClBvdXIgcmV2ZW5pciDDoCBsJ2FmZmljaGFnZSBw\nYXIgZMOpZmF1dCA6IApDb3BpZXogbGUgZmljaGllciB4bW5ld3NfYmxvY2tf\nbGlnbmVzLnRwbCB2ZXJzIHhtbmV3c19ibG9jay50cGwK\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmnews/master/README.md'
+    rm_datecreated: '1609506755'
+    rm_submitter: '1'
+-
+    rm_id: '433'
+    rm_repoid: '1140'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB4bXNvY2lhbApNb2R1bGUgY29tcGzDqW1lbnRhaXJlIGEgZCdhdXRyZXMg\nbW9kdWxlcyBwb3VyIGRlcyBmb25jdGlvbnMgc29jaWFsZXMK\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmsocial/master/README.md'
+    rm_datecreated: '1609506756'
+    rm_submitter: '1'
+-
+    rm_id: '434'
+    rm_repoid: '1141'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyB4bXN0b2NrCm1vZHVsZSBkZSBnZXN0aW9uIGRlIHN0b2NrIHBvdXIgeG9v\ncHMgKHhtYXJ0aWNsZSBlc3QgbsOpY2Vzc2FpcmUpCg==\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/xmstock/master/README.md'
+    rm_datecreated: '1609506756'
+    rm_submitter: '1'
+-
+    rm_id: '435'
+    rm_repoid: '1142'
+    rm_name: README.md
+    rm_type: file
+    rm_content: "IyBYb29wc0ZyZW5jaApUcmFkdWN0aW9uIGZyYW7Dp2Fpc2UgZGUgeG9vcHMg\nMi41LjkgZXQgMi41LjEwCgpJbnN0YWxsYXRpb246CgoxLVTDqWzDqWNoYXJn\nZXIgbGEgdmVyc2lvbiBhY3R1ZWxsZSBkZSBsYSB0cmFkdWN0aW9uLgoKMi1D\nb3BpZXIgbGUgY29udGVudSBkdSBkb3NzaWVyICJodGRvY3MiIMOgIGxhIHJh\nY2luZSBkdSBzaXRlLgoKMy1Nb2RpZmllciBsYSBsYW5ndWUgZGFucyBsZXMg\ncHLDqWbDqXJlbmNlcy4KCjQtWE9PUFMgZXN0IG1haW50ZW5hbnQgZW4gZnJh\nbsOnYWlzIQo=\n"
+    rm_encoding: base64
+    rm_downloadurl: 'https://raw.githubusercontent.com/GregMage/XoopsFrench/master/README.md'
+    rm_datecreated: '1609506756'
     rm_submitter: '1'

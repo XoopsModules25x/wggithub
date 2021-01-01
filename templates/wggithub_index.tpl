@@ -51,6 +51,7 @@
 					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
 					<{/if}>
 				</h4>
+				<p><{$directory.descr}></p>
 			</div>
 			<div class="col-xs-3"> <!-- required for floating -->
 				<!-- Nav tabs for each directory -->
@@ -77,7 +78,7 @@
 								<h3><{$smarty.const._MA_WGGITHUB_REPOSITORY}>: <{$repo.name}></h3>
 							</div>
 							<div class="clearfix"></div>
-							<div class="col-xs-12 col-sm-6 tabcontent-headline">
+							<div class="codixs-12 col-sm-6 tabcontent-headline">
 								<p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_CREATEDAT}>: <{$repo.createdat}></p>
 							</div>
 							<div class="col-xs-12 col-sm-6 tabcontent-headline">

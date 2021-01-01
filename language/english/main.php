@@ -30,7 +30,7 @@ include_once __DIR__ . '/admin.php';
 <br>On the various tabs you can see the XOOPS-repositories on GitHub.
 <br>Besides basic information like date of creation or update you can see the content of readme file (if available). 
 <br>Additional you can find also a button to download last releases.
-<br>Have fun with exploring the world of XOOPS.');
+<br><br>Have fun with exploring the world of XOOPS.');
 \define('_MA_WGGITHUB_INDEX_LASTUPDATE', 'Last update');
 \define('_MA_WGGITHUB_INDEX_UPTODATE', 'All information are up to date');
 \define('_MA_WGGITHUB_NO_PDF_LIBRARY', 'Libraries TCPDF not there yet, upload them in root/Frameworks');
@@ -71,10 +71,11 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_DIRECTORIES', 'Directories');
 \define('_MA_WGGITHUB_DIRECTORIES_TITLE', 'Directories title');
 \define('_MA_WGGITHUB_DIRECTORIES_DESC', 'Directories description');
-\define('_MA_WGGITHUB_DIRECTORIES_LIST', 'List of Directories');
+\define('_MA_WGGITHUB_DIRECTORIES_LIST', 'List of directories');
 // Caption of Directory
 \define('_MA_WGGITHUB_DIRECTORY_ID', 'Id');
 \define('_MA_WGGITHUB_DIRECTORY_NAME', 'Name');
+\define('_MA_WGGITHUB_DIRECTORY_DESCR', 'Description');
 \define('_MA_WGGITHUB_DIRECTORY_TYPE', 'Type');
 \define('_MA_WGGITHUB_DIRECTORY_DATECREATED', 'Datecreated');
 \define('_MA_WGGITHUB_DIRECTORY_SUBMITTER', 'Submitter');

@@ -283,6 +283,7 @@ class GithubClient extends Api
         foreach (\array_keys($directoriesAll) as $i) {
             $directories[$i] = $directoriesAll[$i]->getValuesDirectories();
             $dirName = $directoriesAll[$i]->getVar('dir_name');
+            $dirContent = $directoriesAll[$i]->getVar('dir_content');
             $repos = [];
             for ($j = 1; $j <= 9; $j++) {
                 $repos[$j] = [];
@@ -296,7 +297,7 @@ class GithubClient extends Api
                     break 1;
                 }
                 if (count($repos) > 0) {
-                    $repositoriesHandler->updateTableRepositories($dirName, $repos, true);
+                    $repositoriesHandler->updateTableRepositories($dirName, $repos, true, $dirContent);
                 } else {
                     break 1;
                 }

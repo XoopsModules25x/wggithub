@@ -141,7 +141,11 @@ class Releases extends \XoopsObject
         $ret['id']          = $this->getVar('rel_id');
         $repositoriesHandler = $helper->getHandler('Repositories');
         $repositoriesObj = $repositoriesHandler->get($this->getVar('rel_repoid'));
-        $ret['repoid']        = $repositoriesObj->getVar('repo_name');
+        if (\is_object($repositoriesObj)) {
+            $ret['repoid']        = $repositoriesObj->getVar('repo_name');
+        } else {
+            $ret['repoid']        = '*****missing repo_name*****';
+        }
         $ret['type']        = $this->getVar('rel_type');
         $ret['name']        = $this->getVar('rel_name');
         $ret['prerelease']  = (int)$this->getVar('rel_prerelease') > 0 ? _YES : _NO;

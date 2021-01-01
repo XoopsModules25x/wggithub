@@ -105,9 +105,13 @@ include_once __DIR__ . '/main.php';
 // Elements of Directory
 \define('_AM_WGGITHUB_DIRECTORY_ID', 'Id');
 \define('_AM_WGGITHUB_DIRECTORY_NAME', 'Name');
+\define('_AM_WGGITHUB_DIRECTORY_DESCR', 'Description');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE', 'Type');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE_USER', 'User');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE_ORG', 'Organisation');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT', 'Content');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT_ALL', 'All forks');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT_OWN', 'Only forks of owner');
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Autoupdate');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
 \define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Apply Filter Release');
@@ -167,6 +171,8 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_ACTION', 'Action');
 \define('_AM_WGGITHUB_FORM_EDIT', 'Modification');
 \define('_AM_WGGITHUB_FORM_DELETE', 'Clear');
+// Errors
+\define('_AM_WGGITHUB_ERROR_DELETE_DATA', 'Error when deleting data from:');
 // ---------------- Admin Permissions ----------------
 // Permissions
 \define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Global permissions');

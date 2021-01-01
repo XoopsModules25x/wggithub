@@ -105,9 +105,13 @@ include_once __DIR__ . '/main.php';
 // Elements of Directory
 \define('_AM_WGGITHUB_DIRECTORY_ID', 'Id');
 \define('_AM_WGGITHUB_DIRECTORY_NAME', 'Name');
+\define('_AM_WGGITHUB_DIRECTORY_DESCR', 'Beschreibung');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE', 'Typ');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE_USER', 'User');
 \define('_AM_WGGITHUB_DIRECTORY_TYPE_ORG', 'Organisation');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT', 'Inhalt');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT_ALL', 'Alle Forks');
+\define('_AM_WGGITHUB_DIRECTORY_CONTENT_OWN', 'Nur Forks des Inhabers');
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Automatische Update');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
 \define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Filter Release anwenden');
@@ -167,6 +171,8 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_ACTION', 'Aktion');
 \define('_AM_WGGITHUB_FORM_EDIT', 'Ändern');
 \define('_AM_WGGITHUB_FORM_DELETE', 'Löschen');
+// Errors
+\define('_AM_WGGITHUB_ERROR_DELETE_DATA', 'Fehler beim Löschen der Daten von:');
 // ---------------- Admin Permissions ----------------
 // Permissions
 \define('_AM_WGGITHUB_PERMISSIONS_GLOBAL', 'Globale Berechtigungen');

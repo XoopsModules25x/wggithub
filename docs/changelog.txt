@@ -7,7 +7,9 @@
  - added autochange from http: into https: for image sources (goffy)
  - added start/limit to forms (goffy)
  - ignore error when no readme/release exists (goffy)
-
+ - added description for directories (goffy)
+ - added content type for directories (goffy)
+ 
 ===================================================================
 2020/10/11 Version 1.01 alpha
 ===================================================================

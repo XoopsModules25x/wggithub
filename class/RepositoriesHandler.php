@@ -128,9 +128,10 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
      * @param       $user
      * @param array $repos
      * @param bool  $updateAddtionals
+     * @param int   $dirContent
      * @return int
      */
-    public function updateTableRepositories($user, $repos = [], $updateAddtionals = true)
+    public function updateTableRepositories($user, $repos = [], $updateAddtionals = true, $dirContent = 0)
     {
         $reposNb = 0;
         $helper = \XoopsModules\Wggithub\Helper::getInstance();
@@ -139,65 +140,68 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
         // add/update all items from table repositories
         foreach ($repos as $key => $repo) {
-            $crRepositories = new \CriteriaCompo();
-            $crRepositories->add(new \Criteria('repo_nodeid', $repo['node_id']));
-            $repoId = 0;
-            $status = 0;
-            $updatedAtOld = 0;
-            $updatedAtNew = 0;
-            $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
-            foreach (\array_keys($repositoriesAll) as $i) {
-                $repoId = $repositoriesAll[$i]->getVar('repo_id');
-                $updatedAtOld = $repositoriesAll[$i]->getVar('repo_updatedat');
-                $status = $repositoriesAll[$i]->getVar('repo_status');
-                $repositoriesObj = $repositoriesAll[$i];
-            }
-            if ($repoId > 0) {
-                if (is_string($repo['updated_at'])) {
-                    $updatedAtNew = \strtotime($repo['updated_at']);
+            $fork = (bool)$repo['fork'];
+            if (Constants::DIRECTORY_CONTENT_ALL == $dirContent || false === $fork) {
+                $crRepositories = new \CriteriaCompo();
+                $crRepositories->add(new \Criteria('repo_nodeid', $repo['node_id']));
+                $repoId = 0;
+                $status = 0;
+                $updatedAtOld = 0;
+                $updatedAtNew = 0;
+                $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+                foreach (\array_keys($repositoriesAll) as $i) {
+                    $repoId = $repositoriesAll[$i]->getVar('repo_id');
+                    $updatedAtOld = $repositoriesAll[$i]->getVar('repo_updatedat');
+                    $status = $repositoriesAll[$i]->getVar('repo_status');
+                    $repositoriesObj = $repositoriesAll[$i];
                 }
-                if ($updatedAtOld != Constants::STATUS_OFFLINE && $updatedAtOld != $updatedAtNew) {
-                    $status = Constants::STATUS_UPDATED;
-                }
-            } else {
-                $repositoriesObj = $repositoriesHandler->create();
-                $updatedAtNew = \strtotime($repo['updated_at']);
-                $status = Constants::STATUS_NEW;
-            }
-            if (Constants::STATUS_UPTODATE !== $status) {
-                // Set Vars
-                $repositoriesObj->setVar('repo_nodeid', $repo['node_id']);
-                $repositoriesObj->setVar('repo_user', $user);
-                $repositoriesObj->setVar('repo_name', $repo['name']);
-                $repositoriesObj->setVar('repo_fullname', $repo['full_name']);
-                if (is_string($repo['created_at'])) {
-                    $createdAt = \strtotime($repo['created_at']);
-                }
-                $repositoriesObj->setVar('repo_createdat', $createdAt);
-                $repositoriesObj->setVar('repo_updatedat', $updatedAtNew);
-                $repositoriesObj->setVar('repo_htmlurl', $repo['html_url']);
-                $repositoriesObj->setVar('repo_status', $status);
-                $repositoriesObj->setVar('repo_datecreated', time());
-                $repositoriesObj->setVar('repo_submitter', $submitter);
-                // Insert Data
-                if ($repositoriesHandler->insert($repositoriesObj)) {
-                    $newRepoId = $repositoriesObj->getNewInsertedIdRepositories();
-                    if (0 == $repoId) {
-                        $repoId = $newRepoId;
+                if ($repoId > 0) {
+                    if (is_string($repo['updated_at'])) {
+                        $updatedAtNew = \strtotime($repo['updated_at']);
                     }
-                    $reposNb++;
-                    if ($updateAddtionals && (Constants::STATUS_NEW == $status || Constants::STATUS_UPDATED == $status)) {
-                        // add/update table readmes
-                        $helper->getHandler('Readmes')->updateReadmes($repoId, $user, $repo['name']);
-                        // add/update table release
-                        $helper->getHandler('Releases')->updateReleases($repoId, $user, $repo['name']);
-                        // change status to updated
-                        $repositoriesObj = $repositoriesHandler->get($repoId);
-                        $repositoriesObj->setVar('repo_status', Constants::STATUS_UPTODATE);
-                        $repositoriesHandler->insert($repositoriesObj, true);
+                    if ($updatedAtOld != Constants::STATUS_OFFLINE && $updatedAtOld != $updatedAtNew) {
+                        $status = Constants::STATUS_UPDATED;
                     }
                 } else {
-                    return false;
+                    $repositoriesObj = $repositoriesHandler->create();
+                    $updatedAtNew = \strtotime($repo['updated_at']);
+                    $status = Constants::STATUS_NEW;
+                }
+                if (Constants::STATUS_UPTODATE !== $status) {
+                    // Set Vars
+                    $repositoriesObj->setVar('repo_nodeid', $repo['node_id']);
+                    $repositoriesObj->setVar('repo_user', $user);
+                    $repositoriesObj->setVar('repo_name', $repo['name']);
+                    $repositoriesObj->setVar('repo_fullname', $repo['full_name']);
+                    if (is_string($repo['created_at'])) {
+                        $createdAt = \strtotime($repo['created_at']);
+                    }
+                    $repositoriesObj->setVar('repo_createdat', $createdAt);
+                    $repositoriesObj->setVar('repo_updatedat', $updatedAtNew);
+                    $repositoriesObj->setVar('repo_htmlurl', $repo['html_url']);
+                    $repositoriesObj->setVar('repo_status', $status);
+                    $repositoriesObj->setVar('repo_datecreated', time());
+                    $repositoriesObj->setVar('repo_submitter', $submitter);
+                    // Insert Data
+                    if ($repositoriesHandler->insert($repositoriesObj)) {
+                        $newRepoId = $repositoriesObj->getNewInsertedIdRepositories();
+                        if (0 == $repoId) {
+                            $repoId = $newRepoId;
+                        }
+                        $reposNb++;
+                        if ($updateAddtionals && (Constants::STATUS_NEW == $status || Constants::STATUS_UPDATED == $status)) {
+                            // add/update table readmes
+                            $helper->getHandler('Readmes')->updateReadmes($repoId, $user, $repo['name']);
+                            // add/update table release
+                            $helper->getHandler('Releases')->updateReleases($repoId, $user, $repo['name']);
+                            // change status to updated
+                            $repositoriesObj = $repositoriesHandler->get($repoId);
+                            $repositoriesObj->setVar('repo_status', Constants::STATUS_UPTODATE);
+                            $repositoriesHandler->insert($repositoriesObj, true);
+                        }
+                    } else {
+                        return false;
+                    }
                 }
             }
         }

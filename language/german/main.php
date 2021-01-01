@@ -30,7 +30,7 @@ include_once __DIR__ . '/admin.php';
 <br>Auf den verschiedenen Tabs siehst Du einige XOOPS-Repositories auf GitHub.
 <br>Neben den grundsätzlichen Informationen wie das Erstell- oder Aktualisierungsdatum wird auch der Inhalt der Readme-Datei angezeigt (sofern eine vorhanden ist). 
 <br>Zusätzlich findest Du aber auch Schaltflächen für den direkten Download der verfügbaren letzten Releases.
-<br>Viel Spaß beim Entdecken der Welt von XOOPS.');
+<br><br>Viel Spaß beim Entdecken der Welt von XOOPS.');
 \define('_MA_WGGITHUB_INDEX_LASTUPDATE', 'Letztes Update');
 \define('_MA_WGGITHUB_INDEX_UPTODATE', 'Alle Informationen sind aktuell');
 \define('_MA_WGGITHUB_NO_PDF_LIBRARY', 'TCPDF-Libraries sind nicht vorhanden, bitte auf root/Frameworks hochladen');
@@ -75,6 +75,7 @@ include_once __DIR__ . '/admin.php';
 // Caption of Directory
 \define('_MA_WGGITHUB_DIRECTORY_ID', 'Id');
 \define('_MA_WGGITHUB_DIRECTORY_NAME', 'Name');
+\define('_MA_WGGITHUB_DIRECTORY_DESCR', 'Beschreibung');
 \define('_MA_WGGITHUB_DIRECTORY_TYPE', 'Typ');
 \define('_MA_WGGITHUB_DIRECTORY_DATECREATED', 'Datum erstellt');
 \define('_MA_WGGITHUB_DIRECTORY_SUBMITTER', 'Einsender');

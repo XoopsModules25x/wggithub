@@ -32,12 +32,16 @@ interface Constants
     public const TABLE_SETTINGS = 0;
     public const TABLE_REPOSITORIES = 1;
     public const TABLE_DIRECTORIES = 2;
-    public const TABLE_REQUESTS = 3;
+    public const TABLE_LOGS = 3;
     public const TABLE_READMES = 4;
+    public const TABLE_RELEASES = 5;
 
-    // Constants for tables
+    // Constants for directories
     public const DIRECTORY_TYPE_USER = 1;
     public const DIRECTORY_TYPE_ORG  = 2;
+
+    public const DIRECTORY_CONTENT_ALL  = 0;
+    public const DIRECTORY_CONTENT_OWN = 1;
 
     // Constants for status
     public const STATUS_NONE     = 0;
