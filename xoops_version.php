@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_WGGITHUB_NAME,
-    'version'             => 1.02,
+    'version'             => 1.03,
     'description'         => _MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',
@@ -276,15 +276,6 @@ $modversion['config'][] = [
     'formtype'    => 'textarea',
     'valuetype'   => 'text',
     'default'     => '',
-];
-// Bookmarks
-$modversion['config'][] = [
-    'name'        => 'bookmarks',
-    'title'       => '_MI_WGGITHUB_BOOKMARKS',
-    'description' => '_MI_WGGITHUB_BOOKMARKS_DESC',
-    'formtype'    => 'yesno',
-    'valuetype'   => 'int',
-    'default'     => 0,
 ];
 // Make Sample button visible?
 $modversion['config'][] = [

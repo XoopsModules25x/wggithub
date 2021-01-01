@@ -42,7 +42,9 @@ class Directories extends \XoopsObject
     {
         $this->initVar('dir_id', \XOBJ_DTYPE_INT);
         $this->initVar('dir_name', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('dir_descr', XOBJ_DTYPE_OTHER);
         $this->initVar('dir_type', \XOBJ_DTYPE_INT);
+        $this->initVar('dir_content', \XOBJ_DTYPE_INT);
         $this->initVar('dir_autoupdate', XOBJ_DTYPE_INT);
         $this->initVar('dir_online', XOBJ_DTYPE_INT);
         $this->initVar('dir_filterrelease', XOBJ_DTYPE_INT);
@@ -86,6 +88,7 @@ class Directories extends \XoopsObject
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
+        $isAdmin = $GLOBALS['xoopsUser']->isAdmin($GLOBALS['xoopsModule']->mid());
 
         // Title
         $title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_DIRECTORY_ADD) : \sprintf(\_AM_WGGITHUB_DIRECTORY_EDIT);
@@ -95,13 +98,31 @@ class Directories extends \XoopsObject
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text dirName
         $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_DIRECTORY_NAME, 'dir_name', 50, 255, $this->getVar('dir_name')), true);
-        // Directories Handler
-        $directoriesHandler = $helper->getHandler('Directories');
+        // Form Editor DhtmlTextArea dirDescr
+        $editorConfigs = [];
+        if ($isAdmin) {
+            $editor = $helper->getConfig('editor_admin');
+        } else {
+            $editor = $helper->getConfig('editor_user');
+        }
+        $editorConfigs['name'] = 'dir_descr';
+        $editorConfigs['value'] = $this->getVar('dir_descr', 'e');
+        $editorConfigs['rows'] = 5;
+        $editorConfigs['cols'] = 40;
+        $editorConfigs['width'] = '100%';
+        $editorConfigs['height'] = '400px';
+        $editorConfigs['editor'] = $editor;
+        $form->addElement(new \XoopsFormEditor(_AM_WGGITHUB_DIRECTORY_DESCR, 'dir_descr', $editorConfigs));
         // Form Select dirType
         $dirTypeSelect = new \XoopsFormSelect(\_AM_WGGITHUB_DIRECTORY_TYPE, 'dir_type', $this->getVar('dir_type'), 5);
         $dirTypeSelect->addOption(Constants::DIRECTORY_TYPE_USER, \_AM_WGGITHUB_DIRECTORY_TYPE_USER);
         $dirTypeSelect->addOption(Constants::DIRECTORY_TYPE_ORG, \_AM_WGGITHUB_DIRECTORY_TYPE_ORG);
         $form->addElement($dirTypeSelect, true);
+        // Form Select dirContent
+        $dirContentSelect = new \XoopsFormSelect(\_AM_WGGITHUB_DIRECTORY_CONTENT, 'dir_content', $this->getVar('dir_content'), 3);
+        $dirContentSelect->addOption(Constants::DIRECTORY_CONTENT_ALL, \_AM_WGGITHUB_DIRECTORY_CONTENT_ALL);
+        $dirContentSelect->addOption(Constants::DIRECTORY_CONTENT_OWN, \_AM_WGGITHUB_DIRECTORY_CONTENT_OWN);
+        $form->addElement($dirContentSelect, true);
         // Form Radio Yes/No dirAutoupdate
         $dirAutoupdate = $this->isNew() ?: $this->getVar('dir_autoupdate');
         $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_DIRECTORY_AUTOUPDATE, 'dir_autoupdate', $dirAutoupdate));
@@ -136,8 +157,21 @@ class Directories extends \XoopsObject
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']          = $this->getVar('dir_id');
         $ret['name']        = $this->getVar('dir_name');
+        $ret['descr']        = $this->getVar('dir_descr');
         $ret['type']        = $this->getVar('dir_type');
         $ret['type_text']   = Constants::DIRECTORY_TYPE_USER == $this->getVar('dir_type') ? \_AM_WGGITHUB_DIRECTORY_TYPE_USER : \_AM_WGGITHUB_DIRECTORY_TYPE_ORG;
+        $content            = $this->getVar('dir_content');
+        $ret['content']      = $content;
+        switch ($content) {
+            case Constants::DIRECTORY_CONTENT_ALL:
+            default:
+                $content_text = \_AM_WGGITHUB_DIRECTORY_CONTENT_ALL;
+                break;
+            case Constants::DIRECTORY_CONTENT_OWN:
+                $content_text = \_AM_WGGITHUB_DIRECTORY_CONTENT_OWN;
+                break;
+        }
+        $ret['content_shorttext'] = Utility::truncateHtml($content_text);
         $ret['autoupdate']  = (int)$this->getVar('dir_autoupdate') > 0 ? _YES : _NO;
         $ret['online']      = (int)$this->getVar('dir_online') > 0 ? _YES : _NO;
         $ret['filterrelease'] = (int)$this->getVar('dir_filterrelease') > 0 ? _YES : _NO;

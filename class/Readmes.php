@@ -137,7 +137,11 @@ class Readmes extends \XoopsObject
         $ret['id']            = $this->getVar('rm_id');
         $repositoriesHandler = $helper->getHandler('Repositories');
         $repositoriesObj = $repositoriesHandler->get($this->getVar('rm_repoid'));
-        $ret['repoid']        = $repositoriesObj->getVar('repo_name');
+        if (\is_object($repositoriesObj)) {
+            $ret['repoid']        = $repositoriesObj->getVar('repo_name');
+        } else {
+            $ret['repoid']        = '*****missing repo_name*****';
+        }
         $rmName = $this->getVar('rm_name');
         $ret['name']          = $rmName;
         $ret['type']          = $this->getVar('rm_type');

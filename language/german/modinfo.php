@@ -74,16 +74,8 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_TABLE_TYPE_DESC', 'Tabellentype is bootstrap html table.');
 \define('_MI_WGGITHUB_PANEL_TYPE', 'Panel Type');
 \define('_MI_WGGITHUB_PANEL_TYPE_DESC', 'Panel Type is the bootstrap html div.');
-\define('_MI_WGGITHUB_IDPAYPAL', 'Paypal ID');
-\define('_MI_WGGITHUB_IDPAYPAL_DESC', 'Deinen PayPal IDfür Spenden hier angeben.');
 \define('_MI_WGGITHUB_ADVERTISE', 'Code Werbung');
 \define('_MI_WGGITHUB_ADVERTISE_DESC', 'Bitte hier den Code für die Werbung eingeben');
 \define('_MI_WGGITHUB_MAINTAINEDBY', 'Unterstützt von');
 \define('_MI_WGGITHUB_MAINTAINEDBY_DESC', 'Erlaubt den Url zur Supportseite oder Community');
-\define('_MI_WGGITHUB_BOOKMARKS', 'Social Bookmarks');
-\define('_MI_WGGITHUB_BOOKMARKS_DESC', 'Social Bookmarks in den Seiten anzeigen');
-\define('_MI_WGGITHUB_FACEBOOK_COMMENTS', 'Facebook-Kommentare');
-\define('_MI_WGGITHUB_FACEBOOK_COMMENTS_DESC', 'Facebook-Kommentare in den Seiten zulassen');
-\define('_MI_WGGITHUB_DISQUS_COMMENTS', 'Disqus-Kommentare');
-\define('_MI_WGGITHUB_DISQUS_COMMENTS_DESC', 'Disqus-Kommentare in den Seiten zulassen');
 // ---------------- End ----------------

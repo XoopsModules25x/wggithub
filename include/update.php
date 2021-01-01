@@ -156,7 +156,7 @@ function wggithub_check_db($module)
         }
     }
 
-// Example: update table (add new field)
+    // Example: update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
     $field   = 'dir_filterrelease';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -188,6 +188,34 @@ function wggithub_check_db($module)
         if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
             xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
             $module->setErrors("Error when creating table '$table'.");
+            $ret = false;
+        }
+    }
+
+    // Example: update table (add new field)
+    $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
+    $field   = 'dir_content';
+    $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
+    $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
+    if (!$numRows) {
+        $sql = "ALTER TABLE `$table` ADD `$field` INT(10) NOT NULL DEFAULT '0' AFTER `dir_type`;";
+        if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
+            xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
+            $module->setErrors("Error when adding '$field' to table '$table'.");
+            $ret = false;
+        }
+    }
+
+    // Example: update table (add new field)
+    $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
+    $field   = 'dir_descr';
+    $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
+    $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
+    if (!$numRows) {
+        $sql = "ALTER TABLE `$table` ADD `$field` TEXT NOT NULL AFTER `dir_type`;";
+        if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
+            xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
+            $module->setErrors("Error when adding '$field' to table '$table'.");
             $ret = false;
         }
     }

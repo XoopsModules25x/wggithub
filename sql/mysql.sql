@@ -29,7 +29,9 @@ CREATE TABLE `wggithub_settings` (
 CREATE TABLE `wggithub_directories` (
   `dir_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `dir_name` VARCHAR(255) NOT NULL DEFAULT '',
+  `dir_descr` TEXT NOT NULL,
   `dir_type` INT(10) NOT NULL DEFAULT '0',
+  `dir_content` INT(10) NOT NULL DEFAULT '0',
   `dir_autoupdate` INT(1) NOT NULL DEFAULT '0',
   `dir_online` INT(1) NOT NULL DEFAULT '0',
   `dir_filterrelease` INT(1) NOT NULL DEFAULT '0',
@@ -39,7 +41,7 @@ CREATE TABLE `wggithub_directories` (
 ) ENGINE=InnoDB;
 
 #
-# Structure table for `wggithub_requests` 5
+# Structure table for `wggithub_logs` 5
 #
 
 CREATE TABLE `wggithub_logs` (

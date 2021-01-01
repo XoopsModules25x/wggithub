@@ -65,7 +65,7 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_DIRECTORIES);
+            $GLOBALS['xoopsTpl']->assign('errors', [\_AM_WGGITHUB_THEREARENT_DIRECTORIES]);
         }
         break;
     case 'new':
@@ -90,7 +90,9 @@ switch ($op) {
         }
         // Set Vars
         $directoriesObj->setVar('dir_name', Request::getString('dir_name', ''));
+        $directoriesObj->setVar('dir_descr', Request::getText('dir_descr', ''));
         $directoriesObj->setVar('dir_type', Request::getInt('dir_type', 0));
+        $directoriesObj->setVar('dir_content', Request::getInt('dir_content', 0));
         $directoriesObj->setVar('dir_autoupdate', Request::getInt('dir_autoupdate', 0));
         $directoriesObj->setVar('dir_online', Request::getInt('dir_online', 0));
         $directoriesObj->setVar('dir_filterrelease', Request::getInt('dir_filterrelease', 0));
@@ -126,10 +128,42 @@ switch ($op) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('directories.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
-            if ($directoriesHandler->delete($directoriesObj)) {
+            $errors = [];
+            //delete all related data
+            $crRepositories = new \CriteriaCompo();
+            $crRepositories->add(new Criteria('repo_user', $dirName));
+            $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+            foreach (\array_keys($repositoriesAll) as $i) {
+                $repoId = $repositoriesAll[$i]->getVar('repo_id');
+                if ($repositoriesAll[$i]->getVar('repo_readme') > 0) {
+                    //delete all readmes
+                    $crReadmes = new \CriteriaCompo();
+                    $crReadmes->add(new \Criteria('rm_repoid', $repoId));
+                    if (!$readmesHandler->deleteAll($crReadmes)) {
+                        $errors[] = \_AM_WGGITHUB_ERROR_DELETE_DATA . ' READMES';
+                    }
+                }
+                if ($repositoriesAll[$i]->getVar('repo_release') > 0 || $repositoriesAll[$i]->getVar('repo_prerelease') > 0) {
+                    //delete all releases
+                    $crReleases = new \CriteriaCompo();
+                    $crReleases->add(new \Criteria('rel_repoid', $repoId));
+                    if (!$releasesHandler->deleteAll($crReleases)) {
+                        $errors[] = \_AM_WGGITHUB_ERROR_DELETE_DATA . ' RELEASES';
+                    }
+                }
+            }
+            if (!$repositoriesHandler->deleteAll($crRepositories)) {
+                $errors[] = \_AM_WGGITHUB_ERROR_DELETE_DATA . ' REPOSITORIES';
+            }
+            unset($crReadmes, $crReleases, $repositoriesAll);
+            //delete directory
+            if (!$directoriesHandler->delete($directoriesObj)) {
+                $errors[] = \_AM_WGGITHUB_ERROR_DELETE_DATA . ' DIRECTORIES - ' . $directoriesObj->getHtmlErrors();
+            }
+            if (0 == \count($errors)) {
                 \redirect_header('directories.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
             } else {
-                $GLOBALS['xoopsTpl']->assign('error', $directoriesObj->getHtmlErrors());
+                $GLOBALS['xoopsTpl']->assign('errors', $errors);
             }
         } else {
             $xoopsconfirm = new Common\XoopsConfirm(
