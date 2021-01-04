@@ -112,6 +112,8 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_READGH_ERROR_API_405', 'Error exchange data with GitHub: method not allowed');
 \define('_MA_WGGITHUB_READGH_ERROR_APILIMIT', 'Attention:<br>Basically all data are updated automatically, but currently API limit is reached!<br>You see data of last successful load from GitHub - maybe data are not up to date.<br>If you come back in a short time everything should be again up to date');
 \define('_MA_WGGITHUB_READGH_ERROR_APIOTHER', 'Attention:<br>Basically all data are updated automatically, but last API call failed!<br>You see data of last successful load from GitHub - maybe data are not up to date.<br>If you come back in a short time everything should be again up to date');
+// Gitbook
+\define('_MA_WGGITHUB_GITBOOK_GOTO', 'Goto GitBook');
 // Admin link
 \define('_MA_WGGITHUB_ADMIN', 'Admin');
 // ---------------- End ----------------

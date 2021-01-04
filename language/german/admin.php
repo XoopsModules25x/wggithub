@@ -26,7 +26,7 @@ include_once __DIR__ . '/main.php';
 // ---------------- Admin Index ----------------
 \define('_AM_WGGITHUB_STATISTICS', 'Statistiken');
 // There are
-\define('_AM_WGGITHUB_THEREARE_SETTINGS', "Es gibt <span class='bold'>%s</span>Einstellungen in der Datenbank");
+\define('_AM_WGGITHUB_THEREARE_SETTINGS', "Es gibt <span class='bold'>%s</span> Einstellungen in der Datenbank");
 \define('_AM_WGGITHUB_THEREARE_REPOSITORIES', "Es gibt <span class='bold'>%s</span> Repositories in der Datenbank");
 \define('_AM_WGGITHUB_THEREARE_DIRECTORIES', "Es sind <span class='bold'>%s</span> Verzeichnisse vorhanden");
 \define('_AM_WGGITHUB_THEREARE_LOGS', "Es gibt <span class='bold'>%s</span> Log-Einträge in der Datenbank");

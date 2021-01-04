@@ -515,13 +515,13 @@
     repo_name: smallworld
     repo_fullname: XoopsModules25x/smallworld
     repo_createdat: '1381204750'
-    repo_updatedat: '1608558155'
+    repo_updatedat: '1608924596'
     repo_htmlurl: 'https://github.com/XoopsModules25x/smallworld'
     repo_readme: '1'
     repo_prerelease: '0'
-    repo_release: '0'
+    repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1608634851'
+    repo_datecreated: '1609524247'
     repo_submitter: '1'
 -
     repo_id: '36'
@@ -1055,13 +1055,13 @@
     repo_name: xquiz
     repo_fullname: XoopsModules25x/xquiz
     repo_createdat: '1442997984'
-    repo_updatedat: '1601033942'
+    repo_updatedat: '1609476796'
     repo_htmlurl: 'https://github.com/XoopsModules25x/xquiz'
     repo_readme: '1'
-    repo_prerelease: '0'
+    repo_prerelease: '1'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606120300'
+    repo_datecreated: '1609524247'
     repo_submitter: '1'
 -
     repo_id: '72'
@@ -2045,13 +2045,13 @@
     repo_name: xmarticle
     repo_fullname: XoopsModules25x/xmarticle
     repo_createdat: '1581215042'
-    repo_updatedat: '1581215044'
+    repo_updatedat: '1609402497'
     repo_htmlurl: 'https://github.com/XoopsModules25x/xmarticle'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606128700'
+    repo_datecreated: '1609524250'
     repo_submitter: '1'
 -
     repo_id: '139'
@@ -4385,13 +4385,13 @@
     repo_name: xmdoc
     repo_fullname: XoopsModules25x/xmdoc
     repo_createdat: '1581215076'
-    repo_updatedat: '1581215078'
+    repo_updatedat: '1609402547'
     repo_htmlurl: 'https://github.com/XoopsModules25x/xmdoc'
-    repo_readme: '0'
+    repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606493621'
+    repo_datecreated: '1609524250'
     repo_submitter: '1'
 -
     repo_id: '296'
@@ -4430,13 +4430,13 @@
     repo_name: modulebuilder
     repo_fullname: XoopsModules25x/modulebuilder
     repo_createdat: '1588504879'
-    repo_updatedat: '1606246676'
+    repo_updatedat: '1608742226'
     repo_htmlurl: 'https://github.com/XoopsModules25x/modulebuilder'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1606493622'
+    repo_datecreated: '1609524251'
     repo_submitter: '1'
 -
     repo_id: '299'
@@ -4460,13 +4460,13 @@
     repo_name: wgtransifex
     repo_fullname: XoopsModules25x/wgtransifex
     repo_createdat: '1592743053'
-    repo_updatedat: '1607885531'
+    repo_updatedat: '1609351841'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wgtransifex'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_status: '3'
-    repo_datecreated: '1608299696'
+    repo_datecreated: '1609524251'
     repo_submitter: '1'
 -
     repo_id: '301'
@@ -4490,13 +4490,13 @@
     repo_name: moduleimages
     repo_fullname: XoopsModules25x/moduleimages
     repo_createdat: '1594403953'
-    repo_updatedat: '1607943144'
+    repo_updatedat: '1609522041'
     repo_htmlurl: 'https://github.com/XoopsModules25x/moduleimages'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1608299696'
+    repo_datecreated: '1609524251'
     repo_submitter: '1'
 -
     repo_id: '303'
@@ -4670,13 +4670,13 @@
     repo_name: wgsimpleacc
     repo_fullname: XoopsModules25x/wgsimpleacc
     repo_createdat: '1604999195'
-    repo_updatedat: '1606213362'
+    repo_updatedat: '1609410379'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wgsimpleacc'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1606493622'
+    repo_datecreated: '1609524252'
     repo_submitter: '1'
 -
     repo_id: '315'
@@ -15440,13 +15440,13 @@
     repo_name: wggithub
     repo_fullname: XoopsModules25x/wggithub
     repo_createdat: '1606394485'
-    repo_updatedat: '1606669201'
+    repo_updatedat: '1609517240'
     repo_htmlurl: 'https://github.com/XoopsModules25x/wggithub'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_status: '3'
-    repo_datecreated: '1608539535'
+    repo_datecreated: '1609524252'
     repo_submitter: '1'
 -
     repo_id: '1133'

@@ -252,9 +252,8 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * TODO
      * convert md file content into clean text
-     * and replace relative path for images into full path
+     * TODO: and replace relative path for images into full path
      *
      * @param $contentDecoded
      * @return string
