@@ -137,11 +137,11 @@ class Readmes extends \XoopsObject
         $ret['id']            = $this->getVar('rm_id');
         $repositoriesHandler = $helper->getHandler('Repositories');
         $repositoriesObj = $repositoriesHandler->get($this->getVar('rm_repoid'));
+        $repoName = '*****missing repo_name*****';
         if (\is_object($repositoriesObj)) {
-            $ret['repoid']        = $repositoriesObj->getVar('repo_name');
-        } else {
-            $ret['repoid']        = '*****missing repo_name*****';
+            $repoName = $repositoriesObj->getVar('repo_name');
         }
+        $ret['repoid']        = $repoName;
         $rmName = $this->getVar('rm_name');
         $ret['name']          = $rmName;
         $ret['type']          = $this->getVar('rm_type');
@@ -160,6 +160,10 @@ class Readmes extends \XoopsObject
         $ret['downloadurl']   = $this->getVar('rm_downloadurl');
         $ret['datecreated']   = \formatTimestamp($this->getVar('rm_datecreated'), 'm');
         $ret['submitter']     = \XoopsUser::getUnameFromId($this->getVar('rm_submitter'));
+        $ret['gitbook_link']  = '';
+        if (strpos($ret['downloadurl'], 'XoopsDoc') > 0) {
+            $ret['gitbook_link']  = 'https://xoops.gitbook.io/' . $repoName . '/';
+        }
         return $ret;
     }
 

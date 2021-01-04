@@ -1,8 +1,8 @@
 -
     dir_id: '1'
     dir_name: XoopsModules25x
-    dir_type: '2'
     dir_descr: '<p>Our repository for modules for XOOPS 2.5.x</p>'
+    dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
@@ -12,8 +12,8 @@
 -
     dir_id: '2'
     dir_name: XoopsDocs
-    dir_type: '2'
     dir_descr: '<p>Our repository for documentation on Gitbook</p>'
+    dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
@@ -23,8 +23,8 @@
 -
     dir_id: '3'
     dir_name: XoopsModulesArchive
-    dir_type: '2'
     dir_descr: '<p>Our repository for old modules</p>'
+    dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
@@ -34,8 +34,8 @@
 -
     dir_id: '4'
     dir_name: XoopsModules26x
-    dir_type: '2'
     dir_descr: '<p>Our repository for modules for XOOPS 2.6.x</p>'
+    dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
@@ -45,8 +45,8 @@
 -
     dir_id: '5'
     dir_name: XoopsThemes
-    dir_type: '2'
     dir_descr: '<p>Our repository for&nbsp;XOOPS themes</p>'
+    dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
@@ -56,8 +56,8 @@
 -
     dir_id: '10'
     dir_name: GregMage
+    dir_descr: ''
     dir_type: '1'
-    dir_descr: '<p>Repository of French XOOPS Community</p>'
     dir_content: '1'
     dir_autoupdate: '0'
     dir_online: '1'

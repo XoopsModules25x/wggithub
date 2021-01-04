@@ -112,6 +112,8 @@ include_once __DIR__ . '/admin.php';
 \define('_MA_WGGITHUB_READGH_ERROR_API_405', 'Fehler beim Datenaustausch mit GitHub: Ungültige Methode');
 \define('_MA_WGGITHUB_READGH_ERROR_APILIMIT', 'Achtung:<br>Normalerweise werden die Daten automatisch von GitHub geladen, jedoch ist momentan das maximale Limit an API-Anfrage bereits erreicht!<br>Du siehst die Daten vom letzten erfolgreichen Einlesen der Daten von GitHub - die Daten sind daher vielleicht nicht alle aktuell.<br>Wenn Du später wieder vorbei schaust dann sollten die Daten wieder aktuell sein');
 \define('_MA_WGGITHUB_READGH_ERROR_APIOTHER', 'Achtung:<br>Normalerweise werden die Daten automatisch von GitHub geladen, jedoch ist die letzte API-Anfrage fehlgeschlagen!<br>Du siehst die Daten vom letzten erfolgreichen Einlesen der Daten von GitHub - die Daten sind daher vielleicht nicht alle aktuell.<br>Wenn Du später wieder vorbei schaust dann sollten die Daten wieder aktuell sein');
+// Gitbook
+\define('_MA_WGGITHUB_GITBOOK_GOTO', 'Gehe zu GitBook');
 // Admin link
 \define('_MA_WGGITHUB_ADMIN', 'Administrator');
 // ---------------- End ----------------

@@ -86,17 +86,7 @@ $modversion['templates'] = [
     // User templates
     ['file' => 'wggithub_header.tpl', 'description' => ''],
     ['file' => 'wggithub_index.tpl', 'description' => ''],
-    ['file' => 'wggithub_repositories.tpl', 'description' => ''],
-    ['file' => 'wggithub_repositories_list.tpl', 'description' => ''],
-    ['file' => 'wggithub_repositories_item.tpl', 'description' => ''],
-    ['file' => 'wggithub_directories.tpl', 'description' => ''],
-    ['file' => 'wggithub_directories_list.tpl', 'description' => ''],
-    ['file' => 'wggithub_directories_item.tpl', 'description' => ''],
-    ['file' => 'wggithub_readmes.tpl', 'description' => ''],
-    ['file' => 'wggithub_readmes_list.tpl', 'description' => ''],
-    ['file' => 'wggithub_readmes_item.tpl', 'description' => ''],
     ['file' => 'wggithub_breadcrumbs.tpl', 'description' => ''],
-    ['file' => 'wggithub_search.tpl', 'description' => ''],
     ['file' => 'wggithub_footer.tpl', 'description' => ''],
 ];
 // ------------------- Mysql ------------------- //

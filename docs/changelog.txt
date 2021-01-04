@@ -9,6 +9,8 @@
  - ignore error when no readme/release exists (goffy)
  - added description for directories (goffy)
  - added content type for directories (goffy)
+ - added link creation for gitbook (goffy)
+ - removed unnecessary files (goffy)
 
 ===================================================================
 2020/10/11 Version 1.01 alpha
