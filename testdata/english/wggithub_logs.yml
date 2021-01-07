@@ -1,1 +1,168 @@
-{}
+-
+    log_id: '1'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609781862'
+    log_submitter: '1'
+-
+    log_id: '2'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609781862'
+    log_submitter: '1'
+-
+    log_id: '3'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1610016842'
+    log_submitter: '1'
+-
+    log_id: '4'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1610016842'
+    log_submitter: '1'
+-
+    log_id: '5'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1610016845'
+    log_submitter: '1'
+-
+    log_id: '6'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/readme'
+    log_result: START
+    log_datecreated: '1610016845'
+    log_submitter: '1'
+-
+    log_id: '7'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/readme'
+    log_result: OK
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '8'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/releases'
+    log_result: START
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '9'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/releases'
+    log_result: OK
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '10'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/readme'
+    log_result: START
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '11'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/readme'
+    log_result: OK
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '12'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/releases'
+    log_result: START
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '13'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/releases'
+    log_result: OK
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '14'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=2'
+    log_result: START
+    log_datecreated: '1610016846'
+    log_submitter: '1'
+-
+    log_id: '15'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=2'
+    log_result: OK
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '16'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/readme'
+    log_result: START
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '17'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/readme'
+    log_result: OK
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '18'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/releases'
+    log_result: START
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '19'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/releases'
+    log_result: OK
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '20'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/readme'
+    log_result: START
+    log_datecreated: '1610016850'
+    log_submitter: '1'
+-
+    log_id: '21'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/readme'
+    log_result: OK
+    log_datecreated: '1610016851'
+    log_submitter: '1'
+-
+    log_id: '22'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/releases'
+    log_result: START
+    log_datecreated: '1610016851'
+    log_submitter: '1'
+-
+    log_id: '23'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/releases'
+    log_result: OK
+    log_datecreated: '1610016851'
+    log_submitter: '1'
+-
+    log_id: '24'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1610016851'
+    log_submitter: '1'

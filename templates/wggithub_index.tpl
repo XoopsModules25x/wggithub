@@ -30,7 +30,7 @@
 
 	<div class="tab-content tab-content-main">
 		<div id="home" class="maintab tab-pane fade <{if $menu == 0}>in active<{/if}>">
-			<p class="center"><img class="tabcontent-logo" src="<{$wggithub_image_url}>/logoModule.png" alt="<{$smarty.const._MA_WGGITHUB_TITLE}>" title="<{$smarty.const._MA_WGGITHUB_TITLE}>"></p>
+			<p class="center"><img class="tabcontent-logo" src="assets/images/logoModule.png" alt="<{$smarty.const._MA_WGGITHUB_TITLE}>" title="<{$smarty.const._MA_WGGITHUB_TITLE}>"></p>
 			<h3><{$smarty.const._MA_WGGITHUB_DESC}></h3>
 			<p><{$smarty.const._MA_WGGITHUB_INDEX_DESC}></p>
 			<p class="tabcontent-lastupdate"><{$smarty.const._MA_WGGITHUB_INDEX_LASTUPDATE}>: <{$lastUpdate}> GMT</p>
@@ -48,7 +48,7 @@
 				<h4>
 					<{$directory.countRepos}>
 					<{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
-					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
+					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>&amp;start=<{$start}>&amp;limit=<{$limit}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
 					<{/if}>
 				</h4>
 				<p><{$directory.descr}></p>
@@ -130,14 +130,15 @@
 
 	el.parentNode.replaceChild(elClone, el);
 
+	if (location.protocol == 'https:') {
+		var imgs = document.getElementsByTagName("img");
+		var imgSrc = '';
 
-	var imgs = document.getElementsByTagName("img");
-	var imgSrc = '';
-
-	for (var i = 0; i < imgs.length; i++) {
-		imgSrc = imgs[i].src;
-		imgSrc = imgSrc.replace("http:", "https:");
-		imgs[i].src = imgSrc;
+		for (var i = 0; i < imgs.length; i++) {
+			imgSrc = imgs[i].src;
+			imgSrc = imgSrc.replace("http:", "https:");
+			imgs[i].src = imgSrc;
+		}
 	}
 
 </script>

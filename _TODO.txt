@@ -1,1 +1,5 @@
+XoopsDocs: 
+- Images not shown
+- add link to gitbook to open
+
 

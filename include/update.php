@@ -115,7 +115,7 @@ function wggithub_check_db($module)
     $ret = true;
     //insert here code for database check
 
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_repositories');
     $field   = 'repo_release';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -129,7 +129,7 @@ function wggithub_check_db($module)
         }
     }
 
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_repositories');
     $field   = 'repo_prerelease';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -142,7 +142,7 @@ function wggithub_check_db($module)
             $ret = false;
         }
     }
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_repositories');
     $field   = 'repo_readme';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -156,7 +156,7 @@ function wggithub_check_db($module)
         }
     }
 
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
     $field   = 'dir_filterrelease';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -170,7 +170,7 @@ function wggithub_check_db($module)
         }
     }
 
-    // Example: create new table
+    // create new table
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_logs');
     $check   = $GLOBALS['xoopsDB']->queryF("SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='$table'");
     $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
@@ -192,7 +192,7 @@ function wggithub_check_db($module)
         }
     }
 
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
     $field   = 'dir_content';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
@@ -206,13 +206,27 @@ function wggithub_check_db($module)
         }
     }
 
-    // Example: update table (add new field)
+    // update table (add new field)
     $table   = $GLOBALS['xoopsDB']->prefix('wggithub_directories');
     $field   = 'dir_descr';
     $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
     $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
     if (!$numRows) {
         $sql = "ALTER TABLE `$table` ADD `$field` TEXT NOT NULL AFTER `dir_type`;";
+        if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
+            xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
+            $module->setErrors("Error when adding '$field' to table '$table'.");
+            $ret = false;
+        }
+    }
+
+    // update table (add new field)
+    $table   = $GLOBALS['xoopsDB']->prefix('wggithub_readmes');
+    $field   = 'rm_baseurl';
+    $check   = $GLOBALS['xoopsDB']->queryF('SHOW COLUMNS FROM `' . $table . "` LIKE '" . $field . "'");
+    $numRows = $GLOBALS['xoopsDB']->getRowsNum($check);
+    if (!$numRows) {
+        $sql = "ALTER TABLE `$table` ADD `$field` VARCHAR(255) NOT NULL DEFAULT '' AFTER `rm_downloadurl`;";
         if (!$result = $GLOBALS['xoopsDB']->queryF($sql)) {
             xoops_error($GLOBALS['xoopsDB']->error() . '<br>' . $sql);
             $module->setErrors("Error when adding '$field' to table '$table'.");

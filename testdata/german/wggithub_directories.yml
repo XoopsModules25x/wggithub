@@ -12,13 +12,13 @@
 -
     dir_id: '2'
     dir_name: XoopsDocs
-    dir_descr: '<p>Our repository for documentation on Gitbook</p>'
+    dir_descr: '<p>Our repository for XOOPS documentation</p>'
     dir_type: '2'
     dir_content: '0'
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '0'
-    dir_datecreated: '1606049559'
+    dir_datecreated: '1609778173'
     dir_submitter: '1'
 -
     dir_id: '3'
@@ -54,7 +54,7 @@
     dir_datecreated: '1606049736'
     dir_submitter: '1'
 -
-    dir_id: '10'
+    dir_id: '6'
     dir_name: GregMage
     dir_descr: ''
     dir_type: '1'

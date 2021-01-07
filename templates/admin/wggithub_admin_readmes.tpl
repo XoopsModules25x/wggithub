@@ -12,6 +12,7 @@
 				<th class="center"><{$smarty.const._AM_WGGITHUB_README_CONTENT}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_README_ENCODING}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_README_DOWNLOADURL}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_README_BASEURL}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_README_DATECREATED}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_README_SUBMITTER}></th>
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
@@ -28,6 +29,7 @@
 				<td class='center'><{$readme.content_short}></td>
 				<td class='center'><{$readme.encoding}></td>
 				<td class='center'><{$readme.downloadurl}></td>
+				<td class='center'><{$readme.baseurl}></td>
 				<td class='center'><{$readme.datecreated}></td>
 				<td class='center'><{$readme.submitter}></td>
 				<td class="center  width5">

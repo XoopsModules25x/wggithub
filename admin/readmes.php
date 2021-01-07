@@ -92,6 +92,7 @@ switch ($op) {
         $readmesObj->setVar('rm_content', Request::getString('rm_content', ''));
         $readmesObj->setVar('rm_encoding', Request::getString('rm_encoding', ''));
         $readmesObj->setVar('rm_downloadurl', Request::getString('rm_downloadurl', ''));
+        $readmesObj->setVar('rm_baseurl', Request::getString('rm_baseurl', ''));
         $readmeDatecreatedObj = \DateTime::createFromFormat(_SHORTDATESTRING, Request::getString('rm_datecreated'));
         $readmesObj->setVar('rm_datecreated', $readmeDatecreatedObj->getTimestamp());
         $readmesObj->setVar('rm_submitter', Request::getInt('rm_submitter', 0));

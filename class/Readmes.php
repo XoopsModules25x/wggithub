@@ -47,6 +47,7 @@ class Readmes extends \XoopsObject
         $this->initVar('rm_content', XOBJ_DTYPE_TXTAREA);
         $this->initVar('rm_encoding', XOBJ_DTYPE_TXTBOX);
         $this->initVar('rm_downloadurl', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('rm_baseurl', XOBJ_DTYPE_TXTBOX);
         $this->initVar('rm_datecreated', XOBJ_DTYPE_INT);
         $this->initVar('rm_submitter', XOBJ_DTYPE_INT);
     }
@@ -109,6 +110,8 @@ class Readmes extends \XoopsObject
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_README_ENCODING, 'rm_encoding', 50, 255, $this->getVar('rm_encoding')));
         // Form Text rmDownloadurl
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_README_DOWNLOADURL, 'rm_downloadurl', 50, 255, $this->getVar('rm_downloadurl')));
+        // Form Text rmBaseurl
+        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_README_BASEURL, 'rm_baseurl', 50, 255, $this->getVar('rm_baseurl')));
         // Form Text Date Select rmDatecreated
         $rmDatecreated = $this->isNew() ?: $this->getVar('rm_datecreated');
         $form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_README_DATECREATED, 'rm_datecreated', '', $rmDatecreated));
@@ -145,11 +148,32 @@ class Readmes extends \XoopsObject
         $rmName = $this->getVar('rm_name');
         $ret['name']          = $rmName;
         $ret['type']          = $this->getVar('rm_type');
+        $baseUrl              = $this->getVar('rm_baseurl');
+        $ret['baseurl']       = $baseUrl;
         $ret['content']       = $this->getVar('rm_content', 'e');
         $contentDecoded = base64_decode($this->getVar('rm_content', 'n'));
         if ('.MD' == substr(strtoupper($rmName), -3)) {
             $Parsedown = new MDParser\Parsedown();
-            $contentClean = $Parsedown->text($contentDecoded);
+            $contentEncoded = $Parsedown->text($contentDecoded);
+            $baseUrl = str_replace('/blob/', '/raw/', $baseUrl);
+            //replace image links
+            $arrSearch = [
+                'src=".gitbook/assets/',
+                "src='.gitbook/assets/",
+                'src="en/assets/',
+                "src='en/assets/",
+                'src="assets/',
+                "src='assets/"
+            ];
+            $arrReplace = [
+                'src="' . $baseUrl . '.gitbook/assets/',
+                "src='" . $baseUrl . '.gitbook/assets/',
+                'src="' . $baseUrl . 'en/assets/',
+                "src='" . $baseUrl . 'en/assets/',
+                'src="' . $baseUrl . 'assets/',
+                "src='" . $baseUrl . 'assets/'
+            ];
+            $contentClean = str_replace($arrSearch, $arrReplace, $contentEncoded);
         } else {
             $contentClean = $contentDecoded;
         }

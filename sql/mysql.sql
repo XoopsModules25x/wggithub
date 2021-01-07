@@ -88,6 +88,7 @@ CREATE TABLE `wggithub_readmes` (
   `rm_content` TEXT NOT NULL ,
   `rm_encoding` VARCHAR(50) NOT NULL DEFAULT '',
   `rm_downloadurl` VARCHAR(255) NOT NULL DEFAULT '',
+  `rm_baseurl` VARCHAR(255) NOT NULL DEFAULT '',
   `rm_datecreated` INT(11) NOT NULL DEFAULT '0',
   `rm_submitter` INT(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`rm_id`)
