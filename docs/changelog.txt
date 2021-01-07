@@ -11,6 +11,7 @@
  - added content type for directories (goffy)
  - added link creation for gitbook (goffy)
  - removed unnecessary files (goffy)
+ - replacement of relative paths for gitbook (goffy)
 
 ===================================================================
 2020/10/11 Version 1.01 alpha

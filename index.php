@@ -231,9 +231,11 @@ switch ($op) {
             require __DIR__ . '/footer.php';
         }
         $dirName = Request::getString('dir_name', '');
+        $start   = 0; //reset to default
+        $limit   = Request::getInt('limit', $helper->getConfig('userpager'));
+        $redir   = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         $githubClient = GithubClient::getInstance();
         $result = $githubClient->executeUpdate($dirName);
-        $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
         } else {
@@ -247,11 +249,13 @@ switch ($op) {
             $GLOBALS['xoopsTpl']->assign('error', \_NOPERM);
             require __DIR__ . '/footer.php';
         }
-        $repoId = Request::getInt('repo_id', 0);
-        $repoUser  = Request::getString('repo_user', 'none');
-        $repoName  = Request::getString('repo_name', 'none');
+        $start    = 0; //reset to default
+        $limit    = Request::getInt('limit', $helper->getConfig('userpager'));
+        $repoId   = Request::getInt('repo_id', 0);
+        $repoUser = Request::getString('repo_user', 'none');
+        $repoName = Request::getString('repo_name', 'none');
+        $redir    = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         $result = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
-        $redir = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
         } else {

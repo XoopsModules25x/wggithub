@@ -144,6 +144,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_README_CONTENT', 'Inhalt');
 \define('_AM_WGGITHUB_README_ENCODING', 'Encoding');
 \define('_AM_WGGITHUB_README_DOWNLOADURL', 'Download Url');
+\define('_AM_WGGITHUB_README_BASEURL', 'Base url');
 \define('_AM_WGGITHUB_README_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_README_SUBMITTER', 'Einsender');
 // Release add/edit
