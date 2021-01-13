@@ -35,6 +35,7 @@ CREATE TABLE `wggithub_directories` (
   `dir_autoupdate` INT(1) NOT NULL DEFAULT '0',
   `dir_online` INT(1) NOT NULL DEFAULT '0',
   `dir_filterrelease` INT(1) NOT NULL DEFAULT '0',
+  `dir_weight` INT(10) NOT NULL DEFAULT '0',
   `dir_datecreated` INT(11) NOT NULL DEFAULT '0',
   `dir_submitter` INT(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dir_id`)

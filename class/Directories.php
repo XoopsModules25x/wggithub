@@ -48,6 +48,7 @@ class Directories extends \XoopsObject
         $this->initVar('dir_autoupdate', XOBJ_DTYPE_INT);
         $this->initVar('dir_online', XOBJ_DTYPE_INT);
         $this->initVar('dir_filterrelease', XOBJ_DTYPE_INT);
+        $this->initVar('dir_weight', XOBJ_DTYPE_INT);
         $this->initVar('dir_datecreated', \XOBJ_DTYPE_INT);
         $this->initVar('dir_submitter', \XOBJ_DTYPE_INT);
     }
@@ -132,6 +133,9 @@ class Directories extends \XoopsObject
         // Form Radio Yes/No dirFilterrelease
         $dirFilterrelease = $this->isNew() ?: $this->getVar('dir_filterrelease');
         $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease));
+        // Form Text dirWeight
+        $dirWeight = $this->isNew() ? 0 : $this->getVar('dir_weight');
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_DIRECTORY_WEIGHT, 'dir_weight', 50, 255, $dirWeight), true);
         // Form Text Date Select dirDatecreated
         $dirDatecreated = $this->isNew() ?: $this->getVar('dir_datecreated');
         $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_DIRECTORY_DATECREATED, 'dir_datecreated', '', $dirDatecreated));
@@ -155,13 +159,13 @@ class Directories extends \XoopsObject
     public function getValuesDirectories($keys = null, $format = null, $maxDepth = null)
     {
         $ret = $this->getValues($keys, $format, $maxDepth);
-        $ret['id']          = $this->getVar('dir_id');
-        $ret['name']        = $this->getVar('dir_name');
-        $ret['descr']        = $this->getVar('dir_descr');
-        $ret['type']        = $this->getVar('dir_type');
-        $ret['type_text']   = Constants::DIRECTORY_TYPE_USER == $this->getVar('dir_type') ? \_AM_WGGITHUB_DIRECTORY_TYPE_USER : \_AM_WGGITHUB_DIRECTORY_TYPE_ORG;
-        $content            = $this->getVar('dir_content');
-        $ret['content']      = $content;
+        $ret['id']        = $this->getVar('dir_id');
+        $ret['name']      = $this->getVar('dir_name');
+        $ret['descr']     = $this->getVar('dir_descr');
+        $ret['type']      = $this->getVar('dir_type');
+        $ret['type_text'] = Constants::DIRECTORY_TYPE_USER == $this->getVar('dir_type') ? \_AM_WGGITHUB_DIRECTORY_TYPE_USER : \_AM_WGGITHUB_DIRECTORY_TYPE_ORG;
+        $content = $this->getVar('dir_content');
+        $ret['content'] = $content;
         switch ($content) {
             case Constants::DIRECTORY_CONTENT_ALL:
             default:
@@ -172,11 +176,12 @@ class Directories extends \XoopsObject
                 break;
         }
         $ret['content_shorttext'] = Utility::truncateHtml($content_text);
-        $ret['autoupdate']  = (int)$this->getVar('dir_autoupdate') > 0 ? _YES : _NO;
-        $ret['online']      = (int)$this->getVar('dir_online') > 0 ? _YES : _NO;
-        $ret['filterrelease'] = (int)$this->getVar('dir_filterrelease') > 0 ? _YES : _NO;
-        $ret['datecreated'] = \formatTimestamp($this->getVar('dir_datecreated'), 's');
-        $ret['submitter']   = \XoopsUser::getUnameFromId($this->getVar('dir_submitter'));
+        $ret['autoupdate']        = (int)$this->getVar('dir_autoupdate') > 0 ? _YES : _NO;
+        $ret['online']            = (int)$this->getVar('dir_online') > 0 ? _YES : _NO;
+        $ret['filterrelease']     = (int)$this->getVar('dir_filterrelease') > 0 ? _YES : _NO;
+        $ret['weight']            = (int)$this->getVar('dir_weight');
+        $ret['datecreated']       = \formatTimestamp($this->getVar('dir_datecreated'), 's');
+        $ret['submitter']         = \XoopsUser::getUnameFromId($this->getVar('dir_submitter'));
         return $ret;
     }
 

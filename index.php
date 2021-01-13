@@ -42,7 +42,7 @@ $permGlobalRead   = $permissionsHandler->getPermGlobalRead();
 $permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
 
 $op            = Request::getCmd('op', 'list');
-$filterRelease = Request::getString('release', 'all');
+$filterRelease = Request::getString('release', 'any');
 $filterSortby  = Request::getString('sortby', 'update');
 
 $GLOBALS['xoopsTpl']->assign('release', $filterRelease);
@@ -118,6 +118,8 @@ switch ($op) {
 
         $crDirectories = new \CriteriaCompo();
         $crDirectories->add(new \Criteria('dir_online', 1));
+        $crDirectories->setSort('dir_weight ASC, dir_id');
+        $crDirectories->setOrder('ASC');
         $directoriesCount = $directoriesHandler->getCount($crDirectories);
         $GLOBALS['xoopsTpl']->assign('directoriesCount', $directoriesCount);
         if ($directoriesCount > 0) {

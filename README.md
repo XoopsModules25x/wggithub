@@ -3,7 +3,7 @@
 [![XOOPS CMS Module](https://img.shields.io/badge/XOOPS%20CMS-Module-blue.svg)](https://xoops.org)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/mambax7/wggithub.svg?style=flat)](https://scrutinizer-ci.com/g/XoopsModules25x/wggithub/?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/ggoffy/wggithub.svg?style=flat)](https://scrutinizer-ci.com/g/ggoffy/wggithub/?branch=master)
 [![Latest Pre-Release](https://img.shields.io/github/tag/XoopsModules25x/wggithub.svg?style=flat)](https://github.com/XoopsModules25x/wggithub/tags/)
 [![Latest Version](https://img.shields.io/github/release/XoopsModules25x/wggithub.svg?style=flat)](https://github.com/XoopsModules25x/wggithub/releases/)
 
@@ -17,7 +17,7 @@ The database will be updated with each access to index page.
 
 For access to GitHub you need a GitHub account and you have to enter your user name and private access token in "settings"
 
-[![Tutorial Available](https://xoops.org/images/tutorial-available-blue.svg)](https://xoops.gitbook.io/wggithub-tutorial/) Tutorial: see [GitBook](https://xoops.gitbook.io/wggithub-module-tutorial/).
+[![Tutorial Available](https://xoops.org/images/tutorial-available-blue.svg)](https://xoops.gitbook.io/wggithub-tutorial/) Tutorial: soon on [GitBook](https://xoops.gitbook.io/wggithub-module-tutorial/).
 To contribute to the Tutorial, [fork it on GitHub](https://github.com/XoopsDocs/wggithub-tutorial)
 
 [![Translations on Transifex](https://xoops.org/images/translations-github-blue.svg)](https://www.transifex.com/xoops)

@@ -41,6 +41,8 @@ switch ($op) {
     default:
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
+        $GLOBALS['xoTheme']->addScript(WGGITHUB_URL . '/assets/js/jquery-ui.js');
+        $GLOBALS['xoTheme']->addScript(WGGITHUB_URL . '/assets/js/sortable.js');
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
@@ -194,6 +196,14 @@ switch ($op) {
             if ($directoriesHandler->insert($directoriesObj, true)) {
                 \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
             }
+        }
+        break;
+    case 'order':
+        $dorder = $_POST['dorder'];
+        for ($i = 0, $iMax = count($dorder); $i < $iMax; $i++) {
+            $directoriesObj = $directoriesHandler->get($dorder[$i]);
+            $directoriesObj->setVar('dir_weight', $i + 1);
+            $directoriesHandler->insert($directoriesObj);
         }
         break;
 }
