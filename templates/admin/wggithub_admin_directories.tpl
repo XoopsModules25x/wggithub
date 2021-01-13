@@ -5,6 +5,7 @@
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
+				<th class="center">&nbsp;</th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_ID}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_NAME}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_DESCR}></th>
@@ -13,15 +14,17 @@
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_AUTOUPDATE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_ONLINE}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_FILTERRELEASE}></th>
+				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_WEIGHT}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_DATECREATED}></th>
 				<th class="center"><{$smarty.const._AM_WGGITHUB_DIRECTORY_SUBMITTER}></th>
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
 		<{if $directories_count}>
-		<tbody>
+		<tbody id="dir-list">
 			<{foreach item=directory from=$directories_list}>
-			<tr class='<{cycle values='odd, even'}>'>
+			<tr class='<{cycle values='odd, even'}>' id="dorder_<{$directory.id}>">
+				<td class='center'><img src="<{$wggithub_icons_url_16}>/up_down.png" alt="drag&drop" class="icon-sortable"></td>
 				<td class='center'><{$directory.id}></td>
 				<td class='center'><{$directory.name}></td>
 				<td class='center'><{$directory.descr}></td>
@@ -48,6 +51,7 @@
 						<a href="directories.php?op=change_yn&amp;field=dir_filterrelease&amp;value=1&amp;dir_id=<{$directory.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETON}>"><img src="<{$wggithub_icons_url_16}>/off.png" alt="<{$smarty.const._AM_WGGITHUB_SETON}>" /></a>
 					<{/if}>
 				</td>
+				<td class='center'><{$directory.weight}></td>
 				<td class='center'><{$directory.datecreated}></td>
 				<td class='center'><{$directory.submitter}></td>
 				<td class="center  width5">

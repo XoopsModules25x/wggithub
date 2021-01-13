@@ -82,7 +82,7 @@ class DirectoriesHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return int
      */
-    public function getCountDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
+    public function getCountDirectories($start = 0, $limit = 0, $sort = 'dir_weight ASC, dir_id', $order = 'ASC')
     {
         $crCountDirectories = new \CriteriaCompo();
         $crCountDirectories = $this->getDirectoriesCriteria($crCountDirectories, $start, $limit, $sort, $order);
@@ -97,7 +97,7 @@ class DirectoriesHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return array
      */
-    public function getAllDirectories($start = 0, $limit = 0, $sort = 'dir_id ASC, dir_name', $order = 'ASC')
+    public function getAllDirectories($start = 0, $limit = 0, $sort = 'dir_weight ASC, dir_id', $order = 'ASC')
     {
         $crAllDirectories = new \CriteriaCompo();
         $crAllDirectories = $this->getDirectoriesCriteria($crAllDirectories, $start, $limit, $sort, $order);

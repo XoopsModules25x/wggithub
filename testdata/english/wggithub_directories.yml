@@ -7,6 +7,7 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '1'
+    dir_weight: '1'
     dir_datecreated: '1606049602'
     dir_submitter: '1'
 -
@@ -18,6 +19,7 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '0'
+    dir_weight: '2'
     dir_datecreated: '1609778173'
     dir_submitter: '1'
 -
@@ -29,6 +31,7 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '0'
+    dir_weight: '6'
     dir_datecreated: '1606049592'
     dir_submitter: '1'
 -
@@ -40,6 +43,7 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '1'
+    dir_weight: '3'
     dir_datecreated: '1606049704'
     dir_submitter: '1'
 -
@@ -51,6 +55,7 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '0'
+    dir_weight: '4'
     dir_datecreated: '1606049736'
     dir_submitter: '1'
 -
@@ -62,5 +67,6 @@
     dir_autoupdate: '0'
     dir_online: '1'
     dir_filterrelease: '1'
+    dir_weight: '5'
     dir_datecreated: '1609506746'
     dir_submitter: '1'

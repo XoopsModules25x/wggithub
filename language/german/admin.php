@@ -115,6 +115,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Automatische Update');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
 \define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Filter Release anwenden');
+\define('_AM_WGGITHUB_DIRECTORY_WEIGHT', 'Reihung');
 \define('_AM_WGGITHUB_DIRECTORY_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_DIRECTORY_SUBMITTER', 'Einsender');
 // Request add/edit
