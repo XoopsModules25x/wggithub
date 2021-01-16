@@ -192,6 +192,20 @@ class GithubClient extends Api
 
         return $result;
     }
+    
+    /**
+     * Get content of repository
+     *
+     * @param  $username
+     * @param  $repository
+     * @return array
+     */
+    public function getRepositoryContent($username, $repository)
+    {
+        $url = static::BASE_URL . 'repos/'.rawurlencode($username).'/'.rawurlencode($repository).'/contents';
+
+        return $this->_get($url);
+    }
 
     /**
      * Get github content

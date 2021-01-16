@@ -2,6 +2,7 @@
 2021/01/13 Version 1.03 RC1
 ===================================================================
  - added sorting for directories (goffy)
+ - added download repository content from GitHub (goffy)
 
 ===================================================================
 2020/12/23 Version 1.02 beta 1
