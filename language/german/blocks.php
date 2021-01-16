@@ -24,4 +24,10 @@
 \define('_MB_WGGITHUB_TITLE_LENGTH', 'Titellänge');
 \define('_MB_WGGITHUB_CATTODISPLAY', 'Kategorie Anzeige');
 \define('_MB_WGGITHUB_ALLCAT', 'Alle Kategorien');
+// Repositories
+\define('_MB_WGGITHUB_REPOSITORIES_TO_DISPLAY', 'Repositories zum Anzeigen');
+\define('_MB_WGGITHUB_ALL_REPOSITORIES', 'Alle Repositories');
+\define('_MB_WGGITHUB_REPO_NAME', 'Name');
+\define('_MB_WGGITHUB_REPO_HTMLURL', 'Htmlurl');
+\define('_MB_WGGITHUB_REPOSITORY_GOTO', 'Gehe zu Repository');
 // ---------------- End ----------------
