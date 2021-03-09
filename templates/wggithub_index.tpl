@@ -89,7 +89,7 @@
 									<p class=""><{$smarty.const._MA_WGGITHUB_RELEASES}>:</p>
 									<{foreach item=release from=$repo.releases}>
 										<p class="">
-											<{$release.name}>
+											<{$release.name}> <span style="font-size: smaller">(<{$release.publishedat}>)</span>
 											<a class='btn btn-info btn-sm' href="<{$release.zipballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}>"><{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}></a>
 											<a class='btn btn-info btn-sm' href="<{$release.tarballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_TAR}>"><{$smarty.const._MA_WGGITHUB_RELEASE_TAR}></a>
 										</p>

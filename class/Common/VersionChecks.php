@@ -38,7 +38,14 @@ trait VersionChecks
         \xoops_loadLanguage('common', $moduleDirName);
 
         //check for minimum XOOPS version
-        $currentVer = mb_substr(XOOPS_VERSION, 6); // get the numeric part of string
+        $versionText = mb_substr(XOOPS_VERSION, 6);
+        $posEnd = strpos($versionText, '-');
+        // get the numeric part of string
+        if ($posEnd > 0) {
+            $currentVer = mb_substr($versionText, 0, $posEnd);
+        } else {
+            $currentVer = $versionText;
+        }
         if (null === $requiredVer) {
             $requiredVer = '' . $module->getInfo('min_xoops'); //making sure it's a string
         }

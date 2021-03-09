@@ -10,11 +10,11 @@
  */
 
 /**
- * Wfdownloads module
+ * wgGithub module
  *
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
- * @package         wfdownload
+ * @package         wgGithub
  * @since           3.23
  * @author          Xoops Development Team
  */
@@ -184,3 +184,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 \define('CO_' . $moduleDirNameUpper . '_' . 'TOTAL_PUBLISHED', 'Published');
 \define('CO_' . $moduleDirNameUpper . '_' . 'TOTAL_REJECTED', 'Rejected');
 \define('CO_' . $moduleDirNameUpper . '_' . 'TOTAL_SUBMITTED', 'Submitted');
+
+//Xoops form Delete
+\define('CO_' . $moduleDirNameUpper . '_DELETE_CONFIRM', 'Confirm delete');
+\define('CO_' . $moduleDirNameUpper . '_DELETE_LABEL', 'Do you really want to delete:');
