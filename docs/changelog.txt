@@ -5,6 +5,7 @@
  - added download repository content from GitHub (goffy)
  - fixed problem in version check (alain01/goffy)
  - fixed missing smarty default value (goffy)
+ - added option to show/hide non-releases (alain01/goffy)
 
 ===================================================================
 2020/12/23 Version 1.02 beta 1

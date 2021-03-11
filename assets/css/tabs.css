@@ -115,3 +115,6 @@
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
+#filter_release_label {
+  margin-left:20px;
+}

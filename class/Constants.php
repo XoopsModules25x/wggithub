@@ -63,4 +63,9 @@ interface Constants
     public const LOG_TYPE_REQUEST      = 3;
     public const LOG_TYPE_ERROR        = 4;
 
+    // Constants for log type
+    public const FILTER_TYPE_NONE     = 0;
+    public const FILTER_TYPE_ALL      = 1;
+    public const FILTER_TYPE_RELEASES = 2;
+
 }

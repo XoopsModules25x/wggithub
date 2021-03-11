@@ -23,7 +23,7 @@
 include_once __DIR__ . '/admin.php';
 
 // ---------------- Main ----------------
-\define('_MA_WGGITHUB_INDEX', 'Home');
+\define('_MA_WGGITHUB_INDEX', 'Übersicht');
 \define('_MA_WGGITHUB_TITLE', 'wgGitHub');
 \define('_MA_WGGITHUB_DESC', 'wgGitHub - GitHub-Viewer für XOOPS');
 \define('_MA_WGGITHUB_INDEX_DESC', 'Willkommen bei wgGitHub - dem GitHub-Viewer für XOOPS!

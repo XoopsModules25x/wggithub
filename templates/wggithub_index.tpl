@@ -6,25 +6,25 @@
 
 <{if $directoriesCount > 0}>
 	<!-- filter area -->
-	<div class="tab-filter">
-		<{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:
-		<div class="btn-group btn-group-sm" role="group" aria-label="Filter Releases">
-			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
-			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
-			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
-		</div>
+	<div id="filter_bar" class="tab-filter hidden">
 		<{$smarty.const._MA_WGGITHUB_FILTER_SORTBY}>:
-		<div class="btn-group btn-group-sm" role="group" aria-label="Filter Releases">
+		<div class="btn-group btn-group-sm" role="group" aria-label="Filter Sortby">
 			<button id="sortbyname" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=name&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></button>
 			<button id="sortbyupdate" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=update&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></button>
+		</div>
+		<span id="filter_release_label"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:</span>
+		<div id="filter_release_bar" class="btn-group btn-group-sm hidden" role="group" aria-label="Filter Releases">
+			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
+			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
+			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}> hidden"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
 		</div>
 	</div>
 
 	<!-- Basic Nav tabs -->
 	<ul class="nav nav-tabs">
-		<li class="<{if $menu == 0}>active<{/if}>"><a data-toggle="tab" href="#home">Home</a></li>
+		<li class="<{if $menu == 0}>active<{/if}>"><a data-toggle="tab" onclick='javascript:toggleFilters(0)' href="#home"><{$smarty.const._MA_WGGITHUB_INDEX}></a></li>
 		<{foreach item=directory from=$directories}>
-		<li class="<{if $menu == $directory.id}>active<{/if}>"><a data-toggle="tab" href="#menu<{$directory.id}>"><{$directory.name}></a></li>
+		<li class="<{if $menu == $directory.id}>active<{/if}>"><a data-toggle="tab" onclick='javascript:toggleFilters(1);toggleFilterRelease(<{$directory.dir_filterrelease}>)'  href="#menu<{$directory.id}>"><{$directory.name}></a></li>
 		<{/foreach}>
 	</ul>
 
@@ -161,6 +161,31 @@
 		url = href + '&menu=' + tabid;
 
 		window.location.href=url;
+	}
+	var toggleFilterRelease = function(display)
+	{
+		if (display > 0) {
+			document.getElementById("filter_release_label").classList.remove("hidden");
+			document.getElementById("filter_release_bar").classList.remove("hidden");
+		} else {
+			document.getElementById("filter_release_label").classList.add("hidden");
+			document.getElementById("filter_release_bar").classList.add("hidden");
+		}
+		if (display > 1) {
+			document.getElementById("relall").classList.add("hidden");
+			document.getElementById("relall").classList.add("hidden");
+		} else {
+			document.getElementById("relall").classList.remove("hidden");
+			document.getElementById("relall").classList.remove("hidden");
+		}
+	}
+	var toggleFilters = function(display)
+	{
+		if (1 == display) {
+			document.getElementById("filter_bar").classList.remove("hidden");
+		} else {
+			document.getElementById("filter_bar").classList.add("hidden");
+		}
 	}
 </script>
 

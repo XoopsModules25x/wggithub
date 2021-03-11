@@ -46,6 +46,10 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_SURE_DELETE', "Are you sure to delete: <b><span style='color : Red;'>%s </span></b>");
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Are you sure to update: <b><span style='color : Red;'>%s </span></b>");
 \define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Are you sure to delete all items of table: <b><span style='color : Red;'>%s </span></b>");
+// Filter type
+\define('_AM_WGGITHUB_FILTER_TYPE_NONE', 'Do not show filter');
+\define('_AM_WGGITHUB_FILTER_TYPE_ALL', 'Use filter all');
+\define('_AM_WGGITHUB_FILTER_TYPE_RELEASES', 'Use filter releases only');
 // Status
 \define('_AM_WGGITHUB_STATUS_NONE', 'None');
 \define('_AM_WGGITHUB_STATUS_NEW', 'New');
