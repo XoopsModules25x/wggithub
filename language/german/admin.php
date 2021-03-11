@@ -46,10 +46,13 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_SURE_DELETE', "Willst Du <b><span style='color : Red;'>%s </span></b> wirklich löschen?");
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Willst Du <b><span style='color : Red;'>%s </span></b> wirklich aktualisieren");
 \define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Willst Du die Einträge aus Tabelle <b><span style='color : Red;'>%s </span></b> wirklich löschen");
-// Filter type
+// Filters
 \define('_AM_WGGITHUB_FILTER_TYPE_NONE', 'Filter nicht verwenden');
 \define('_AM_WGGITHUB_FILTER_TYPE_ALL', 'Filter für alle verwenden');
 \define('_AM_WGGITHUB_FILTER_TYPE_RELEASES', 'Nur Filter Releases verwenden');
+\define('_AM_WGGITHUB_FILTER', 'Filter');
+\define('_AM_WGGITHUB_FILTER_OPERAND_EQUAL', ' = ');
+\define('_AM_WGGITHUB_FILTER_OPERAND_LIKE', ' enthält ');
 // Status
 \define('_AM_WGGITHUB_STATUS_NONE', 'Nein');
 \define('_AM_WGGITHUB_STATUS_NEW', 'Neu');

@@ -34,6 +34,7 @@ $limit  = Request::getInt('limit', $helper->getConfig('adminpager'));
 $GLOBALS['xoopsTpl']->assign('start', $start);
 $GLOBALS['xoopsTpl']->assign('limit', $limit);
 
+
 switch ($op) {
     case 'list':
     default:
@@ -43,8 +44,22 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('repositories.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_REPOSITORY, 'repositories.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $repositoriesCount = $repositoriesHandler->getCountRepositories();
-        $repositoriesAll = $repositoriesHandler->getAllRepositories($start, $limit);
+
+        $crRepositories = new \CriteriaCompo();
+        if ('filter' == $op) {
+            $operand = Request::getInt('filter_operand', 0);
+            $filterField = Request::getString('filter_field', '');
+            $filterValue = Request::getString('filter_value', 'none');
+            if (Constants::FILTER_OPERAND_EQUAL == $operand) {
+                $crRepositories->add(new Criteria($filterField, $filterValue));
+            } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
+                $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+            }
+        }
+        $crRepositories->setStart($start);
+        $crRepositories->setLimit($limit);
+        $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+        $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
         $GLOBALS['xoopsTpl']->assign('repositories_count', $repositoriesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
@@ -61,6 +76,8 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($repositoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
+            $form = $repositoriesHandler->getFormFilterRepos(false, $start, $limit);
+            $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_REPOSITORIES);
         }

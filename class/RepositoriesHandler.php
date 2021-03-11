@@ -208,4 +208,46 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
 
         return $reposNb;
     }
+
+    /**
+     * @public function getForm
+     * @param bool $action
+     * @param int  $start
+     * @param int  $limit
+     * @return \XoopsSimpleForm
+     */
+    public function getFormFilterRepos($action = false, $start = 0, $limit = 0)
+    {
+        $helper = \XoopsModules\Wggithub\Helper::getInstance();
+        if (!$action) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        // Get Theme Form
+        \xoops_load('XoopsFormLoader');
+        $form = new \XoopsSimpleForm('', 'formFilterAdmin', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
+        $filterTray = new \XoopsFormElementTray('', '&nbsp;');
+        // Form Select field
+        $fieldSelect = new \XoopsFormSelect(_AM_WGGITHUB_FILTER, 'filter_field', 0);
+        $fieldSelect->addOption('', ' ');
+        $fieldSelect->addOption('repo_user', _AM_WGGITHUB_REPOSITORY_USER);
+        $fieldSelect->addOption('repo_name', _AM_WGGITHUB_REPOSITORY_NAME);
+        $fieldSelect->addOption('repo_fullname', _AM_WGGITHUB_REPOSITORY_FULLNAME);
+        $filterTray->addElement($fieldSelect, true);
+        // Form Select operand
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', 0);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, _AM_WGGITHUB_FILTER_OPERAND_EQUAL);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, _AM_WGGITHUB_FILTER_OPERAND_LIKE);
+        $filterTray->addElement($operandsSelect);
+        // Form Text value
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, ''), true);
+        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', _SUBMIT, 'submit'));
+        $form->addElement($filterTray);
+        // To Save
+        $form->addElement(new \XoopsFormHidden('op', 'filter'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
+
+        return $form;
+    }
 }

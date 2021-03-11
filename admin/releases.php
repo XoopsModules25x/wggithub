@@ -43,8 +43,22 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $releasesCount = $releasesHandler->getCountReleases();
-        $releasesAll = $releasesHandler->getAllReleases($start, $limit);
+
+        $crReleases = new \CriteriaCompo();
+        if ('filter' == $op) {
+            $operand = Request::getInt('filter_operand', 0);
+            $filterField = Request::getString('filter_field', '');
+            $filterValue = Request::getString('filter_value', 'none');
+            if (Constants::FILTER_OPERAND_EQUAL == $operand) {
+                $crReleases->add(new Criteria($filterField, $filterValue));
+            } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
+                $crReleases->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+            }
+        }
+        $crReleases->setStart($start);
+        $crReleases->setLimit($limit);
+        $releasesCount = $releasesHandler->getCount($crReleases);
+        $releasesAll = $releasesHandler->getAll($crReleases);
         $GLOBALS['xoopsTpl']->assign('releases_count', $releasesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
@@ -61,6 +75,8 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($releasesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
+            $form = $releasesHandler->getFormFilterReleases(false, $start, $limit);
+            $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_RELEASES);
         }

@@ -43,8 +43,33 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $readmesCount = $readmesHandler->getCountReadmes();
-        $readmesAll = $readmesHandler->getAllReadmes($start, $limit);
+
+        $crReadmes = new \CriteriaCompo();
+        if ('filter' == $op) {
+
+            $crRepositories = new \CriteriaCompo();
+            $operand = Request::getInt('filter_operand', 0);
+            $filterField = Request::getString('filter_field', '');
+            $filterValue = Request::getString('filter_value', 'none');
+            if (Constants::FILTER_OPERAND_EQUAL == $operand) {
+                $crRepositories->add(new Criteria($filterField, $filterValue));
+            } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
+                $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+            }
+            $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+            if ($repositoriesCount > 0) {
+                $in = [];
+                $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+                foreach (\array_keys($repositoriesAll) as $i) {
+                    $in[] = $i;
+                }
+            }
+            $crReadmes->add(new Criteria('rm_repoid', '(' . implode(',', $in) . ')', 'IN'));
+        }
+        $crReadmes->setStart($start);
+        $crReadmes->setLimit($limit);
+        $readmesCount = $readmesHandler->getCount($crReadmes);
+        $readmesAll = $readmesHandler->getAll($crReadmes);
         $GLOBALS['xoopsTpl']->assign('readmes_count', $readmesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
@@ -61,6 +86,8 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
+            $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit);
+            $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         } else {
             $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_READMES);
         }

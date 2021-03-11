@@ -1,6 +1,10 @@
 <!-- Header -->
 <{include file='db:wggithub_admin_header.tpl' }>
 
+<{if $formFilter|default:''}>
+	<div class="pull-right"><{$formFilter}></div>
+<{/if}>
+
 <{if $releases_list|default:''}>
 	<table class='table table-bordered'>
 		<thead>
