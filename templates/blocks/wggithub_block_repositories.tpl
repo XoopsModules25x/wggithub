@@ -1,4 +1,4 @@
-<table class='table table-<{$table_type}>'>
+<table class='table table-<{$table_type|default:''}>'>
 	<thead>
 		<tr class='head'>
 			<th>&nbsp;</th>

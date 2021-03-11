@@ -1,7 +1,7 @@
 <!-- Header -->
 <{include file='db:wggithub_admin_header.tpl' }>
 
-<{if $repositories_list}>
+<{if $repositories_list|default:''}>
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
@@ -22,7 +22,7 @@
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
-		<{if $repositories_count}>
+		<{if $repositories_count|default:''}>
 		<tbody>
 			<{foreach item=repository from=$repositories_list}>
 			<tr class='<{cycle values='odd, even'}>'>
@@ -50,15 +50,15 @@
 		<{/if}>
 	</table>
 	<div class="clear">&nbsp;</div>
-	<{if $pagenav}>
+	<{if $pagenav|default:''}>
 		<div class="xo-pagenav floatright"><{$pagenav}></div>
 		<div class="clear spacer"></div>
 	<{/if}>
 <{/if}>
-<{if $form}>
+<{if $form|default:''}>
 	<{$form}>
 <{/if}>
-<{if $error}>
+<{if $error|default:''}>
 	<div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 

@@ -15,7 +15,7 @@
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
-		<{if $settings_count}>
+		<{if $settings_count|default:''}>
 		<tbody>
 			<{foreach item=setting from=$settings_list}>
 			<tr class='<{cycle values='odd, even'}>'>

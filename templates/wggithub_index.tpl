@@ -1,6 +1,6 @@
 <{include file='db:wggithub_header.tpl' }>
 
-<{if $error}>
+<{if $error|default:''}>
 	<div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 
@@ -34,9 +34,9 @@
 			<h3><{$smarty.const._MA_WGGITHUB_DESC}></h3>
 			<p><{$smarty.const._MA_WGGITHUB_INDEX_DESC}></p>
 			<p class="tabcontent-lastupdate"><{$smarty.const._MA_WGGITHUB_INDEX_LASTUPDATE}>: <{$lastUpdate}> GMT</p>
-			<{if $apiexceed}>
+			<{if $apiexceed|default:''}>
 				<p><{$smarty.const._MA_WGGITHUB_READGH_ERROR_APILIMIT}></p>
-			<{elseif $apierror}>
+			<{elseif $apierror|default:''}>
 				<p><{$smarty.const._MA_WGGITHUB_READGH_ERROR_APIOTHER}></p>
 			<{else}>
 				<p><{$smarty.const._MA_WGGITHUB_INDEX_UPTODATE}></p>
@@ -56,13 +56,13 @@
 			<div class="col-xs-3"> <!-- required for floating -->
 				<!-- Nav tabs for each directory -->
 				<ul class="nav nav-tabs tabs-left sideways">
-					<{if $directory.previousRepos}>
+					<{if $directory.previousRepos|default:''}>
 						<li class=""><a  id="btn_previous" href="index.php?op=list<{$directory.previousOp}>&amp;menu=<{$directory.id}>"> ... </a></li>
 					<{/if}>
 					<{foreach name=repo item=repo from=$directory.repos}>
 					<li class="<{if $smarty.foreach.repo.first}>active<{/if}>"><a href="#tabdetail<{$repo.id}>" data-toggle="tab"><{$repo.name}></a></li>
 					<{/foreach}>
-					<{if $directory.nextRepos}>
+					<{if $directory.nextRepos|default:''}>
 						<li class="">
 							<a id="btn_next" href="index.php?op=list<{$directory.nextOp}>&amp;menu=<{$directory.id}>"> ... </a>
 						</li>
@@ -84,7 +84,7 @@
 							<div class="col-xs-12 col-sm-6 tabcontent-headline">
 								<p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_UPDATEDAT}>: <{$repo.updatedat}></p>
 							</div>
-							<{if $repo.releases}>
+							<{if $repo.releases|default:''}>
 								<div class="col-xs-12 col-sm-12 tabcontent-headline">
 									<p class=""><{$smarty.const._MA_WGGITHUB_RELEASES}>:</p>
 									<{foreach item=release from=$repo.releases}>
@@ -99,17 +99,17 @@
 							<div class="col-xs-12 col-sm-12 tabcontent-headline">
 								<p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
 							</div>
-							<{if $repo.readme.gitbook_link}>
+							<{if $repo.readme.gitbook_link|default:''}>
 								<div class="col-xs-12 col-sm-12 tabcontent-headline">
 									<p class=""><a class='btn btn-warning right' href="<{$repo.readme.gitbook_link}>" title="<{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}></a></p>
 								</div>
 							<{/if}>
 							<div class="col-xs-12 sm-12 tabcontent-content">
-								<{if $permReadmeUpdate}>
+								<{if $permReadmeUpdate|default:''}>
 								<i class="fa fa-re"></i>
 									<a class='btn btn-primary btn-sm pull-right' href="index.php?op=update_readme&amp;repo_id=<{$repo.id}>&amp;repo_user=<{$repo.user}>&amp;repo_name=<{$repo.name}>" title="<{$smarty.const._MA_WGGITHUB_README_UPDATE}>"><{$smarty.const._MA_WGGITHUB_README_UPDATE}></a></p>
 								<{/if}>
-								<{$repo.readme.content_clean}>
+								<{$repo.readme.content_clean|default:''}>
 							</div>
 						</div>
 					<{/foreach}>
