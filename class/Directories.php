@@ -134,8 +134,8 @@ class Directories extends \XoopsObject
         $dirFilterrelease = $this->isNew() ?: $this->getVar('dir_filterrelease');
         $dirFilterreleaseSelect = new \XoopsFormSelect(\_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease, 3);
         $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_NONE, \_AM_WGGITHUB_FILTER_TYPE_NONE);
-        $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_ALL, \_AM_WGGITHUB_FILTER_TYPE_ALL);
         $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_RELEASES, \_AM_WGGITHUB_FILTER_TYPE_RELEASES);
+        $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_ALL, \_AM_WGGITHUB_FILTER_TYPE_ALL);
         $form->addElement($dirFilterreleaseSelect, true);
         // Form Text dirWeight
         $dirWeight = $this->isNew() ? 0 : $this->getVar('dir_weight');
