@@ -5,7 +5,6 @@
 	<div class="pull-right"><{$formFilter}></div>
 <{/if}>
 
-<{if $readmes_list|default:''}>
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
@@ -22,8 +21,8 @@
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
-		<{if $readmes_count|default:''}>
 		<tbody>
+		<{if $readmes_count|default:''}>
 			<{foreach item=readme from=$readmes_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$readme.id}></td>
@@ -42,15 +41,18 @@
 				</td>
 			</tr>
 			<{/foreach}>
-		</tbody>
+		<{else}>
+			<tr class='<{cycle values='odd, even'}>'>
+				<td colspan='11' class='center'><{$noData}></td>
+			</tr>
 		<{/if}>
+		</tbody>
 	</table>
 	<div class="clear">&nbsp;</div>
 	<{if $pagenav|default:''}>
 		<div class="xo-pagenav floatright"><{$pagenav}></div>
 		<div class="clear spacer"></div>
 	<{/if}>
-<{/if}>
 <{if $form|default:''}>
 	<{$form}>
 <{/if}>

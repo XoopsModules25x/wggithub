@@ -7,6 +7,7 @@
  - fixed missing smarty default value (goffy)
  - added option to show/hide non-releases (alain01/goffy)
  - added filters on admin side (alain01/goffy)
+ - added filter status (alain01/goffy)
 
 ===================================================================
 2020/12/23 Version 1.02 beta 1

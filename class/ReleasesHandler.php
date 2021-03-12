@@ -277,12 +277,13 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
 
     /**
      * @public function getForm
-     * @param bool $action
-     * @param int  $start
-     * @param int  $limit
+     * @param bool   $action
+     * @param int    $start
+     * @param int    $limit
+     * @param string $filterValue
      * @return \XoopsSimpleForm
      */
-    public function getFormFilterReleases($action = false, $start = 0, $limit = 0)
+    public function getFormFilterReleases($action = false, $start = 0, $limit = 0, $filterValue = '')
     {
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
@@ -293,17 +294,18 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         $form->setExtra('enctype="multipart/form-data"');
         $filterTray = new \XoopsFormElementTray('', '&nbsp;');
         // Form Select field
-        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 0);
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 'rel_name');
         $fieldSelect->addOption('', ' ');
         $fieldSelect->addOption('rel_name', \_AM_WGGITHUB_RELEASE_NAME);
         $filterTray->addElement($fieldSelect, true);
         // Form Select operand
-        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', 0);
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', Constants::FILTER_OPERAND_LIKE);
         $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
         $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
         $filterTray->addElement($operandsSelect);
         // Form Text value
-        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, ''), true);
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, $filterValue), true);
+        // Form button
         $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
         $form->addElement($filterTray);
         // To Save

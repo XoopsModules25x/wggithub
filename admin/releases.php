@@ -44,6 +44,7 @@ switch ($op) {
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
+        $filterValue = '';
         $crReleases = new \CriteriaCompo();
         if ('filter' == $op) {
             $operand = Request::getInt('filter_operand', 0);
@@ -75,11 +76,15 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($releasesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
-            $form = $releasesHandler->getFormFilterReleases(false, $start, $limit);
-            $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_RELEASES);
+            if ('filter' == $op) {
+                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_RELEASES_FILTER);
+            } else {
+                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_RELEASES);
+            }
         }
+        $form = $releasesHandler->getFormFilterReleases(false, $start, $limit, $filterValue);
+        $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
     case 'new':
         $templateMain = 'wggithub_admin_releases.tpl';

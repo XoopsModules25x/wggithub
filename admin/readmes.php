@@ -44,9 +44,9 @@ switch ($op) {
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
+        $filterValue = '';
         $crReadmes = new \CriteriaCompo();
         if ('filter' == $op) {
-
             $crRepositories = new \CriteriaCompo();
             $operand = Request::getInt('filter_operand', 0);
             $filterField = Request::getString('filter_field', '');
@@ -57,8 +57,9 @@ switch ($op) {
                 $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
             }
             $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+            $in = [];
+            $in[] = 0; //in order to get 'no result' if no repo is matching
             if ($repositoriesCount > 0) {
-                $in = [];
                 $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
                 foreach (\array_keys($repositoriesAll) as $i) {
                     $in[] = $i;
@@ -86,11 +87,15 @@ switch ($op) {
                 $pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
-            $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit);
-            $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_READMES);
+            if ('filter' == $op) {
+                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_READMES_FILTER);
+            } else {
+                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_READMES);
+            }
         }
+        $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit, $filterValue);
+        $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
     case 'new':
         $templateMain = 'wggithub_admin_readmes.tpl';

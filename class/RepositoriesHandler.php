@@ -211,12 +211,14 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
 
     /**
      * @public function getForm
-     * @param bool $action
-     * @param int  $start
-     * @param int  $limit
+     * @param bool   $action
+     * @param int    $start
+     * @param int    $limit
+     * @param string $filterValue
+     * @param int    $filterStatus
      * @return \XoopsSimpleForm
      */
-    public function getFormFilterRepos($action = false, $start = 0, $limit = 0)
+    public function getFormFilterRepos($action = false, $start = 0, $limit = 0, $filterValue = '', $filterStatus = 0)
     {
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
@@ -227,19 +229,27 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
         $form->setExtra('enctype="multipart/form-data"');
         $filterTray = new \XoopsFormElementTray('', '&nbsp;');
         // Form Select field
-        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 0);
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 'repo_name');
         $fieldSelect->addOption('', ' ');
         $fieldSelect->addOption('repo_user', \_AM_WGGITHUB_REPOSITORY_USER);
         $fieldSelect->addOption('repo_name', \_AM_WGGITHUB_REPOSITORY_NAME);
         $fieldSelect->addOption('repo_fullname', \_AM_WGGITHUB_REPOSITORY_FULLNAME);
         $filterTray->addElement($fieldSelect, true);
         // Form Select operand
-        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', 0);
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', Constants::FILTER_OPERAND_LIKE);
         $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
         $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
         $filterTray->addElement($operandsSelect);
         // Form Text value
-        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, ''), true);
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, $filterValue), true);
+        // Form Select Status repoStatus
+        $repoStatusSelect = new \XoopsFormSelect(\_AM_WGGITHUB_REPOSITORY_STATUS, 'filter_status', $filterStatus);
+        $repoStatusSelect->addOption(Constants::STATUS_NONE, ' ');
+        $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, \_AM_WGGITHUB_STATUS_UPTODATE);
+        $repoStatusSelect->addOption(Constants::STATUS_UPDATED, \_AM_WGGITHUB_STATUS_UPDATED);
+        $repoStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGGITHUB_STATUS_OFFLINE);
+        $filterTray->addElement($repoStatusSelect);
+        // Form button
         $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
         $form->addElement($filterTray);
         // To Save

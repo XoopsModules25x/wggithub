@@ -36,10 +36,13 @@ include_once __DIR__ . '/main.php';
 // There aren't
 \define('_AM_WGGITHUB_THEREARENT_SETTINGS', "Es gibt keine Einstellungen");
 \define('_AM_WGGITHUB_THEREARENT_REPOSITORIES', "Es gibt keine Repositories");
+\define('_AM_WGGITHUB_THEREARENT_REPOSITORIES_FILTER', "Es gibt keine Repositories zu diesem Filter");
 \define('_AM_WGGITHUB_THEREARENT_DIRECTORIES', "Es gibt keine Verzeichisse");
 \define('_AM_WGGITHUB_THEREARENT_LOGS', "Es gibt keine Log-Einträge");
 \define('_AM_WGGITHUB_THEREARENT_READMES', "Es gibt keine Readme-Einträge");
+\define('_AM_WGGITHUB_THEREARENT_READMES_FILTER', "Es gibt keine Readme-Einträge zu diesem Filter");
 \define('_AM_WGGITHUB_THEREARENT_RELEASES', "Es gibt keine Releases");
+\define('_AM_WGGITHUB_THEREARENT_RELEASES_FILTER', "Es gibt keine Releases zu diesem Filter");
 // Save/Delete
 \define('_AM_WGGITHUB_FORM_OK', 'Erfolgreich gespeichert');
 \define('_AM_WGGITHUB_FORM_DELETE_OK', 'Erfolgreich gelöscht');
