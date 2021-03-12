@@ -218,6 +218,15 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 25,
 ];
+// Autoapproved
+$modversion['config'][] = [
+    'name'        => 'autoapproved',
+    'title'       => '_MI_WGGITHUB_AUTOAPPROVED',
+    'description' => '_MI_WGGITHUB_AUTOAPPROVED_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
 // Number column
 $modversion['config'][] = [
     'name'        => 'numb_col',

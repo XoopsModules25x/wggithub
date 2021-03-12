@@ -45,6 +45,10 @@ switch ($op) {
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_REPOSITORY, 'repositories.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
+        $autoApproved = (int)$helper->getConfig('autoapproved');
+        $GLOBALS['xoopsTpl']->assign('autoApproved', !$autoApproved);
+        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', WGGITHUB_ICONS_URL . '/16');
+
         $filterValue = '';
         $filterStatus = 0;
         $crRepositories = new \CriteriaCompo();
@@ -171,6 +175,16 @@ switch ($op) {
                 \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $repositoriesObj->getVar('repo_name')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        }
+        break;
+    case 'change_yn':
+        if ($repoId > 0) {
+            $repositoriesObj = $repositoriesHandler->get($repoId);
+            $repositoriesObj->setVar(Request::getString('field'), Request::getInt('value', 0));
+            // Insert Data
+            if ($repositoriesHandler->insert($repositoriesObj, true)) {
+                \redirect_header('repositories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            }
         }
         break;
 }

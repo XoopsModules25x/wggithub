@@ -66,6 +66,9 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_EDITOR_MAXCHAR_DESC', 'Max characters for showing text of a textarea or editor field in admin area');
 \define('_MI_WGGITHUB_KEYWORDS', 'Keywords');
 \define('_MI_WGGITHUB_KEYWORDS_DESC', 'Insert here the keywords (separate by comma)');
+\define('_MI_WGGITHUB_AUTOAPPROVED', 'Autoapprove');
+\define('_MI_WGGITHUB_AUTOAPPROVED_DESC', 'The repositories will be automatically approved. If you deactivate this option you have to approve each repository manually in order to show it on user side!');
+
 \define('_MI_WGGITHUB_NUMB_COL', 'Number Columns');
 \define('_MI_WGGITHUB_NUMB_COL_DESC', 'Number Columns to View.');
 \define('_MI_WGGITHUB_DIVIDEBY', 'Divide By');

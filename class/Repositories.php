@@ -50,6 +50,7 @@ class Repositories extends \XoopsObject
         $this->initVar('repo_readme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('repo_prerelease', XOBJ_DTYPE_TXTBOX);
         $this->initVar('repo_release', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_approved', XOBJ_DTYPE_INT);
         $this->initVar('repo_status', XOBJ_DTYPE_INT);
         $this->initVar('repo_datecreated', XOBJ_DTYPE_INT);
         $this->initVar('repo_submitter', XOBJ_DTYPE_INT);
@@ -119,6 +120,9 @@ class Repositories extends \XoopsObject
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_PRERELEASE, 'repo_prerelease', 50, 255, $this->getVar('repo_prerelease')));
         // Form Text repoRelease
         $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_RELEASE, 'repo_release', 50, 255, $this->getVar('repo_prelease')));
+        // Form Radio Yes/No repoApproved
+        $repoApproved = $this->isNew() ?: $this->getVar('repo_approved');
+        $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_REPOSITORY_APPROVED, 'repo_approved', $repoApproved));
         // Form Select Status repoStatus
         $repoStatusSelect = new \XoopsFormSelect(_AM_WGGITHUB_REPOSITORY_STATUS, 'repo_status', $this->getVar('repo_status'));
         $repoStatusSelect->addOption(Constants::STATUS_NONE, _AM_WGGITHUB_STATUS_NONE);
@@ -160,6 +164,7 @@ class Repositories extends \XoopsObject
         $ret['readme']      = $this->getVar('repo_readme');
         $ret['prerelease']  = $this->getVar('repo_prerelease');
         $ret['release']     = $this->getVar('repo_release');
+        $ret['approved']    = (int)$this->getVar('repo_approved') > 0 ? _YES : _NO;
         $status             = $this->getVar('repo_status');
         $ret['status']      = $status;
         switch ($status) {

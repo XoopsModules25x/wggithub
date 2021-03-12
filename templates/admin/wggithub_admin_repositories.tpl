@@ -19,6 +19,9 @@
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_README}></th>
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_PRERELEASE}></th>
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_RELEASE}></th>
+			<{if $autoApproved|default:''}>
+			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_APPROVED}></th>
+			<{/if}>
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_STATUS}></th>
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_DATECREATED}></th>
 			<th class="center"><{$smarty.const._AM_WGGITHUB_REPOSITORY_SUBMITTER}></th>
@@ -40,6 +43,15 @@
 			<td class='center'><{$repository.readme}></td>
 			<td class='center'><{$repository.prerelease}></td>
 			<td class='center'><{$repository.release}></td>
+			<{if $autoApproved|default:''}>
+			<td class='center'>
+				<{if $repository.repo_approved|default:0 == 1}>
+				<a href="repositories.php?op=change_yn&amp;field=repo_approved&amp;value=0&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETOFF}>"><img src="<{$wggithub_icons_url_16}>/on.png" alt="<{$smarty.const._AM_WGGITHUB_SETOFF}>" /></a>
+				<{else}>
+				<a href="repositories.php?op=change_yn&amp;field=repo_approved&amp;value=1&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETON}>"><img src="<{$wggithub_icons_url_16}>/off.png" alt="<{$smarty.const._AM_WGGITHUB_SETON}>" /></a>
+				<{/if}>
+			</td>
+			<{/if}>
 			<td class='center'><img src="<{$modPathIcon16}>status<{$repository.status}>.png" alt="<{$repository.status_text}>" title="<{$repository.status_text}>" /></td>
 			<td class='center'><{$repository.datecreated}></td>
 			<td class='center'><{$repository.submitter}></td>

@@ -106,6 +106,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_REPOSITORY_README', 'Readme');
 \define('_AM_WGGITHUB_REPOSITORY_PRERELEASE', 'Pre-Release');
 \define('_AM_WGGITHUB_REPOSITORY_RELEASE', 'Release');
+\define('_AM_WGGITHUB_REPOSITORY_APPROVED', 'Approved');
 \define('_AM_WGGITHUB_REPOSITORY_STATUS', 'Status');
 \define('_AM_WGGITHUB_REPOSITORY_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_REPOSITORY_SUBMITTER', 'Submitter');

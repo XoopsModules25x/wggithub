@@ -66,6 +66,8 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_EDITOR_MAXCHAR_DESC', 'Maximale Anzahl an Zeichen für die Kurzanzeige von Texten im Adminbereich');
 \define('_MI_WGGITHUB_KEYWORDS', 'Keywords');
 \define('_MI_WGGITHUB_KEYWORDS_DESC', 'Keywords eingeben (getrennt mit einem Komma)');
+\define('_MI_WGGITHUB_AUTOAPPROVED', 'Automatische Freigabe');
+\define('_MI_WGGITHUB_AUTOAPPROVED_DESC', 'Die Repositories werden automatisch freigegeben und angezeigt. Wenn Sie diese Option deaktivieren müssen Sie jedes Repository manuell freigeben, damit es auf der Benutzerseite angezeigt wird!');
 \define('_MI_WGGITHUB_NUMB_COL', 'Anzahl Spalten');
 \define('_MI_WGGITHUB_NUMB_COL_DESC', 'Anzahl der Spalten in der Tabellenansicht');
 \define('_MI_WGGITHUB_DIVIDEBY', 'Geteilt durch');
