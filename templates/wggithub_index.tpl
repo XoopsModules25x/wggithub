@@ -6,14 +6,14 @@
 
 <{if $directoriesCount > 0}>
 	<!-- filter area -->
-	<div id="filter_bar" class="tab-filter hidden">
+	<div id="filter_bar" class="tab-filter <{if $menu == 0}>hidden<{/if}>">
 		<{$smarty.const._MA_WGGITHUB_FILTER_SORTBY}>:
 		<div class="btn-group btn-group-sm" role="group" aria-label="Filter Sortby">
 			<button id="sortbyname" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=name&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></button>
 			<button id="sortbyupdate" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=update&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></button>
 		</div>
 		<span id="filter_release_label"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:</span>
-		<div id="filter_release_bar" class="btn-group btn-group-sm hidden" role="group" aria-label="Filter Releases">
+		<div id="filter_release_bar" class="btn-group btn-group-sm <{if $menu == 0}>hidden<{/if}>" role="group" aria-label="Filter Releases">
 			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
 			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
 			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}> hidden"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>

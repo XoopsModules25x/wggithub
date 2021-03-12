@@ -218,7 +218,6 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
      */
     public function getFormFilterRepos($action = false, $start = 0, $limit = 0)
     {
-        $helper = \XoopsModules\Wggithub\Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -228,20 +227,20 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
         $form->setExtra('enctype="multipart/form-data"');
         $filterTray = new \XoopsFormElementTray('', '&nbsp;');
         // Form Select field
-        $fieldSelect = new \XoopsFormSelect(_AM_WGGITHUB_FILTER, 'filter_field', 0);
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 0);
         $fieldSelect->addOption('', ' ');
-        $fieldSelect->addOption('repo_user', _AM_WGGITHUB_REPOSITORY_USER);
-        $fieldSelect->addOption('repo_name', _AM_WGGITHUB_REPOSITORY_NAME);
-        $fieldSelect->addOption('repo_fullname', _AM_WGGITHUB_REPOSITORY_FULLNAME);
+        $fieldSelect->addOption('repo_user', \_AM_WGGITHUB_REPOSITORY_USER);
+        $fieldSelect->addOption('repo_name', \_AM_WGGITHUB_REPOSITORY_NAME);
+        $fieldSelect->addOption('repo_fullname', \_AM_WGGITHUB_REPOSITORY_FULLNAME);
         $filterTray->addElement($fieldSelect, true);
         // Form Select operand
         $operandsSelect = new \XoopsFormSelect('', 'filter_operand', 0);
-        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, _AM_WGGITHUB_FILTER_OPERAND_EQUAL);
-        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, _AM_WGGITHUB_FILTER_OPERAND_LIKE);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
         $filterTray->addElement($operandsSelect);
         // Form Text value
         $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, ''), true);
-        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', _SUBMIT, 'submit'));
+        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
         $form->addElement($filterTray);
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'filter'));
