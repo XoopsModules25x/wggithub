@@ -16,7 +16,7 @@
 		<div id="filter_release_bar" class="btn-group btn-group-sm <{if $menu == 0}>hidden<{/if}>" role="group" aria-label="Filter Releases">
 			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
 			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
-			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}> hidden"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
+			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}> <{if $menu == 0}>hidden<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
 		</div>
 	</div>
 
@@ -48,7 +48,7 @@
 				<h4>
 					<{$directory.countRepos}>
 					<{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
-					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>&amp;start=<{$start}>&amp;limit=<{$limit}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
+					<a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
 					<{/if}>
 				</h4>
 				<p><{$directory.descr}></p>
