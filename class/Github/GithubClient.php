@@ -79,7 +79,7 @@ class GithubClient extends Api
         return $instance;
     }
 
-    public function testMilo($url) {
+    public function testApi1($url) {
         $api = new Github\Api;
         $response = $api->get(static::BASE_URL . $url);
         $data = $api->decode($response);
@@ -87,7 +87,7 @@ class GithubClient extends Api
         return $data;
     }
 
-    public function testMilo2($url) {
+    public function testApi2($url) {
         $api = new Github\Api;
 
         $token = new Github\OAuth\Token('{myKey}', 'bearer', ['repo', 'user', 'public_repo']);

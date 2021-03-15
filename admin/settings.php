@@ -25,6 +25,10 @@ use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\Constants;
 use XoopsModules\Wggithub\Common;
 
+use XoopsModules\Wggithub\Github\Http;
+use XoopsModules\Wggithub\Github\Http\BadResponseException;
+
+
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
 $op    = Request::getCmd('op', 'list');
@@ -142,6 +146,22 @@ switch ($op) {
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
+        break;
+    case 'test':
+        $templateMain = 'wggithub_admin_settings.tpl';
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('settings.php'));
+        $adminObject->addItemButton(_AM_WGGITHUB_ADD_SETTING, 'settings.php?op=new', 'add');
+        $adminObject->addItemButton(_AM_WGGITHUB_SETTINGS_LIST, 'settings.php', 'list');
+        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
+        
+        $client = Wggithub\Github\GithubClient::getInstance();
+        $result = $client->testApi1('emojis');
+        if ($result) {
+            $info = 'Github/GithubClient testApi1 (reading github public repos) successfully finished';
+        } else {
+            $info = 'Github/GithubClient testApi1 (reading github public repos) failed';
+        }
+        $GLOBALS['xoopsTpl']->assign('info1', $info);
         break;
 }
 require __DIR__ . '/footer.php';

@@ -83,6 +83,7 @@ include_once __DIR__ . '/main.php';
 // Setting add/edit
 \define('_AM_WGGITHUB_SETTING_ADD', 'Add Setting');
 \define('_AM_WGGITHUB_SETTING_EDIT', 'Edit Setting');
+\define('_AM_WGGITHUB_SETTING_TEST', 'Test Setting');
 // Elements of Setting
 \define('_AM_WGGITHUB_SETTING_ID', 'Id');
 \define('_AM_WGGITHUB_SETTING_USERNAME', 'Username');

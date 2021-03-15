@@ -29,6 +29,7 @@
 				<td class="center  width5">
 					<a href="settings.php?op=edit&amp;set_id=<{$setting.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> settings" /></a>
 					<a href="settings.php?op=delete&amp;set_id=<{$setting.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> settings" /></a>
+					<a href="settings.php?op=test&amp;set_id=<{$setting.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETTING_TEST}>"><img src="<{$modPathIcon16}>/testapi.png" alt="<{$smarty.const._AM_WGGITHUB_SETTING_TEST}>" /></a>
 				</td>
 			</tr>
 			<{/foreach}>
@@ -46,6 +47,9 @@
 <{/if}>
 <{if $error|default:''}>
 	<div class="errorMsg"><strong><{$error}></strong></div>
+<{/if}>
+<{if $info1|default:''}>
+	<div><strong><{$info1}></strong></div>
 <{/if}>
 
 <!-- Footer -->

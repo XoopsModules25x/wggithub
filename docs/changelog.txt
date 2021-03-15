@@ -1,15 +1,20 @@
 ===================================================================
+2021/01/13 Version 1.03 RC2
+===================================================================
+ - added option to show/hide non-releases (alain01/goffy)
+ - added filters on admin side (alain01/goffy)
+ - added filter status (alain01/goffy)
+ - fixed problem with start/limit (alain01/goffy)
+ - added autoapprove (alain01/goffy)
+ - fixed certificate problem/https://github.com/milo/github-api/issues/32 (richard/goffy)
+
+===================================================================
 2021/01/13 Version 1.03 RC1
 ===================================================================
  - added sorting for directories (goffy)
  - added download repository content from GitHub (goffy)
  - fixed problem in version check (alain01/goffy)
  - fixed missing smarty default value (goffy)
- - added option to show/hide non-releases (alain01/goffy)
- - added filters on admin side (alain01/goffy)
- - added filter status (alain01/goffy)
- - fixed problem with start/limit (alain01/goffy)
- - added autoapprove (alain01/goffy)
 
 ===================================================================
 2020/12/23 Version 1.02 beta 1
