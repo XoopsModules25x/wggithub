@@ -778,7 +778,7 @@ class Parsedown
     {
         $marker = $Line['text'][0];
 
-        if (substr_\count($Line['text'], $marker) >= 3 and chop($Line['text'], " $marker") === '') {
+        if (substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], " $marker") === '') {
             $Block = array(
                 'element' => array(
                     'name' => 'hr',
