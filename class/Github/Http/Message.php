@@ -36,7 +36,7 @@ abstract class Message extends Github\Sanity
      */
     public function hasHeader($name)
     {
-        return array_key_exists(strtolower($name), $this->headers);
+        return \array_key_exists(strtolower($name), $this->headers);
     }
 
 
@@ -48,7 +48,7 @@ abstract class Message extends Github\Sanity
     public function getHeader($name, $default = NULL)
     {
         $name = strtolower($name);
-        return array_key_exists($name, $this->headers)
+        return \array_key_exists($name, $this->headers)
             ? $this->headers[$name]
             : $default;
     }
@@ -62,7 +62,7 @@ abstract class Message extends Github\Sanity
     protected function addHeader($name, $value)
     {
         $name = strtolower($name);
-        if (!array_key_exists($name, $this->headers) && $value !== NULL) {
+        if (!\array_key_exists($name, $this->headers) && $value !== NULL) {
             $this->headers[$name] = $value;
         }
 

@@ -310,12 +310,12 @@ class GithubClient extends Api
                     return false;
                     break 1;
                 }
-                if (count($repos) > 0) {
+                if (\count($repos) > 0) {
                     $repositoriesHandler->updateTableRepositories($dirName, $repos, true, $dirContent);
                 } else {
                     break 1;
                 }
-                if (count($repos) < 100) {
+                if (\count($repos) < 100) {
                     break 1;
                 }
             }

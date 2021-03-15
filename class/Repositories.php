@@ -25,7 +25,7 @@ namespace XoopsModules\Wggithub;
 
 use XoopsModules\Wggithub;
 
-\defined('XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object Repositories
@@ -39,21 +39,21 @@ class Repositories extends \XoopsObject
      */
     public function __construct()
     {
-        $this->initVar('repo_id', XOBJ_DTYPE_INT);
-        $this->initVar('repo_nodeid', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_user', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_name', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_fullname', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_createdat', XOBJ_DTYPE_INT);
-        $this->initVar('repo_updatedat', XOBJ_DTYPE_INT);
-        $this->initVar('repo_htmlurl', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_readme', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_prerelease', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_release', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('repo_approved', XOBJ_DTYPE_INT);
-        $this->initVar('repo_status', XOBJ_DTYPE_INT);
-        $this->initVar('repo_datecreated', XOBJ_DTYPE_INT);
-        $this->initVar('repo_submitter', XOBJ_DTYPE_INT);
+        $this->initVar('repo_id', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_nodeid', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_user', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_name', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_fullname', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_createdat', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_updatedat', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_htmlurl', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_readme', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_prerelease', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_release', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('repo_approved', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_status', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_datecreated', \XOBJ_DTYPE_INT);
+        $this->initVar('repo_submitter', \XOBJ_DTYPE_INT);
     }
 
     /**
@@ -93,48 +93,48 @@ class Repositories extends \XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = $this->isNew() ? \sprintf(_AM_WGGITHUB_REPOSITORY_ADD) : \sprintf(_AM_WGGITHUB_REPOSITORY_EDIT);
+        $title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_REPOSITORY_ADD) : \sprintf(\_AM_WGGITHUB_REPOSITORY_EDIT);
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text repoNodeid
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_NODEID, 'repo_nodeid', 50, 255, $this->getVar('repo_nodeid')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_NODEID, 'repo_nodeid', 50, 255, $this->getVar('repo_nodeid')));
         // Form Text repoUser
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_USER, 'repo_user', 50, 255, $this->getVar('repo_user')), true);
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_USER, 'repo_user', 50, 255, $this->getVar('repo_user')), true);
         // Form Text repoName
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_NAME, 'repo_name', 50, 255, $this->getVar('repo_name')), true);
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_NAME, 'repo_name', 50, 255, $this->getVar('repo_name')), true);
         // Form Text repoFullname
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_FULLNAME, 'repo_fullname', 50, 255, $this->getVar('repo_fullname')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_FULLNAME, 'repo_fullname', 50, 255, $this->getVar('repo_fullname')));
         // Form Text Date Select repoCreatedat
         $repoCreatedat = $this->isNew() ?: $this->getVar('repo_createdat');
-        $form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_REPOSITORY_CREATEDAT, 'repo_createdat', '', $repoCreatedat));
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_REPOSITORY_CREATEDAT, 'repo_createdat', '', $repoCreatedat));
         // Form Text Date Select repoUpdatedat
         $repoUpdatedat = $this->isNew() ?: $this->getVar('repo_updatedat');
-        $form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_REPOSITORY_UPDATEDAT, 'repo_updatedat', '', $repoUpdatedat));
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_REPOSITORY_UPDATEDAT, 'repo_updatedat', '', $repoUpdatedat));
         // Form Text repoHtmlurl
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_HTMLURL, 'repo_htmlurl', 50, 255, $this->getVar('repo_htmlurl')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_HTMLURL, 'repo_htmlurl', 50, 255, $this->getVar('repo_htmlurl')));
         // Form Text repoReadme
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_README, 'repo_readme', 50, 255, $this->getVar('repo_readme')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_README, 'repo_readme', 50, 255, $this->getVar('repo_readme')));
         // Form Text repoPrerelease
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_PRERELEASE, 'repo_prerelease', 50, 255, $this->getVar('repo_prerelease')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_PRERELEASE, 'repo_prerelease', 50, 255, $this->getVar('repo_prerelease')));
         // Form Text repoRelease
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_REPOSITORY_RELEASE, 'repo_release', 50, 255, $this->getVar('repo_prelease')));
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_RELEASE, 'repo_release', 50, 255, $this->getVar('repo_prelease')));
         // Form Radio Yes/No repoApproved
         $repoApproved = $this->isNew() ?: $this->getVar('repo_approved');
-        $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_REPOSITORY_APPROVED, 'repo_approved', $repoApproved));
+        $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_REPOSITORY_APPROVED, 'repo_approved', $repoApproved));
         // Form Select Status repoStatus
-        $repoStatusSelect = new \XoopsFormSelect(_AM_WGGITHUB_REPOSITORY_STATUS, 'repo_status', $this->getVar('repo_status'));
-        $repoStatusSelect->addOption(Constants::STATUS_NONE, _AM_WGGITHUB_STATUS_NONE);
-        $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, _AM_WGGITHUB_STATUS_UPTODATE);
-        $repoStatusSelect->addOption(Constants::STATUS_UPDATED, _AM_WGGITHUB_STATUS_UPDATED);
-        $repoStatusSelect->addOption(Constants::STATUS_OFFLINE, _AM_WGGITHUB_STATUS_OFFLINE);
+        $repoStatusSelect = new \XoopsFormSelect(\_AM_WGGITHUB_REPOSITORY_STATUS, 'repo_status', $this->getVar('repo_status'));
+        $repoStatusSelect->addOption(Constants::STATUS_NONE, \_AM_WGGITHUB_STATUS_NONE);
+        $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, \_AM_WGGITHUB_STATUS_UPTODATE);
+        $repoStatusSelect->addOption(Constants::STATUS_UPDATED, \_AM_WGGITHUB_STATUS_UPDATED);
+        $repoStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGGITHUB_STATUS_OFFLINE);
         $form->addElement($repoStatusSelect);
         // Form Text Date Select repoDatecreated
         $repoDatecreated = $this->isNew() ?: $this->getVar('repo_datecreated');
-        $form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_REPOSITORY_DATECREATED, 'repo_datecreated', '', $repoDatecreated));
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_REPOSITORY_DATECREATED, 'repo_datecreated', '', $repoDatecreated));
         // Form Select User repoSubmitter
-        $form->addElement(new \XoopsFormSelectUser(_AM_WGGITHUB_REPOSITORY_SUBMITTER, 'repo_submitter', false, $this->getVar('repo_submitter')));
+        $form->addElement(new \XoopsFormSelectUser(\_AM_WGGITHUB_REPOSITORY_SUBMITTER, 'repo_submitter', false, $this->getVar('repo_submitter')));
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $start));
@@ -182,7 +182,7 @@ class Repositories extends \XoopsObject
                 $status_text = \_AM_WGGITHUB_STATUS_UPDATED;
                 break;
             case Constants::STATUS_OFFLINE:
-                $status_text = _AM_WGGITHUB_STATUS_OFFLINE;
+                $status_text = \_AM_WGGITHUB_STATUS_OFFLINE;
                 break;
         }
         $ret['status_text'] = $status_text;

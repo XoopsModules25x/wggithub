@@ -156,7 +156,7 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $repositoriesObj = $repositoriesAll[$i];
                 }
                 if ($repoId > 0) {
-                    if (is_string($repo['updated_at'])) {
+                    if (\is_string($repo['updated_at'])) {
                         $updatedAtNew = \strtotime($repo['updated_at']);
                     }
                     if ($updatedAtOld != Constants::STATUS_OFFLINE && $updatedAtOld != $updatedAtNew) {
@@ -173,14 +173,14 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $repositoriesObj->setVar('repo_user', $user);
                     $repositoriesObj->setVar('repo_name', $repo['name']);
                     $repositoriesObj->setVar('repo_fullname', $repo['full_name']);
-                    if (is_string($repo['created_at'])) {
+                    if (\is_string($repo['created_at'])) {
                         $createdAt = \strtotime($repo['created_at']);
                     }
                     $repositoriesObj->setVar('repo_createdat', $createdAt);
                     $repositoriesObj->setVar('repo_updatedat', $updatedAtNew);
                     $repositoriesObj->setVar('repo_htmlurl', $repo['html_url']);
                     $repositoriesObj->setVar('repo_status', $status);
-                    $repositoriesObj->setVar('repo_datecreated', time());
+                    $repositoriesObj->setVar('repo_datecreated', \time());
                     $repositoriesObj->setVar('repo_submitter', $submitter);
                     // Insert Data
                     if ($repositoriesHandler->insert($repositoriesObj)) {

@@ -54,11 +54,11 @@ class Login extends Github\Sanity
     public function askPermissions($backUrl, $redirectCb = NULL)
     {
         /** @todo Something more safe? */
-        $state = sha1(uniqid(microtime(TRUE), TRUE));
+        $state = sha1(uniqid(micro\time(TRUE), TRUE));
         $params = [
             'client_id' => $this->conf->clientId,
             'redirect_uri' => $backUrl,
-            'scope' => implode(',', $this->conf->scopes),
+            'scope' => \implode(',', $this->conf->scopes),
             'state' => $state,
         ];
 
@@ -69,7 +69,7 @@ class Login extends Github\Sanity
             header("Location: $url");
             die();
         } else {
-            call_user_func($redirectCb, $url);
+            \call_user_func($redirectCb, $url);
         }
     }
 
@@ -121,7 +121,7 @@ class Login extends Github\Sanity
             throw new LoginException('Bad JSON in response.', 0, $e);
         }
 
-        $token = new Token($json->access_token, $json->token_type, strlen($json->scope) ? explode(',', $json->scope) : []);
+        $token = new Token($json->access_token, $json->token_type, \strlen($json->scope) ? \explode(',', $json->scope) : []);
         $this->storage->set('auth.token', $token->toArray());
         $this->storage->remove('auth.state');
 

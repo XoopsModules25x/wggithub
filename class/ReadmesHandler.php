@@ -170,7 +170,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
                     $readmesObj->setVar('rm_content', $readme['content']);
                     $readmesObj->setVar('rm_encoding', $readme['encoding']);
                     $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
-                    $readmesObj->setVar('rm_datecreated',time());
+                    $readmesObj->setVar('rm_datecreated',\time());
                     $readmesObj->setVar('rm_submitter', $submitter);
                     // Insert Data
                     if (!$readmesHandler->insert($readmesObj)) {
@@ -205,8 +205,8 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         if (false === $readme) {
             return false;
         }
-        if (count($readme) > 0) {
-            if (array_key_exists('message', $readme)) {
+        if (\count($readme) > 0) {
+            if (\array_key_exists('message', $readme)) {
                 // not readme found
                 // must return true otherwise releases will not be loaded
                 return true;
@@ -232,7 +232,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
             $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
             $baseurl = \substr($readme['html_url'], 0, \strrpos($readme['html_url'], '/') + 1);
             $readmesObj->setVar('rm_baseurl', $baseurl);
-            $readmesObj->setVar('rm_datecreated',time());
+            $readmesObj->setVar('rm_datecreated',\time());
             $readmesObj->setVar('rm_submitter', $submitter);
             // Insert Data
             if (!$readmesHandler->insert($readmesObj)) {

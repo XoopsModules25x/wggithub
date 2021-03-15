@@ -169,7 +169,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                         $releasesObj->setVar('rel_publishedat', \strtotime($ghRelease['published_at']));
                         $releasesObj->setVar('rel_tarballurl', $ghRelease['tarball_url']);
                         $releasesObj->setVar('rel_zipballurl', $ghRelease['zipball_url']);
-                        $releasesObj->setVar('rel_datecreated', time());
+                        $releasesObj->setVar('rel_datecreated', \time());
                         $releasesObj->setVar('rel_submitter', $submitter);
                         // Insert Data
                         if (!$releasesHandler->insert($releasesObj)) {
@@ -209,8 +209,8 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         if (false === $ghReleases) {
             return false;
         }
-        if (count($ghReleases) > 0) {
-            if (array_key_exists('message', $ghReleases)) {
+        if (\count($ghReleases) > 0) {
+            if (\array_key_exists('message', $ghReleases)) {
                 // not readme found
                 // must return true otherwise releases will not be loaded
                 return true;
@@ -234,7 +234,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                     $releasesObj->setVar('rel_publishedat', \strtotime($ghRelease['published_at']));
                     $releasesObj->setVar('rel_tarballurl', $ghRelease['tarball_url']);
                     $releasesObj->setVar('rel_zipballurl', $ghRelease['zipball_url']);
-                    $releasesObj->setVar('rel_datecreated', time());
+                    $releasesObj->setVar('rel_datecreated', \time());
                     $releasesObj->setVar('rel_submitter', $submitter);
                     // Insert Data
                     if (!$releasesHandler->insert($releasesObj)) {

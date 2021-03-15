@@ -31,7 +31,7 @@ namespace XoopsModules\Wggithub\Common;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\Common;
 
-\defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+\defined('\XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /**
  * Class Breadcrumb
@@ -43,7 +43,7 @@ class Breadcrumb
 
     public function __construct()
     {
-        $this->dirname = \basename(dirname(__DIR__, 2));
+        $this->dirname = \basename(\dirname(__DIR__, 2));
     }
 
     /**

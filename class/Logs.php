@@ -25,7 +25,7 @@ namespace XoopsModules\Wggithub;
 
 use XoopsModules\Wggithub;
 
-\defined('XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object Logs
@@ -39,12 +39,12 @@ class Logs extends \XoopsObject
      */
     public function __construct()
     {
-        $this->initVar('log_id', XOBJ_DTYPE_INT);
-        $this->initVar('log_type', XOBJ_DTYPE_INT);
-        $this->initVar('log_details', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('log_result', XOBJ_DTYPE_TXTAREA);
-        $this->initVar('log_datecreated', XOBJ_DTYPE_INT);
-        $this->initVar('log_submitter', XOBJ_DTYPE_INT);
+        $this->initVar('log_id', \XOBJ_DTYPE_INT);
+        $this->initVar('log_type', \XOBJ_DTYPE_INT);
+        $this->initVar('log_details', \XOBJ_DTYPE_TXTBOX);
+        $this->initVar('log_result', \XOBJ_DTYPE_TXTAREA);
+        $this->initVar('log_datecreated', \XOBJ_DTYPE_INT);
+        $this->initVar('log_submitter', \XOBJ_DTYPE_INT);
     }
 
     /**
@@ -84,28 +84,28 @@ class Logs extends \XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = $this->isNew() ? \sprintf(_AM_WGGITHUB_LOG_ADD) : \sprintf(_AM_WGGITHUB_LOG_EDIT);
+        $title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_LOG_ADD) : \sprintf(\_AM_WGGITHUB_LOG_EDIT);
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
 
-        $logTypeSelect = new \XoopsFormSelect(_AM_WGGITHUB_LOG_TYPE, 'log_type', $this->getVar('log_type'));
-        $logTypeSelect->addOption(Constants::LOG_TYPE_NONE, _AM_WGGITHUB_LOG_TYPE_NONE);
-        $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_START, _AM_WGGITHUB_LOG_TYPE_UPDATE_START);
-        $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_END, _AM_WGGITHUB_LOG_TYPE_UPDATE_END);
-        $logTypeSelect->addOption(Constants::LOG_TYPE_REQUEST, _AM_WGGITHUB_LOG_TYPE_REQUEST);
-        $logTypeSelect->addOption(Constants::LOG_TYPE_ERROR, _AM_WGGITHUB_LOG_TYPE_ERROR);
+        $logTypeSelect = new \XoopsFormSelect(\_AM_WGGITHUB_LOG_TYPE, 'log_type', $this->getVar('log_type'));
+        $logTypeSelect->addOption(Constants::LOG_TYPE_NONE, \_AM_WGGITHUB_LOG_TYPE_NONE);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_START, \_AM_WGGITHUB_LOG_TYPE_UPDATE_START);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_UPDATE_END, \_AM_WGGITHUB_LOG_TYPE_UPDATE_END);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_REQUEST, \_AM_WGGITHUB_LOG_TYPE_REQUEST);
+        $logTypeSelect->addOption(Constants::LOG_TYPE_ERROR, \_AM_WGGITHUB_LOG_TYPE_ERROR);
         $form->addElement($logTypeSelect);
         // Form Text logDetails
-        $form->addElement(new \XoopsFormText(_AM_WGGITHUB_LOG_DETAILS, 'log_details', 50, 255, $this->getVar('log_details')), true);
+        $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_LOG_DETAILS, 'log_details', 50, 255, $this->getVar('log_details')), true);
         // Form Text logResult
-        $form->addElement(new \XoopsFormTextArea(_AM_WGGITHUB_LOG_RESULT, 'log_result', $this->getVar('log_result', 'e'), 4, 47));
+        $form->addElement(new \XoopsFormTextArea(\_AM_WGGITHUB_LOG_RESULT, 'log_result', $this->getVar('log_result', 'e'), 4, 47));
         // Form Text Date Select logDatecreated
         $logDatecreated = $this->isNew() ?: $this->getVar('log_datecreated');
-        $form->addElement(new \XoopsFormTextDateSelect(_AM_WGGITHUB_LOG_DATECREATED, 'log_datecreated', '', $logDatecreated));
+        $form->addElement(new \XoopsFormTextDateSelect(\_AM_WGGITHUB_LOG_DATECREATED, 'log_datecreated', '', $logDatecreated));
         // Form Select User reqSubmitter
-        $form->addElement(new \XoopsFormSelectUser(_AM_WGGITHUB_LOG_SUBMITTER, 'log_submitter', false, $this->getVar('log_submitter')));
+        $form->addElement(new \XoopsFormSelectUser(\_AM_WGGITHUB_LOG_SUBMITTER, 'log_submitter', false, $this->getVar('log_submitter')));
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $start));

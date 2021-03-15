@@ -191,9 +191,9 @@ class Utility
         $donationform = [
             0   => '<form name="donation" id="donation" action="http://www.txmodxoops.org/modules/xdonations/" method="post" onsubmit="return xoopsFormValidate_donation();">',
             1   => '<table class="outer" cellspacing="1" width="100%"><tbody><tr><th colspan="2">'
-                   . _AM_WGGITHUB_ABOUT_MAKE_DONATION
+                   . \_AM_WGGITHUB_ABOUT_MAKE_DONATION
                    . '</th></tr><tr align="left" valign="top"><td class="head"><div class="xoops-form-element-caption-required"><span class="caption-text">'
-                   . _AM_WGGITHUB_DONATION_AMOUNT
+                   . \_AM_WGGITHUB_DONATION_AMOUNT
                    . '</span><span class="caption-marker">*</span></div></td><td class="even"><select size="1" name="item[A][amount]" id="item[A][amount]" title="Donation Amount"><option value="5">5.00 EUR</option><option value="10">10.00 EUR</option><option value="20">20.00 EUR</option><option value="40">40.00 EUR</option><option value="60">60.00 EUR</option><option value="80">80.00 EUR</option><option value="90">90.00 EUR</option><option value="100">100.00 EUR</option><option value="200">200.00 EUR</option></select></td></tr><tr align="left" valign="top"><td class="head"></td><td class="even"><input class="formButton" name="submit" id="submit" value="'
                    . _SUBMIT
                    . '" title="'

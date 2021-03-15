@@ -56,7 +56,7 @@ function wggithubGetMyItemIds($permtype, $dirname)
     }
     $moduleHandler = \xoops_getHandler('module');
     $wggithubModule = $moduleHandler->getByDirname($dirname);
-    $groups = \is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
+    $groups = \is_object($xoopsUser) ? $xoopsUser->getGroups() : \XOOPS_GROUP_ANONYMOUS;
     $grouppermHandler = \xoops_getHandler('groupperm');
     $itemIds = $grouppermHandler->getItemIds($permtype, $groups, $wggithubModule->getVar('mid'));
     return $itemIds;
@@ -137,7 +137,7 @@ function wggithub_RewriteUrl($module, $array, $type = 'content')
             }
             $rewrite_base = '/modules/';
             $page = 'page=' . $array['content_alias'];
-            return XOOPS_URL . $rewrite_base . $module . '/' . $type . '.php?' . $topic_name . 'id=' . $id . '&amp;' . $page . $comment;
+            return \XOOPS_URL . $rewrite_base . $module . '/' . $type . '.php?' . $topic_name . 'id=' . $id . '&amp;' . $page . $comment;
             break;
 
         case 'rewrite':
@@ -157,10 +157,10 @@ function wggithub_RewriteUrl($module, $array, $type = 'content')
                 $type = '';
             }
             if ('comment-edit/' === $type || 'comment-reply/' === $type || 'comment-delete/' === $type) {
-                return XOOPS_URL . $rewrite_base . $module_name . $type . $id . '/';
+                return \XOOPS_URL . $rewrite_base . $module_name . $type . $id . '/';
             }
 
-            return XOOPS_URL . $rewrite_base . $module_name . $type . $topic_name  . $id . $page . $rewrite_ext;
+            return \XOOPS_URL . $rewrite_base . $module_name . $type . $topic_name  . $id . $page . $rewrite_ext;
             break;
 
          case 'short':
@@ -179,10 +179,10 @@ function wggithub_RewriteUrl($module, $array, $type = 'content')
                 $type = '';
             }
             if ('comment-edit/' === $type || 'comment-reply/' === $type || 'comment-delete/' === $type) {
-                return XOOPS_URL . $rewrite_base . $module_name . $type . $id . '/';
+                return \XOOPS_URL . $rewrite_base . $module_name . $type . $id . '/';
             }
 
-            return XOOPS_URL . $rewrite_base . $module_name . $type . $topic_name . $page . $rewrite_ext;
+            return \XOOPS_URL . $rewrite_base . $module_name . $type . $topic_name . $page . $rewrite_ext;
             break;
     }
     return null;

@@ -76,7 +76,7 @@ switch ($op) {
             //check number of API calls
             $lastUpdate = 0;
             $crLogs = new \CriteriaCompo();
-            $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
+            $crLogs->add(new \Criteria('log_datecreated', (\time() - 3600), '>'));
             $logsCount = $logsHandler->getCount($crLogs);
             if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
                 $githubClient = GithubClient::getInstance();
@@ -191,7 +191,7 @@ switch ($op) {
                     foreach (\array_keys($repositoriesAll) as $j) {
                         $repoId = $repositoriesAll[$j]->getVar('repo_id');
                         $repos[$j] = $repositoriesAll[$j]->getValuesRepositories();
-                        $repos[$j]['readme'] = ['content_clean' => _MA_WGGITHUB_README_NOFILE];
+                        $repos[$j]['readme'] = ['content_clean' => \_MA_WGGITHUB_README_NOFILE];
                         if ($repositoriesAll[$j]->getVar('repo_readme') > 0) {
                             $crReadmes = new \CriteriaCompo();
                             $crReadmes->add(new \Criteria('rm_repoid', $repoId));
@@ -216,9 +216,9 @@ switch ($op) {
                 }
                 unset($crRepo1, $crRepo2, $crRepo3, $crRepo4, $crRepositories);
                 if ($repositoriesCount === $repositoriesCountTotal) {
-                    $directories[$i]['countRepos'] = str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT2);
+                    $directories[$i]['countRepos'] = \str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], \_MA_WGGITHUB_REPOSITORIES_COUNT2);
                 } else {
-                    $directories[$i]['countRepos'] = str_replace(['%s', '%r', '%t'], [$dirName, $repositoriesCount, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT1);
+                    $directories[$i]['countRepos'] = \str_replace(['%s', '%r', '%t'], [$dirName, $repositoriesCount, $repositoriesCountTotal], \_MA_WGGITHUB_REPOSITORIES_COUNT1);
                 }
                 $directories[$i]['repos'] = $repos;
                 $directories[$i]['previousRepos'] = $dirStart[$i] > 0;

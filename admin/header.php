@@ -20,7 +20,7 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-include dirname(__DIR__, 3) . '/include/cp_header.php';
+include \dirname(__DIR__, 3) . '/include/cp_header.php';
 include_once \dirname(__DIR__) . '/include/common.php';
 
 $sysPathIcon16   = '../' . $GLOBALS['xoopsModule']->getInfo('sysicons16');
@@ -40,7 +40,7 @@ $releasesHandler = $helper->getHandler('Releases');
 $myts = MyTextSanitizer::getInstance();
 // 
 if (!isset($xoopsTpl) || !\is_object($xoopsTpl)) {
-    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    include_once \XOOPS_ROOT_PATH . '/class/template.php';
     $xoopsTpl = new \XoopsTpl();
 }
 

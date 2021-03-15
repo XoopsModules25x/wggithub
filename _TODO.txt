@@ -1,8 +1,0 @@
-extra field recommended
-
-replace runtime exeption by failure site
-
-filter preselection <=> apply release
-
-smarty defaults
-

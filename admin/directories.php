@@ -45,7 +45,7 @@ switch ($op) {
         $GLOBALS['xoTheme']->addScript(WGGITHUB_URL . '/assets/js/sortable.js');
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
+        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         $directoriesCount = $directoriesHandler->getCountDirectories();
         $directoriesAll = $directoriesHandler->getAllDirectories($start, $limit);
@@ -62,7 +62,7 @@ switch ($op) {
             }
             // Display Navigation
             if ($directoriesCount > $limit) {
-                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($directoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
@@ -73,7 +73,7 @@ switch ($op) {
     case 'new':
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_DIRECTORIES_LIST, 'directories.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_DIRECTORIES_LIST, 'directories.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $directoriesObj = $directoriesHandler->create();
@@ -103,7 +103,7 @@ switch ($op) {
         $directoriesObj->setVar('dir_submitter', Request::getInt('dir_submitter', 0));
         // Insert Data
         if ($directoriesHandler->insert($directoriesObj)) {
-            \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $directoriesObj->getHtmlErrors());
@@ -113,8 +113,8 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_DIRECTORIES_LIST, 'directories.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
+        $adminObject->addItemButton(\_AM_WGGITHUB_DIRECTORIES_LIST, 'directories.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $directoriesObj = $directoriesHandler->get($dirId);
@@ -163,7 +163,7 @@ switch ($op) {
                 $errors[] = \_AM_WGGITHUB_ERROR_DELETE_DATA . ' DIRECTORIES - ' . $directoriesObj->getHtmlErrors();
             }
             if (0 == \count($errors)) {
-                \redirect_header('directories.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+                \redirect_header('directories.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('errors', $errors);
             }
@@ -171,7 +171,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'dir_id' => $dirId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $dirName));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $dirName));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
@@ -194,13 +194,13 @@ switch ($op) {
             $directoriesObj->setVar(Request::getString('field'), Request::getInt('value', 0));
             // Insert Data
             if ($directoriesHandler->insert($directoriesObj, true)) {
-                \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+                \redirect_header('directories.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
             }
         }
         break;
     case 'order':
         $dorder = $_POST['dorder'];
-        for ($i = 0, $iMax = count($dorder); $i < $iMax; $i++) {
+        for ($i = 0, $iMax = \count($dorder); $i < $iMax; $i++) {
             $directoriesObj = $directoriesHandler->get($dorder[$i]);
             $directoriesObj->setVar('dir_weight', $i + 1);
             $directoriesHandler->insert($directoriesObj);

@@ -38,14 +38,14 @@ $countReadmes = $readmesHandler->getCount();
 $countReleases = $releasesHandler->getCount();
 
 // InfoBox Statistics
-$adminObject->addInfoBox(_AM_WGGITHUB_STATISTICS);
+$adminObject->addInfoBox(\_AM_WGGITHUB_STATISTICS);
 // Info elements
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_SETTINGS . '</label>', $countSettings));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_DIRECTORIES . '</label>', $countDirectories));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_LOGS . '</label>', $countLogs));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_REPOSITORIES . '</label>', $countRepositories));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_READMES . '</label>', $countReadmes));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_SETTINGS . '</label>', $countSettings));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_DIRECTORIES . '</label>', $countDirectories));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_LOGS . '</label>', $countLogs));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_REPOSITORIES . '</label>', $countRepositories));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_READMES . '</label>', $countReadmes));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));
 
 // Upload Folders
 $configurator = new Common\Configurator();

@@ -41,7 +41,7 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
+        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
         $filterValue = '';
@@ -65,7 +65,7 @@ switch ($op) {
                     $in[] = $i;
                 }
             }
-            $crReadmes->add(new Criteria('rm_repoid', '(' . implode(',', $in) . ')', 'IN'));
+            $crReadmes->add(new Criteria('rm_repoid', '(' . \implode(',', $in) . ')', 'IN'));
         }
         $crReadmes->setStart($start);
         $crReadmes->setLimit($limit);
@@ -83,15 +83,15 @@ switch ($op) {
             }
             // Display Navigation
             if ($readmesCount > $limit) {
-                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
             if ('filter' == $op) {
-                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_READMES_FILTER);
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_READMES_FILTER);
             } else {
-                $GLOBALS['xoopsTpl']->assign('noData', _AM_WGGITHUB_THEREARENT_READMES);
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_READMES);
             }
         }
         $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit, $filterValue);
@@ -100,7 +100,7 @@ switch ($op) {
     case 'new':
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $readmesObj = $readmesHandler->create();
@@ -130,7 +130,7 @@ switch ($op) {
         $readmesObj->setVar('rm_submitter', Request::getInt('rm_submitter', 0));
         // Insert Data
         if ($readmesHandler->insert($readmesObj)) {
-            \redirect_header('readmes.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('readmes.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
@@ -140,8 +140,8 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
+        $adminObject->addItemButton(\_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $readmesObj = $readmesHandler->get($rmId);
@@ -158,7 +158,7 @@ switch ($op) {
                 \redirect_header('readmes.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             if ($readmesHandler->delete($readmesObj)) {
-                \redirect_header('readmes.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+                \redirect_header('readmes.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
             }
@@ -166,7 +166,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'rm_id' => $rmId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $readmesObj->getVar('rm_name')));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $readmesObj->getVar('rm_name')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

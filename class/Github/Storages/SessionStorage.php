@@ -79,7 +79,7 @@ class SessionStorage extends Github\Sanity implements ISessionStorage
     private function check($method)
     {
         if (!isset($_SESSION)) {
-            trigger_error("Start session before using $method().", E_USER_WARNING);
+            \trigger_error("Start session before using $method().", E_USER_WARNING);
         }
     }
 

@@ -57,7 +57,7 @@ class CachedClient extends Github\Sanity implements IClient
     {
         $request = clone $request;
 
-        $cacheKey = implode('.', [
+        $cacheKey = \implode('.', [
             $request->getMethod(),
             $request->getUrl(),
 
@@ -70,7 +70,7 @@ class CachedClient extends Github\Sanity implements IClient
         if ($cached = $this->cache->load($cacheKey)) {
             if ($this->forbidRecheck) {
                 $cached = clone $cached;
-                $this->onResponse && call_user_func($this->onResponse, $cached);
+                $this->onResponse && \call_user_func($this->onResponse, $cached);
                 return $cached;
             }
 
@@ -96,7 +96,7 @@ class CachedClient extends Github\Sanity implements IClient
             $response = $cached->setPrevious($response);
         }
 
-        $this->onResponse && call_user_func($this->onResponse, $response);
+        $this->onResponse && \call_user_func($this->onResponse, $response);
 
         return $response;
     }
@@ -133,7 +133,7 @@ class CachedClient extends Github\Sanity implements IClient
         /** @todo Do it properly. Vary:, Pragma:, TTL...  */
         if (!$response->isCode(200)) {
             return FALSE;
-        } elseif (preg_match('#max-age=0|must-revalidate#i', $response->getHeader('Cache-Control', ''))) {
+        } elseif (\preg_match('#max-age=0|must-revalidate#i', $response->getHeader('Cache-Control', ''))) {
             return FALSE;
         }
 

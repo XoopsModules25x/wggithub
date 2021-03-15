@@ -20,14 +20,14 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 if (!\defined('XOOPS_ICONS32_PATH')) {
-    \define('XOOPS_ICONS32_PATH', XOOPS_ROOT_PATH . '/Frameworks/moduleclasses/icons/32');
+    \define('XOOPS_ICONS32_PATH', \XOOPS_ROOT_PATH . '/Frameworks/moduleclasses/icons/32');
 }
 if (!\defined('XOOPS_ICONS32_URL')) {
-    \define('XOOPS_ICONS32_URL', XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
+    \define('XOOPS_ICONS32_URL', \XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
 }
 \define('WGGITHUB_DIRNAME', 'wggithub');
-\define('WGGITHUB_PATH', XOOPS_ROOT_PATH . '/modules/' . WGGITHUB_DIRNAME);
-\define('WGGITHUB_URL', XOOPS_URL . '/modules/' . WGGITHUB_DIRNAME);
+\define('WGGITHUB_PATH', \XOOPS_ROOT_PATH . '/modules/' . WGGITHUB_DIRNAME);
+\define('WGGITHUB_URL', \XOOPS_URL . '/modules/' . WGGITHUB_DIRNAME);
 \define('WGGITHUB_ICONS_PATH', WGGITHUB_PATH . '/assets/icons');
 \define('WGGITHUB_ICONS_URL', WGGITHUB_URL . '/assets/icons');
 \define('WGGITHUB_IMAGE_PATH', WGGITHUB_PATH . '/assets/images');
@@ -44,5 +44,5 @@ if (!\defined('XOOPS_ICONS32_URL')) {
 $localLogo = WGGITHUB_IMAGE_URL . '/tdmxoops_logo.png';
 // Module Information
 $copyright = "<a href='https://wedega.com' title='XOOPS on Wedega' target='_blank'><img src='" . $localLogo . "' alt='XOOPS on Wedega' /></a>";
-include_once XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
+include_once \XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
 include_once WGGITHUB_PATH . '/include/functions.php';
