@@ -153,7 +153,7 @@ switch ($op) {
         $adminObject->addItemButton(_AM_WGGITHUB_ADD_SETTING, 'settings.php?op=new', 'add');
         $adminObject->addItemButton(_AM_WGGITHUB_SETTINGS_LIST, 'settings.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        
+
         $client = Wggithub\Github\GithubClient::getInstance();
         $result = $client->testApi1('emojis');
         if ($result) {

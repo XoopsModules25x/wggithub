@@ -228,7 +228,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                     // save first in any case and save first final version
                     $releasesObj = $releasesHandler->create();
                     $releasesObj->setVar('rel_repoid', $repoId);
-                    $releasesObj->setVar('rel_type', $ghRelease['type']);
+                    //$releasesObj->setVar('rel_type', $ghRelease['type']);
                     $releasesObj->setVar('rel_name', $ghRelease['name']);
                     $releasesObj->setVar('rel_prerelease', (true == (bool)$ghRelease['prerelease']));
                     $releasesObj->setVar('rel_publishedat', \strtotime($ghRelease['published_at']));

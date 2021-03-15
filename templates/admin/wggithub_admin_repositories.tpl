@@ -63,7 +63,7 @@
 		<{/foreach}>
 	<{else}>
 		<tr class='<{cycle values='odd, even'}>'>
-			<td colspan='16' class='center'><{$noData}></td>
+			<td colspan='16' class='center'><{$noData|default:''}></td>
 		</tr>
 	<{/if}>
 	</tbody>
