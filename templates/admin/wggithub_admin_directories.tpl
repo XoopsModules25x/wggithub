@@ -44,7 +44,13 @@
 						<a href="directories.php?op=change_yn&amp;field=dir_online&amp;value=1&amp;dir_id=<{$directory.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETON}>"><img src="<{$wggithub_icons_url_16}>/off.png" alt="<{$smarty.const._AM_WGGITHUB_SETON}>" /></a>
 					<{/if}>
 				</td>
-				<td class='center'><{$directory.filterrelease_text}></td>
+				<td class='center'>
+					<{if $directory.dir_filterrelease|default:0 == 1}>
+					<a href="directories.php?op=change_yn&amp;field=dir_filterrelease&amp;value=0&amp;dir_id=<{$directory.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETOFF}>"><img src="<{$wggithub_icons_url_16}>/on.png" alt="<{$smarty.const._AM_WGGITHUB_SETOFF}>" /></a>
+					<{else}>
+					<a href="directories.php?op=change_yn&amp;field=dir_filterrelease&amp;value=1&amp;dir_id=<{$directory.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._AM_WGGITHUB_SETON}>"><img src="<{$wggithub_icons_url_16}>/off.png" alt="<{$smarty.const._AM_WGGITHUB_SETON}>" /></a>
+					<{/if}>
+				</td>
 				<td class='center'><{$directory.weight}></td>
 				<td class='center'><{$directory.datecreated}></td>
 				<td class='center'><{$directory.submitter}></td>

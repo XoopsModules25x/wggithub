@@ -132,11 +132,7 @@ class Directories extends \XoopsObject
         $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_DIRECTORY_ONLINE, 'dir_online', $dirOnline));
         // Form Select dirFilterrelease
         $dirFilterrelease = $this->isNew() ?: $this->getVar('dir_filterrelease');
-        $dirFilterreleaseSelect = new \XoopsFormSelect(\_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease, 3);
-        $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_NONE, \_AM_WGGITHUB_FILTER_TYPE_NONE);
-        $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_RELEASES, \_AM_WGGITHUB_FILTER_TYPE_RELEASES);
-        $dirFilterreleaseSelect->addOption(Constants::FILTER_TYPE_ALL, \_AM_WGGITHUB_FILTER_TYPE_ALL);
-        $form->addElement($dirFilterreleaseSelect, true);
+        $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease));
         // Form Text dirWeight
         $dirWeight = $this->isNew() ? 0 : $this->getVar('dir_weight');
         $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_DIRECTORY_WEIGHT, 'dir_weight', 50, 255, $dirWeight), true);
@@ -182,24 +178,10 @@ class Directories extends \XoopsObject
         $ret['content_shorttext'] = Utility::truncateHtml($content_text);
         $ret['autoupdate']        = (int)$this->getVar('dir_autoupdate') > 0 ? _YES : _NO;
         $ret['online']            = (int)$this->getVar('dir_online') > 0 ? _YES : _NO;
-        $filterRelease            = (int)$this->getVar('dir_filterrelease');
-        $ret['filterrelease']     = $filterRelease;
-        switch ($filterRelease) {
-            case Constants::FILTER_TYPE_NONE:
-            default:
-                $filterReleaseText = \_AM_WGGITHUB_FILTER_TYPE_NONE;
-                break;
-            case Constants::FILTER_TYPE_ALL:
-                $filterReleaseText = \_AM_WGGITHUB_FILTER_TYPE_ALL;
-                break;
-            case Constants::FILTER_TYPE_RELEASES:
-                $filterReleaseText = \_AM_WGGITHUB_FILTER_TYPE_RELEASES;
-                break;
-        }
-        $ret['filterrelease_text'] = $filterReleaseText;
-        $ret['weight']             = (int)$this->getVar('dir_weight');
-        $ret['datecreated']        = \formatTimestamp($this->getVar('dir_datecreated'), 's');
-        $ret['submitter']          = \XoopsUser::getUnameFromId($this->getVar('dir_submitter'));
+        $ret['filterrelease']     = (int)$this->getVar('dir_filterrelease') > 0 ? _YES : _NO;
+        $ret['weight']            = (int)$this->getVar('dir_weight');
+        $ret['datecreated']       = \formatTimestamp($this->getVar('dir_datecreated'), 's');
+        $ret['submitter']         = \XoopsUser::getUnameFromId($this->getVar('dir_submitter'));
         return $ret;
     }
 

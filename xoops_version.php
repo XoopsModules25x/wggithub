@@ -20,7 +20,10 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-// 
+//
+
+use XoopsModules\Wggithub\Constants;
+
 $moduleDirName      = \basename(__DIR__);
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
@@ -226,6 +229,16 @@ $modversion['config'][] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => 1,
+];
+// Filter release
+$modversion['config'][] = [
+    'name'        => 'filter_type',
+    'title'       => '_MI_WGGITHUB_FILTER_TYPE',
+    'description' => '_MI_WGGITHUB_FILTER_TYPE_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'default'     => Constants::FILTER_TYPE_ALL,
+    'options'     => ['_AM_WGGITHUB_FILTER_TYPE_ALL' => Constants::FILTER_TYPE_ALL, '_AM_WGGITHUB_FILTER_TYPE_RELEASES' => Constants::FILTER_TYPE_RELEASES],
 ];
 // Number column
 $modversion['config'][] = [

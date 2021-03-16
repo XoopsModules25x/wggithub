@@ -16,7 +16,9 @@
 		<div id="filter_release_bar" class="btn-group btn-group-sm <{if $menu == 0}>hidden<{/if}>" role="group" aria-label="Filter Releases">
 			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
 			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
-			<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}> <{if $menu == 0}>hidden<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
+			<{if $showBtnAll|default:false}>
+				<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
+			<{/if}>
 		</div>
 	</div>
 
@@ -170,13 +172,6 @@
 		} else {
 			document.getElementById("filter_release_label").classList.add("hidden");
 			document.getElementById("filter_release_bar").classList.add("hidden");
-		}
-		if (display > 1) {
-			document.getElementById("relall").classList.add("hidden");
-			document.getElementById("relall").classList.add("hidden");
-		} else {
-			document.getElementById("relall").classList.remove("hidden");
-			document.getElementById("relall").classList.remove("hidden");
 		}
 	}
 	var toggleFilters = function(display)

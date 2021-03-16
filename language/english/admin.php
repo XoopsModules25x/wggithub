@@ -50,9 +50,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Are you sure to update: <b><span style='color : Red;'>%s </span></b>");
 \define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Are you sure to delete all items of table: <b><span style='color : Red;'>%s </span></b>");
 // Filters
-\define('_AM_WGGITHUB_FILTER_TYPE_NONE', 'Do not show filter');
-\define('_AM_WGGITHUB_FILTER_TYPE_ALL', 'Use filter all');
-\define('_AM_WGGITHUB_FILTER_TYPE_RELEASES', 'Use filter releases only');
 \define('_AM_WGGITHUB_FILTER', 'Filter');
 \define('_AM_WGGITHUB_FILTER_OPERAND_EQUAL', ' = ');
 \define('_AM_WGGITHUB_FILTER_OPERAND_LIKE', ' contains ');
@@ -126,7 +123,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_DIRECTORY_CONTENT_OWN', 'Only forks of owner');
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Autoupdate');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
-\define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Apply Filter Release');
+\define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Show and apply filter release');
 \define('_AM_WGGITHUB_DIRECTORY_WEIGHT', 'Weight');
 \define('_AM_WGGITHUB_DIRECTORY_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_DIRECTORY_SUBMITTER', 'Submitter');
