@@ -266,6 +266,7 @@ class GithubClient extends Api
         }
         $data = (array)$api->decode($response);
 
+
         return $data;
     }
 

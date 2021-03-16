@@ -65,8 +65,8 @@ interface Constants
 
     // Constants for filter type
     public const FILTER_TYPE_NONE     = 0;
-    public const FILTER_TYPE_ALL      = 1;
-    public const FILTER_TYPE_RELEASES = 2;
+    public const FILTER_TYPE_ALL      = 1; //hard coded at xoops_version.php, option 'filter_type'
+    public const FILTER_TYPE_RELEASES = 2; //hard coded at xoops_version.php, option 'filter_type'
 
     // Constants for filter operands
     public const FILTER_OPERAND_EQUAL = 1;

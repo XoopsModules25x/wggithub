@@ -237,8 +237,8 @@ $modversion['config'][] = [
     'description' => '_MI_WGGITHUB_FILTER_TYPE_DESC',
     'formtype'    => 'select',
     'valuetype'   => 'int',
-    'default'     => Constants::FILTER_TYPE_ALL,
-    'options'     => ['_AM_WGGITHUB_FILTER_TYPE_ALL' => Constants::FILTER_TYPE_ALL, '_AM_WGGITHUB_FILTER_TYPE_RELEASES' => Constants::FILTER_TYPE_RELEASES],
+    'default'     => 1,
+    'options'     => ['_AM_WGGITHUB_FILTER_TYPE_ALL' => 1, '_AM_WGGITHUB_FILTER_TYPE_RELEASES' => 2],
 ];
 // Number column
 $modversion['config'][] = [
