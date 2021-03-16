@@ -8,7 +8,8 @@
  - added autoapprove (alain01/goffy)
  - fixed certificate problem/https://github.com/milo/github-api/issues/32 (richard/goffy)
  - moved filter releases to preferences (alain01/goffy)
- - added bug with missing constants (alain01/goffy)
+ - fixed bug with missing constants (alain01/goffy)
+ - fixed bug in js (alain01/goffy)
 
 ===================================================================
 2021/01/13 Version 1.03 RC1

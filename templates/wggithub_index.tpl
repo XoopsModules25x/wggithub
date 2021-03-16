@@ -14,10 +14,10 @@
 		</div>
 		<span id="filter_release_label"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:</span>
 		<div id="filter_release_bar" class="btn-group btn-group-sm <{if $menu == 0}>hidden<{/if}>" role="group" aria-label="Filter Releases">
-			<button id="relfinal" <{if $release !='final'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
-			<button id="relany" <{if $release !='any'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
+			<button id="relfinal" onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
+			<button id="relany" onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
 			<{if $showBtnAll|default:false}>
-				<button id="relall" <{if $release !='all'}>onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')"<{/if}> type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
+				<button id="relall" onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
 			<{/if}>
 		</div>
 	</div>
@@ -127,10 +127,8 @@
 	<{/if}>
 
 <script type="text/javascript">
-	var el = document.getElementById('btn_next'),
-			elClone = el.cloneNode(true);
-
-	el.parentNode.replaceChild(elClone, el);
+	//var el = document.getElementById('btn_next'), elClone = el.cloneNode(true);
+	//el.parentNode.replaceChild(elClone, el);
 
 	if (location.protocol == 'https:') {
 		var imgs = document.getElementsByTagName("img");
@@ -145,18 +143,21 @@
 
 </script>
 <script type="text/javascript">
-	var executeClick = function(el, group, href)
+	var executeClick = function(btn, group, href)
 	{
 		if ('release' == group) {
 			document.getElementById('relfinal').classList.remove("disabled");
 			document.getElementById('relany').classList.remove("disabled");
-			document.getElementById('relall').classList.remove("disabled");
-			document.getElementById(el.id).classList.add("disabled");
+			var el_relall =  document.getElementById('relall');
+			if (typeof(el_relall) != 'undefined' && el_relall != null) {
+				document.getElementById('relall').classList.remove("disabled");
+			}
+			document.getElementById(btn.id).classList.add("disabled");
 		};
 		if ('sortby' == group) {
 			document.getElementById('sortbyname').classList.remove("disabled");
 			document.getElementById('sortbyupdate').classList.remove("disabled");
-			document.getElementById(el.id).classList.add("disabled");
+			document.getElementById(btn.id).classList.add("disabled");
 		};
 		var tabid = $('.tab-content-main .maintab.active').attr('id');
 		var url;
