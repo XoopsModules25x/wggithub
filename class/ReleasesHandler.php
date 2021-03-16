@@ -198,7 +198,6 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
     public function updateReleases($repoId, $userName, $repoName)
     {
         $helper = Wggithub\Helper::getInstance();
-        $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
         $githubClient = new Wggithub\Github\GithubClient();

@@ -79,7 +79,6 @@ class Logs extends \XoopsObject
      */
     public function getFormLogs($action = false, $start = 0, $limit = 0)
     {
-        $helper = \XoopsModules\Wggithub\Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
