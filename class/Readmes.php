@@ -156,24 +156,7 @@ class Readmes extends \XoopsObject
             $Parsedown = new MDParser\Parsedown();
             $contentEncoded = $Parsedown->text($contentDecoded);
             $baseUrl = \str_replace('/blob/', '/raw/', $baseUrl);
-            //replace image links
-            $arrSearch = [
-                'src=".gitbook/assets/',
-                "src='.gitbook/assets/",
-                'src="en/assets/',
-                "src='en/assets/",
-                'src="assets/',
-                "src='assets/"
-            ];
-            $arrReplace = [
-                'src="' . $baseUrl . '.gitbook/assets/',
-                "src='" . $baseUrl . '.gitbook/assets/',
-                'src="' . $baseUrl . 'en/assets/',
-                "src='" . $baseUrl . 'en/assets/',
-                'src="' . $baseUrl . 'assets/',
-                "src='" . $baseUrl . 'assets/'
-            ];
-            $contentClean = \str_replace($arrSearch, $arrReplace, $contentEncoded);
+            $contentClean = $this->cleaningMD($contentEncoded, $baseUrl);
         } else {
             $contentClean = $contentDecoded;
         }
@@ -204,5 +187,121 @@ class Readmes extends \XoopsObject
             $ret[$var] = $this->getVar('"{$var}"');
         }
         return $ret;
+    }
+    /**
+     * Returns an array representation of the object
+     * @param  $textMD
+     * @param  $baseUrl
+     * @return string
+     */
+    private function cleaningMD($textMD, $baseUrl)
+    {
+        $baseUrl = \str_replace('/blob/', '/raw/', $baseUrl);
+
+        $contentClean = \str_replace('http://', 'https://', $textMD);
+
+        //replace image links
+        $arrSearch = [
+            'src="https://xoops.org/images/logoXoopsPhp8_400.png',
+            "src='https://xoops.org/images/logoXoopsPhp8_400.png",
+            'src=".gitbook/assets/',
+            "src='.gitbook/assets/",
+            'src="en/assets/',
+            "src='en/assets/",
+            'src="assets/',
+            "src='assets/"
+        ];
+        $arrReplace = [
+            'src="https://xoops.org/images/logoXoopsPhp8.png',
+            "src='https://xoops.org/images/logoXoopsPhp8.png",
+            'src="' . $baseUrl . '.gitbook/assets/',
+            "src='" . $baseUrl . '.gitbook/assets/',
+            'src="' . $baseUrl . 'en/assets/',
+            "src='" . $baseUrl . 'en/assets/',
+            'src="' . $baseUrl . 'assets/',
+            "src='" . $baseUrl . 'assets/'
+        ];
+        $contentClean = \str_replace($arrSearch, $arrReplace, $contentClean);
+
+        //replace known missing images
+        $arrSearch = [
+            'src="' . XOOPS_URL . '/screenshot.jpg',
+            'src="' . XOOPS_URL . '/sd-099-theme-surprice.gif',
+            'src="' . XOOPS_URL . '/shot.gif',
+            'src="' . XOOPS_URL . '/shot.jpg',
+            'src="' . XOOPS_URL . '/theme_preview.png',
+            'src="https://github.com/xoops/newbb-tutorial/tree/54ef6104e66b74e8c6dea683d3cce70ceafdd739/assets/image001.jpg',
+            'src="https://github.com/xoops/repairshop-tutorial/tree/719d6d32dea221b3e980fd3d6222f179ac898394/en/assets/img_2.jpg',
+            'src="https://github.com/xoops/xoops-mylinks-tutorial/tree/d30c30645d48c5ead51399ff711c25935cbd0495/en/assets/forkit.png',
+            'src="https://github.com/xoops/xoopspartners-tutorial/tree/f41bf73b884ccd906dc6a8323363b9b1aa3f8d02/en/assets/forkit.png',
+            'src="https://github.com/XoopsDocs/adslight-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/avaman-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/extgallery-tutorial/raw/master/en/assets/forkit.png',
+            'src="https://github.com/XoopsDocs/extgallery-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/presenter-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/smartpartner-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/tag-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/wfdownloads-tutorial/raw/master/en/assets/forkit.png',
+            'src="https://github.com/XoopsDocs/wfdownloads-tutorial/raw/master/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/xasset-tutorial/tree/9b95bc0ae0219c95a8cf16e77b9cd2175d856e89/en/assets/image001.png',
+            'src="https://github.com/XoopsDocs/xoops_codex/raw/master/en/assets/image001.png',
+            'src="https://img.shields.io/codeclimate/github/mambax7/adslight.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/avaman.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/extcal.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/extgallery.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/gbook.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/marquee.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/mastopgo2.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/moduleinstaller.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/myconference.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/newbb.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/planet.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/publisher.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/randomquote.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/references/.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/smartfaq.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/smartpartner.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/suico.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/tdmpicture.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/waiting.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/wflinks.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/xfaq.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/xoopsheadline.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/mambax7/xoopspoll.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/about.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/adminer.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/contact.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/content.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/cssholmes.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/lexikon.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/myiframe.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/mylinks.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/mymenus.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/news.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/smallworld.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/soapbox.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/tag.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/tdmdownloads.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/userlog.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xbssacc.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xbstags.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xbsvat.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xfguestbook.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xlanguage.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xmfdemo.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xoopsfaq.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xoopshp.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xoopsinfo.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xoopspartners.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xoopstube.svg?style=flat',
+            'src="https://img.shields.io/codeclimate/github/XoopsModules25x/xsitemap.svg?style=flat',
+            'src="https://img.shields.io/github/release/mambax7/references/.svg?style=flat',
+            'src="https://img.shields.io/github/tag/mambax7/references/.svg?style=flat',
+            'src="https://insight.sensiolabs.com/projects/7ada0220-a68e-4369-aef0-950172630ff8/mini.png',
+            'src="https://xoops.org/images/translations-github-blue.svg',
+        ];
+        $contentClean = \str_replace($arrSearch, 'src="' . WGGITHUB_IMAGE_URL . '/blank.gif', $contentClean);
+
+        return $contentClean;
     }
 }

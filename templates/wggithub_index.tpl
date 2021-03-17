@@ -127,22 +127,6 @@
 	<{/if}>
 
 <script type="text/javascript">
-	//var el = document.getElementById('btn_next'), elClone = el.cloneNode(true);
-	//el.parentNode.replaceChild(elClone, el);
-
-	if (location.protocol == 'https:') {
-		var imgs = document.getElementsByTagName("img");
-		var imgSrc = '';
-
-		for (var i = 0; i < imgs.length; i++) {
-			imgSrc = imgs[i].src;
-			imgSrc = imgSrc.replace("http:", "https:");
-			imgs[i].src = imgSrc;
-		}
-	}
-
-</script>
-<script type="text/javascript">
 	var executeClick = function(btn, group, href)
 	{
 		if ('release' == group) {
