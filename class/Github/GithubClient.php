@@ -113,7 +113,7 @@ class GithubClient extends Api
      * @param     $username
      * @param int $per_page
      * @param int $page
-     * @return array
+     * @return array|bool
      */
     public function getUserRepositories($username, $per_page = 100, $page = 1)
     {
@@ -128,7 +128,7 @@ class GithubClient extends Api
      * @param     $org
      * @param int $per_page
      * @param int $page
-     * @return array
+     * @return array|bool
      */
     public function getOrgRepositories($org, $per_page = 100, $page = 1)
     {
@@ -142,7 +142,7 @@ class GithubClient extends Api
      *
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
-     * @return string|array the readme content
+     * @return array|bool
      */
     public function getReadme($username, $repository)
     {
@@ -156,7 +156,7 @@ class GithubClient extends Api
      *
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
-     * @return array
+     * @return array|bool
      */
     public function getReleases($username, $repository)
     {
@@ -171,7 +171,7 @@ class GithubClient extends Api
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
      * @param bool   $prerelease
-     * @return array
+     * @return array|bool
      */
     public function getLatestRelease($username, $repository, $prerelease = false)
     {
@@ -183,11 +183,6 @@ class GithubClient extends Api
         }
         $result = $this->_get($url);
 
-        if (\is_array($result) && \array_key_exists('error_code', $result)) {
-            //TODO: improve error handling
-            echo $result['message'];
-            die;
-        }
         if ($prerelease) {
             if (\is_array($result)) {
                 return $result[0];
@@ -204,7 +199,7 @@ class GithubClient extends Api
      *
      * @param  $username
      * @param  $repository
-     * @return array
+     * @return array|bool
      */
     public function getRepositoryContent($username, $repository)
     {
