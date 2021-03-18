@@ -272,6 +272,10 @@ switch ($op) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
         }
         break;
+    case 'api_error':
+        $error = Request::getString('message') . '<br>' . Request::getString('url');
+        $GLOBALS['xoopsTpl']->assign('error', $error);
+        break;
 }
 
 $GLOBALS['xoopsTpl']->assign('table_type', $helper->getConfig('table_type'));

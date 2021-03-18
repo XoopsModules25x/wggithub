@@ -121,7 +121,7 @@ class Readmes extends \XoopsObject
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $start));
         $form->addElement(new \XoopsFormHidden('limit', $limit));
-        $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
+        $form->addElement(new \XoopsFormButtonTray('', \_SUBMIT, 'submit', '', false));
         return $form;
     }
 
@@ -225,11 +225,11 @@ class Readmes extends \XoopsObject
 
         //replace known missing images
         $arrSearch = [
-            'src="' . XOOPS_URL . '/screenshot.jpg',
-            'src="' . XOOPS_URL . '/sd-099-theme-surprice.gif',
-            'src="' . XOOPS_URL . '/shot.gif',
-            'src="' . XOOPS_URL . '/shot.jpg',
-            'src="' . XOOPS_URL . '/theme_preview.png',
+            'src="' . \XOOPS_URL . '/screenshot.jpg',
+            'src="' . \XOOPS_URL . '/sd-099-theme-surprice.gif',
+            'src="' . \XOOPS_URL . '/shot.gif',
+            'src="' . \XOOPS_URL . '/shot.jpg',
+            'src="' . \XOOPS_URL . '/theme_preview.png',
             'src="https://github.com/xoops/newbb-tutorial/tree/54ef6104e66b74e8c6dea683d3cce70ceafdd739/assets/image001.jpg',
             'src="https://github.com/xoops/repairshop-tutorial/tree/719d6d32dea221b3e980fd3d6222f179ac898394/en/assets/img_2.jpg',
             'src="https://github.com/xoops/xoops-mylinks-tutorial/tree/d30c30645d48c5ead51399ff711c25935cbd0495/en/assets/forkit.png',
@@ -300,7 +300,7 @@ class Readmes extends \XoopsObject
             'src="https://insight.sensiolabs.com/projects/7ada0220-a68e-4369-aef0-950172630ff8/mini.png',
             'src="https://xoops.org/images/translations-github-blue.svg',
         ];
-        $contentClean = \str_replace($arrSearch, 'src="' . WGGITHUB_IMAGE_URL . '/blank.gif', $contentClean);
+        $contentClean = \str_replace($arrSearch, 'src="' . \WGGITHUB_IMAGE_URL . '/blank.gif', $contentClean);
 
         return $contentClean;
     }

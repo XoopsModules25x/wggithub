@@ -35,7 +35,7 @@ class GithubClient extends Api
     /**
      * @var string
      */
-    public const BASE_URL = 'https://api.github.com/';
+    public const BASE_URL = 'https://api2.github.com/';
 
     /**
      * @var string
@@ -175,6 +175,7 @@ class GithubClient extends Api
      */
     public function getLatestRelease($username, $repository, $prerelease = false)
     {
+        //function currently not used
         if ($prerelease) {
             $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases';
         } else {
@@ -182,6 +183,11 @@ class GithubClient extends Api
         }
         $result = $this->_get($url);
 
+        if (\is_array($result) && \array_key_exists('error_code', $result)) {
+            //TODO: improve error handling
+            echo $result['message'];
+            die;
+        }
         if ($prerelease) {
             if (\is_array($result)) {
                 return $result[0];
@@ -242,30 +248,28 @@ class GithubClient extends Api
             //catch common errors
             switch ($code) {
                 case 401:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_401 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_401;
                     break;
                 case 403:
-                    /*
-                    if (\strpos($errMsg, 'API rate limit exceeded') > 0) {
-                        $GLOBALS['xoopsTpl']->assign('apiexceed', true);
-                    }
-                    */
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_403 . '"');
+                    /*if (\strpos($errMsg, 'API rate limit exceeded') > 0) {$GLOBALS['xoopsTpl']->assign('apiexceed', true);}*/
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_403;
                     break;
                 case 404:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_404 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_404;
                     break;
                 case 405:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_405 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_405;
                     break;
                 case 0:
                 default:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API . $errMsg . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API . '(' .$code . ' - ' .  $errMsg . ')';
                     break;
             }
+            redirect_header('index.php?op=api_error&amp;message='. $message . '&amp;url='. $url, 5, $message);
+            //throw new \RuntimeException('"' . $message . '"');
+        } else {
+            $data = (array)$api->decode($response);
         }
-        $data = (array)$api->decode($response);
-
 
         return $data;
     }

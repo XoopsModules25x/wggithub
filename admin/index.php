@@ -20,7 +20,7 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-
+use Xmf\Request;
 use XoopsModules\Wggithub\Common;
 
 include_once \dirname(__DIR__) . '/preloads/autoloader.php';
@@ -28,6 +28,11 @@ require __DIR__ . '/header.php';
 
 // Template Index
 $templateMain = 'wggithub_admin_index.tpl';
+
+$op = Request::getCmd('op', 'list');
+if ('api_error' == $op) {
+    $GLOBALS['xoopsTpl']->assign('error', Request::getString('message'));
+}
 
 // Count elements
 $countSettings = $settingsHandler->getCount();

@@ -4,7 +4,7 @@
 	<div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 
-<{if $directoriesCount > 0}>
+<{if $directoriesCount|default:0 > 0}>
 	<!-- filter area -->
 	<div id="filter_bar" class="tab-filter <{if $menu == 0}>hidden<{/if}>">
 		<{$smarty.const._MA_WGGITHUB_FILTER_SORTBY}>:
