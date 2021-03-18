@@ -41,8 +41,6 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
         $filterValue = '';
         $crReadmes = new \CriteriaCompo();
@@ -97,16 +95,6 @@ switch ($op) {
         $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit, $filterValue);
         $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
-    case 'new':
-        $templateMain = 'wggithub_admin_readmes.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $readmesObj = $readmesHandler->create();
-        $form = $readmesObj->getFormReadmes(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
-        break;
     case 'save':
         // Security Check
         if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -140,7 +128,6 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
         $adminObject->addItemButton(\_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form

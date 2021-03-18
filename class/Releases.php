@@ -87,11 +87,10 @@ class Releases extends \XoopsObject
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
-        // Title
-        $title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_RELEASE_ADD) : \sprintf(\_AM_WGGITHUB_RELEASE_EDIT);
+
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
-        $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
+        $form = new \XoopsThemeForm(\_AM_WGGITHUB_RELEASE_EDIT, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         // Form Table repositories
         $repositoriesHandler = $helper->getHandler('Repositories');

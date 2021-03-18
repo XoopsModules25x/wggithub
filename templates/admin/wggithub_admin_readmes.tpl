@@ -4,7 +4,7 @@
 <{if $formFilter|default:''}>
 	<div class="pull-right"><{$formFilter}></div>
 <{/if}>
-
+<{if $readmes_count|default:0 > 0 || $noData|default:''}>
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
@@ -53,6 +53,7 @@
 		<div class="xo-pagenav floatright"><{$pagenav}></div>
 		<div class="clear spacer"></div>
 	<{/if}>
+<{/if}>
 <{if $form|default:''}>
 	<{$form}>
 <{/if}>

@@ -64,11 +64,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_SETOFF', 'ON, change to OFF');
 // Buttons
 \define('_AM_WGGITHUB_ADD_SETTING', 'Add New Setting');
-\define('_AM_WGGITHUB_ADD_REPOSITORY', 'Add New Repository');
 \define('_AM_WGGITHUB_ADD_DIRECTORY', 'Add New Directory');
-\define('_AM_WGGITHUB_ADD_LOG', 'Add New Log');
-\define('_AM_WGGITHUB_ADD_README', 'Add New Readme');
-\define('_AM_WGGITHUB_ADD_RELEASE', 'Add New Release');
 // Lists
 \define('_AM_WGGITHUB_SETTINGS_LIST', 'List of Settings');
 \define('_AM_WGGITHUB_REPOSITORIES_LIST', 'List of Repositories');
@@ -90,7 +86,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_SETTING_DATE', 'Date');
 \define('_AM_WGGITHUB_SETTING_SUBMITTER', 'Submitter');
 // Repository add/edit
-\define('_AM_WGGITHUB_REPOSITORY_ADD', 'Add Repository');
 \define('_AM_WGGITHUB_REPOSITORY_EDIT', 'Edit Repository');
 // Elements of Repository
 \define('_AM_WGGITHUB_REPOSITORY_ID', 'Id');
@@ -144,7 +139,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_LOG_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_LOG_SUBMITTER', 'Submitter');
 // Readme add/edit
-\define('_AM_WGGITHUB_README_ADD', 'Add Readme');
 \define('_AM_WGGITHUB_README_EDIT', 'Edit Readme');
 // Elements of Readme
 \define('_AM_WGGITHUB_README_ID', 'Id');
@@ -158,7 +152,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_README_DATECREATED', 'Datecreated');
 \define('_AM_WGGITHUB_README_SUBMITTER', 'Submitter');
 // Release add/edit
-\define('_AM_WGGITHUB_RELEASE_ADD', 'Add Release');
 \define('_AM_WGGITHUB_RELEASE_EDIT', 'Edit Release');
 // Elements of Release
 \define('_AM_WGGITHUB_RELEASE_ID', 'Id');

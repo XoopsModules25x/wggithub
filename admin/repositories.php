@@ -42,8 +42,6 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_repositories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('repositories.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_REPOSITORY, 'repositories.php?op=new', 'add');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
         $autoApproved = (int)$helper->getConfig('autoapproved');
         $GLOBALS['xoopsTpl']->assign('autoApproved', !$autoApproved);
@@ -98,16 +96,6 @@ switch ($op) {
         $form = $repositoriesHandler->getFormFilterRepos(false, $start, $limit, $filterValue, $filterStatus);
         $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
-    case 'new':
-        $templateMain = 'wggithub_admin_repositories.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('repositories.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_REPOSITORIES_LIST, 'repositories.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $repositoriesObj = $repositoriesHandler->create();
-        $form = $repositoriesObj->getFormRepositories(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
-        break;
     case 'save':
         // Security Check
         if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -146,7 +134,6 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_repositories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('repositories.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_REPOSITORY, 'repositories.php?op=new', 'add');
         $adminObject->addItemButton(\_AM_WGGITHUB_REPOSITORIES_LIST, 'repositories.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form

@@ -41,8 +41,6 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_releases.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
         $filterValue = '';
         $crReleases = new \CriteriaCompo();
@@ -86,16 +84,6 @@ switch ($op) {
         $form = $releasesHandler->getFormFilterReleases(false, $start, $limit, $filterValue);
         $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
-    case 'new':
-        $templateMain = 'wggithub_admin_releases.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_RELEASES_LIST, 'releases.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $releasesObj = $releasesHandler->create();
-        $form = $releasesObj->getFormReleases(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
-        break;
     case 'save':
         // Security Check
         if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -129,7 +117,6 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_releases.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(\_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
         $adminObject->addItemButton(\_AM_WGGITHUB_RELEASES_LIST, 'releases.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form

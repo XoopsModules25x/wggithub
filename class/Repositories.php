@@ -91,11 +91,10 @@ class Repositories extends \XoopsObject
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
-        // Title
-        $title = $this->isNew() ? \sprintf(\_AM_WGGITHUB_REPOSITORY_ADD) : \sprintf(\_AM_WGGITHUB_REPOSITORY_EDIT);
+
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
-        $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
+        $form = new \XoopsThemeForm(\_AM_WGGITHUB_REPOSITORY_EDIT, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         // Form Text repoNodeid
         $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_REPOSITORY_NODEID, 'repo_nodeid', 50, 255, $this->getVar('repo_nodeid')));

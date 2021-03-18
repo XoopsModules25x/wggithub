@@ -11,6 +11,8 @@
  - fixed bug with missing constants (alain01/goffy)
  - fixed bug in js (alain01/goffy)
  - changed output of error when request data from github (alain01/goffy)
+ - removed unnecessary add buttons (goffy)
+ - resorted tabs in admin area (alain01/goffy)
 
 ===================================================================
 2021/01/13 Version 1.03 RC1

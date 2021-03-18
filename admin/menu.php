@@ -42,9 +42,9 @@ $adminmenu[] = [
     'icon' => 'assets/icons/32/directories.png',
 ];
 $adminmenu[] = [
-    'title' => \_MI_WGGITHUB_ADMENU4,
-    'link' => 'admin/logs.php',
-    'icon' => 'assets/icons/32/logs.png',
+    'title' => \_MI_WGGITHUB_ADMENU8,
+    'link' => 'admin/permissions.php',
+    'icon' => 'assets/icons/32/permissions.png',
 ];
 $adminmenu[] = [
     'title' => \_MI_WGGITHUB_ADMENU5,
@@ -62,9 +62,9 @@ $adminmenu[] = [
     'icon' => 'assets/icons/32/releases.png',
 ];
 $adminmenu[] = [
-    'title' => \_MI_WGGITHUB_ADMENU8,
-    'link' => 'admin/permissions.php',
-    'icon' => 'assets/icons/32/permissions.png',
+    'title' => \_MI_WGGITHUB_ADMENU4,
+    'link' => 'admin/logs.php',
+    'icon' => 'assets/icons/32/logs.png',
 ];
 $adminmenu[] = [
     'title' => \_MI_WGGITHUB_ADMENU9,
