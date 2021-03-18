@@ -1,6 +1,6 @@
 <div class='pull-left'><{$copyright}></div>
 
-<{if $pagenav != ''}>
+<{if $pagenav|default:'' != ''}>
 	<div class='pull-right'><{$pagenav}></div>
 <{/if}>
 <br>
@@ -8,7 +8,7 @@
 	<div class='text-center bold'><a href='<{$admin}>'><{$smarty.const._MA_WGGITHUB_ADMIN}></a></div>
 <{/if}>
 
-<{if $comment_mode}>
+<{if $comment_mode|default:''}>
 	<div class='pad2 marg2'>
 		<{if $comment_mode == "flat"}>
 			<{include file='db:system_comments_flat.tpl' }>
