@@ -35,7 +35,7 @@ class GithubClient extends Api
     /**
      * @var string
      */
-    public const BASE_URL = 'https://api2.github.com/';
+    public const BASE_URL = 'https://api.github.com/';
 
     /**
      * @var string
