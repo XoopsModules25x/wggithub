@@ -52,14 +52,14 @@ $adminmenu[] = [
     'icon' => 'assets/icons/32/repositories.png',
 ];
 $adminmenu[] = [
-    'title' => \_MI_WGGITHUB_ADMENU6,
-    'link' => 'admin/readmes.php',
-    'icon' => 'assets/icons/32/readmes.png',
-];
-$adminmenu[] = [
     'title' => \_MI_WGGITHUB_ADMENU7,
     'link' => 'admin/releases.php',
     'icon' => 'assets/icons/32/releases.png',
+];
+$adminmenu[] = [
+    'title' => \_MI_WGGITHUB_ADMENU6,
+    'link' => 'admin/readmes.php',
+    'icon' => 'assets/icons/32/readmes.png',
 ];
 $adminmenu[] = [
     'title' => \_MI_WGGITHUB_ADMENU4,
