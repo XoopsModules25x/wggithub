@@ -19,8 +19,8 @@
 			<{foreach item=log from=$logs_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$log.id}></td>
-				<td class='center'><{$log.type_text}></td>
-				<td class='center'><{$log.details}></td>
+				<td ><{$log.type_text}></td>
+				<td ><{$log.details}></td>
 				<td class='center'><{$log.result_short}></td>
 				<td class='center'><{$log.datecreated}></td>
 				<td class='center'><{$log.submitter}></td>

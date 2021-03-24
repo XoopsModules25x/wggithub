@@ -27,13 +27,13 @@
 			<{foreach item=release from=$releases_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$release.id}></td>
-				<td class='center'><{$release.repoid}></td>
+				<td ><{$release.repoid}></td>
 				<td class='center'><{$release.type}></td>
-				<td class='center'><{$release.name}></td>
+				<td ><{$release.name}></td>
 				<td class='center'><{$release.prerelease}></td>
 				<td class='center'><{$release.publishedat}></td>
-				<td class='center'><{$release.tarballurl}></td>
-				<td class='center'><{$release.zipballurl}></td>
+				<td ><{$release.tarballurl}></td>
+				<td ><{$release.zipballurl}></td>
 				<td class='center'><{$release.datecreated}></td>
 				<td class='center'><{$release.submitter}></td>
 				<td class="center  width5">

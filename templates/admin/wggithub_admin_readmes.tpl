@@ -26,13 +26,13 @@
 			<{foreach item=readme from=$readmes_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$readme.id}></td>
-				<td class='center'><{$readme.repoid}></td>
+				<td ><{$readme.repoid}></td>
 				<td class='center'><{$readme.name}></td>
 				<td class='center'><{$readme.type}></td>
 				<td class='center'><{$readme.content_short}></td>
 				<td class='center'><{$readme.encoding}></td>
-				<td class='center'><{$readme.downloadurl}></td>
-				<td class='center'><{$readme.baseurl}></td>
+				<td ><{$readme.downloadurl}></td>
+				<td ><{$readme.baseurl}></td>
 				<td class='center'><{$readme.datecreated}></td>
 				<td class='center'><{$readme.submitter}></td>
 				<td class="center  width5">
