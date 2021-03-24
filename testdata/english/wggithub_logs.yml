@@ -1,168 +1,980 @@
 -
-    log_id: '1'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
-    log_result: START
-    log_datecreated: '1609781862'
-    log_submitter: '1'
--
-    log_id: '2'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
-    log_result: OK
-    log_datecreated: '1609781862'
-    log_submitter: '1'
--
-    log_id: '3'
+    log_id: '336'
     log_type: '1'
     log_details: ''
     log_result: OK
-    log_datecreated: '1610016842'
+    log_datecreated: '1615850800'
     log_submitter: '1'
 -
-    log_id: '4'
+    log_id: '337'
     log_type: '3'
-    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=1'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
     log_result: START
-    log_datecreated: '1610016842'
+    log_datecreated: '1615850800'
     log_submitter: '1'
 -
-    log_id: '5'
+    log_id: '338'
     log_type: '3'
-    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=1'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
     log_result: OK
-    log_datecreated: '1610016845'
+    log_datecreated: '1615850801'
     log_submitter: '1'
 -
-    log_id: '6'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/readme'
-    log_result: START
-    log_datecreated: '1610016845'
-    log_submitter: '1'
--
-    log_id: '7'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/readme'
-    log_result: OK
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '8'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/releases'
-    log_result: START
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '9'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/smallworld/releases'
-    log_result: OK
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '10'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/readme'
-    log_result: START
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '11'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/readme'
-    log_result: OK
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '12'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/releases'
-    log_result: START
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '13'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/publisher/releases'
-    log_result: OK
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '14'
-    log_type: '3'
-    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=2'
-    log_result: START
-    log_datecreated: '1610016846'
-    log_submitter: '1'
--
-    log_id: '15'
-    log_type: '3'
-    log_details: 'https://api.github.com/orgs/XoopsModules25x/repos?per_page=100&page=2'
-    log_result: OK
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '16'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/readme'
-    log_result: START
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '17'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/readme'
-    log_result: OK
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '18'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/releases'
-    log_result: START
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '19'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wgsimpleacc/releases'
-    log_result: OK
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '20'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/readme'
-    log_result: START
-    log_datecreated: '1610016850'
-    log_submitter: '1'
--
-    log_id: '21'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/readme'
-    log_result: OK
-    log_datecreated: '1610016851'
-    log_submitter: '1'
--
-    log_id: '22'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/releases'
-    log_result: START
-    log_datecreated: '1610016851'
-    log_submitter: '1'
--
-    log_id: '23'
-    log_type: '3'
-    log_details: 'https://api.github.com/repos/XoopsModules25x/wggithub/releases'
-    log_result: OK
-    log_datecreated: '1610016851'
-    log_submitter: '1'
--
-    log_id: '24'
+    log_id: '339'
     log_type: '2'
     log_details: ''
     log_result: OK
-    log_datecreated: '1610016851'
+    log_datecreated: '1615850801'
+    log_submitter: '1'
+-
+    log_id: '340'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615850817'
+    log_submitter: '1'
+-
+    log_id: '341'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615850817'
+    log_submitter: '1'
+-
+    log_id: '342'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615850818'
+    log_submitter: '1'
+-
+    log_id: '343'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615850818'
+    log_submitter: '1'
+-
+    log_id: '344'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877210'
+    log_submitter: '1'
+-
+    log_id: '345'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877210'
+    log_submitter: '1'
+-
+    log_id: '346'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877211'
+    log_submitter: '1'
+-
+    log_id: '347'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877211'
+    log_submitter: '1'
+-
+    log_id: '348'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877218'
+    log_submitter: '1'
+-
+    log_id: '349'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877218'
+    log_submitter: '1'
+-
+    log_id: '350'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877218'
+    log_submitter: '1'
+-
+    log_id: '351'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877218'
+    log_submitter: '1'
+-
+    log_id: '352'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877361'
+    log_submitter: '1'
+-
+    log_id: '353'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877361'
+    log_submitter: '1'
+-
+    log_id: '354'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877362'
+    log_submitter: '1'
+-
+    log_id: '355'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877362'
+    log_submitter: '1'
+-
+    log_id: '356'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877660'
+    log_submitter: '1'
+-
+    log_id: '357'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877660'
+    log_submitter: '1'
+-
+    log_id: '358'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877661'
+    log_submitter: '1'
+-
+    log_id: '359'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877661'
+    log_submitter: '1'
+-
+    log_id: '360'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877732'
+    log_submitter: '1'
+-
+    log_id: '361'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877732'
+    log_submitter: '1'
+-
+    log_id: '362'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877733'
+    log_submitter: '1'
+-
+    log_id: '363'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877733'
+    log_submitter: '1'
+-
+    log_id: '364'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877871'
+    log_submitter: '1'
+-
+    log_id: '365'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615877871'
+    log_submitter: '1'
+-
+    log_id: '366'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615877872'
+    log_submitter: '1'
+-
+    log_id: '367'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615877872'
+    log_submitter: '1'
+-
+    log_id: '368'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899376'
+    log_submitter: '1'
+-
+    log_id: '369'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615899376'
+    log_submitter: '1'
+-
+    log_id: '370'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '371'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmcontent/readme'
+    log_result: START
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '372'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmcontent/readme'
+    log_result: OK
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '373'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmcontent/releases'
+    log_result: START
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '374'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmcontent/releases'
+    log_result: OK
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '375'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmnews/readme'
+    log_result: START
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '376'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmnews/readme'
+    log_result: OK
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '377'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmnews/releases'
+    log_result: START
+    log_datecreated: '1615899377'
+    log_submitter: '1'
+-
+    log_id: '378'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/GregMage/xmnews/releases'
+    log_result: OK
+    log_datecreated: '1615899378'
+    log_submitter: '1'
+-
+    log_id: '379'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899378'
+    log_submitter: '1'
+-
+    log_id: '380'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899394'
+    log_submitter: '1'
+-
+    log_id: '381'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615899394'
+    log_submitter: '1'
+-
+    log_id: '382'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615899394'
+    log_submitter: '1'
+-
+    log_id: '383'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899394'
+    log_submitter: '1'
+-
+    log_id: '384'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899773'
+    log_submitter: '1'
+-
+    log_id: '385'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615899773'
+    log_submitter: '1'
+-
+    log_id: '386'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615899774'
+    log_submitter: '1'
+-
+    log_id: '387'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899774'
+    log_submitter: '1'
+-
+    log_id: '388'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899991'
+    log_submitter: '1'
+-
+    log_id: '389'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615899991'
+    log_submitter: '1'
+-
+    log_id: '390'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615899991'
+    log_submitter: '1'
+-
+    log_id: '391'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615899991'
+    log_submitter: '1'
+-
+    log_id: '392'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905529'
+    log_submitter: '1'
+-
+    log_id: '393'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905529'
+    log_submitter: '1'
+-
+    log_id: '394'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905530'
+    log_submitter: '1'
+-
+    log_id: '395'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905530'
+    log_submitter: '1'
+-
+    log_id: '396'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905550'
+    log_submitter: '1'
+-
+    log_id: '397'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905550'
+    log_submitter: '1'
+-
+    log_id: '398'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905550'
+    log_submitter: '1'
+-
+    log_id: '399'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905550'
+    log_submitter: '1'
+-
+    log_id: '400'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905560'
+    log_submitter: '1'
+-
+    log_id: '401'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905560'
+    log_submitter: '1'
+-
+    log_id: '402'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905560'
+    log_submitter: '1'
+-
+    log_id: '403'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905560'
+    log_submitter: '1'
+-
+    log_id: '404'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905571'
+    log_submitter: '1'
+-
+    log_id: '405'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905571'
+    log_submitter: '1'
+-
+    log_id: '406'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905571'
+    log_submitter: '1'
+-
+    log_id: '407'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905571'
+    log_submitter: '1'
+-
+    log_id: '408'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905662'
+    log_submitter: '1'
+-
+    log_id: '409'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905662'
+    log_submitter: '1'
+-
+    log_id: '410'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905663'
+    log_submitter: '1'
+-
+    log_id: '411'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905663'
+    log_submitter: '1'
+-
+    log_id: '412'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905670'
+    log_submitter: '1'
+-
+    log_id: '413'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905670'
+    log_submitter: '1'
+-
+    log_id: '414'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905671'
+    log_submitter: '1'
+-
+    log_id: '415'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905671'
+    log_submitter: '1'
+-
+    log_id: '416'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905679'
+    log_submitter: '1'
+-
+    log_id: '417'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615905679'
+    log_submitter: '1'
+-
+    log_id: '418'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615905680'
+    log_submitter: '1'
+-
+    log_id: '419'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615905680'
+    log_submitter: '1'
+-
+    log_id: '420'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615906166'
+    log_submitter: '1'
+-
+    log_id: '421'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615906166'
+    log_submitter: '1'
+-
+    log_id: '422'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615906167'
+    log_submitter: '1'
+-
+    log_id: '423'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615906167'
+    log_submitter: '1'
+-
+    log_id: '424'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615909081'
+    log_submitter: '1'
+-
+    log_id: '425'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615909081'
+    log_submitter: '1'
+-
+    log_id: '426'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615909082'
+    log_submitter: '1'
+-
+    log_id: '427'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615909082'
+    log_submitter: '1'
+-
+    log_id: '428'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910292'
+    log_submitter: '1'
+-
+    log_id: '429'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910292'
+    log_submitter: '1'
+-
+    log_id: '430'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910292'
+    log_submitter: '1'
+-
+    log_id: '431'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910293'
+    log_submitter: '1'
+-
+    log_id: '432'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910518'
+    log_submitter: '1'
+-
+    log_id: '433'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910518'
+    log_submitter: '1'
+-
+    log_id: '434'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910519'
+    log_submitter: '1'
+-
+    log_id: '435'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910519'
+    log_submitter: '1'
+-
+    log_id: '436'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910667'
+    log_submitter: '1'
+-
+    log_id: '437'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910667'
+    log_submitter: '1'
+-
+    log_id: '438'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910667'
+    log_submitter: '1'
+-
+    log_id: '439'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910668'
+    log_submitter: '1'
+-
+    log_id: '440'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910713'
+    log_submitter: '1'
+-
+    log_id: '441'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910713'
+    log_submitter: '1'
+-
+    log_id: '442'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910714'
+    log_submitter: '1'
+-
+    log_id: '443'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910714'
+    log_submitter: '1'
+-
+    log_id: '444'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910767'
+    log_submitter: '1'
+-
+    log_id: '445'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910767'
+    log_submitter: '1'
+-
+    log_id: '446'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910768'
+    log_submitter: '1'
+-
+    log_id: '447'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910768'
+    log_submitter: '1'
+-
+    log_id: '448'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910854'
+    log_submitter: '1'
+-
+    log_id: '449'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910854'
+    log_submitter: '1'
+-
+    log_id: '450'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910855'
+    log_submitter: '1'
+-
+    log_id: '451'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910855'
+    log_submitter: '1'
+-
+    log_id: '452'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910949'
+    log_submitter: '1'
+-
+    log_id: '453'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910949'
+    log_submitter: '1'
+-
+    log_id: '454'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910950'
+    log_submitter: '1'
+-
+    log_id: '455'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910950'
+    log_submitter: '1'
+-
+    log_id: '456'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910969'
+    log_submitter: '1'
+-
+    log_id: '457'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910969'
+    log_submitter: '1'
+-
+    log_id: '458'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910970'
+    log_submitter: '1'
+-
+    log_id: '459'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910970'
+    log_submitter: '1'
+-
+    log_id: '460'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910980'
+    log_submitter: '1'
+-
+    log_id: '461'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910980'
+    log_submitter: '1'
+-
+    log_id: '462'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615910980'
+    log_submitter: '1'
+-
+    log_id: '463'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910980'
+    log_submitter: '1'
+-
+    log_id: '464'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615910999'
+    log_submitter: '1'
+-
+    log_id: '465'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615910999'
+    log_submitter: '1'
+-
+    log_id: '466'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615911000'
+    log_submitter: '1'
+-
+    log_id: '467'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615911000'
+    log_submitter: '1'
+-
+    log_id: '468'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615911019'
+    log_submitter: '1'
+-
+    log_id: '469'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615911019'
+    log_submitter: '1'
+-
+    log_id: '470'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615911020'
+    log_submitter: '1'
+-
+    log_id: '471'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615911020'
+    log_submitter: '1'
+-
+    log_id: '472'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615911032'
+    log_submitter: '1'
+-
+    log_id: '473'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1615911032'
+    log_submitter: '1'
+-
+    log_id: '474'
+    log_type: '3'
+    log_details: 'https://api.github.com/users/GregMage/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1615911033'
+    log_submitter: '1'
+-
+    log_id: '475'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1615911033'
     log_submitter: '1'

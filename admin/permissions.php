@@ -33,7 +33,7 @@ $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('perm
 $op = Request::getCmd('op', 'global');
 
 // Get Form
-include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
+include_once \XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 \xoops_load('XoopsFormLoader');
 
 $formTitle = \_AM_WGGITHUB_PERMISSIONS_GLOBAL;

@@ -60,6 +60,9 @@ $GLOBALS['xoopsTpl']->assign('wggithub_image_url', WGGITHUB_IMAGE_URL);
 $GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permReadmeUpdate);
 $GLOBALS['xoopsTpl']->assign('permGlobalRead', $permGlobalRead);
 
+$dirStart = [];
+$dirLimit = [];
+
 switch ($op) {
     case 'show':
     case 'list':
@@ -73,7 +76,7 @@ switch ($op) {
             //check number of API calls
             $lastUpdate = 0;
             $crLogs = new \CriteriaCompo();
-            $crLogs->add(new \Criteria('log_datecreated', (time() - 3600), '>'));
+            $crLogs->add(new \Criteria('log_datecreated', (\time() - 3600), '>'));
             $logsCount = $logsHandler->getCount($crLogs);
             if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
                 $githubClient = GithubClient::getInstance();
@@ -112,8 +115,6 @@ switch ($op) {
         }
         unset($crLogs);
 
-        $start = Request::getInt('start', 0);
-        $limit = Request::getInt('limit', $helper->getConfig('userpager'));
         $menu  = Request::getInt('menu', 0);
 
         $crDirectories = new \CriteriaCompo();
@@ -141,22 +142,39 @@ switch ($op) {
                 $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPDATED));
                 $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
                 $crRepositories->add($crRepo2);
-                $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
                 //third
+                $autoApproved = (int)$helper->getConfig('autoapproved');
+                if (!$autoApproved) {
+                    //third
+                    $crRepo3 = new CriteriaCompo();
+                    $crRepo3->add(new Criteria('repo_approved', 1));
+                    $crRepositories->add($crRepo3);
+                }
+
+                $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
+                //fourth
                 if ('any' === $filterRelease && $dirFilterRelease) {
-                    $crRepo3 = new CriteriaCompo();
-                    $crRepo3->add(new Criteria('repo_prerelease', 1));
-                    $crRepo3->add(new Criteria('repo_release', 1), 'OR');
-                    $crRepositories->add($crRepo3);
+                    $crRepo4 = new CriteriaCompo();
+                    $crRepo4->add(new Criteria('repo_prerelease', 1));
+                    $crRepo4->add(new Criteria('repo_release', 1), 'OR');
+                    $crRepositories->add($crRepo4);
                 } elseif ('final' === $filterRelease && $dirFilterRelease) {
-                    $crRepo3 = new CriteriaCompo();
-                    $crRepo3->add(new Criteria('repo_release', 1));
-                    $crRepositories->add($crRepo3);
+                    $crRepo4 = new CriteriaCompo();
+                    $crRepo4->add(new Criteria('repo_release', 1));
+                    $crRepositories->add($crRepo4);
                 }
                 $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
 
-                $crRepositories->setStart($start);
-                $crRepositories->setLimit($limit);
+                $dirId = Request::getInt('dirId', 0);
+                $dirStart[$i] = 0;
+                $dirLimit[$i] = $helper->getConfig('userpager');
+                if ($i == $dirId) {
+                    $dirStart[$i] = Request::getInt('start', 0);
+                    $dirLimit[$i] = Request::getInt('limit', 0);
+                }
+
+                $crRepositories->setStart($dirStart[$i]);
+                $crRepositories->setLimit($dirLimit[$i]);
                 switch ($filterSortby) {
                     case 'name':
                     default:
@@ -173,7 +191,7 @@ switch ($op) {
                     foreach (\array_keys($repositoriesAll) as $j) {
                         $repoId = $repositoriesAll[$j]->getVar('repo_id');
                         $repos[$j] = $repositoriesAll[$j]->getValuesRepositories();
-                        $repos[$j]['readme'] = ['content_clean' => _MA_WGGITHUB_README_NOFILE];
+                        $repos[$j]['readme'] = ['content_clean' => \_MA_WGGITHUB_README_NOFILE];
                         if ($repositoriesAll[$j]->getVar('repo_readme') > 0) {
                             $crReadmes = new \CriteriaCompo();
                             $crReadmes->add(new \Criteria('rm_repoid', $repoId));
@@ -196,33 +214,27 @@ switch ($op) {
                     }
                     unset($repositoriesAll);
                 }
-                unset($crRepo1, $crRepo2, $crRepo3, $crRepositories);
+                unset($crRepo1, $crRepo2, $crRepo3, $crRepo4, $crRepositories);
                 if ($repositoriesCount === $repositoriesCountTotal) {
-                    $directories[$i]['countRepos'] = str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT2);
+                    $directories[$i]['countRepos'] = \str_replace(['%s', '%t'], [$dirName, $repositoriesCountTotal], \_MA_WGGITHUB_REPOSITORIES_COUNT2);
                 } else {
-                    $directories[$i]['countRepos'] = str_replace(['%s', '%r', '%t'], [$dirName, $repositoriesCount, $repositoriesCountTotal], _MA_WGGITHUB_REPOSITORIES_COUNT1);
+                    $directories[$i]['countRepos'] = \str_replace(['%s', '%r', '%t'], [$dirName, $repositoriesCount, $repositoriesCountTotal], \_MA_WGGITHUB_REPOSITORIES_COUNT1);
                 }
                 $directories[$i]['repos'] = $repos;
-                $directories[$i]['previousRepos'] = $start > 0;
-                $directories[$i]['previousOp'] = '&amp;start=' . ($start - $limit) . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
-                $directories[$i]['nextRepos'] = ($repositoriesCount - $start) > $limit;
-                $directories[$i]['nextOp'] = '&amp;start=' . ($start + $limit) . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
-                $GLOBALS['xoopsTpl']->assign('start', $start);
-                $GLOBALS['xoopsTpl']->assign('limit', $limit);
+                $directories[$i]['previousRepos'] = $dirStart[$i] > 0;
+                $directories[$i]['previousOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] - $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+                $directories[$i]['nextRepos'] = ($repositoriesCount - $dirStart[$i]) > $dirLimit[$i];
+                $directories[$i]['nextOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] + $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
                 $GLOBALS['xoopsTpl']->assign('menu', $menu);
                 $GLOBALS['xoopsTpl']->assign('directories', $directories);
             }
 
             unset($crDirectories, $directories);
-            // Display Navigation
-            if ($directoriesCount > $limit) {
-                require_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
-                $pagenav = new \XoopsPageNav($directoriesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
-                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-            }
+
             $GLOBALS['xoopsTpl']->assign('lang_thereare', \sprintf(\_MA_WGGITHUB_INDEX_THEREARE, $directoriesCount));
             $GLOBALS['xoopsTpl']->assign('divideby', $helper->getConfig('divideby'));
             $GLOBALS['xoopsTpl']->assign('numb_col', $helper->getConfig('numb_col'));
+            $GLOBALS['xoopsTpl']->assign('showBtnAll', (Constants::FILTER_TYPE_ALL == $helper->getConfig('filter_type')));
         }
 
         break;
@@ -233,9 +245,7 @@ switch ($op) {
             require __DIR__ . '/footer.php';
         }
         $dirName = Request::getString('dir_name', '');
-        $start   = 0; //reset to default
-        $limit   = Request::getInt('limit', $helper->getConfig('userpager'));
-        $redir   = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        $redir   = 'index.php?op=list_afterupdate&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         $githubClient = GithubClient::getInstance();
         $result = $githubClient->executeUpdate($dirName);
         if ($result) {
@@ -251,18 +261,20 @@ switch ($op) {
             $GLOBALS['xoopsTpl']->assign('error', \_NOPERM);
             require __DIR__ . '/footer.php';
         }
-        $start    = 0; //reset to default
-        $limit    = Request::getInt('limit', $helper->getConfig('userpager'));
         $repoId   = Request::getInt('repo_id', 0);
         $repoUser = Request::getString('repo_user', 'none');
         $repoName = Request::getString('repo_name', 'none');
-        $redir    = 'index.php?op=list_afterupdate&amp;start=' . $start . '&amp;limit=' . $limit . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        $redir    = 'index.php?op=list_afterupdate&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
         $result = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
         } else {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_ERROR_API);
         }
+        break;
+    case 'api_error':
+        $error = Request::getString('message') . '<br>' . Request::getString('url');
+        $GLOBALS['xoopsTpl']->assign('error', $error);
         break;
 }
 

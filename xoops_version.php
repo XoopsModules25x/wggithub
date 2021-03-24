@@ -20,14 +20,17 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-// 
+//
+
+use XoopsModules\Wggithub\Constants;
+
 $moduleDirName      = \basename(__DIR__);
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
-    'name'                => _MI_WGGITHUB_NAME,
+    'name'                => \_MI_WGGITHUB_NAME,
     'version'             => 1.03,
-    'description'         => _MI_WGGITHUB_DESC,
+    'description'         => \_MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',
     'author_website_url'  => 'https://wedega.com',
@@ -37,10 +40,10 @@ $modversion = [
     'license_url'         => 'http://www.gnu.org/licenses/gpl-3.0.en.html',
     'help'                => 'page=help',
     'release_info'        => 'release_info',
-    'release_file'        => XOOPS_URL . '/modules/wggithub/docs/release_info file',
+    'release_file'        => \XOOPS_URL . '/modules/wggithub/docs/release_info file',
     'release_date'        => '2021/01/13',
     'manual'              => 'link to manual file',
-    'manual_file'         => XOOPS_URL . '/modules/wggithub/docs/install.txt',
+    'manual_file'         => \XOOPS_URL . '/modules/wggithub/docs/install.txt',
     'min_php'             => '7.2',
     'min_xoops'           => '2.5.11',
     'min_admin'           => '1.2',
@@ -59,7 +62,7 @@ $modversion = [
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS Project',
     'release'             => '2021-01-13',
-    'module_status'       => 'RC1',
+    'module_status'       => 'RC2',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
     'hasMain'             => 1,
@@ -110,8 +113,8 @@ $modversion['search'] = [
 // Repositories last
 $modversion['blocks'][] = [
     'file'        => 'repositories.php',
-    'name'        => _MI_WGGITHUB_REPOSITORIES_BLOCK_LAST,
-    'description' => _MI_WGGITHUB_REPOSITORIES_BLOCK_LAST_DESC,
+    'name'        => \_MI_WGGITHUB_REPOSITORIES_BLOCK_LAST,
+    'description' => \_MI_WGGITHUB_REPOSITORIES_BLOCK_LAST_DESC,
     'show_func'   => 'b_wggithub_repositories_show',
     'edit_func'   => 'b_wggithub_repositories_edit',
     'template'    => 'wggithub_block_repositories.tpl',
@@ -120,8 +123,8 @@ $modversion['blocks'][] = [
 // Repositories new
 $modversion['blocks'][] = [
     'file'        => 'repositories.php',
-    'name'        => _MI_WGGITHUB_REPOSITORIES_BLOCK_NEW,
-    'description' => _MI_WGGITHUB_REPOSITORIES_BLOCK_NEW_DESC,
+    'name'        => \_MI_WGGITHUB_REPOSITORIES_BLOCK_NEW,
+    'description' => \_MI_WGGITHUB_REPOSITORIES_BLOCK_NEW_DESC,
     'show_func'   => 'b_wggithub_repositories_show',
     'edit_func'   => 'b_wggithub_repositories_edit',
     'template'    => 'wggithub_block_repositories.tpl',
@@ -130,8 +133,8 @@ $modversion['blocks'][] = [
 // Repositories hits
 $modversion['blocks'][] = [
     'file'        => 'repositories.php',
-    'name'        => _MI_WGGITHUB_REPOSITORIES_BLOCK_HITS,
-    'description' => _MI_WGGITHUB_REPOSITORIES_BLOCK_HITS_DESC,
+    'name'        => \_MI_WGGITHUB_REPOSITORIES_BLOCK_HITS,
+    'description' => \_MI_WGGITHUB_REPOSITORIES_BLOCK_HITS_DESC,
     'show_func'   => 'b_wggithub_repositories_show',
     'edit_func'   => 'b_wggithub_repositories_edit',
     'template'    => 'wggithub_block_repositories.tpl',
@@ -140,8 +143,8 @@ $modversion['blocks'][] = [
 // Repositories top
 $modversion['blocks'][] = [
     'file'        => 'repositories.php',
-    'name'        => _MI_WGGITHUB_REPOSITORIES_BLOCK_TOP,
-    'description' => _MI_WGGITHUB_REPOSITORIES_BLOCK_TOP_DESC,
+    'name'        => \_MI_WGGITHUB_REPOSITORIES_BLOCK_TOP,
+    'description' => \_MI_WGGITHUB_REPOSITORIES_BLOCK_TOP_DESC,
     'show_func'   => 'b_wggithub_repositories_show',
     'edit_func'   => 'b_wggithub_repositories_edit',
     'template'    => 'wggithub_block_repositories.tpl',
@@ -150,8 +153,8 @@ $modversion['blocks'][] = [
 // Repositories random
 $modversion['blocks'][] = [
     'file'        => 'repositories.php',
-    'name'        => _MI_WGGITHUB_REPOSITORIES_BLOCK_RANDOM,
-    'description' => _MI_WGGITHUB_REPOSITORIES_BLOCK_RANDOM_DESC,
+    'name'        => \_MI_WGGITHUB_REPOSITORIES_BLOCK_RANDOM,
+    'description' => \_MI_WGGITHUB_REPOSITORIES_BLOCK_RANDOM_DESC,
     'show_func'   => 'b_wggithub_repositories_show',
     'edit_func'   => 'b_wggithub_repositories_edit',
     'template'    => 'wggithub_block_repositories.tpl',
@@ -168,7 +171,7 @@ $modversion['config'][] = [
     'formtype'    => 'select',
     'valuetype'   => 'text',
     'default'     => 'dhtml',
-    'options'     => array_flip($editorHandler->getList()),
+    'options'     => \array_flip($editorHandler->getList()),
 ];
 // Editor User
 \xoops_load('xoopseditorhandler');
@@ -180,7 +183,7 @@ $modversion['config'][] = [
     'formtype'    => 'select',
     'valuetype'   => 'text',
     'default'     => 'dhtml',
-    'options'     => array_flip($editorHandler->getList()),
+    'options'     => \array_flip($editorHandler->getList()),
 ];
 // Editor : max characters admin area
 $modversion['config'][] = [
@@ -217,6 +220,25 @@ $modversion['config'][] = [
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => 25,
+];
+// Autoapproved
+$modversion['config'][] = [
+    'name'        => 'autoapproved',
+    'title'       => '_MI_WGGITHUB_AUTOAPPROVED',
+    'description' => '_MI_WGGITHUB_AUTOAPPROVED_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
+// Filter release
+$modversion['config'][] = [
+    'name'        => 'filter_type',
+    'title'       => '_MI_WGGITHUB_FILTER_TYPE',
+    'description' => '_MI_WGGITHUB_FILTER_TYPE_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'default'     => 1,
+    'options'     => ['_AM_WGGITHUB_FILTER_TYPE_ALL' => 1, '_AM_WGGITHUB_FILTER_TYPE_RELEASES' => 2],
 ];
 // Number column
 $modversion['config'][] = [

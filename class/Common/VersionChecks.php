@@ -29,7 +29,7 @@ trait VersionChecks
      */
     public static function checkVerXoops(\XoopsModule $module = null, $requiredVer = null)
     {
-        $moduleDirName      = \basename(dirname(__DIR__, 2));
+        $moduleDirName      = \basename(\dirname(__DIR__, 2));
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
         if (null === $module) {
             $module = \XoopsModule::getByDirname($moduleDirName);
@@ -38,9 +38,11 @@ trait VersionChecks
         \xoops_loadLanguage('common', $moduleDirName);
 
         //check for minimum XOOPS version
-        $versionText = \mb_substr(XOOPS_VERSION, 6);
-        $posEnd = \strpos($versionText, '-');
+        //clean version text
+        $versionText = \strtolower(\str_replace('XOOPS ', '', XOOPS_VERSION));
+        $versionText = \str_replace(' ', '-', \trim($versionText));
         // get the numeric part of string
+        $posEnd = \strpos($versionText, '-');
         if ($posEnd > 0) {
             $currentVer = \mb_substr($versionText, 0, $posEnd);
         } else {
@@ -68,7 +70,7 @@ trait VersionChecks
      */
     public static function checkVerPhp(\XoopsModule $module = null)
     {
-        $moduleDirName      = \basename(dirname(__DIR__, 2));
+        $moduleDirName      = \basename(\dirname(__DIR__, 2));
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
         if (null === $module) {
             $module = \XoopsModule::getByDirname($moduleDirName);
@@ -101,7 +103,7 @@ trait VersionChecks
      */
     public static function checkVerModule($helper, $source = 'github', $default = 'master')
     {
-        $moduleDirName      = \basename(dirname(__DIR__, 2));
+        $moduleDirName      = \basename(\dirname(__DIR__, 2));
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
         $update             = '';
         $repository         = 'XoopsModules25x/' . $moduleDirName;

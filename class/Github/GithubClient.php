@@ -79,7 +79,7 @@ class GithubClient extends Api
         return $instance;
     }
 
-    public function testMilo($url) {
+    public function testApi1($url) {
         $api = new Github\Api;
         $response = $api->get(static::BASE_URL . $url);
         $data = $api->decode($response);
@@ -87,7 +87,7 @@ class GithubClient extends Api
         return $data;
     }
 
-    public function testMilo2($url) {
+    public function testApi2($url) {
         $api = new Github\Api;
 
         $token = new Github\OAuth\Token('{myKey}', 'bearer', ['repo', 'user', 'public_repo']);
@@ -113,7 +113,7 @@ class GithubClient extends Api
      * @param     $username
      * @param int $per_page
      * @param int $page
-     * @return array
+     * @return array|bool
      */
     public function getUserRepositories($username, $per_page = 100, $page = 1)
     {
@@ -128,7 +128,7 @@ class GithubClient extends Api
      * @param     $org
      * @param int $per_page
      * @param int $page
-     * @return array
+     * @return array|bool
      */
     public function getOrgRepositories($org, $per_page = 100, $page = 1)
     {
@@ -142,7 +142,7 @@ class GithubClient extends Api
      *
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
-     * @return string|array the readme content
+     * @return array|bool
      */
     public function getReadme($username, $repository)
     {
@@ -156,7 +156,7 @@ class GithubClient extends Api
      *
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
-     * @return array
+     * @return array|bool
      */
     public function getReleases($username, $repository)
     {
@@ -171,10 +171,11 @@ class GithubClient extends Api
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
      * @param bool   $prerelease
-     * @return array
+     * @return array|bool
      */
     public function getLatestRelease($username, $repository, $prerelease = false)
     {
+        //function currently not used
         if ($prerelease) {
             $url = static::BASE_URL . 'repos/' . $username . '/' . $repository . '/releases';
         } else {
@@ -198,7 +199,7 @@ class GithubClient extends Api
      *
      * @param  $username
      * @param  $repository
-     * @return array
+     * @return array|bool
      */
     public function getRepositoryContent($username, $repository)
     {
@@ -242,29 +243,28 @@ class GithubClient extends Api
             //catch common errors
             switch ($code) {
                 case 401:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_401 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_401;
                     break;
                 case 403:
-                    /*
-                    if (\strpos($errMsg, 'API rate limit exceeded') > 0) {
-                        $GLOBALS['xoopsTpl']->assign('apiexceed', true);
-                    }
-                    */
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_403 . '"');
+                    /*if (\strpos($errMsg, 'API rate limit exceeded') > 0) {$GLOBALS['xoopsTpl']->assign('apiexceed', true);}*/
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_403;
                     break;
                 case 404:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_404 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_404;
                     break;
                 case 405:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API_405 . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API_405;
                     break;
                 case 0:
                 default:
-                    throw new \RuntimeException('"' . \_MA_WGGITHUB_READGH_ERROR_API . $errMsg . '"');
+                    $message = \_MA_WGGITHUB_READGH_ERROR_API . '(' .$code . ' - ' .  $errMsg . ')';
                     break;
             }
+            redirect_header('index.php?op=api_error&amp;message='. $message . '&amp;url='. $url, 5, $message);
+            //throw new \RuntimeException('"' . $message . '"');
+        } else {
+            $data = (array)$api->decode($response);
         }
-        $data = (array)$api->decode($response);
 
         return $data;
     }
@@ -310,12 +310,12 @@ class GithubClient extends Api
                     return false;
                     break 1;
                 }
-                if (count($repos) > 0) {
+                if (\count($repos) > 0) {
                     $repositoriesHandler->updateTableRepositories($dirName, $repos, true, $dirContent);
                 } else {
                     break 1;
                 }
-                if (count($repos) < 100) {
+                if (\count($repos) < 100) {
                     break 1;
                 }
             }

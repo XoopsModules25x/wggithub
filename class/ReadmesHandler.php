@@ -170,7 +170,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
                     $readmesObj->setVar('rm_content', $readme['content']);
                     $readmesObj->setVar('rm_encoding', $readme['encoding']);
                     $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
-                    $readmesObj->setVar('rm_datecreated',time());
+                    $readmesObj->setVar('rm_datecreated',\time());
                     $readmesObj->setVar('rm_submitter', $submitter);
                     // Insert Data
                     if (!$readmesHandler->insert($readmesObj)) {
@@ -205,8 +205,8 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
         if (false === $readme) {
             return false;
         }
-        if (count($readme) > 0) {
-            if (array_key_exists('message', $readme)) {
+        if (\count($readme) > 0) {
+            if (\array_key_exists('message', $readme)) {
                 // not readme found
                 // must return true otherwise releases will not be loaded
                 return true;
@@ -232,7 +232,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
             $readmesObj->setVar('rm_downloadurl', $readme['download_url']);
             $baseurl = \substr($readme['html_url'], 0, \strrpos($readme['html_url'], '/') + 1);
             $readmesObj->setVar('rm_baseurl', $baseurl);
-            $readmesObj->setVar('rm_datecreated',time());
+            $readmesObj->setVar('rm_datecreated',\time());
             $readmesObj->setVar('rm_submitter', $submitter);
             // Insert Data
             if (!$readmesHandler->insert($readmesObj)) {
@@ -274,4 +274,46 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
 
         return true;
     }
+
+    /**
+     * @public function getForm
+     * @param bool   $action
+     * @param int    $start
+     * @param int    $limit
+     * @param string $filterValue
+     * @return \XoopsSimpleForm
+     */
+    public function getFormFilterReadmes($action = false, $start = 0, $limit = 0, $filterValue = '')
+    {
+        if (!$action) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        // Get Theme Form
+        \xoops_load('XoopsFormLoader');
+        $form = new \XoopsSimpleForm('', 'formFilterAdmin', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
+        $filterTray = new \XoopsFormElementTray('', '&nbsp;');
+        // Form Select field
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 'repo_name');
+        $fieldSelect->addOption('', ' ');
+        $fieldSelect->addOption('repo_name', \_AM_WGGITHUB_README_REPOID);
+        $filterTray->addElement($fieldSelect, true);
+        // Form Select operand
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', Constants::FILTER_OPERAND_LIKE);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
+        $filterTray->addElement($operandsSelect);
+        // Form Text value
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, $filterValue), true);
+        // Form button
+        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
+        $form->addElement($filterTray);
+        // To Save
+        $form->addElement(new \XoopsFormHidden('op', 'filter'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
+
+        return $form;
+    }
+
 }

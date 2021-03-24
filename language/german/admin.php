@@ -36,16 +36,23 @@ include_once __DIR__ . '/main.php';
 // There aren't
 \define('_AM_WGGITHUB_THEREARENT_SETTINGS', "Es gibt keine Einstellungen");
 \define('_AM_WGGITHUB_THEREARENT_REPOSITORIES', "Es gibt keine Repositories");
+\define('_AM_WGGITHUB_THEREARENT_REPOSITORIES_FILTER', "Es gibt keine Repositories zu diesem Filter");
 \define('_AM_WGGITHUB_THEREARENT_DIRECTORIES', "Es gibt keine Verzeichisse");
 \define('_AM_WGGITHUB_THEREARENT_LOGS', "Es gibt keine Log-Einträge");
 \define('_AM_WGGITHUB_THEREARENT_READMES', "Es gibt keine Readme-Einträge");
+\define('_AM_WGGITHUB_THEREARENT_READMES_FILTER', "Es gibt keine Readme-Einträge zu diesem Filter");
 \define('_AM_WGGITHUB_THEREARENT_RELEASES', "Es gibt keine Releases");
+\define('_AM_WGGITHUB_THEREARENT_RELEASES_FILTER', "Es gibt keine Releases zu diesem Filter");
 // Save/Delete
 \define('_AM_WGGITHUB_FORM_OK', 'Erfolgreich gespeichert');
 \define('_AM_WGGITHUB_FORM_DELETE_OK', 'Erfolgreich gelöscht');
 \define('_AM_WGGITHUB_FORM_SURE_DELETE', "Willst Du <b><span style='color : Red;'>%s </span></b> wirklich löschen?");
 \define('_AM_WGGITHUB_FORM_SURE_RENEW', "Willst Du <b><span style='color : Red;'>%s </span></b> wirklich aktualisieren");
 \define('_AM_WGGITHUB_FORM_SURE_DELETEALL', "Willst Du die Einträge aus Tabelle <b><span style='color : Red;'>%s </span></b> wirklich löschen");
+// Filters
+\define('_AM_WGGITHUB_FILTER', 'Filter');
+\define('_AM_WGGITHUB_FILTER_OPERAND_EQUAL', ' = ');
+\define('_AM_WGGITHUB_FILTER_OPERAND_LIKE', ' enthält ');
 // Status
 \define('_AM_WGGITHUB_STATUS_NONE', 'Nein');
 \define('_AM_WGGITHUB_STATUS_NEW', 'Neu');
@@ -57,11 +64,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_SETOFF', 'AN, auf AUS ändern');
 // Buttons
 \define('_AM_WGGITHUB_ADD_SETTING', 'Neue Einstellung hinzufügen');
-\define('_AM_WGGITHUB_ADD_REPOSITORY', 'Repository hinzufügen');
 \define('_AM_WGGITHUB_ADD_DIRECTORY', 'Verzeichnis hinzufügen');
-\define('_AM_WGGITHUB_ADD_LOG', 'Neuen Log-Eintrag hinzufügen');
-\define('_AM_WGGITHUB_ADD_README', 'Neuen Readme-Eintrag hinzufügen');
-\define('_AM_WGGITHUB_ADD_RELEASE', 'Neuen Release-Eintrag hinzufügen');
 // Lists
 \define('_AM_WGGITHUB_SETTINGS_LIST', 'Liste der Einstellungen');
 \define('_AM_WGGITHUB_REPOSITORIES_LIST', 'Liste der Repositories');
@@ -73,6 +76,7 @@ include_once __DIR__ . '/main.php';
 // Setting add/edit
 \define('_AM_WGGITHUB_SETTING_ADD', 'Neue Einstellung hinzufügen');
 \define('_AM_WGGITHUB_SETTING_EDIT', 'Einstellung bearbeiten');
+\define('_AM_WGGITHUB_SETTING_TEST', 'Einstellung testen');
 // Elements of Setting
 \define('_AM_WGGITHUB_SETTING_ID', 'Id');
 \define('_AM_WGGITHUB_SETTING_USERNAME', 'Benutzername');
@@ -82,7 +86,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_SETTING_DATE', 'Datum');
 \define('_AM_WGGITHUB_SETTING_SUBMITTER', 'Einsender');
 // Repository add/edit
-\define('_AM_WGGITHUB_REPOSITORY_ADD', 'Repository hinzufügen');
 \define('_AM_WGGITHUB_REPOSITORY_EDIT', 'Repository bearbeiten');
 // Elements of Repository
 \define('_AM_WGGITHUB_REPOSITORY_ID', 'Id');
@@ -96,6 +99,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_REPOSITORY_README', 'Liesmich');
 \define('_AM_WGGITHUB_REPOSITORY_PRERELEASE', 'Pre-Release');
 \define('_AM_WGGITHUB_REPOSITORY_RELEASE', 'Release');
+\define('_AM_WGGITHUB_REPOSITORY_APPROVED', 'Freigabe');
 \define('_AM_WGGITHUB_REPOSITORY_STATUS', 'Status');
 \define('_AM_WGGITHUB_REPOSITORY_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_REPOSITORY_SUBMITTER', 'Einsender');
@@ -114,7 +118,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_DIRECTORY_CONTENT_OWN', 'Nur Forks des Inhabers');
 \define('_AM_WGGITHUB_DIRECTORY_AUTOUPDATE', 'Automatische Update');
 \define('_AM_WGGITHUB_DIRECTORY_ONLINE', 'Online');
-\define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Filter Release anwenden');
+\define('_AM_WGGITHUB_DIRECTORY_FILTERRELEASE', 'Filter Release anzeigen und anwenden');
 \define('_AM_WGGITHUB_DIRECTORY_WEIGHT', 'Reihung');
 \define('_AM_WGGITHUB_DIRECTORY_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_DIRECTORY_SUBMITTER', 'Einsender');
@@ -135,7 +139,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_LOG_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_LOG_SUBMITTER', 'Einsender');
 // Readme add/edit
-\define('_AM_WGGITHUB_README_ADD', 'Readme-Eintrag hinzufügen');
 \define('_AM_WGGITHUB_README_EDIT', 'Readme-Eintrag bearbeiten');
 // Elements of Readme
 \define('_AM_WGGITHUB_README_ID', 'Id');
@@ -149,7 +152,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_WGGITHUB_README_DATECREATED', 'Datum erstellt');
 \define('_AM_WGGITHUB_README_SUBMITTER', 'Einsender');
 // Release add/edit
-\define('_AM_WGGITHUB_RELEASE_ADD', 'Release-Eintrag hinzufügen');
 \define('_AM_WGGITHUB_RELEASE_EDIT', 'Release-Eintrag bearbeiten');
 // Elements of Release
 \define('_AM_WGGITHUB_RELEASE_ID', 'Id');

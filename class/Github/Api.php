@@ -238,9 +238,9 @@ class Api extends Sanity
     {
         if (stripos($urlPath, $this->url) === 0) {  # Allows non-HTTPS URLs
             $baseUrl = $this->url;
-            $urlPath = substr($urlPath, strlen($this->url));
+            $urlPath = \substr($urlPath, \strlen($this->url));
 
-        } elseif (preg_match('#^(https://[^/]+)(/.*)?$#', $urlPath, $m)) {
+        } elseif (\preg_match('#^(https://[^/]+)(/.*)?$#', $urlPath, $m)) {
             $baseUrl = $m[1];
             $urlPath = isset($m[2]) ? $m[2] : '';
 
@@ -248,7 +248,7 @@ class Api extends Sanity
             $baseUrl = $this->url;
         }
 
-        if (strpos($urlPath, '{') === FALSE) {
+        if (\strpos($urlPath, '{') === FALSE) {
             $urlPath = $this->expandColonParameters($urlPath, $parameters, $this->defaultParameters);
         } else {
             $urlPath = $this->expandUriTemplate($urlPath, $parameters, $this->defaultParameters);
@@ -256,7 +256,7 @@ class Api extends Sanity
 
         $url = rtrim($baseUrl, '/') . '/' . ltrim($urlPath, '/');
 
-        if ($content !== NULL && (is_array($content) || is_object($content))) {
+        if ($content !== NULL && (\is_array($content) || \is_object($content))) {
             $headers['Content-Type'] = 'application/json; charset=utf-8';
             $content = Helpers::jsonEncode($content);
         }
@@ -275,20 +275,20 @@ class Api extends Sanity
     public function decode(Http\Response $response, array $okCodes = NULL)
     {
         $content = $response->getContent();
-        if (preg_match('~application/json~i', $response->getHeader('Content-Type', ''))) {
+        if (\preg_match('~application/json~i', $response->getHeader('Content-Type', ''))) {
             try {
                 $content = Helpers::jsonDecode($response->getContent(), true);
             } catch (JsonException $e) {
                 throw new InvalidResponseException('JSON decoding failed.', 0, $e, $response);
             }
 
-            if (!is_array($content) && !is_object($content)) {
+            if (!\is_array($content) && !\is_object($content)) {
                 throw new InvalidResponseException('Decoded JSON is not an array or object.', 0, NULL, $response);
             }
         }
 
         $code = $response->getCode();
-        if (($okCodes === NULL && $code >= 300) || (is_array($okCodes) && !in_array($code, $okCodes))) {
+        if (($okCodes === NULL && $code >= 300) || (\is_array($okCodes) && !\in_array($code, $okCodes))) {
             /** @var $content \stdClass */
             switch ($code) {
                 case Http\Response::S400_BAD_REQUEST:
@@ -310,7 +310,7 @@ class Api extends Sanity
                     throw new UnprocessableEntityException(self::errorMessage($content), $code, NULL, $response);
             }
 
-            $message = $okCodes === NULL ? '< 300' : implode(' or ', $okCodes);
+            $message = $okCodes === NULL ? '< 300' : \implode(' or ', $okCodes);
             throw new UnexpectedResponseException("Expected response with code $message.", $code, NULL, $response);
         }
 
@@ -399,7 +399,7 @@ class Api extends Sanity
 
         $url = rtrim($url, '/');
 
-        if (count($parameters)) {
+        if (\count($parameters)) {
             $url .= '?' . http_build_query($parameters);
         }
 
@@ -435,10 +435,10 @@ class Api extends Sanity
             $flags = $operatorFlags[$m[1]];
 
             $translated = [];
-            foreach (explode(',', $m[2]) as $name) {
+            foreach (\explode(',', $m[2]) as $name) {
                 $explode = FALSE;
                 $maxLength = NULL;
-                if (preg_match('~^(.+)(?:(\*)|:(\d+))$~', $name, $tmp)) { // TODO: Speed up?
+                if (\preg_match('~^(.+)(?:(\*)|:(\d+))$~', $name, $tmp)) { // TODO: Speed up?
                     $name = $tmp[1];
                     if (isset($tmp[3])) {
                         $maxLength = (int) $tmp[3];
@@ -480,9 +480,9 @@ class Api extends Sanity
 
                         if (isset($parts[0])) {
                             if ($flags['named']) {
-                                $translated[] = implode($flags['separator'], $parts);
+                                $translated[] = \implode($flags['separator'], $parts);
                             } else {
-                                $translated[] = $this->prefix($flags, $name, implode($flags['separator'], $parts));
+                                $translated[] = $this->prefix($flags, $name, \implode($flags['separator'], $parts));
                             }
                         }
 
@@ -497,14 +497,14 @@ class Api extends Sanity
                         });
 
                         if (isset($parts[0])) {
-                            $translated[] = $this->prefix($flags, $name, implode(',', $parts));
+                            $translated[] = $this->prefix($flags, $name, \implode(',', $parts));
                         }
                     }
                 }
             }
 
             if (isset($translated[0])) {
-                return $flags['prefix'] . implode($flags['separator'], $translated);
+                return $flags['prefix'] . \implode($flags['separator'], $translated);
             }
 
             return '';
@@ -545,10 +545,10 @@ class Api extends Sanity
         $value = (string) $value;
 
         if ($maxLength !== NULL) {
-            if (preg_match('~^(.{' . $maxLength . '}).~u', $value, $m)) {
+            if (\preg_match('~^(.{' . $maxLength . '}).~u', $value, $m)) {
                 $value = $m[1];
-            } elseif (strlen($value) > $maxLength) {  # when malformed UTF-8
-                $value = substr($value, 0, $maxLength);
+            } elseif (\strlen($value) > $maxLength) {  # when malformed UTF-8
+                $value = \substr($value, 0, $maxLength);
             }
         }
 
@@ -557,7 +557,7 @@ class Api extends Sanity
             $parts[] = '';
 
             $escaped = '';
-            for ($i = 0, $count = count($parts); $i < $count; $i += 2) {
+            for ($i = 0, $count = \count($parts); $i < $count; $i += 2) {
                 $escaped .= rawurlencode($parts[$i]) . $parts[$i + 1];
             }
 
@@ -595,8 +595,8 @@ class Api extends Sanity
             : 'Unknown error';
 
         if (isset($content->errors)) {
-            $message .= implode(', ', array_map(function($error) {
-                return '[' . implode(':', (array) $error) . ']';
+            $message .= \implode(', ', array_map(function($error) {
+                return '[' . \implode(':', (array) $error) . ']';
             }, $content->errors));
         }
 

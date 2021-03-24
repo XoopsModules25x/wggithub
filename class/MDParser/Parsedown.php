@@ -33,7 +33,7 @@ class Parsedown
         $markup = $this->elements($Elements);
 
         # trim line breaks
-        $markup = trim($markup, "\n");
+        $markup = \trim($markup, "\n");
 
         return $markup;
     }
@@ -44,13 +44,13 @@ class Parsedown
         $this->DefinitionData = array();
 
         # standardize line breaks
-        $text = str_replace(array("\r\n", "\r"), "\n", $text);
+        $text = \str_replace(array("\r\n", "\r"), "\n", $text);
 
         # remove surrounding line breaks
-        $text = trim($text, "\n");
+        $text = \trim($text, "\n");
 
         # split text into lines
-        $lines = explode("\n", $text);
+        $lines = \explode("\n", $text);
 
         # iterate through lines to identify blocks
         return $this->linesElements($lines);
@@ -193,13 +193,13 @@ class Parsedown
 
                 $line = $beforeTab
                     . str_repeat(' ', $shortage)
-                    . substr($line, strlen($beforeTab) + 1)
+                    . \substr($line, \strlen($beforeTab) + 1)
                 ;
             }
 
             $indent = strspn($line, ' ');
 
-            $text = $indent > 0 ? substr($line, $indent) : $line;
+            $text = $indent > 0 ? \substr($line, $indent) : $line;
 
             # ~
 
@@ -353,7 +353,7 @@ class Parsedown
 
         if ($Line['indent'] >= 4)
         {
-            $text = substr($Line['body'], 4);
+            $text = \substr($Line['body'], 4);
 
             $Block = array(
                 'element' => array(
@@ -382,7 +382,7 @@ class Parsedown
 
             $Block['element']['element']['text'] .= "\n";
 
-            $text = substr($Line['body'], 4);
+            $text = \substr($Line['body'], 4);
 
             $Block['element']['element']['text'] .= $text;
 
@@ -405,7 +405,7 @@ class Parsedown
             return;
         }
 
-        if (strpos($Line['text'], '<!--') === 0)
+        if (\strpos($Line['text'], '<!--') === 0)
         {
             $Block = array(
                 'element' => array(
@@ -414,7 +414,7 @@ class Parsedown
                 ),
             );
 
-            if (strpos($Line['text'], '-->') !== false)
+            if (\strpos($Line['text'], '-->') !== false)
             {
                 $Block['closed'] = true;
             }
@@ -432,7 +432,7 @@ class Parsedown
 
         $Block['element']['rawHtml'] .= "\n" . $Line['body'];
 
-        if (strpos($Line['text'], '-->') !== false)
+        if (\strpos($Line['text'], '-->') !== false)
         {
             $Block['closed'] = true;
         }
@@ -454,9 +454,9 @@ class Parsedown
             return;
         }
 
-        $infostring = trim(substr($Line['text'], $openerLength), "\t ");
+        $infostring = \trim(\substr($Line['text'], $openerLength), "\t ");
 
-        if (strpos($infostring, '`') !== false)
+        if (\strpos($infostring, '`') !== false)
         {
             return;
         }
@@ -480,7 +480,7 @@ class Parsedown
              * U+000A LINE FEED (LF), U+000C FORM FEED (FF), and
              * U+000D CARRIAGE RETURN (CR).
              */
-            $language = substr($infostring, 0, strcspn($infostring, " \t\n\f\r"));
+            $language = \substr($infostring, 0, strcspn($infostring, " \t\n\f\r"));
 
             $Element['attributes'] = array('class' => "language-$language");
         }
@@ -512,9 +512,9 @@ class Parsedown
         }
 
         if (($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']
-            and chop(substr($Line['text'], $len), ' ') === ''
+            and chop(\substr($Line['text'], $len), ' ') === ''
         ) {
-            $Block['element']['element']['text'] = substr($Block['element']['element']['text'], 1);
+            $Block['element']['element']['text'] = \substr($Block['element']['element']['text'], 1);
 
             $Block['complete'] = true;
 
@@ -543,14 +543,14 @@ class Parsedown
             return;
         }
 
-        $text = trim($Line['text'], '#');
+        $text = \trim($Line['text'], '#');
 
         if ($this->strictMode and isset($text[0]) and $text[0] !== ' ')
         {
             return;
         }
 
-        $text = trim($text, ' ');
+        $text = \trim($text, ' ');
 
         $Block = array(
             'element' => array(
@@ -573,14 +573,14 @@ class Parsedown
     {
         list($name, $pattern) = $Line['text'][0] <= '-' ? array('ul', '[*+-]') : array('ol', '[0-9]{1,9}+[.\)]');
 
-        if (preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))
+        if (\preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))
         {
-            $contentIndent = strlen($matches[2]);
+            $contentIndent = \strlen($matches[2]);
 
             if ($contentIndent >= 5)
             {
                 $contentIndent -= 1;
-                $matches[1] = substr($matches[1], 0, -$contentIndent);
+                $matches[1] = \substr($matches[1], 0, -$contentIndent);
                 $matches[3] = str_repeat(' ', $contentIndent) . $matches[3];
             } elseif ($contentIndent === 0) {
                 $matches[1] .= ' ';
@@ -594,7 +594,7 @@ class Parsedown
                 'data' => array(
                     'type' => $name,
                     'marker' => $matches[1],
-                    'markerType' => ($name === 'ul' ? $markerWithoutWhitespace : substr($markerWithoutWhitespace, -1)),
+                    'markerType' => ($name === 'ul' ? $markerWithoutWhitespace : \substr($markerWithoutWhitespace, -1)),
                 ),
                 'element' => array(
                     'name' => $name,
@@ -643,16 +643,16 @@ class Parsedown
             return null;
         }
 
-        $requiredIndent = ($Block['indent'] + strlen($Block['data']['marker']));
+        $requiredIndent = ($Block['indent'] + \strlen($Block['data']['marker']));
 
         if ($Line['indent'] < $requiredIndent
             and (
                 (
                     $Block['data']['type'] === 'ol'
-                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)
+                    and \preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)
                 ) or (
                     $Block['data']['type'] === 'ul'
-                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)
+                    and \preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)
                 )
             )
         ) {
@@ -700,7 +700,7 @@ class Parsedown
                 unset($Block['interrupted']);
             }
 
-            $text = substr($Line['body'], $requiredIndent);
+            $text = \substr($Line['body'], $requiredIndent);
 
             $Block['li']['handler']['argument'] []= $text;
 
@@ -708,7 +708,7 @@ class Parsedown
         }
 
         if ( ! isset($Block['interrupted'])) {
-            $text = preg_replace('/^[ ]{0,'.$requiredIndent.'}+/', '', $Line['body']);
+            $text = \preg_replace('/^[ ]{0,'.$requiredIndent.'}+/', '', $Line['body']);
 
             $Block['li']['handler']['argument'] []= $text;
 
@@ -736,7 +736,7 @@ class Parsedown
 
     protected function blockQuote($Line)
     {
-        if (preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
+        if (\preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
             $Block = array(
                 'element' => array(
                     'name' => 'blockquote',
@@ -758,7 +758,7 @@ class Parsedown
             return;
         }
 
-        if ($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
+        if ($Line['text'][0] === '>' and \preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches)) {
             $Block['element']['handler']['argument'] []= $matches[1];
 
             return $Block;
@@ -814,10 +814,10 @@ class Parsedown
             return;
         }
 
-        if (preg_match('/^<[\/]?+(\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\/)?>/', $Line['text'], $matches)) {
+        if (\preg_match('/^<[\/]?+(\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\/)?>/', $Line['text'], $matches)) {
             $element = strtolower($matches[1]);
 
-            if (in_array($element, $this->textLevelElements)) {
+            if (\in_array($element, $this->textLevelElements)) {
                 return;
             }
 
@@ -849,8 +849,8 @@ class Parsedown
 
     protected function blockReference($Line)
     {
-        if (strpos($Line['text'], ']') !== false
-            and preg_match('/^\[(.+?)\]:[ ]*+<?(\S+?)>?(?:[ ]+["\'(](.+)["\')])?[ ]*+$/', $Line['text'], $matches)
+        if (\strpos($Line['text'], ']') !== false
+            and \preg_match('/^\[(.+?)\]:[ ]*+<?(\S+?)>?(?:[ ]+["\'(](.+)["\')])?[ ]*+$/', $Line['text'], $matches)
         ) {
             $id = strtolower($matches[1]);
 
@@ -879,10 +879,10 @@ class Parsedown
         }
 
         if (
-            strpos($Block['element']['handler']['argument'], '|') === false
-            and strpos($Line['text'], '|') === false
-            and strpos($Line['text'], ':') === false
-            or strpos($Block['element']['handler']['argument'], "\n") !== false
+            \strpos($Block['element']['handler']['argument'], '|') === false
+            and \strpos($Line['text'], '|') === false
+            and \strpos($Line['text'], ':') === false
+            or \strpos($Block['element']['handler']['argument'], "\n") !== false
         ) {
             return;
         }
@@ -895,13 +895,13 @@ class Parsedown
 
         $divider = $Line['text'];
 
-        $divider = trim($divider);
-        $divider = trim($divider, '|');
+        $divider = \trim($divider);
+        $divider = \trim($divider, '|');
 
-        $dividerCells = explode('|', $divider);
+        $dividerCells = \explode('|', $divider);
 
         foreach ($dividerCells as $dividerCell) {
-            $dividerCell = trim($dividerCell);
+            $dividerCell = \trim($dividerCell);
 
             if ($dividerCell === '') {
                 return;
@@ -913,7 +913,7 @@ class Parsedown
                 $alignment = 'left';
             }
 
-            if (substr($dividerCell, - 1) === ':') {
+            if (\substr($dividerCell, - 1) === ':') {
                 $alignment = $alignment === 'left' ? 'center' : 'right';
             }
 
@@ -926,17 +926,17 @@ class Parsedown
 
         $header = $Block['element']['handler']['argument'];
 
-        $header = trim($header);
-        $header = trim($header, '|');
+        $header = \trim($header);
+        $header = \trim($header, '|');
 
-        $headerCells = explode('|', $header);
+        $headerCells = \explode('|', $header);
 
-        if (count($headerCells) !== count($alignments)) {
+        if (\count($headerCells) !== \count($alignments)) {
             return;
         }
 
         foreach ($headerCells as $index => $headerCell) {
-            $headerCell = trim($headerCell);
+            $headerCell = \trim($headerCell);
 
             $HeaderElement = array(
                 'name' => 'th',
@@ -992,22 +992,22 @@ class Parsedown
             return;
         }
 
-        if (count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))
+        if (\count($Block['alignments']) === 1 or $Line['text'][0] === '|' or \strpos($Line['text'], '|'))
         {
             $Elements = array();
 
             $row = $Line['text'];
 
-            $row = trim($row);
-            $row = trim($row, '|');
+            $row = \trim($row);
+            $row = \trim($row, '|');
 
-            preg_match_all('/(?:(\\\\[|])|[^|`]|`[^`]++`|`)++/', $row, $matches);
+            \preg_match_all('/(?:(\\\\[|])|[^|`]|`[^`]++`|`)++/', $row, $matches);
 
-            $cells = array_slice($matches[0], 0, count($Block['alignments']));
+            $cells = \array_slice($matches[0], 0, \count($Block['alignments']));
 
             foreach ($cells as $index => $cell)
             {
-                $cell = trim($cell);
+                $cell = \trim($cell);
 
                 $Element = array(
                     'name' => 'td',
@@ -1103,7 +1103,7 @@ class Parsedown
     protected function lineElements($text, $nonNestables = array())
     {
         # standardize line breaks
-        $text = str_replace(array("\r\n", "\r"), "\n", $text);
+        $text = \str_replace(array("\r\n", "\r"), "\n", $text);
 
         $Elements = array();
 
@@ -1118,7 +1118,7 @@ class Parsedown
         {
             $marker = $excerpt[0];
 
-            $markerPosition = strlen($text) - strlen($excerpt);
+            $markerPosition = \strlen($text) - \strlen($excerpt);
 
             $Excerpt = array('text' => $excerpt, 'context' => $text);
 
@@ -1161,7 +1161,7 @@ class Parsedown
                 ;
 
                 # the text that comes before the inline
-                $unmarkedText = substr($text, 0, $Inline['position']);
+                $unmarkedText = \substr($text, 0, $Inline['position']);
 
                 # compile the unmarked text
                 $InlineText = $this->inlineText($unmarkedText);
@@ -1171,19 +1171,19 @@ class Parsedown
                 $Elements[] = $this->extractElement($Inline);
 
                 # remove the examined text
-                $text = substr($text, $Inline['position'] + $Inline['extent']);
+                $text = \substr($text, $Inline['position'] + $Inline['extent']);
 
                 continue 2;
             }
 
             # the marker does not belong to an inline
 
-            $unmarkedText = substr($text, 0, $markerPosition + 1);
+            $unmarkedText = \substr($text, 0, $markerPosition + 1);
 
             $InlineText = $this->inlineText($unmarkedText);
             $Elements[] = $InlineText['element'];
 
-            $text = substr($text, $markerPosition + 1);
+            $text = \substr($text, $markerPosition + 1);
         }
 
         $InlineText = $this->inlineText($text);
@@ -1207,7 +1207,7 @@ class Parsedown
     protected function inlineText($text)
     {
         $Inline = array(
-            'extent' => strlen($text),
+            'extent' => \strlen($text),
             'element' => array(),
         );
 
@@ -1227,13 +1227,13 @@ class Parsedown
     {
         $marker = $Excerpt['text'][0];
 
-        if (preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\1(?!'.$marker.')/s', $Excerpt['text'], $matches))
+        if (\preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\1(?!'.$marker.')/s', $Excerpt['text'], $matches))
         {
             $text = $matches[2];
-            $text = preg_replace('/[ ]*+\n/', ' ', $text);
+            $text = \preg_replace('/[ ]*+\n/', ' ', $text);
 
             return array(
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
                 'element' => array(
                     'name' => 'code',
                     'text' => $text,
@@ -1249,8 +1249,8 @@ class Parsedown
         $commonMarkEmail = '[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]++@'
             . $hostnameLabel . '(?:\.' . $hostnameLabel . ')*';
 
-        if (strpos($Excerpt['text'], '>') !== false
-            and preg_match("/^<((mailto:)?$commonMarkEmail)>/i", $Excerpt['text'], $matches)
+        if (\strpos($Excerpt['text'], '>') !== false
+            and \preg_match("/^<((mailto:)?$commonMarkEmail)>/i", $Excerpt['text'], $matches)
         ){
             $url = $matches[1];
 
@@ -1260,7 +1260,7 @@ class Parsedown
             }
 
             return array(
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
                 'element' => array(
                     'name' => 'a',
                     'text' => $matches[1],
@@ -1281,11 +1281,11 @@ class Parsedown
 
         $marker = $Excerpt['text'][0];
 
-        if ($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))
+        if ($Excerpt['text'][1] === $marker and \preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))
         {
             $emphasis = 'strong';
         }
-        elseif (preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))
+        elseif (\preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))
         {
             $emphasis = 'em';
         }
@@ -1295,7 +1295,7 @@ class Parsedown
         }
 
         return array(
-            'extent' => strlen($matches[0]),
+            'extent' => \strlen($matches[0]),
             'element' => array(
                 'name' => $emphasis,
                 'handler' => array(
@@ -1309,7 +1309,7 @@ class Parsedown
 
     protected function inlineEscapeSequence($Excerpt)
     {
-        if (isset($Excerpt['text'][1]) and in_array($Excerpt['text'][1], $this->specialCharacters))
+        if (isset($Excerpt['text'][1]) and \in_array($Excerpt['text'][1], $this->specialCharacters))
         {
             return array(
                 'element' => array('rawHtml' => $Excerpt['text'][1]),
@@ -1325,7 +1325,7 @@ class Parsedown
             return;
         }
 
-        $Excerpt['text']= substr($Excerpt['text'], 1);
+        $Excerpt['text']= \substr($Excerpt['text'], 1);
 
         $Link = $this->inlineLink($Excerpt);
 
@@ -1373,38 +1373,38 @@ class Parsedown
 
         $remainder = $Excerpt['text'];
 
-        if (preg_match('/\[((?:[^][]++|(?R))*+)\]/', $remainder, $matches))
+        if (\preg_match('/\[((?:[^][]++|(?R))*+)\]/', $remainder, $matches))
         {
             $Element['handler']['argument'] = $matches[1];
 
-            $extent += strlen($matches[0]);
+            $extent += \strlen($matches[0]);
 
-            $remainder = substr($remainder, $extent);
+            $remainder = \substr($remainder, $extent);
         }
         else
         {
             return;
         }
 
-        if (preg_match('/^[(]\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+("[^"]*+"|\'[^\']*+\'))?\s*+[)]/', $remainder, $matches))
+        if (\preg_match('/^[(]\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+("[^"]*+"|\'[^\']*+\'))?\s*+[)]/', $remainder, $matches))
         {
             $Element['attributes']['href'] = $matches[1];
 
             if (isset($matches[2]))
             {
-                $Element['attributes']['title'] = substr($matches[2], 1, - 1);
+                $Element['attributes']['title'] = \substr($matches[2], 1, - 1);
             }
 
-            $extent += strlen($matches[0]);
+            $extent += \strlen($matches[0]);
         }
         else
         {
-            if (preg_match('/^\s*\[(.*?)\]/', $remainder, $matches))
+            if (\preg_match('/^\s*\[(.*?)\]/', $remainder, $matches))
             {
-                $definition = strlen($matches[1]) ? $matches[1] : $Element['handler']['argument'];
+                $definition = \strlen($matches[1]) ? $matches[1] : $Element['handler']['argument'];
                 $definition = strtolower($definition);
 
-                $extent += strlen($matches[0]);
+                $extent += \strlen($matches[0]);
             }
             else
             {
@@ -1430,44 +1430,44 @@ class Parsedown
 
     protected function inlineMarkup($Excerpt)
     {
-        if ($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)
+        if ($this->markupEscaped or $this->safeMode or \strpos($Excerpt['text'], '>') === false)
         {
             return;
         }
 
-        if ($Excerpt['text'][1] === '/' and preg_match('/^<\/\w[\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))
+        if ($Excerpt['text'][1] === '/' and \preg_match('/^<\/\w[\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))
         {
             return array(
                 'element' => array('rawHtml' => $matches[0]),
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
             );
         }
 
-        if ($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))
+        if ($Excerpt['text'][1] === '!' and \preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))
         {
             return array(
                 'element' => array('rawHtml' => $matches[0]),
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
             );
         }
 
-        if ($Excerpt['text'][1] !== ' ' and preg_match('/^<\w[\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\/?>/s', $Excerpt['text'], $matches))
+        if ($Excerpt['text'][1] !== ' ' and \preg_match('/^<\w[\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\/?>/s', $Excerpt['text'], $matches))
         {
             return array(
                 'element' => array('rawHtml' => $matches[0]),
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
             );
         }
     }
 
     protected function inlineSpecialCharacter($Excerpt)
     {
-        if (substr($Excerpt['text'], 1, 1) !== ' ' and strpos($Excerpt['text'], ';') !== false
-            and preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)
+        if (\substr($Excerpt['text'], 1, 1) !== ' ' and \strpos($Excerpt['text'], ';') !== false
+            and \preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)
         ) {
             return array(
                 'element' => array('rawHtml' => '&' . $matches[1] . ';'),
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
             );
         }
 
@@ -1481,10 +1481,10 @@ class Parsedown
             return;
         }
 
-        if ($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\S)(.+?)(?<=\S)~~/', $Excerpt['text'], $matches))
+        if ($Excerpt['text'][1] === '~' and \preg_match('/^~~(?=\S)(.+?)(?<=\S)~~/', $Excerpt['text'], $matches))
         {
             return array(
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
                 'element' => array(
                     'name' => 'del',
                     'handler' => array(
@@ -1504,13 +1504,13 @@ class Parsedown
             return;
         }
 
-        if (strpos($Excerpt['context'], 'http') !== false
-            and preg_match('/\bhttps?+:[\/]{2}[^\s<]+\b\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)
+        if (\strpos($Excerpt['context'], 'http') !== false
+            and \preg_match('/\bhttps?+:[\/]{2}[^\s<]+\b\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)
         ) {
             $url = $matches[0][0];
 
             $Inline = array(
-                'extent' => strlen($matches[0][0]),
+                'extent' => \strlen($matches[0][0]),
                 'position' => $matches[0][1],
                 'element' => array(
                     'name' => 'a',
@@ -1527,12 +1527,12 @@ class Parsedown
 
     protected function inlineUrlTag($Excerpt)
     {
-        if (strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\w++:\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))
+        if (\strpos($Excerpt['text'], '>') !== false and \preg_match('/^<(\w++:\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))
         {
             $url = $matches[1];
 
             return array(
-                'extent' => strlen($matches[0]),
+                'extent' => \strlen($matches[0]),
                 'element' => array(
                     'name' => 'a',
                     'text' => $url,
@@ -1565,7 +1565,7 @@ class Parsedown
                 $Element['nonNestables'] = array();
             }
 
-            if (is_string($Element['handler']))
+            if (\is_string($Element['handler']))
             {
                 $function = $Element['handler'];
                 $argument = $Element['text'];
@@ -1604,7 +1604,7 @@ class Parsedown
 
     protected function elementApplyRecursive($closure, array $Element)
     {
-        $Element = call_user_func($closure, $Element);
+        $Element = \call_user_func($closure, $Element);
 
         if (isset($Element['elements']))
         {
@@ -1629,7 +1629,7 @@ class Parsedown
             $Element['element'] = $this->elementsApplyRecursiveDepthFirst($closure, $Element['element']);
         }
 
-        $Element = call_user_func($closure, $Element);
+        $Element = \call_user_func($closure, $Element);
 
         return $Element;
     }
@@ -1772,7 +1772,7 @@ class Parsedown
     {
         $Elements = $this->linesElements($lines);
 
-        if ( ! in_array('', $lines)
+        if ( ! \in_array('', $lines)
             and isset($Elements[0]) and isset($Elements[0]['name'])
             and $Elements[0]['name'] === 'p'
         ) {
@@ -1794,11 +1794,11 @@ class Parsedown
     {
         $newElements = array();
 
-        while (preg_match($regexp, $text, $matches, PREG_OFFSET_CAPTURE))
+        while (\preg_match($regexp, $text, $matches, PREG_OFFSET_CAPTURE))
         {
             $offset = $matches[0][1];
-            $before = substr($text, 0, $offset);
-            $after = substr($text, $offset + strlen($matches[0][0]));
+            $before = \substr($text, 0, $offset);
+            $after = \substr($text, $offset + \strlen($matches[0][0]));
 
             $newElements[] = array('text' => $before);
 
@@ -1850,7 +1850,7 @@ class Parsedown
             foreach ($Element['attributes'] as $att => $val)
             {
                 # filter out badly parsed attribute
-                if ( ! preg_match($goodAttribute, $att))
+                if ( ! \preg_match($goodAttribute, $att))
                 {
                     unset($Element['attributes'][$att]);
                 }
@@ -1875,7 +1875,7 @@ class Parsedown
             }
         }
 
-        $Element['attributes'][$attribute] = str_replace(':', '%3A', $Element['attributes'][$attribute]);
+        $Element['attributes'][$attribute] = \str_replace(':', '%3A', $Element['attributes'][$attribute]);
 
         return $Element;
     }
@@ -1891,15 +1891,15 @@ class Parsedown
 
     protected static function striAtStart($string, $needle)
     {
-        $len = strlen($needle);
+        $len = \strlen($needle);
 
-        if ($len > strlen($string))
+        if ($len > \strlen($string))
         {
             return false;
         }
         else
         {
-            return strtolower(substr($string, 0, $len)) === strtolower($needle);
+            return strtolower(\substr($string, 0, $len)) === strtolower($needle);
         }
     }
 

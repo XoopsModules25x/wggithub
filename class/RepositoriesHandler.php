@@ -156,7 +156,7 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $repositoriesObj = $repositoriesAll[$i];
                 }
                 if ($repoId > 0) {
-                    if (is_string($repo['updated_at'])) {
+                    if (\is_string($repo['updated_at'])) {
                         $updatedAtNew = \strtotime($repo['updated_at']);
                     }
                     if ($updatedAtOld != Constants::STATUS_OFFLINE && $updatedAtOld != $updatedAtNew) {
@@ -173,14 +173,14 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $repositoriesObj->setVar('repo_user', $user);
                     $repositoriesObj->setVar('repo_name', $repo['name']);
                     $repositoriesObj->setVar('repo_fullname', $repo['full_name']);
-                    if (is_string($repo['created_at'])) {
+                    if (\is_string($repo['created_at'])) {
                         $createdAt = \strtotime($repo['created_at']);
                     }
                     $repositoriesObj->setVar('repo_createdat', $createdAt);
                     $repositoriesObj->setVar('repo_updatedat', $updatedAtNew);
                     $repositoriesObj->setVar('repo_htmlurl', $repo['html_url']);
                     $repositoriesObj->setVar('repo_status', $status);
-                    $repositoriesObj->setVar('repo_datecreated', time());
+                    $repositoriesObj->setVar('repo_datecreated', \time());
                     $repositoriesObj->setVar('repo_submitter', $submitter);
                     // Insert Data
                     if ($repositoriesHandler->insert($repositoriesObj)) {
@@ -207,5 +207,56 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
         }
 
         return $reposNb;
+    }
+
+    /**
+     * @public function getForm
+     * @param bool   $action
+     * @param int    $start
+     * @param int    $limit
+     * @param string $filterValue
+     * @param int    $filterStatus
+     * @return \XoopsSimpleForm
+     */
+    public function getFormFilterRepos($action = false, $start = 0, $limit = 0, $filterValue = '', $filterStatus = 0)
+    {
+        if (!$action) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        // Get Theme Form
+        \xoops_load('XoopsFormLoader');
+        $form = new \XoopsSimpleForm('', 'formFilterAdmin', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
+        $filterTray = new \XoopsFormElementTray('', '&nbsp;');
+        // Form Select field
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 'repo_name');
+        $fieldSelect->addOption('', ' ');
+        $fieldSelect->addOption('repo_user', \_AM_WGGITHUB_REPOSITORY_USER);
+        $fieldSelect->addOption('repo_name', \_AM_WGGITHUB_REPOSITORY_NAME);
+        $fieldSelect->addOption('repo_fullname', \_AM_WGGITHUB_REPOSITORY_FULLNAME);
+        $filterTray->addElement($fieldSelect, true);
+        // Form Select operand
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', Constants::FILTER_OPERAND_LIKE);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
+        $filterTray->addElement($operandsSelect);
+        // Form Text value
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, $filterValue), true);
+        // Form Select Status repoStatus
+        $repoStatusSelect = new \XoopsFormSelect(\_AM_WGGITHUB_REPOSITORY_STATUS, 'filter_status', $filterStatus);
+        $repoStatusSelect->addOption(Constants::STATUS_NONE, ' ');
+        $repoStatusSelect->addOption(Constants::STATUS_UPTODATE, \_AM_WGGITHUB_STATUS_UPTODATE);
+        $repoStatusSelect->addOption(Constants::STATUS_UPDATED, \_AM_WGGITHUB_STATUS_UPDATED);
+        $repoStatusSelect->addOption(Constants::STATUS_OFFLINE, \_AM_WGGITHUB_STATUS_OFFLINE);
+        $filterTray->addElement($repoStatusSelect);
+        // Form button
+        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
+        $form->addElement($filterTray);
+        // To Save
+        $form->addElement(new \XoopsFormHidden('op', 'filter'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
+
+        return $form;
     }
 }

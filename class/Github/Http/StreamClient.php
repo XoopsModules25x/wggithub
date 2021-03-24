@@ -47,7 +47,7 @@ class StreamClient extends AbstractClient
         $options = [
             'http' => [
                 'method' => $request->getMethod(),
-                'header' => implode("\r\n", $headerStr) . "\r\n",
+                'header' => \implode("\r\n", $headerStr) . "\r\n",
                 'follow_location' => 0,  # Github sets the Location header for 201 code too and redirection is not required for us
                 'protocol_version' => 1.1,
                 'ignore_errors' => TRUE,
@@ -96,18 +96,18 @@ class StreamClient extends AbstractClient
             throw new BadResponseException('Missing HTTP headers, request failed.', 0, $e);
         }
 
-        if (!isset($http_response_header[0]) || !preg_match('~^HTTP/1[.]. (\d{3})~i', $http_response_header[0], $m)) {
+        if (!isset($http_response_header[0]) || !\preg_match('~^HTTP/1[.]. (\d{3})~i', $http_response_header[0], $m)) {
             throw new BadResponseException('HTTP status code is missing.', 0, $e);
         }
         unset($http_response_header[0]);
 
         $headers = [];
         foreach ($http_response_header as $header) {
-            if (in_array(substr($header, 0, 1), [' ', "\t"], TRUE)) {
-                $headers[$last] .= ' ' . trim($header);  # RFC2616, 2.2
+            if (\in_array(\substr($header, 0, 1), [' ', "\t"], TRUE)) {
+                $headers[$last] .= ' ' . \trim($header);  # RFC2616, 2.2
             } else {
-                list($name, $value) = explode(':', $header, 2) + [NULL, NULL];
-                $headers[$last = trim($name)] = trim($value);
+                list($name, $value) = \explode(':', $header, 2) + [NULL, NULL];
+                $headers[$last = \trim($name)] = \trim($value);
             }
         }
 

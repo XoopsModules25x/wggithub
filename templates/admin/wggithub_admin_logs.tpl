@@ -1,7 +1,7 @@
 <!-- Header -->
 <{include file='db:wggithub_admin_header.tpl' }>
 
-<{if $logs_list}>
+<{if $logs_list|default:''}>
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
@@ -14,7 +14,7 @@
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
-		<{if $logs_count}>
+		<{if $logs_count|default:''}>
 		<tbody>
 			<{foreach item=log from=$logs_list}>
 			<tr class='<{cycle values='odd, even'}>'>
@@ -34,15 +34,15 @@
 		<{/if}>
 	</table>
 	<div class="clear">&nbsp;</div>
-	<{if $pagenav}>
+	<{if $pagenav|default:''}>
 		<div class="xo-pagenav floatright"><{$pagenav}></div>
 		<div class="clear spacer"></div>
 	<{/if}>
 <{/if}>
-<{if $form}>
+<{if $form|default:''}>
 	<{$form}>
 <{/if}>
-<{if $error}>
+<{if $error|default:''}>
 	<div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 

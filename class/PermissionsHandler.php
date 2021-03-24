@@ -26,7 +26,7 @@ namespace XoopsModules\Wggithub;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\Constants;
 
-\defined('XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object PermissionsHandler
@@ -63,7 +63,7 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
         $mid = $xoopsModule->mid();
         $memberHandler = \xoops_getHandler('member');
         if (0 == $currentuid) {
-            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
         } else {
             $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
         }
@@ -99,7 +99,7 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
         $mid = $xoopsModule->mid();
         $memberHandler = \xoops_getHandler('member');
         if (0 == $currentuid) {
-            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
         } else {
             $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
         }
@@ -130,7 +130,7 @@ class PermissionsHandler extends \XoopsPersistableObjectHandler
         $mid = $xoopsModule->mid();
         $memberHandler = \xoops_getHandler('member');
         if (0 == $currentuid) {
-            $my_group_ids = [XOOPS_GROUP_ANONYMOUS];
+            $my_group_ids = [\XOOPS_GROUP_ANONYMOUS];
         } else {
             $my_group_ids = $memberHandler->getGroupsByUser($currentuid);
         }

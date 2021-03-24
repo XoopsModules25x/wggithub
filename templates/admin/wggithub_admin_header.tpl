@@ -1,6 +1,8 @@
-<div class='top'>
-	<span class='left'><{$navigation}></span>
-	<{if $buttons}>
-		<span class='left'><{$buttons}></span>
-	<{/if}>
-</div>
+<{if $navigation|default:'' || $buttons|default:''}>
+	<div class='top'>
+		<span class='left'><{$navigation|default:''}></span>
+		<{if $buttons|default:''}>
+			<span class='left'><{$buttons}></span>
+		<{/if}>
+	</div>
+<{/if}>

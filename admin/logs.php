@@ -41,8 +41,7 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_LOG, 'logs.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_LOG_CLEAR, 'logs.php?op=clear', 'delete');
+        $adminObject->addItemButton(\_AM_WGGITHUB_LOG_CLEAR, 'logs.php?op=clear', 'delete');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         $logsCount = $logsHandler->getCountLogs();
         $logsAll = $logsHandler->getAllLogs($start, $limit);
@@ -58,23 +57,13 @@ switch ($op) {
             }
             // Display Navigation
             if ($logsCount > $limit) {
-                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($logsCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_LOGS);
+            $GLOBALS['xoopsTpl']->assign('error', \_AM_WGGITHUB_THEREARENT_LOGS);
         }
-        break;
-    case 'new':
-        $templateMain = 'wggithub_admin_logs.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $logsObj = $logsHandler->create();
-        $form = $logsObj->getFormLogs(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
     case 'save':
         // Security Check
@@ -95,7 +84,7 @@ switch ($op) {
         $logsObj->setVar('log_submitter', Request::getInt('log_submitter', 0));
         // Insert Data
         if ($logsHandler->insert($logsObj)) {
-            \redirect_header('logs.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('logs.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $logsObj->getHtmlErrors());
@@ -105,8 +94,7 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_LOG, 'logs.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $logsObj = $logsHandler->get($logId);
@@ -122,7 +110,7 @@ switch ($op) {
                 \redirect_header('logs.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             if ($logsHandler->delete($logsObj)) {
-                \redirect_header('logs.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+                \redirect_header('logs.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $logsObj->getHtmlErrors());
             }
@@ -130,7 +118,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'log_id' => $logId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_details')));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_details')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
@@ -138,19 +126,19 @@ switch ($op) {
     case 'clear':
         $templateMain = 'wggithub_admin_logs.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('logs.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_LOGS_LIST, 'logs.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('logs.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             $logsHandler->deleteAll(null, true);
-            \redirect_header('logs.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+            \redirect_header('logs.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
         } else {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'op' => 'clear'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETEALL, 'wggithub_logs'));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETEALL, 'wggithub_logs'));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

@@ -1,7 +1,11 @@
 <!-- Header -->
 <{include file='db:wggithub_admin_header.tpl' }>
 
-<{if $releases_list}>
+<{if $formFilter|default:''}>
+	<div class="pull-right"><{$formFilter}></div>
+<{/if}>
+
+<{if $releases_count|default:0 > 0 || $noData|default:''}>
 	<table class='table table-bordered'>
 		<thead>
 			<tr class='head'>
@@ -18,8 +22,8 @@
 				<th class="center width5"><{$smarty.const._AM_WGGITHUB_FORM_ACTION}></th>
 			</tr>
 		</thead>
-		<{if $releases_count}>
 		<tbody>
+		<{if $releases_count|default:''}>
 			<{foreach item=release from=$releases_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$release.id}></td>
@@ -38,19 +42,23 @@
 				</td>
 			</tr>
 			<{/foreach}>
-		</tbody>
+		<{else}>
+			<tr class='<{cycle values='odd, even'}>'>
+				<td colspan='11' class='center'><{$noData|default:''}></td>
+			</tr>
 		<{/if}>
+		</tbody>
 	</table>
 	<div class="clear">&nbsp;</div>
-	<{if $pagenav}>
+	<{if $pagenav|default:''}>
 		<div class="xo-pagenav floatright"><{$pagenav}></div>
 		<div class="clear spacer"></div>
 	<{/if}>
 <{/if}>
-<{if $form}>
+<{if $form|default:''}>
 	<{$form}>
 <{/if}>
-<{if $error}>
+<{if $error|default:''}>
 	<div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 

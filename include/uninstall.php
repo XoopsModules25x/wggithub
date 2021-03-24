@@ -66,7 +66,7 @@ function xoops_module_uninstall_wggithub(\XoopsModule $module)
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
     if (is_file($xmlfile)) {
         if (false === ($delOk = \unlink($xmlfile))) {
-            $module->setErrors(\sprintf(_AM_WGGITHUB_ERROR_BAD_REMOVE, $xmlfile));
+            $module->setErrors(\sprintf(\_AM_WGGITHUB_ERROR_BAD_REMOVE, $xmlfile));
         }
     }
 //    return $success && $delOk; // use this if you're using this routine

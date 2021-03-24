@@ -45,13 +45,13 @@ abstract class AbstractClient extends Github\Sanity implements IClient
         do {
             $this->setupRequest($request);
 
-            $this->onRequest && call_user_func($this->onRequest, $request);
+            $this->onRequest && \call_user_func($this->onRequest, $request);
             $response = $this->process($request);
-            $this->onResponse && call_user_func($this->onResponse, $response);
+            $this->onResponse && \call_user_func($this->onResponse, $response);
 
             $previous = $response->setPrevious($previous);
 
-            if ($counter > 0 && in_array($response->getCode(), $this->redirectCodes) && $response->hasHeader('Location')) {
+            if ($counter > 0 && \in_array($response->getCode(), $this->redirectCodes) && $response->hasHeader('Location')) {
                 /** @todo Use the same HTTP $method for redirection? Set $content to NULL? */
                 $request = new Request(
                     $request->getMethod(),

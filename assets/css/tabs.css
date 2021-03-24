@@ -86,7 +86,7 @@
   border-bottom: 1px solid #ddd;
   border-right-color: transparent;
   text-align: center;
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px 4px 0 0;
 }
 .vertical-text>li.active>a,
 .vertical-text>li.active>a:hover,
@@ -114,4 +114,7 @@
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
+}
+#filter_release_label {
+  margin-left:20px;
 }

@@ -41,10 +41,34 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $readmesCount = $readmesHandler->getCountReadmes();
-        $readmesAll = $readmesHandler->getAllReadmes($start, $limit);
+
+        $filterValue = '';
+        $crReadmes = new \CriteriaCompo();
+        if ('filter' == $op) {
+            $crRepositories = new \CriteriaCompo();
+            $operand = Request::getInt('filter_operand', 0);
+            $filterField = Request::getString('filter_field', '');
+            $filterValue = Request::getString('filter_value', 'none');
+            if (Constants::FILTER_OPERAND_EQUAL == $operand) {
+                $crRepositories->add(new Criteria($filterField, $filterValue));
+            } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
+                $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+            }
+            $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
+            $in = [];
+            $in[] = 0; //in order to get 'no result' if no repo is matching
+            if ($repositoriesCount > 0) {
+                $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+                foreach (\array_keys($repositoriesAll) as $i) {
+                    $in[] = $i;
+                }
+            }
+            $crReadmes->add(new Criteria('rm_repoid', '(' . \implode(',', $in) . ')', 'IN'));
+        }
+        $crReadmes->setStart($start);
+        $crReadmes->setLimit($limit);
+        $readmesCount = $readmesHandler->getCount($crReadmes);
+        $readmesAll = $readmesHandler->getAll($crReadmes);
         $GLOBALS['xoopsTpl']->assign('readmes_count', $readmesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
@@ -57,23 +81,19 @@ switch ($op) {
             }
             // Display Navigation
             if ($readmesCount > $limit) {
-                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($readmesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_READMES);
+            if ('filter' == $op) {
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_READMES_FILTER);
+            } else {
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_READMES);
+            }
         }
-        break;
-    case 'new':
-        $templateMain = 'wggithub_admin_readmes.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $readmesObj = $readmesHandler->create();
-        $form = $readmesObj->getFormReadmes(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        $form = $readmesHandler->getFormFilterReadmes(false, $start, $limit, $filterValue);
+        $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
     case 'save':
         // Security Check
@@ -98,7 +118,7 @@ switch ($op) {
         $readmesObj->setVar('rm_submitter', Request::getInt('rm_submitter', 0));
         // Insert Data
         if ($readmesHandler->insert($readmesObj)) {
-            \redirect_header('readmes.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('readmes.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
@@ -108,8 +128,7 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_README, 'readmes.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_READMES_LIST, 'readmes.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $readmesObj = $readmesHandler->get($rmId);
@@ -126,7 +145,7 @@ switch ($op) {
                 \redirect_header('readmes.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             if ($readmesHandler->delete($readmesObj)) {
-                \redirect_header('readmes.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+                \redirect_header('readmes.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
             }
@@ -134,7 +153,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'rm_id' => $rmId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $readmesObj->getVar('rm_name')));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $readmesObj->getVar('rm_name')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

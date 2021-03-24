@@ -42,13 +42,13 @@ class Directories extends \XoopsObject
     {
         $this->initVar('dir_id', \XOBJ_DTYPE_INT);
         $this->initVar('dir_name', \XOBJ_DTYPE_TXTBOX);
-        $this->initVar('dir_descr', XOBJ_DTYPE_OTHER);
+        $this->initVar('dir_descr', \XOBJ_DTYPE_OTHER);
         $this->initVar('dir_type', \XOBJ_DTYPE_INT);
         $this->initVar('dir_content', \XOBJ_DTYPE_INT);
-        $this->initVar('dir_autoupdate', XOBJ_DTYPE_INT);
-        $this->initVar('dir_online', XOBJ_DTYPE_INT);
-        $this->initVar('dir_filterrelease', XOBJ_DTYPE_INT);
-        $this->initVar('dir_weight', XOBJ_DTYPE_INT);
+        $this->initVar('dir_autoupdate', \XOBJ_DTYPE_INT);
+        $this->initVar('dir_online', \XOBJ_DTYPE_INT);
+        $this->initVar('dir_filterrelease', \XOBJ_DTYPE_INT);
+        $this->initVar('dir_weight', \XOBJ_DTYPE_INT);
         $this->initVar('dir_datecreated', \XOBJ_DTYPE_INT);
         $this->initVar('dir_submitter', \XOBJ_DTYPE_INT);
     }
@@ -113,7 +113,7 @@ class Directories extends \XoopsObject
         $editorConfigs['width'] = '100%';
         $editorConfigs['height'] = '400px';
         $editorConfigs['editor'] = $editor;
-        $form->addElement(new \XoopsFormEditor(_AM_WGGITHUB_DIRECTORY_DESCR, 'dir_descr', $editorConfigs));
+        $form->addElement(new \XoopsFormEditor(\_AM_WGGITHUB_DIRECTORY_DESCR, 'dir_descr', $editorConfigs));
         // Form Select dirType
         $dirTypeSelect = new \XoopsFormSelect(\_AM_WGGITHUB_DIRECTORY_TYPE, 'dir_type', $this->getVar('dir_type'), 5);
         $dirTypeSelect->addOption(Constants::DIRECTORY_TYPE_USER, \_AM_WGGITHUB_DIRECTORY_TYPE_USER);
@@ -126,13 +126,13 @@ class Directories extends \XoopsObject
         $form->addElement($dirContentSelect, true);
         // Form Radio Yes/No dirAutoupdate
         $dirAutoupdate = $this->isNew() ?: $this->getVar('dir_autoupdate');
-        $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_DIRECTORY_AUTOUPDATE, 'dir_autoupdate', $dirAutoupdate));
+        $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_DIRECTORY_AUTOUPDATE, 'dir_autoupdate', $dirAutoupdate));
         // Form Radio Yes/No dirOnline
         $dirOnline = $this->isNew() ?: $this->getVar('dir_online');
-        $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_DIRECTORY_ONLINE, 'dir_online', $dirOnline));
-        // Form Radio Yes/No dirFilterrelease
+        $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_DIRECTORY_ONLINE, 'dir_online', $dirOnline));
+        // Form Select dirFilterrelease
         $dirFilterrelease = $this->isNew() ?: $this->getVar('dir_filterrelease');
-        $form->addElement(new \XoopsFormRadioYN(_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease));
+        $form->addElement(new \XoopsFormRadioYN(\_AM_WGGITHUB_DIRECTORY_FILTERRELEASE, 'dir_filterrelease', $dirFilterrelease));
         // Form Text dirWeight
         $dirWeight = $this->isNew() ? 0 : $this->getVar('dir_weight');
         $form->addElement(new \XoopsFormText(\_AM_WGGITHUB_DIRECTORY_WEIGHT, 'dir_weight', 50, 255, $dirWeight), true);
@@ -145,7 +145,7 @@ class Directories extends \XoopsObject
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormHidden('start', $start));
         $form->addElement(new \XoopsFormHidden('limit', $limit));
-        $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
+        $form->addElement(new \XoopsFormButtonTray('', \_SUBMIT, 'submit', '', false));
         return $form;
     }
 

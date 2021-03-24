@@ -20,12 +20,12 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-include dirname(__DIR__, 2) . '/mainfile.php';
+include \dirname(__DIR__, 2) . '/mainfile.php';
 include __DIR__ . '/include/common.php';
 $moduleDirName = \basename(__DIR__);
 // Breadcrumbs
 $xoBreadcrumbs = [];
-$xoBreadcrumbs[] = ['title' => _MA_WGGITHUB_TITLE, 'link' => WGGITHUB_URL . '/'];
+$xoBreadcrumbs[] = ['title' => \_MA_WGGITHUB_TITLE, 'link' => WGGITHUB_URL . '/'];
 // Get instance of module
 $helper = \XoopsModules\Wggithub\Helper::getInstance();
 $settingsHandler = $helper->getHandler('Settings');

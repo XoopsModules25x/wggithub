@@ -130,7 +130,7 @@ class Paginator extends Sanity implements \Iterator
      */
     public static function parsePage($url)
     {
-        list (, $parametersStr) = explode('?', $url, 2) + ['', ''];
+        list (, $parametersStr) = \explode('?', $url, 2) + ['', ''];
         parse_str($parametersStr, $parameters);
 
         return isset($parameters['page'])
@@ -148,7 +148,7 @@ class Paginator extends Sanity implements \Iterator
      */
     public static function parseLink($link, $rel)
     {
-        if (!preg_match('(<([^>]+)>;\s*rel="' . preg_quote($rel) . '")', $link, $match)) {
+        if (!\preg_match('(<([^>]+)>;\s*rel="' . preg_quote($rel) . '")', $link, $match)) {
             return NULL;
         }
 

@@ -169,7 +169,7 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                         $releasesObj->setVar('rel_publishedat', \strtotime($ghRelease['published_at']));
                         $releasesObj->setVar('rel_tarballurl', $ghRelease['tarball_url']);
                         $releasesObj->setVar('rel_zipballurl', $ghRelease['zipball_url']);
-                        $releasesObj->setVar('rel_datecreated', time());
+                        $releasesObj->setVar('rel_datecreated', \time());
                         $releasesObj->setVar('rel_submitter', $submitter);
                         // Insert Data
                         if (!$releasesHandler->insert($releasesObj)) {
@@ -198,7 +198,6 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
     public function updateReleases($repoId, $userName, $repoName)
     {
         $helper = Wggithub\Helper::getInstance();
-        $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
         $githubClient = new Wggithub\Github\GithubClient();
@@ -209,8 +208,8 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         if (false === $ghReleases) {
             return false;
         }
-        if (count($ghReleases) > 0) {
-            if (array_key_exists('message', $ghReleases)) {
+        if (\count($ghReleases) > 0) {
+            if (\array_key_exists('message', $ghReleases)) {
                 // not readme found
                 // must return true otherwise releases will not be loaded
                 return true;
@@ -228,13 +227,13 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
                     // save first in any case and save first final version
                     $releasesObj = $releasesHandler->create();
                     $releasesObj->setVar('rel_repoid', $repoId);
-                    $releasesObj->setVar('rel_type', $ghRelease['type']);
+                    //$releasesObj->setVar('rel_type', $ghRelease['type']);
                     $releasesObj->setVar('rel_name', $ghRelease['name']);
                     $releasesObj->setVar('rel_prerelease', (true == (bool)$ghRelease['prerelease']));
                     $releasesObj->setVar('rel_publishedat', \strtotime($ghRelease['published_at']));
                     $releasesObj->setVar('rel_tarballurl', $ghRelease['tarball_url']);
                     $releasesObj->setVar('rel_zipballurl', $ghRelease['zipball_url']);
-                    $releasesObj->setVar('rel_datecreated', time());
+                    $releasesObj->setVar('rel_datecreated', \time());
                     $releasesObj->setVar('rel_submitter', $submitter);
                     // Insert Data
                     if (!$releasesHandler->insert($releasesObj)) {
@@ -275,5 +274,45 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
         return true;
     }
 
+    /**
+     * @public function getForm
+     * @param bool   $action
+     * @param int    $start
+     * @param int    $limit
+     * @param string $filterValue
+     * @return \XoopsSimpleForm
+     */
+    public function getFormFilterReleases($action = false, $start = 0, $limit = 0, $filterValue = '')
+    {
+        if (!$action) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        // Get Theme Form
+        \xoops_load('XoopsFormLoader');
+        $form = new \XoopsSimpleForm('', 'formFilterAdmin', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
+        $filterTray = new \XoopsFormElementTray('', '&nbsp;');
+        // Form Select field
+        $fieldSelect = new \XoopsFormSelect(\_AM_WGGITHUB_FILTER, 'filter_field', 'rel_name');
+        $fieldSelect->addOption('', ' ');
+        $fieldSelect->addOption('rel_name', \_AM_WGGITHUB_RELEASE_NAME);
+        $filterTray->addElement($fieldSelect, true);
+        // Form Select operand
+        $operandsSelect = new \XoopsFormSelect('', 'filter_operand', Constants::FILTER_OPERAND_LIKE);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_EQUAL, \_AM_WGGITHUB_FILTER_OPERAND_EQUAL);
+        $operandsSelect->addOption(Constants::FILTER_OPERAND_LIKE, \_AM_WGGITHUB_FILTER_OPERAND_LIKE);
+        $filterTray->addElement($operandsSelect);
+        // Form Text value
+        $filterTray->addElement(new \XoopsFormText('', 'filter_value', 20, 255, $filterValue), true);
+        // Form button
+        $filterTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_SUBMIT, 'submit'));
+        $form->addElement($filterTray);
+        // To Save
+        $form->addElement(new \XoopsFormHidden('op', 'filter'));
+        $form->addElement(new \XoopsFormHidden('start', $start));
+        $form->addElement(new \XoopsFormHidden('limit', $limit));
+
+        return $form;
+    }
 
 }

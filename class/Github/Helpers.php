@@ -41,7 +41,7 @@ class Helpers
             });
         }
 
-        $json = json_encode($value, JSON_UNESCAPED_UNICODE);
+        $json = \json_encode($value, JSON_UNESCAPED_UNICODE);
 
         if (PHP_VERSION_ID < 50500) {
             restore_error_handler();
@@ -55,7 +55,7 @@ class Helpers
             throw new JsonException($message, $error);
         }
 
-        $json = str_replace(array("\xe2\x80\xa8", "\xe2\x80\xa9"), array('\u2028', '\u2029'), $json);
+        $json = \str_replace(array("\xe2\x80\xa8", "\xe2\x80\xa9"), array('\u2028', '\u2029'), $json);
         return $json;
     }
 
@@ -69,11 +69,11 @@ class Helpers
     public static function jsonDecode($json, $assoc = false)
     {
         $json = (string) $json;
-        if (!preg_match('##u', $json)) {
+        if (!\preg_match('##u', $json)) {
             throw new JsonException('Invalid UTF-8 sequence', 5); // PECL JSON-C
         }
 
-        $value = json_decode($json, $assoc, 512, (defined('JSON_C_VERSION') && PHP_INT_SIZE > 4) ? 0 : JSON_BIGINT_AS_STRING);
+        $value = \json_decode($json, $assoc, 512, (\defined('JSON_C_VERSION') && PHP_INT_SIZE > 4) ? 0 : JSON_BIGINT_AS_STRING);
 
         if ($value === NULL && $json !== '' && strcasecmp($json, 'null')) { // '' does not clear json_last_error()
             $error = json_last_error();
@@ -90,7 +90,7 @@ class Helpers
     public static function createDefaultClient($newInstance = FALSE)
     {
         if (self::$client === NULL || $newInstance) {
-            self::$client = extension_loaded('curl')
+            self::$client = \extension_loaded('curl')
                 ? new Http\CurlClient
                 : new Http\StreamClient;
         }

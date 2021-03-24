@@ -142,7 +142,7 @@ class LogsHandler extends \XoopsPersistableObjectHandler
         $logsObj->setVar('log_type', $type);
         $logsObj->setVar('log_details', $detail);
         $logsObj->setVar('log_result', $result);
-        $logsObj->setVar('log_datecreated',time());
+        $logsObj->setVar('log_datecreated',\time());
         $logsObj->setVar('log_submitter', $submitter);
         // Insert Data
         if ($logsHandler->insert($logsObj)) {

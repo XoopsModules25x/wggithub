@@ -20,7 +20,7 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-
+use Xmf\Request;
 use XoopsModules\Wggithub\Common;
 
 include_once \dirname(__DIR__) . '/preloads/autoloader.php';
@@ -28,6 +28,11 @@ require __DIR__ . '/header.php';
 
 // Template Index
 $templateMain = 'wggithub_admin_index.tpl';
+
+$op = Request::getCmd('op', 'list');
+if ('api_error' == $op) {
+    $GLOBALS['xoopsTpl']->assign('error', Request::getString('message'));
+}
 
 // Count elements
 $countSettings = $settingsHandler->getCount();
@@ -38,14 +43,14 @@ $countReadmes = $readmesHandler->getCount();
 $countReleases = $releasesHandler->getCount();
 
 // InfoBox Statistics
-$adminObject->addInfoBox(_AM_WGGITHUB_STATISTICS);
+$adminObject->addInfoBox(\_AM_WGGITHUB_STATISTICS);
 // Info elements
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_SETTINGS . '</label>', $countSettings));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_DIRECTORIES . '</label>', $countDirectories));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_LOGS . '</label>', $countLogs));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_REPOSITORIES . '</label>', $countRepositories));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_READMES . '</label>', $countReadmes));
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_SETTINGS . '</label>', $countSettings));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_DIRECTORIES . '</label>', $countDirectories));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_LOGS . '</label>', $countLogs));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_REPOSITORIES . '</label>', $countRepositories));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_READMES . '</label>', $countReadmes));
+$adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));
 
 // Upload Folders
 $configurator = new Common\Configurator();

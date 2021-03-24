@@ -41,10 +41,23 @@ switch ($op) {
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $templateMain = 'wggithub_admin_releases.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $releasesCount = $releasesHandler->getCountReleases();
-        $releasesAll = $releasesHandler->getAllReleases($start, $limit);
+
+        $filterValue = '';
+        $crReleases = new \CriteriaCompo();
+        if ('filter' == $op) {
+            $operand = Request::getInt('filter_operand', 0);
+            $filterField = Request::getString('filter_field', '');
+            $filterValue = Request::getString('filter_value', 'none');
+            if (Constants::FILTER_OPERAND_EQUAL == $operand) {
+                $crReleases->add(new Criteria($filterField, $filterValue));
+            } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
+                $crReleases->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+            }
+        }
+        $crReleases->setStart($start);
+        $crReleases->setLimit($limit);
+        $releasesCount = $releasesHandler->getCount($crReleases);
+        $releasesAll = $releasesHandler->getAll($crReleases);
         $GLOBALS['xoopsTpl']->assign('releases_count', $releasesCount);
         $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
         $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
@@ -57,23 +70,19 @@ switch ($op) {
             }
             // Display Navigation
             if ($releasesCount > $limit) {
-                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($releasesCount, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
-            $GLOBALS['xoopsTpl']->assign('error', _AM_WGGITHUB_THEREARENT_RELEASES);
+            if ('filter' == $op) {
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_RELEASES_FILTER);
+            } else {
+                $GLOBALS['xoopsTpl']->assign('noData', \_AM_WGGITHUB_THEREARENT_RELEASES);
+            }
         }
-        break;
-    case 'new':
-        $templateMain = 'wggithub_admin_releases.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_RELEASES_LIST, 'releases.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        // Form Create
-        $releasesObj = $releasesHandler->create();
-        $form = $releasesObj->getFormReleases(false, $start, $limit);
-        $GLOBALS['xoopsTpl']->assign('form', $form->render());
+        $form = $releasesHandler->getFormFilterReleases(false, $start, $limit, $filterValue);
+        $GLOBALS['xoopsTpl']->assign('formFilter', $form->render());
         break;
     case 'save':
         // Security Check
@@ -98,7 +107,7 @@ switch ($op) {
         $releasesObj->setVar('rel_submitter', Request::getInt('rel_submitter', 0));
         // Insert Data
         if ($releasesHandler->insert($releasesObj)) {
-            \redirect_header('releases.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, _AM_WGGITHUB_FORM_OK);
+            \redirect_header('releases.php?op=list&amp;start=' . $start . '&amp;limit=' . $limit, 2, \_AM_WGGITHUB_FORM_OK);
         }
         // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $releasesObj->getHtmlErrors());
@@ -108,8 +117,7 @@ switch ($op) {
     case 'edit':
         $templateMain = 'wggithub_admin_releases.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
-        $adminObject->addItemButton(_AM_WGGITHUB_ADD_RELEASE, 'releases.php?op=new', 'add');
-        $adminObject->addItemButton(_AM_WGGITHUB_RELEASES_LIST, 'releases.php', 'list');
+        $adminObject->addItemButton(\_AM_WGGITHUB_RELEASES_LIST, 'releases.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $releasesObj = $releasesHandler->get($relId);
@@ -126,7 +134,7 @@ switch ($op) {
                 \redirect_header('releases.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             if ($releasesHandler->delete($releasesObj)) {
-                \redirect_header('releases.php', 3, _AM_WGGITHUB_FORM_DELETE_OK);
+                \redirect_header('releases.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error', $releasesObj->getHtmlErrors());
             }
@@ -134,7 +142,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'rel_id' => $relId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_WGGITHUB_FORM_SURE_DELETE, $releasesObj->getVar('rel_name')));
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $releasesObj->getVar('rel_name')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }

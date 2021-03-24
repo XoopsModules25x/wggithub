@@ -1,5 +1,8 @@
 ![alt XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
-## wgGithub module for [XOOPS CMS 2.5.10+](https://xoops.org)
+
+![alt XOOPS CMS](https://xoops.org/images/logoXoopsPhp8.png)
+
+## wgGithub module for [XOOPS CMS 2.5.11+](https://xoops.org)
 [![XOOPS CMS Module](https://img.shields.io/badge/XOOPS%20CMS-Module-blue.svg)](https://xoops.org)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -20,7 +23,8 @@ For access to GitHub you need a GitHub account and you have to enter your user n
 [![Tutorial Available](https://xoops.org/images/tutorial-available-blue.svg)](https://xoops.gitbook.io/wggithub-tutorial/) Tutorial: soon on [GitBook](https://xoops.gitbook.io/wggithub-module-tutorial/).
 To contribute to the Tutorial, [fork it on GitHub](https://github.com/XoopsDocs/wggithub-tutorial)
 
-[![Translations on Transifex](https://xoops.org/images/translations-github-blue.svg)](https://www.transifex.com/xoops)
+#### Translation:
+[![Translations on Transifex](https://xoops.org/images/translations-transifex-blue.svg)](https://www.transifex.com/xoops) [Translations on Transifex](https://www.transifex.com/xoops)
 
 Please visit us on https://xoops.org
 

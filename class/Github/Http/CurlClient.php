@@ -26,7 +26,7 @@ class CurlClient extends AbstractClient
      */
     public function __construct(array $options = NULL)
     {
-        if (!extension_loaded('curl')) {
+        if (!\extension_loaded('curl')) {
             throw new Github\LogicException('cURL extension is not loaded.');
         }
 
@@ -77,24 +77,24 @@ class CurlClient extends AbstractClient
                     # The HTTP/x.y may occur multiple times with proxy (HTTP/1.1 200 Connection Established)
                     $responseHeaders = [];
 
-                } elseif (in_array(substr($line, 0, 1), [' ', "\t"], TRUE)) {
-                    $responseHeaders[$last] .= ' ' . trim($line);  # RFC2616, 2.2
+                } elseif (\in_array(\substr($line, 0, 1), [' ', "\t"], TRUE)) {
+                    $responseHeaders[$last] .= ' ' . \trim($line);  # RFC2616, 2.2
 
                 } elseif ($line !== "\r\n") {
-                    list($name, $value) = explode(':', $line, 2);
-                    $responseHeaders[$last = trim($name)] = trim($value);
+                    list($name, $value) = \explode(':', $line, 2);
+                    $responseHeaders[$last = \trim($name)] = \trim($value);
                 }
 
-                return strlen($line);
+                return \strlen($line);
             },
         ];
 
-        if (defined('CURLOPT_PROTOCOLS')) {  # HHVM issue. Even cURL v7.26.0, constants are missing.
+        if (\defined('CURLOPT_PROTOCOLS')) {  # HHVM issue. Even cURL v7.26.0, constants are missing.
             $hardOptions[CURLOPT_PROTOCOLS] = CURLPROTO_HTTP | CURLPROTO_HTTPS;
         }
 
         if (!$this->curl) {
-            $this->curl = curl_init();
+            $this->curl = \curl_init();
             if ($this->curl === FALSE) {
                 throw new BadResponseException('Cannot init cURL handler.');
             }
@@ -102,17 +102,17 @@ class CurlClient extends AbstractClient
 
         $result = curl_setopt_array($this->curl, $hardOptions + ($this->options ?: []) + $softOptions);
         if ($result === FALSE) {
-            throw new BadResponseException('Setting cURL options failed: ' . curl_error($this->curl), curl_errno($this->curl));
+            throw new BadResponseException('Setting cURL options failed: ' . \curl_error($this->curl), curl_errno($this->curl));
         }
 
-        $content = curl_exec($this->curl);
+        $content = \curl_exec($this->curl);
         if ($content === FALSE) {
-            throw new BadResponseException(curl_error($this->curl), curl_errno($this->curl));
+            throw new BadResponseException(\curl_error($this->curl), curl_errno($this->curl));
         }
 
-        $code = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $code = \curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
         if ($code === FALSE) {
-            throw new BadResponseException('HTTP status code is missing:' . curl_error($this->curl), curl_errno($this->curl));
+            throw new BadResponseException('HTTP status code is missing:' . \curl_error($this->curl), curl_errno($this->curl));
         }
 
         return new Response($code, $responseHeaders, $content);

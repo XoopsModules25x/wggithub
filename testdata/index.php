@@ -24,7 +24,7 @@ use XoopsModules\Wggithub\{
     Utility
 };
 
-require_once dirname(__DIR__, 3) . '/include/cp_header.php';
+require_once \dirname(__DIR__, 3) . '/include/cp_header.php';
 require \dirname(__DIR__) . '/preloads/autoloader.php';
 
 $op = \Xmf\Request::getCmd('op', '');
