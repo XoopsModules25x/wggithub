@@ -26,8 +26,8 @@
 			<tr class='<{cycle values='odd, even'}>' id="dorder_<{$directory.id}>">
 				<td class='center'><img src="<{$wggithub_icons_url_16}>/up_down.png" alt="drag&drop" class="icon-sortable"></td>
 				<td class='center'><{$directory.id}></td>
-				<td class='center'><{$directory.name}></td>
-				<td class='center'><{$directory.descr}></td>
+				<td ><{$directory.name}></td>
+				<td ><{$directory.descr}></td>
 				<td class='center'><{$directory.type_text}></td>
 				<td class='center'><{$directory.content_shorttext}></td>
 				<td class='center'>

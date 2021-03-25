@@ -34,13 +34,13 @@
 			<{foreach item=repository from=$repositories_list}>
 			<tr class='<{cycle values='odd, even'}>'>
 				<td class='center'><{$repository.id}></td>
-				<td class='center'><{$repository.nodeid}></td>
-				<td class='center'><{$repository.user}></td>
-				<td class='center'><{$repository.name}></td>
-				<td class='center'><{$repository.fullname}></td>
+				<td ><{$repository.nodeid}></td>
+				<td ><{$repository.user}></td>
+				<td ><{$repository.name}></td>
+				<td ><{$repository.fullname}></td>
 				<td class='center'><{$repository.createdat}></td>
 				<td class='center'><{$repository.updatedat}></td>
-				<td class='center'><{$repository.htmlurl}></td>
+				<td ><{$repository.htmlurl}></td>
 				<td class='center'><{$repository.readme}></td>
 				<td class='center'><{$repository.prerelease}></td>
 				<td class='center'><{$repository.release}></td>
