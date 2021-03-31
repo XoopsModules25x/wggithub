@@ -42,7 +42,7 @@
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
-    repo_approved: '1'
+    repo_approved: '0'
     repo_status: '3'
     repo_datecreated: '1606089659'
     repo_submitter: '1'
@@ -90,7 +90,7 @@
     repo_readme: '1'
     repo_prerelease: '1'
     repo_release: '0'
-    repo_approved: '0'
+    repo_approved: '1'
     repo_status: '3'
     repo_datecreated: '1606089731'
     repo_submitter: '1'
@@ -106,7 +106,7 @@
     repo_readme: '1'
     repo_prerelease: '1'
     repo_release: '0'
-    repo_approved: '0'
+    repo_approved: '1'
     repo_status: '3'
     repo_datecreated: '1606089731'
     repo_submitter: '1'
@@ -138,7 +138,7 @@
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
-    repo_approved: '0'
+    repo_approved: '1'
     repo_status: '3'
     repo_datecreated: '1606089732'
     repo_submitter: '1'
@@ -2837,14 +2837,14 @@
     repo_name: modulebuilder
     repo_fullname: XoopsModules25x/modulebuilder
     repo_createdat: '1588504879'
-    repo_updatedat: '1612125649'
+    repo_updatedat: '1615851171'
     repo_htmlurl: 'https://github.com/XoopsModules25x/modulebuilder'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845691'
+    repo_datecreated: '1615919385'
     repo_submitter: '1'
 -
     repo_id: '299'
@@ -5285,14 +5285,14 @@
     repo_name: xmarticle
     repo_fullname: GregMage/xmarticle
     repo_createdat: '1488648503'
-    repo_updatedat: '1612510435'
+    repo_updatedat: '1616099070'
     repo_htmlurl: 'https://github.com/GregMage/xmarticle'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845288'
+    repo_datecreated: '1616101121'
     repo_submitter: '1'
 -
     repo_id: '1250'
@@ -5301,14 +5301,14 @@
     repo_name: xmcontact
     repo_fullname: GregMage/xmcontact
     repo_createdat: '1466410974'
-    repo_updatedat: '1612510408'
+    repo_updatedat: '1616099156'
     repo_htmlurl: 'https://github.com/GregMage/xmcontact'
     repo_readme: '0'
     repo_prerelease: '0'
     repo_release: '1'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845288'
+    repo_datecreated: '1616101122'
     repo_submitter: '1'
 -
     repo_id: '1251'
@@ -5317,14 +5317,14 @@
     repo_name: xmcontent
     repo_fullname: GregMage/xmcontent
     repo_createdat: '1467836113'
-    repo_updatedat: '1615881469'
+    repo_updatedat: '1616246818'
     repo_htmlurl: 'https://github.com/GregMage/xmcontent'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615899377'
+    repo_datecreated: '1617139335'
     repo_submitter: '1'
 -
     repo_id: '1252'
@@ -5333,14 +5333,14 @@
     repo_name: xmdoc
     repo_fullname: GregMage/xmdoc
     repo_createdat: '1499264249'
-    repo_updatedat: '1615740997'
+    repo_updatedat: '1617133337'
     repo_htmlurl: 'https://github.com/GregMage/xmdoc'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845289'
+    repo_datecreated: '1617139335'
     repo_submitter: '1'
 -
     repo_id: '1253'
@@ -5365,14 +5365,14 @@
     repo_name: xmnews
     repo_fullname: GregMage/xmnews
     repo_createdat: '1572117917'
-    repo_updatedat: '1615881604'
+    repo_updatedat: '1617003530'
     repo_htmlurl: 'https://github.com/GregMage/xmnews'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '1'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615899377'
+    repo_datecreated: '1617139335'
     repo_submitter: '1'
 -
     repo_id: '1255'
@@ -5397,14 +5397,14 @@
     repo_name: xmstock
     repo_fullname: GregMage/xmstock
     repo_createdat: '1509828476'
-    repo_updatedat: '1586697591'
+    repo_updatedat: '1616099242'
     repo_htmlurl: 'https://github.com/GregMage/xmstock'
     repo_readme: '1'
     repo_prerelease: '0'
     repo_release: '0'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845290'
+    repo_datecreated: '1616101122'
     repo_submitter: '1'
 -
     repo_id: '1257'
@@ -5420,5 +5420,5 @@
     repo_release: '0'
     repo_approved: '0'
     repo_status: '3'
-    repo_datecreated: '1615845674'
+    repo_datecreated: '1615922767'
     repo_submitter: '1'
