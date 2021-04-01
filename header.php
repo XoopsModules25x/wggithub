@@ -23,11 +23,13 @@
 include \dirname(__DIR__, 2) . '/mainfile.php';
 include __DIR__ . '/include/common.php';
 $moduleDirName = \basename(__DIR__);
+
+$helper = \XoopsModules\Wggithub\Helper::getInstance();
+
 // Breadcrumbs
 $xoBreadcrumbs = [];
-$xoBreadcrumbs[] = ['title' => \_MA_WGGITHUB_TITLE, 'link' => WGGITHUB_URL . '/'];
+$xoBreadcrumbs[] = ['title' => $helper->getConfig('mname_breadcrumbs'), 'link' => WGGITHUB_URL . '/'];
 // Get instance of module
-$helper = \XoopsModules\Wggithub\Helper::getInstance();
 $settingsHandler = $helper->getHandler('Settings');
 $repositoriesHandler = $helper->getHandler('Repositories');
 $directoriesHandler = $helper->getHandler('Directories');
