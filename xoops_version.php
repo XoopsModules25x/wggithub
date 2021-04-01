@@ -29,7 +29,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGGITHUB_NAME,
-    'version'             => 1.03,
+    'version'             => 1.04,
     'description'         => \_MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',
@@ -44,7 +44,7 @@ $modversion = [
     'release_date'        => '2021/03/31',
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL . '/modules/wggithub/docs/install.txt',
-    'min_php'             => '7.4',
+    'min_php'             => '7.3',
     'min_xoops'           => '2.5.11',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.6', 'mysqli' => '5.6'],
@@ -62,7 +62,7 @@ $modversion = [
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS Project',
     'release'             => '2021-03-31',
-    'module_status'       => 'final',
+    'module_status'       => 'RC1',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
     'hasMain'             => 1,
@@ -279,6 +279,24 @@ $modversion['config'][] = [
     'valuetype'   => 'text',
     'default'     => 'default',
     'options'     => ['default' => 'default', 'primary' => 'primary', 'success' => 'success', 'info' => 'info', 'warning' => 'warning', 'danger' => 'danger'],
+];
+// Show breadcrumb
+$modversion['config'][] = [
+    'name'        => 'show_breadcrumbs',
+    'title'       => '_MI_WGGITHUB_SHOWBCRUMBS',
+    'description' => '_MI_WGGITHUB_SHOWBCRUMBS_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
+// Module name in breadcrumb
+$modversion['config'][] = [
+    'name'        => 'mname_breadcrumbs',
+    'title'       => '_MI_WGGITHUB_MNAMEBCRUMBS',
+    'description' => '_MI_WGGITHUB_MNAMEBCRUMBS_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => \_MI_WGGITHUB_NAME,
 ];
 // Advertise
 $modversion['config'][] = [

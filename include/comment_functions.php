@@ -29,16 +29,16 @@
  */
 function wggithubCommentsUpdate($itemId, $itemNumb)
 {
-	// Get instance of module
-	$helper = \XoopsModules\Wggithub\Helper::getInstance();
-	$repositoriesHandler = $helper->getHandler('Repositories');
-	$repoId = (int)$itemId;
-	$repositoriesObj = $repositoriesHandler->get($repoId);
-	$repositoriesObj->setVar('repo_comments', (int)$itemNumb);
-	if ($repositoriesHandler->insert($repositoriesObj)) {
-		return true;
-	}
-	return false;
+    // Get instance of module
+    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $repositoriesHandler = $helper->getHandler('Repositories');
+    $repoId = (int)$itemId;
+    $repositoriesObj = $repositoriesHandler->get($repoId);
+    $repositoriesObj->setVar('repo_comments', (int)$itemNumb);
+    if ($repositoriesHandler->insert($repositoriesObj)) {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -49,21 +49,21 @@ function wggithubCommentsUpdate($itemId, $itemNumb)
  */
 function wggithubCommentsApprove($comment)
 {
-	// Notification event
-	// Get instance of module
-	$helper = \XoopsModules\Wggithub\Helper::getInstance();
-	$repositoriesHandler = $helper->getHandler('Repositories');
-	$repoId = $comment->getVar('com_itemid');
-	$repositoriesObj = $repositoriesHandler->get($repoId);
-	$repoName = $repositoriesObj->getVar('repo_name');
+    // Notification event
+    // Get instance of module
+    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $repositoriesHandler = $helper->getHandler('Repositories');
+    $repoId = $comment->getVar('com_itemid');
+    $repositoriesObj = $repositoriesHandler->get($repoId);
+    $repoName = $repositoriesObj->getVar('repo_name');
 
-	$tags = [];
-	$tags['ITEM_NAME'] = $repoName;
-	$tags['ITEM_URL']  = \XOOPS_URL . '/modules/wggithub/repositories.php?op=show&repo_id=' . $repoId;
-	$notificationHandler = \xoops_getHandler('notification');
-	// Event modify notification
-	$notificationHandler->triggerEvent('global', 0, 'global_comment', $tags);
-	$notificationHandler->triggerEvent('repositories', $repoId, 'repository_comment', $tags);
-	return true;
+    $tags = [];
+    $tags['ITEM_NAME'] = $repoName;
+    $tags['ITEM_URL']  = \XOOPS_URL . '/modules/wggithub/repositories.php?op=show&repo_id=' . $repoId;
+    $notificationHandler = \xoops_getHandler('notification');
+    // Event modify notification
+    $notificationHandler->triggerEvent('global', 0, 'global_comment', $tags);
+    $notificationHandler->triggerEvent('repositories', $repoId, 'repository_comment', $tags);
+    return true;
 
 }

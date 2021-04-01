@@ -41,7 +41,7 @@ if (!\defined('XOOPS_ICONS32_URL')) {
 \define('WGGITHUB_UPLOAD_SHOTS_PATH', WGGITHUB_UPLOAD_PATH . '/images/shots');
 \define('WGGITHUB_UPLOAD_SHOTS_URL', WGGITHUB_UPLOAD_URL . '/images/shots');
 \define('WGGITHUB_ADMIN', WGGITHUB_URL . '/admin/index.php');
-$localLogo = WGGITHUB_IMAGE_URL . '/tdmxoops_logo.png';
+$localLogo = WGGITHUB_IMAGE_URL . '/wedega_logo.png';
 // Module Information
 $copyright = "<a href='https://wedega.com' title='XOOPS on Wedega' target='_blank'><img src='" . $localLogo . "' alt='XOOPS on Wedega' /></a>";
 include_once \XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
