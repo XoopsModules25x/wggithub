@@ -289,15 +289,6 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 1,
 ];
-// Module name in breadcrumb
-$modversion['config'][] = [
-    'name'        => 'mname_breadcrumbs',
-    'title'       => '_MI_WGGITHUB_MNAMEBCRUMBS',
-    'description' => '_MI_WGGITHUB_MNAMEBCRUMBS_DESC',
-    'formtype'    => 'textbox',
-    'valuetype'   => 'text',
-    'default'     => \_MI_WGGITHUB_NAME,
-];
 // Advertise
 $modversion['config'][] = [
     'name'        => 'advertise',
