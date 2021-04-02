@@ -82,8 +82,6 @@ include_once 'common.php';
 \define('_MI_WGGITHUB_PANEL_TYPE_DESC', 'Panel Type is the bootstrap html div.');
 \define('_MI_WGGITHUB_SHOWBCRUMBS', 'Brotkrumen-Navigation (breadcrumbs) anzeigen');
 \define('_MI_WGGITHUB_SHOWBCRUMBS_DESC', "Eine Brotkrumen-Navigation zeigt den aktuellen Seitenstand innerhalb der Websitestruktur");
-\define('_MI_WGGITHUB_MNAMEBCRUMBS', 'Modulname in Breadcrumbs');
-\define('_MI_WGGITHUB_MNAMEBCRUMBS_DESC', 'Sie können hier den Modulname definieren, der in der Brotkrumen-Navigation verwendet werden soll. Wenn kein Name angezeigt werden soll dann bitte leer lassen.');
 \define('_MI_WGGITHUB_ADVERTISE', 'Code Werbung');
 \define('_MI_WGGITHUB_ADVERTISE_DESC', 'Bitte hier den Code für die Werbung eingeben');
 \define('_MI_WGGITHUB_MAINTAINEDBY', 'Unterstützt von');

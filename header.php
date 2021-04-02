@@ -28,7 +28,11 @@ $helper = \XoopsModules\Wggithub\Helper::getInstance();
 
 // Breadcrumbs
 $xoBreadcrumbs = [];
-$xoBreadcrumbs[] = ['title' => $helper->getConfig('mname_breadcrumbs'), 'link' => WGGITHUB_URL . '/'];
+if ($helper->getConfig('show_breadcrumbs')) {
+    if (isset($GLOBALS['xoopsModule']) && is_object($GLOBALS['xoopsModule'])) {
+        $xoBreadcrumbs[] = ['title' => $GLOBALS['xoopsModule']->getVar('name'), 'link' => WGGITHUB_URL . '/'];
+    }
+}
 // Get instance of module
 $settingsHandler = $helper->getHandler('Settings');
 $repositoriesHandler = $helper->getHandler('Repositories');
