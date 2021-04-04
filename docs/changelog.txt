@@ -2,6 +2,7 @@
 2021/03/31 Version 1.04 RC1
 ===================================================================
  - added preferences for breadcrumb display (alain01/goffy)
+ - replaced index.html by index.php (alain01/goffy)
  
 ===================================================================
 2021/03/31 Version 1.03 Final
