@@ -62,7 +62,7 @@
             <div class="d-flex flex-row">
                 <div class="bg-secondary text-nowrap mr-2">
                     <!-- Nav tabs for each directory -->
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="nav flex-column nav-pills mb-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <{if $directory.previousRepos}>
                             <a id="btn_previous" class="btn btn-outline-warning mx-2 mt-2" href="index.php?op=list<{$directory.previousOp}>&amp;menu=<{$directory.id}>" role="button"><span class="fa fa-arrow-left"></span></a>    
                         <{/if}>
