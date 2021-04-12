@@ -24,7 +24,7 @@
 
     <!-- Basic Nav tabs -->
     <ul class="nav nav-tabs">
-        <li class="<{if $menu == 0}>active<{/if}>"><a data-toggle="tab" onclick='javascript:toggleFilters(0);toggleFilterRelease(0)' href="#home"><{$smarty.const._MA_WGGITHUB_INDEX}></a></li>
+        <li class="<{if $menu == 0}>active<{/if}>"><a data-toggle="tab" onclick='javascript:toggleFilters(0);toggleFilterRelease(0);' href="#home"><{$smarty.const._MA_WGGITHUB_INDEX}></a></li>
         <{foreach item=directory from=$directories}>
         <li class="<{if $menu == $directory.id}>active<{/if}>"><a data-toggle="tab" onclick='javascript:toggleFilters(1);toggleFilterRelease(<{$directory.dir_filterrelease}>)'  href="#menu<{$directory.id}>"><{$directory.name}></a></li>
         <{/foreach}>

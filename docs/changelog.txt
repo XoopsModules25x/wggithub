@@ -4,6 +4,7 @@
  - added preferences for breadcrumb display (alain01/goffy)
  - replaced index.html by index.php (alain01/goffy)
  - permanent display of filter with enabled/disabled buttons (alain01/goffy)
+ - added new bt4 templates (alain01/goffy)
  
 ===================================================================
 2021/03/31 Version 1.03 Final
