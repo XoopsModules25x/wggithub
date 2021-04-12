@@ -42,11 +42,11 @@ $permGlobalRead   = $permissionsHandler->getPermGlobalRead();
 $permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
 
 $op            = Request::getCmd('op', 'list');
-$filterRelease = Request::getString('release', 'any');
-$filterSortby  = Request::getString('sortby', 'update');
+$filterRelease = Request::getString('frelease', 'any');
+$filterSortby  = Request::getString('fsortby', 'update');
 
-$GLOBALS['xoopsTpl']->assign('release', $filterRelease);
-$GLOBALS['xoopsTpl']->assign('sortby', $filterSortby);
+$GLOBALS['xoopsTpl']->assign('frelease', $filterRelease);
+$GLOBALS['xoopsTpl']->assign('fsortby', $filterSortby);
 
 // Define Stylesheet
 $GLOBALS['xoTheme']->addStylesheet($style, null);
@@ -222,9 +222,9 @@ switch ($op) {
                 }
                 $directories[$i]['repos'] = $repos;
                 $directories[$i]['previousRepos'] = $dirStart[$i] > 0;
-                $directories[$i]['previousOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] - $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+                $directories[$i]['previousOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] - $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;frelease=' . $filterRelease . '&amp;fsortby=' . $filterSortby;
                 $directories[$i]['nextRepos'] = ($repositoriesCount - $dirStart[$i]) > $dirLimit[$i];
-                $directories[$i]['nextOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] + $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+                $directories[$i]['nextOp'] = '&amp;dirId=' . $i . '&amp;start=' . ($dirStart[$i] + $dirLimit[$i]) . '&amp;limit=' . $dirLimit[$i] . '&amp;frelease=' . $filterRelease . '&amp;fsortby=' . $filterSortby;
                 $GLOBALS['xoopsTpl']->assign('menu', $menu);
                 $GLOBALS['xoopsTpl']->assign('directories', $directories);
             }
@@ -245,7 +245,7 @@ switch ($op) {
             require __DIR__ . '/footer.php';
         }
         $dirName = Request::getString('dir_name', '');
-        $redir   = 'index.php?op=list_afterupdate&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        $redir   = 'index.php?op=list_afterupdate&amp;frelease=' . $filterRelease . '&amp;fsortby=' . $filterSortby;
         $githubClient = GithubClient::getInstance();
         $result = $githubClient->executeUpdate($dirName);
         if ($result) {
@@ -264,7 +264,7 @@ switch ($op) {
         $repoId   = Request::getInt('repo_id', 0);
         $repoUser = Request::getString('repo_user', 'none');
         $repoName = Request::getString('repo_name', 'none');
-        $redir    = 'index.php?op=list_afterupdate&amp;release=' . $filterRelease . '&amp;sortby=' . $filterSortby;
+        $redir    = 'index.php?op=list_afterupdate&amp;frelease=' . $filterRelease . '&amp;fsortby=' . $filterSortby;
         $result = $helper->getHandler('Readmes')->updateReadmes($repoId, $repoUser, $repoName);
         if ($result) {
             \redirect_header($redir, 2, \_MA_WGGITHUB_READGH_SUCCESS);
