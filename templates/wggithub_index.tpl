@@ -6,18 +6,18 @@
 
 <{if $directoriesCount|default:0 > 0}>
     <!-- filter area -->
-    <div id="filter_bar" class="tab-filter <{if $menu == 0}>hidden<{/if}>">
+    <div id="filter_bar" class="tab-filter">
         <{$smarty.const._MA_WGGITHUB_FILTER_SORTBY}>:
         <div class="btn-group btn-group-sm" role="group" aria-label="Filter Sortby">
-            <button id="sortbyname" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=name&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></button>
-            <button id="sortbyupdate" onclick="executeClick(this, 'sortby', 'index.php?op=list&sortby=update&release=<{$release}>')" type="button" class="btn btn-primary btn-rounded <{if $sortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></button>
+            <button id="sortbyname" onclick="executeClick('index.php?op=list&fsortby=name&frelease=<{$frelease}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></button>
+            <button id="sortbyupdate" onclick="executeClick('index.php?op=list&fsortby=update&frelease=<{$frelease}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></button>
         </div>
         <span id="filter_release_label"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:</span>
-        <div id="filter_release_bar" class="btn-group btn-group-sm <{if $menu == 0}>hidden<{/if}>" role="group" aria-label="Filter Releases">
-            <button id="relfinal" onclick="executeClick(this, 'release', 'index.php?op=list&release=final&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
-            <button id="relany" onclick="executeClick(this, 'release', 'index.php?op=list&release=any&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
+        <div id="filter_release_bar" class="btn-group btn-group-sm" role="group" aria-label="Filter Releases">
+            <button id="relfinal" onclick="executeClick('index.php?op=list&frelease=final&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></button>
+            <button id="relany" onclick="executeClick('index.php?op=list&frelease=any&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></button>
             <{if $showBtnAll|default:false}>
-                <button id="relall" onclick="executeClick(this, 'release', 'index.php?op=list&release=all&sortby=<{$sortby}>')" type="button" class="btn btn-primary btn-rounded <{if $release =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
+                <button id="relall" onclick="executeClick('index.php?op=list&frelease=all&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></button>
             <{/if}>
         </div>
     </div>
@@ -127,22 +127,8 @@
     <{/if}>
 
 <script type="text/javascript">
-    var executeClick = function(btn, group, href)
+    var executeClick = function(href)
     {
-        if ('release' == group) {
-            document.getElementById('relfinal').classList.remove("disabled");
-            document.getElementById('relany').classList.remove("disabled");
-            var el_relall =  document.getElementById('relall');
-            if (typeof(el_relall) != 'undefined' && el_relall != null) {
-                document.getElementById('relall').classList.remove("disabled");
-            }
-            document.getElementById(btn.id).classList.add("disabled");
-        };
-        if ('sortby' == group) {
-            document.getElementById('sortbyname').classList.remove("disabled");
-            document.getElementById('sortbyupdate').classList.remove("disabled");
-            document.getElementById(btn.id).classList.add("disabled");
-        };
         var tabid = $('.tab-content-main .maintab.active').attr('id');
         var url;
         url = href + '&menu=' + tabid;
@@ -151,20 +137,41 @@
     }
     var toggleFilterRelease = function(display)
     {
-        if (display > 0) {
-            document.getElementById("filter_release_label").classList.remove("hidden");
-            document.getElementById("filter_release_bar").classList.remove("hidden");
-        } else {
-            document.getElementById("filter_release_label").classList.add("hidden");
-            document.getElementById("filter_release_bar").classList.add("hidden");
+        document.getElementById("relfinal").classList.add("disabled");
+        document.getElementById("relany").classList.add("disabled");
+        <{if $showBtnAll|default:false}>
+            document.getElementById("relall").classList.add("disabled");
+        <{/if}>
+
+        if (1 == Number(display)) {
+            <{if $frelease == 'final'}>
+                document.getElementById("relany").classList.remove("disabled");
+                <{if $showBtnAll|default:false}>
+                    document.getElementById("relall").classList.remove("disabled");
+                <{/if}>
+            <{/if}>
+            <{if $frelease == 'any'}>
+                document.getElementById("relfinal").classList.remove("disabled");
+                <{if $showBtnAll|default:false}>
+                    document.getElementById("relall").classList.remove("disabled");
+                <{/if}>
+            <{/if}>
+            <{if $frelease == 'all'}>
+                document.getElementById("relfinal").classList.remove("disabled");
+                document.getElementById("relany").classList.remove("disabled");
+            <{/if}>
         }
     }
     var toggleFilters = function(display)
     {
+        document.getElementById("sortbyname").classList.add("disabled");
+        document.getElementById("sortbyupdate").classList.add("disabled");
         if (1 == display) {
-            document.getElementById("filter_bar").classList.remove("hidden");
-        } else {
-            document.getElementById("filter_bar").classList.add("hidden");
+            <{if $fsortby == 'name'}>
+                document.getElementById("sortbyupdate").classList.remove("disabled");
+            <{else}>
+                document.getElementById("sortbyname").classList.remove("disabled");
+            <{/if}>
         }
     }
 </script>
