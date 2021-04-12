@@ -60,7 +60,7 @@
             </div>    
             <hr />
             <div class="d-flex flex-row">
-                <div class="bg-secondary text-nowrap mr-2">
+                <div class="bg-secondary rounded text-nowrap mr-2">
                     <!-- Nav tabs for each directory -->
                     <div class="nav flex-column nav-pills mb-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <{if $directory.previousRepos}>
@@ -117,7 +117,7 @@
                                         <{if $permReadmeUpdate|default:''}>
                                             <a class='btn btn-primary btn-sm float-right' href="index.php?op=update_readme&amp;repo_id=<{$repo.id}>&amp;repo_user=<{$repo.user}>&amp;repo_name=<{$repo.name}>" title="<{$smarty.const._MA_WGGITHUB_README_UPDATE}>"><span class="fa fa-refresh fa-lg"></span> <{$smarty.const._MA_WGGITHUB_README_UPDATE}></a>
                                         <{/if}>
-                                        <div class="border p-2"><{$repo.readme.content_clean|default:''}></div>
+                                        <div class="border rounded p-2"><{$repo.readme.content_clean|default:''}></div>
                                     </p>
                             </div>
                         <{/foreach}>
