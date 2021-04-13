@@ -9,15 +9,15 @@
     <div id="filter_bar" class="tab-filter">
         <{$smarty.const._MA_WGGITHUB_FILTER_SORTBY}>:
         <div class="btn-group btn-group-sm" role="group" aria-label="Filter Sortby">
-            <a id="sortbyname" onclick="executeClick('index.php?op=list&fsortby=name&frelease=<{$frelease}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></a>
-            <a id="sortbyupdate" onclick="executeClick('index.php?op=list&fsortby=update&frelease=<{$frelease}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></a>
+            <a id="sortbyname" onclick="executeClick('index.php?op=list&fsortby=name&frelease=<{$frelease}>')" role="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='name'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_NAME}></a>
+            <a id="sortbyupdate" onclick="executeClick('index.php?op=list&fsortby=update&frelease=<{$frelease}>')" role="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $fsortby =='update'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_SORTBY_UPDATE}></a>
         </div>
         <span id="filter_release_label"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE}>:</span>
         <div id="filter_release_bar" class="btn-group btn-group-sm" role="group" aria-label="Filter Releases">
-            <a id="relfinal" onclick="executeClick('index.php?op=list&frelease=final&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></a>
-            <a id="relany" onclick="executeClick('index.php?op=list&frelease=any&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></a>
+            <a id="relfinal" onclick="executeClick('index.php?op=list&frelease=final&fsortby=<{$fsortby}>')" role="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='final'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_FINAL}></a>
+            <a id="relany" onclick="executeClick('index.php?op=list&frelease=any&fsortby=<{$fsortby}>')" role="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='any'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ANY}></a>
             <{if $showBtnAll|default:false}>
-                <a id="relall" onclick="executeClick('index.php?op=list&frelease=all&fsortby=<{$fsortby}>')" type="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></a>
+                <a id="relall" onclick="executeClick('index.php?op=list&frelease=all&fsortby=<{$fsortby}>')" role="button" class="btn btn-primary btn-rounded <{if $menu == 0 || $frelease =='all'}>disabled<{/if}>"><{$smarty.const._MA_WGGITHUB_FILTER_RELEASE_ALL}></a>
             <{/if}>
         </div>
     </div>
