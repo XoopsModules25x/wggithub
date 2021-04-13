@@ -31,8 +31,12 @@
     <div class="tab-content tab-content-main">
         <div id="home" class="maintab tab-pane fade <{if $menu == 0}>active show<{/if}>">
             <p class="center"><img class="tabcontent-logo" src="assets/images/logoModule.png" alt="<{$smarty.const._MA_WGGITHUB_TITLE}>" title="<{$smarty.const._MA_WGGITHUB_TITLE}>"></p>
-            <h3><{$smarty.const._MA_WGGITHUB_DESC}></h3>
-            <p><{$smarty.const._MA_WGGITHUB_INDEX_DESC}></p>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h4 class="text-center mb-3"><{$smarty.const._MA_WGGITHUB_DESC}></h4>
+                    <{$smarty.const._MA_WGGITHUB_INDEX_DESC}>
+                </div>
+            </div>    
             <p class="tabcontent-lastupdate"><{$smarty.const._MA_WGGITHUB_INDEX_LASTUPDATE}>: <{$lastUpdate}> GMT</p>
             <{if $apiexceed|default:''}>
                 <p><{$smarty.const._MA_WGGITHUB_READGH_ERROR_APILIMIT}></p>
@@ -44,17 +48,21 @@
         </div>
         <{foreach item=directory from=$directories}>
         <div id="menu<{$directory.id}>" class="maintab tab-pane fade <{if $menu == $directory.id}>active show<{/if}>">
-
-            <h4 class="mt-2"><{$directory.countRepos}>
-                    <{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
-                        <a id="btn_update" class="btn btn-primary btn-sm float-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><span class="fa fa-refresh fa-lg"></span> <{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}></a>
-                    <{/if}>
-            </h4>
-            <p><{$directory.descr}></p>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h4 class="mt-2"><{$directory.countRepos}>
+                            <{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
+                                <a id="btn_update" class="btn btn-primary btn-sm float-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><span class="fa fa-refresh fa-lg"></span> <{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}></a>
+                            <{/if}>
+                    </h4>
+                    <p><{$directory.descr}></p>
+                </div>
+            </div>    
+            <hr />
             <div class="d-flex flex-row">
-                <div class="bg-secondary text-nowrap mr-2">
+                <div class="bg-secondary rounded text-nowrap mr-2">
                     <!-- Nav tabs for each directory -->
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="nav flex-column nav-pills mb-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <{if $directory.previousRepos}>
                             <a id="btn_previous" class="btn btn-outline-warning mx-2 mt-2" href="index.php?op=list<{$directory.previousOp}>&amp;menu=<{$directory.id}>" role="button"><span class="fa fa-arrow-left"></span></a>    
                         <{/if}>
@@ -109,7 +117,7 @@
                                         <{if $permReadmeUpdate|default:''}>
                                             <a class='btn btn-primary btn-sm float-right' href="index.php?op=update_readme&amp;repo_id=<{$repo.id}>&amp;repo_user=<{$repo.user}>&amp;repo_name=<{$repo.name}>" title="<{$smarty.const._MA_WGGITHUB_README_UPDATE}>"><span class="fa fa-refresh fa-lg"></span> <{$smarty.const._MA_WGGITHUB_README_UPDATE}></a>
                                         <{/if}>
-                                        <div class="border p-2"><{$repo.readme.content_clean|default:''}></div>
+                                        <div class="border rounded p-2"><{$repo.readme.content_clean|default:''}></div>
                                     </p>
                             </div>
                         <{/foreach}>

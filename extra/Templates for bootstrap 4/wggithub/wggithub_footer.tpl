@@ -1,4 +1,4 @@
-<div class=""><{$copyright}></div>
+<div class="mt-2"><{$copyright}></div>
 
 <{if $pagenav|default:'' != ''}>
     <div class='text-right'><{$pagenav}></div>
