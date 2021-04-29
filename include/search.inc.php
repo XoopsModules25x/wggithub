@@ -37,11 +37,18 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
 {
     $ret = [];
     $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $repositoriesHandler = $helper->getHandler('Repositories');
+    $directoriesHandler  = $helper->getHandler('Directories');
+
+    $directoriesAll = $directoriesHandler->getAll();
+    foreach (\array_keys($directoriesAll) as $i) {
+        $directories[$directoriesAll[$i]->getVar('dir_name')] = $directoriesAll[$i]->getVar('dir_id');
+    }
+    unset ($directoriesAll);
 
     // search in table repositories
     // search keywords
     $elementCount = 0;
-    $repositoriesHandler = $helper->getHandler('Repositories');
     if (\is_array($queryarray)) {
         $elementCount = \count($queryarray);
     }
@@ -75,19 +82,13 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     $repositoriesAll = $repositoriesHandler->getAll($crSearch);
     foreach (\array_keys($repositoriesAll) as $i) {
         $ret[] = [
-            'image'  => 'assets/icons/16/repositories.png',
-            'link'   => 'repositories.php?op=show&amp;repo_id=' . $repositoriesAll[$i]->getVar('repo_id'),
+            'image'  => 'assets/icons/16/github.png',
+            'link'   => 'index.php?op=show&amp;menu=' . $directories[$repositoriesAll[$i]->getVar('repo_user')],
             'title'  => $repositoriesAll[$i]->getVar('repo_name'),
             'time'   => $repositoriesAll[$i]->getVar('repo_datecreated')
         ];
     }
-    unset($crKeywords);
-    unset($crKeyword);
-    unset($crUser);
-    unset($crSearch);
-
-
-
+    unset($crKeywords, $crKeyword, $crUser, $crSearch, $repositoriesAll);
 
     return $ret;
 
