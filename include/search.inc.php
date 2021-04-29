@@ -40,6 +40,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     $repositoriesHandler = $helper->getHandler('Repositories');
     $directoriesHandler  = $helper->getHandler('Directories');
 
+    $directories = [];
     $directoriesAll = $directoriesHandler->getAll();
     foreach (\array_keys($directoriesAll) as $i) {
         $directories[$directoriesAll[$i]->getVar('dir_name')] = $directoriesAll[$i]->getVar('dir_id');
