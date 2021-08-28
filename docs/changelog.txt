@@ -6,6 +6,7 @@
  - permanent display of filter with enabled/disabled buttons (alain01/goffy)
  - added new bt4 templates (alain01/goffy)
  - fixed bug with wrong icon and link (alain01/goffy)
+ - added extended test of API connection (goffy)
  
 ===================================================================
 2021/03/31 Version 1.03 Final

@@ -161,6 +161,13 @@ switch ($op) {
         } else {
             $info = 'Github/GithubClient testApi1 (reading github public repos) failed';
         }
+        $result = $client->testUserRepositories();
+        if ($result) {
+            $info .= '<br>Github/GithubClient testUserRepositories (reading github repos of primary setting) successfully finished';
+        } else {
+            $info .= '<br>Github/GithubClient testUserRepositories (reading github repos of primary setting) failed';
+        }
+
         $GLOBALS['xoopsTpl']->assign('info1', $info);
         break;
 }

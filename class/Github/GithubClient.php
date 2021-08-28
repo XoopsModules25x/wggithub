@@ -40,7 +40,7 @@ class GithubClient extends Api
     /**
      * @var string
      */
-    //public $userAuth = 'myusername';
+    public $userAuth = 'myusername';
 
     /**
      * @var string
@@ -105,6 +105,18 @@ class GithubClient extends Api
         */
 
         return $data;
+    }
+
+    /**
+     * Get repositories of given user
+     *
+     * @return array|bool
+     */
+    public function testUserRepositories()
+    {
+        $url = static::BASE_URL . 'users/' . \rawurlencode($this->userAuth) . '/repos?per_page=1&page=1';
+
+        return $this->_get($url);
     }
 
     /**
@@ -343,7 +355,7 @@ class GithubClient extends Api
         if (0 == \count($setting)) {
             \redirect_header(\XOOPS_URL . '/index.php', 3, \_AM_WGGITHUB_THEREARENT_SETTINGS);
         }
-        //$this->userAuth = $setting['user'];
+        $this->userAuth = $setting['user'];
         $this->tokenAuth = $setting['token'];
 
         return true;
