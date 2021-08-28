@@ -149,6 +149,12 @@ namespace XoopsModules\Wggithub\Github\Http {
     class BadResponseException extends Github\RuntimeException
     {}
 
+    /**
+     * HTTP response is somehow wrong and cannot be processed.
+     */
+    class RateLimitExceedException extends Github\RuntimeException
+    {}
+
 }
 
 
