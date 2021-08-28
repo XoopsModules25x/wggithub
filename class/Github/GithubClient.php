@@ -80,10 +80,17 @@ class GithubClient extends Api
     }
 
     public function testApi1($url) {
+
+        $logsHandler = $this->helper->getHandler('Logs');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START Test API1)');
+
         $api = new Github\Api;
         $response = $api->get(static::BASE_URL . $url);
         $data = $api->decode($response);
-        
+
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'Read data successful');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'END Test API1)');
+
         return $data;
     }
 
@@ -114,9 +121,18 @@ class GithubClient extends Api
      */
     public function testUserRepositories()
     {
-        $url = static::BASE_URL . 'users/' . \rawurlencode($this->userAuth) . '/repos?per_page=1&page=1';
+        $logsHandler = $this->helper->getHandler('Logs');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, '', 'START Test UserRepositories)');
 
-        return $this->_get($url);
+        $url = static::BASE_URL . 'users/' . \rawurlencode($this->userAuth) . '/repos?per_page=1&page=1';
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, '');
+
+        $data = $this->_get($url);
+
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'Read data successful');
+        $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'END Test UserRepositories)');
+
+        return $data;
     }
 
     /**
