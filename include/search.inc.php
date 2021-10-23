@@ -56,9 +56,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     if ($elementCount > 0) {
         $crKeywords = new \CriteriaCompo();
         for ($i = 0; $i  <  $elementCount; $i++) {
-            $crKeyword = new \CriteriaCompo();
             $crKeywords->add(new Criteria('repo_name', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
-            unset($crKeyword);
         }
     }
     // search user(s)
@@ -85,8 +83,8 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     foreach (\array_keys($repositoriesAll) as $i) {
         $ret[] = [
             'image'  => 'assets/icons/16/github.png',
-            'link'   => 'index.php?op=show&amp;menu=' . $directories[$repositoriesAll[$i]->getVar('repo_user')],
-            'title'  => $repositoriesAll[$i]->getVar('repo_name'),
+            'link'   => 'index.php?op=show&amp;dir_id=' . $directories[$repositoriesAll[$i]->getVar('repo_user')] . '&amp;repo_id=' . $i,
+            'title'  => $repositoriesAll[$i]->getVar('repo_name') . ' (' . $repositoriesAll[$i]->getVar('repo_user') . ')',
             'time'   => $repositoriesAll[$i]->getVar('repo_datecreated')
         ];
     }

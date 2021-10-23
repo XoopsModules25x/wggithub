@@ -4,6 +4,7 @@
     <div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 
+<!-- show directories in tabs -->
 <{if $directoriesCount|default:0 > 0}>
     <!-- filter area -->
     <div id="filter_bar" class="tab-filter">
@@ -45,86 +46,132 @@
             <{/if}>
         </div>
         <{foreach item=directory from=$directories}>
-        <div id="menu<{$directory.id}>" class="maintab tab-pane fade <{if $menu == $directory.id}>in active<{/if}>">
-            <div class="col-xs-12 tab-content-info">
-                <h4>
-                    <{$directory.countRepos}>
-                    <{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
-                    <a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
-                    <{/if}>
-                </h4>
-                <p><{$directory.descr}></p>
-            </div>
-            <div class="col-xs-3"> <!-- required for floating -->
-                <!-- Nav tabs for each directory -->
-                <ul class="nav nav-tabs tabs-left sideways">
-                    <{if $directory.previousRepos|default:''}>
-                        <li class=""><a  id="btn_previous" href="index.php?op=list<{$directory.previousOp}>&amp;menu=<{$directory.id}>"> ... </a></li>
-                    <{/if}>
-                    <{foreach name=repo item=repo from=$directory.repos}>
-                    <li class="<{if $smarty.foreach.repo.first}>active<{/if}>"><a href="#tabdetail<{$repo.id}>" data-toggle="tab"><{$repo.name}></a></li>
-                    <{/foreach}>
-                    <{if $directory.nextRepos|default:''}>
-                        <li class="">
-                            <a id="btn_next" href="index.php?op=list<{$directory.nextOp}>&amp;menu=<{$directory.id}>"> ... </a>
-                        </li>
-                    <{/if}>
-                </ul>
-            </div>
-            <div class="col-xs-9">
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <{foreach name=repo item=repo from=$directory.repos}>
-                        <div class="tab-pane<{if $smarty.foreach.repo.first}> active<{/if}>" id="tabdetail<{$repo.id}>">
-                            <div class="col-xs-12 sm-12 tabcontent-headline">
-                                <h3><{$smarty.const._MA_WGGITHUB_REPOSITORY}>: <{$repo.name}></h3>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="codixs-12 col-sm-6 tabcontent-headline">
-                                <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_CREATEDAT}>: <{$repo.createdat}></p>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 tabcontent-headline">
-                                <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_UPDATEDAT}>: <{$repo.updatedat}></p>
-                            </div>
-                            <{if $repo.releases|default:''}>
-                                <div class="col-xs-12 col-sm-12 tabcontent-headline">
-                                    <p class=""><{$smarty.const._MA_WGGITHUB_RELEASES}>:</p>
-                                    <{foreach item=release from=$repo.releases}>
-                                        <p class="">
-                                            <{$release.name}> <span style="font-size: smaller">(<{$release.publishedat}>)</span>
-                                            <a class='btn btn-info btn-sm' href="<{$release.zipballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}>"><{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}></a>
-                                            <a class='btn btn-info btn-sm' href="<{$release.tarballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_TAR}>"><{$smarty.const._MA_WGGITHUB_RELEASE_TAR}></a>
-                                        </p>
-                                    <{/foreach}>
+            <div id="menu<{$directory.id}>" class="maintab tab-pane fade <{if $menu == $directory.id}>in active<{/if}>">
+                <div class="col-xs-12 tab-content-info">
+                    <h4>
+                        <{$directory.countRepos}>
+                        <{if $permGlobalRead && ($directory.dir_autoupdate == 0)}>
+                        <a id="btn_update" class="btn btn-primary btn-sm pull-right" href="index.php?op=update_dir&amp;dir_name=<{$directory.name}>"><{$smarty.const._MA_WGGITHUB_DIRECTORY_UPDATE}> </a>
+                        <{/if}>
+                    </h4>
+                    <p><{$directory.descr}></p>
+                </div>
+                <div class="col-xs-3"> <!-- required for floating -->
+                    <!-- Nav tabs for each directory -->
+                    <ul class="nav nav-tabs tabs-left sideways">
+                        <{if $directory.previousRepos|default:''}>
+                            <li class=""><a  id="btn_previous" href="index.php?op=list<{$directory.previousOp}>&amp;menu=<{$directory.id}>"> ... </a></li>
+                        <{/if}>
+                        <{foreach name=repo item=repo from=$directory.repos}>
+                        <li class="<{if $smarty.foreach.repo.first}>active<{/if}>"><a href="#tabdetail<{$repo.id}>" data-toggle="tab"><{$repo.name}></a></li>
+                        <{/foreach}>
+                        <{if $directory.nextRepos|default:''}>
+                            <li class="">
+                                <a id="btn_next" href="index.php?op=list<{$directory.nextOp}>&amp;menu=<{$directory.id}>"> ... </a>
+                            </li>
+                        <{/if}>
+                    </ul>
+                </div>
+                <div class="col-xs-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <{foreach name=repo item=repo from=$directory.repos}>
+                            <div class="tab-pane<{if $smarty.foreach.repo.first}> active<{/if}>" id="tabdetail<{$repo.id}>">
+                                <div class="col-xs-12 sm-12 tabcontent-headline">
+                                    <h3><{$smarty.const._MA_WGGITHUB_REPOSITORY}>: <{$repo.name}></h3>
                                 </div>
-                            <{/if}>
-                            <div class="col-xs-12 col-sm-12 tabcontent-headline">
-                                <p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
-                            </div>
-                            <{if $repo.readme.gitbook_link|default:''}>
-                                <div class="col-xs-12 col-sm-12 tabcontent-headline">
-                                    <p class=""><a class='btn btn-warning right' href="<{$repo.readme.gitbook_link}>" title="<{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}></a></p>
+                                <div class="clearfix"></div>
+                                <div class="codixs-12 col-sm-6 tabcontent-headline">
+                                    <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_CREATEDAT}>: <{$repo.createdat}></p>
                                 </div>
-                            <{/if}>
-                            <div class="col-xs-12 sm-12 tabcontent-content">
-                                <{if $permReadmeUpdate|default:''}>
-                                <i class="fa fa-re"></i>
-                                    <a class='btn btn-primary btn-sm pull-right' href="index.php?op=update_readme&amp;repo_id=<{$repo.id}>&amp;repo_user=<{$repo.user}>&amp;repo_name=<{$repo.name}>" title="<{$smarty.const._MA_WGGITHUB_README_UPDATE}>"><{$smarty.const._MA_WGGITHUB_README_UPDATE}></a></p>
+                                <div class="col-xs-12 col-sm-6 tabcontent-headline">
+                                    <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_UPDATEDAT}>: <{$repo.updatedat}></p>
+                                </div>
+                                <{if $repo.releases|default:''}>
+                                    <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                                        <p class=""><{$smarty.const._MA_WGGITHUB_RELEASES}>:</p>
+                                        <{foreach item=release from=$repo.releases}>
+                                            <p class="">
+                                                <{$release.name}> <span style="font-size: smaller">(<{$release.publishedat}>)</span>
+                                                <a class='btn btn-info btn-sm' href="<{$release.zipballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}>"><{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}></a>
+                                                <a class='btn btn-info btn-sm' href="<{$release.tarballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_TAR}>"><{$smarty.const._MA_WGGITHUB_RELEASE_TAR}></a>
+                                            </p>
+                                        <{/foreach}>
+                                    </div>
                                 <{/if}>
-                                <{$repo.readme.content_clean|default:''}>
+                                <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                                    <p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
+                                </div>
+                                <{if $repo.readme.gitbook_link|default:''}>
+                                    <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                                        <p class=""><a class='btn btn-warning right' href="<{$repo.readme.gitbook_link}>" title="<{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}></a></p>
+                                    </div>
+                                <{/if}>
+                                <div class="col-xs-12 sm-12 tabcontent-content">
+                                    <{if $permReadmeUpdate|default:''}>
+                                    <i class="fa fa-re"></i>
+                                        <a class='btn btn-primary btn-sm pull-right' href="index.php?op=update_readme&amp;repo_id=<{$repo.id}>&amp;repo_user=<{$repo.user}>&amp;repo_name=<{$repo.name}>" title="<{$smarty.const._MA_WGGITHUB_README_UPDATE}>"><{$smarty.const._MA_WGGITHUB_README_UPDATE}></a></p>
+                                    <{/if}>
+                                    <{$repo.readme.content_clean|default:''}>
+                                </div>
                             </div>
-                        </div>
-                    <{/foreach}>
+                        <{/foreach}>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        <{/foreach}>
+    </div>
+<{/if}>
+<!-- end show directories in tabs -->
+
+<!-- show single repo -->
+<{if $showSingle|default:false}>
+    <div class="tab-content tab-content-main">
+        <div class="col-xs-12">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="" id="tabdetail<{$repo.id}>">
+                    <div class="col-xs-12 sm-12 tabcontent-headline">
+                        <h3><{$smarty.const._MA_WGGITHUB_REPOSITORY}>: <{$repo.name}></h3>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="codixs-12 col-sm-6 tabcontent-headline">
+                        <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_CREATEDAT}>: <{$repo.createdat}></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 tabcontent-headline">
+                        <p><i class="fa fa-calendar"></i> <{$smarty.const._MA_WGGITHUB_REPOSITORY_UPDATEDAT}>: <{$repo.updatedat}></p>
+                    </div>
+                    <{if $repo.releases|default:''}>
+                    <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                        <p class=""><{$smarty.const._MA_WGGITHUB_RELEASES}>:</p>
+                        <{foreach item=release from=$repo.releases}>
+                        <p class="">
+                            <{$release.name}> <span style="font-size: smaller">(<{$release.publishedat}>)</span>
+                            <a class='btn btn-info btn-sm' href="<{$release.zipballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}>"><{$smarty.const._MA_WGGITHUB_RELEASE_ZIP}></a>
+                            <a class='btn btn-info btn-sm' href="<{$release.tarballurl}>" title="<{$smarty.const._MA_WGGITHUB_RELEASE_TAR}>"><{$smarty.const._MA_WGGITHUB_RELEASE_TAR}></a>
+                        </p>
+                        <{/foreach}>
+                    </div>
+                    <{/if}>
+                    <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                        <p class=""><a class='btn btn-primary right' href="<{$repo.htmlurl}>" title="<{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_REPOSITORY_GOTO}></a></p>
+                    </div>
+                    <{if $repo.readme_val.gitbook_link|default:''}>
+                    <div class="col-xs-12 col-sm-12 tabcontent-headline">
+                        <p class=""><a class='btn btn-warning right' href="<{$repo.readme_val.gitbook_link}>" title="<{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}>" target="_blank"><{$smarty.const._MA_WGGITHUB_GITBOOK_GOTO}></a></p>
+                    </div>
+                    <{/if}>
+                    <div class="col-xs-12 sm-12 tabcontent-content">
+                        <{$repo.readme_val.content_clean|default:''}>
+                    </div>
                 </div>
             </div>
-
-            <div class="clearfix"></div>
-
         </div>
-        <{/foreach}>
-
+        <div class="clearfix"></div>
     </div>
-    <{/if}>
+ <{/if}>
+<!-- end show single repo -->
 
 <script type="text/javascript">
     var executeClick = function(href)

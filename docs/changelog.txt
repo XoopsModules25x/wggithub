@@ -8,6 +8,7 @@
  - fixed bug with wrong icon and link (alain01/goffy)
  - added extended test of API connection (goffy)
  - fixed bug in search (alain01/goffy)
+ - updated template to show single repo (alain01/goffy)
  
 ===================================================================
 2021/03/31 Version 1.03 Final

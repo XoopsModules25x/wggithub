@@ -44,6 +44,7 @@ $permReadmeUpdate = $permissionsHandler->getPermReadmeUpdate();
 $op            = Request::getCmd('op', 'list');
 $filterRelease = Request::getString('frelease', 'any');
 $filterSortby  = Request::getString('fsortby', 'update');
+$repoId        = Request::getInt('repo_id', 0);
 
 $GLOBALS['xoopsTpl']->assign('frelease', $filterRelease);
 $GLOBALS['xoopsTpl']->assign('fsortby', $filterSortby);
@@ -65,6 +66,34 @@ $dirLimit = [];
 
 switch ($op) {
     case 'show':
+        if ($repoId > 0) {
+            $GLOBALS['xoopsTpl']->assign('showSingle', true);
+            $repositoriesObj = $repositoriesHandler->get($repoId);
+            $repo = $repositoriesObj->getValuesRepositories();
+            $repo['readme_val'] = ['content_clean' => \_MA_WGGITHUB_README_NOFILE];
+            if ($repositoriesObj->getVar('repo_readme') > 0) {
+                $crReadmes = new \CriteriaCompo();
+                $crReadmes->add(new \Criteria('rm_repoid', $repoId));
+                $readmesAll = $readmesHandler->getAll($crReadmes);
+                foreach ($readmesAll as $readme) {
+                    $repo['readme_val'] = $readme->getValuesReadmes();
+                }
+                unset($crReadmes, $readmesAll);
+            }
+            if ($repositoriesObj->getVar('repo_prerelease') > 0 || $repositoriesObj->getVar('repo_release') > 0) {
+                //$repos[$j]['releases'] = [];
+                $crReleases = new \CriteriaCompo();
+                $crReleases->add(new \Criteria('rel_repoid', $repoId));
+                $releasesAll = $releasesHandler->getAll($crReleases);
+                foreach ($releasesAll as $release) {
+                    $repo['releases'][] = $release->getValuesReleases();
+                }
+                unset($crReleases, $releasesAll);
+            }
+            unset($repositoriesAll);
+            $GLOBALS['xoopsTpl']->assign('repo', $repo);
+        }
+        break;
     case 'list':
     case 'apiexceed':
     default:
