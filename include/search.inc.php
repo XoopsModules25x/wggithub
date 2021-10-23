@@ -88,7 +88,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
             'time'   => $repositoriesAll[$i]->getVar('repo_datecreated')
         ];
     }
-    unset($crKeywords, $crKeyword, $crUser, $crSearch, $repositoriesAll);
+    unset($crKeywords, $crUser, $crSearch, $repositoriesAll);
 
     return $ret;
 
