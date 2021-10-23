@@ -40,6 +40,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     $repositoriesHandler = $helper->getHandler('Repositories');
     $directoriesHandler  = $helper->getHandler('Directories');
 
+    // search in table wggithub_repositories
     $directories = [];
     $directoriesAll = $directoriesHandler->getAll();
     foreach (\array_keys($directoriesAll) as $i) {
@@ -47,7 +48,6 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     }
     unset ($directoriesAll);
 
-    // search in table repositories
     // search keywords
     $elementCount = 0;
     if (\is_array($queryarray)) {
@@ -57,6 +57,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
         $crKeywords = new \CriteriaCompo();
         for ($i = 0; $i  <  $elementCount; $i++) {
             $crKeyword = new \CriteriaCompo();
+            $crKeywords->add(new Criteria('repo_name', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
             unset($crKeyword);
         }
     }
