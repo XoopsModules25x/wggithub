@@ -21,6 +21,10 @@
  */
 
 use XoopsModules\Wggithub;
+use XoopsModules\Wggithub\ {
+    Helper,
+    Constants
+};
 
 
 /**
@@ -36,7 +40,7 @@ use XoopsModules\Wggithub;
 function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
 {
     $ret = [];
-    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
     $repositoriesHandler = $helper->getHandler('Repositories');
     $directoriesHandler  = $helper->getHandler('Directories');
 
@@ -75,6 +79,10 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     if (isset($crUser)) {
         $crSearch->add($crUser, 'AND');
     }
+    if (0 === (int)$helper->getConfig('autoapproved')) {
+        $crSearch->add(new \Criteria('repo_approved', 1));
+    }
+    $crSearch->add(new \Criteria('repo_status', Constants::STATUS_UPTODATE));
     $crSearch->setStart($offset);
     $crSearch->setLimit($limit);
     $crSearch->setSort('repo_datecreated');
