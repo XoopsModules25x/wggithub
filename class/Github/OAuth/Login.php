@@ -54,7 +54,7 @@ class Login extends Github\Sanity
     public function askPermissions($backUrl, $redirectCb = NULL)
     {
         /** @todo Something more safe? */
-        $state = sha1(uniqid(microtime(TRUE), TRUE));
+        $state = sha1(uniqid(\microtime(TRUE), TRUE));
         $params = [
             'client_id' => $this->conf->clientId,
             'redirect_uri' => $backUrl,
@@ -64,7 +64,7 @@ class Login extends Github\Sanity
 
         $this->storage->set('auth.state', $state);
 
-        $url = $this->authUrl . '?' . http_build_query($params);
+        $url = $this->authUrl . '?' . \http_build_query($params);
         if ($redirectCb === NULL) {
             header("Location: $url");
             die();
@@ -98,7 +98,7 @@ class Login extends Github\Sanity
             'Content-Type' => 'application/x-www-form-urlencoded',
         ];
 
-        $request = new Http\Request(Http\Request::POST, $this->tokenUrl, $headers, http_build_query($params));
+        $request = new Http\Request(Http\Request::POST, $this->tokenUrl, $headers, \http_build_query($params));
         try {
             $response = $this->client->request($request);
         } catch (Http\BadResponseException $e) {

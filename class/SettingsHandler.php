@@ -143,7 +143,7 @@ class SettingsHandler extends \XoopsPersistableObjectHandler
 
     /**
      * Set given setting as primary
-     * @param int $asId
+     * @param $setId
      * @return bool
      */
     public function setPrimarySetting($setId)

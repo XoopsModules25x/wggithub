@@ -119,7 +119,7 @@ trait VersionChecks
                 $curlReturn = \curl_exec($curlHandle);
                 if (false === $curlReturn) {
                     \trigger_error(\curl_error($curlHandle));
-                } elseif (mb_strpos($curlReturn, 'Not Found')) {
+                } elseif (\mb_strpos($curlReturn, 'Not Found')) {
                     \trigger_error('Repository Not Found: ' . $infoReleasesUrl);
                 } else {
                     $file              = \json_decode($curlReturn, false);
@@ -131,7 +131,7 @@ trait VersionChecks
                     }
                     //"PHP-standardized" version
                     $latestVersion = \mb_strtolower($latestVersion);
-                    if (false !== mb_strpos($latestVersion, 'final')) {
+                    if (false !== \mb_strpos($latestVersion, 'final')) {
                         $latestVersion = \str_replace('_', '', \mb_strtolower($latestVersion));
                         $latestVersion = \str_replace('final', '', \mb_strtolower($latestVersion));
                     }

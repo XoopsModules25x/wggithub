@@ -29,8 +29,8 @@ $helper = \XoopsModules\Wggithub\Helper::getInstance();
 // Breadcrumbs
 $xoBreadcrumbs = [];
 if ($helper->getConfig('show_breadcrumbs')) {
-    if (isset($GLOBALS['xoopsModule']) && is_object($GLOBALS['xoopsModule'])) {
-        $xoBreadcrumbs[] = ['title' => $GLOBALS['xoopsModule']->getVar('name'), 'link' => WGGITHUB_URL . '/'];
+    if (isset($GLOBALS['xoopsModule']) && \is_object($GLOBALS['xoopsModule'])) {
+        $xoBreadcrumbs[] = ['title' => $GLOBALS['xoopsModule']->getVar('name'), 'link' => \WGGITHUB_URL . '/'];
     }
 }
 // Get instance of module
@@ -44,7 +44,7 @@ $permissionsHandler = $helper->getHandler('Permissions');
 // 
 $myts = MyTextSanitizer::getInstance();
 // Default Css Style
-$style = WGGITHUB_URL . '/assets/css/style.css';
+$style = \WGGITHUB_URL . '/assets/css/style.css';
 // Smarty Default
 $sysPathIcon16 = $GLOBALS['xoopsModule']->getInfo('sysicons16');
 $sysPathIcon32 = $GLOBALS['xoopsModule']->getInfo('sysicons32');

@@ -41,8 +41,8 @@ switch ($op) {
     default:
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
-        $GLOBALS['xoTheme']->addScript(WGGITHUB_URL . '/assets/js/jquery-ui.js');
-        $GLOBALS['xoTheme']->addScript(WGGITHUB_URL . '/assets/js/sortable.js');
+        $GLOBALS['xoTheme']->addScript(\WGGITHUB_URL . '/assets/js/jquery-ui.js');
+        $GLOBALS['xoTheme']->addScript(\WGGITHUB_URL . '/assets/js/sortable.js');
         $templateMain = 'wggithub_admin_directories.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('directories.php'));
         $adminObject->addItemButton(\_AM_WGGITHUB_ADD_DIRECTORY, 'directories.php?op=new', 'add');
@@ -50,9 +50,9 @@ switch ($op) {
         $directoriesCount = $directoriesHandler->getCountDirectories();
         $directoriesAll = $directoriesHandler->getAllDirectories($start, $limit);
         $GLOBALS['xoopsTpl']->assign('directories_count', $directoriesCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', WGGITHUB_ICONS_URL . '/16');
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', \WGGITHUB_ICONS_URL . '/16');
         // Table view directories
         if ($directoriesCount > 0) {
             foreach (\array_keys($directoriesAll) as $i) {
@@ -133,7 +133,7 @@ switch ($op) {
             $errors = [];
             //delete all related data
             $crRepositories = new \CriteriaCompo();
-            $crRepositories->add(new Criteria('repo_user', $dirName));
+            $crRepositories->add(new \Criteria('repo_user', $dirName));
             $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
             foreach (\array_keys($repositoriesAll) as $i) {
                 $repoId = $repositoriesAll[$i]->getVar('repo_id');

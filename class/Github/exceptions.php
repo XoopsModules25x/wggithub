@@ -51,6 +51,8 @@ namespace XoopsModules\Wggithub\Github {
         /**
          * @param string
          * @param int
+         * @param \Exception|null $previous
+         * @param Http\Response|null $response
          */
         public function __construct($message = '', $code = 0, \Exception $previous = NULL, Http\Response $response = NULL)
         {

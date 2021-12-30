@@ -36,6 +36,7 @@ class Configuration extends Github\Sanity
 
 
     /**
+     * @param array $conf
      * @return Configuration
      */
     public static function fromArray(array $conf)

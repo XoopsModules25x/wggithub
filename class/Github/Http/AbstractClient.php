@@ -32,9 +32,9 @@ abstract class AbstractClient extends Github\Sanity implements IClient
     /**
      * @see https://developer.github.com/v3/#http-redirects
      *
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     public function request(Request $request)
     {
@@ -100,9 +100,9 @@ abstract class AbstractClient extends Github\Sanity implements IClient
 
 
     /**
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     abstract protected function process(Request $request);
 

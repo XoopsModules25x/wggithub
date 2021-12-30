@@ -35,7 +35,7 @@ function b_wggithub_repositories_show($options)
 {
     include_once \XOOPS_ROOT_PATH . '/modules/wggithub/class/repositories.php';
     $myts = MyTextSanitizer::getInstance();
-    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
     $block       = [];
     $typeBlock   = $options[0];
     $limit       = $options[1];
@@ -56,8 +56,8 @@ function b_wggithub_repositories_show($options)
             break;
         case 'new':
             // For the block: repositories new
-            $crRepositories->add(new \Criteria('repo_datecreated', \DateTime::createFromFormat(_SHORTDATESTRING), '>='));
-            $crRepositories->add(new \Criteria('repo_datecreated', \DateTime::createFromFormat(_SHORTDATESTRING) + 86400, '<='));
+            $crRepositories->add(new \Criteria('repo_datecreated', \time() - 604800, '>='));
+            $crRepositories->add(new \Criteria('repo_datecreated', \time(), '<='));
             $crRepositories->setSort('repo_datecreated');
             $crRepositories->setOrder('ASC');
             break;
@@ -83,7 +83,11 @@ function b_wggithub_repositories_show($options)
     if (\count($repositoriesAll) > 0) {
         foreach (\array_keys($repositoriesAll) as $i) {
             $block[$i]['id'] = $repositoriesAll[$i]->getVar('repo_id');
-            $block[$i]['name'] = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_name'));
+            $repoName = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_name'));
+            if ($lenghtTitle > 0) {
+                $repoName = \substr($repoName, 0, $lenghtTitle);
+            }
+            $block[$i]['name'] = $repoName;
             $block[$i]['htmlurl'] = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_htmlurl'));
         }
     }
@@ -102,7 +106,7 @@ function b_wggithub_repositories_edit($options)
     include_once \XOOPS_ROOT_PATH . '/modules/wggithub/class/repositories.php';
     $helper = Helper::getInstance();
     $repositoriesHandler = $helper->getHandler('Repositories');
-    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
     $form = \_MB_WGGITHUB_DISPLAY;
     $form .= "<input type='hidden' name='options[0]' value='".$options[0]."' />";
     $form .= "<input type='text' name='options[1]' size='5' maxlength='255' value='" . $options[1] . "' />&nbsp;<br>";

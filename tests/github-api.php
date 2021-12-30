@@ -46,7 +46,7 @@ foreach ($data as $emoji) {
 $data = [];
 $url = '/orgs/XoopsModules25x/repos?per_page=100&page=1';
 echo "<br>Test read org repo:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo($url);
 $count = 0;
 foreach ($data as $key => $repo) {
@@ -59,7 +59,7 @@ foreach ($data as $key => $repo) {
 $data = [];
 $url = '/users/ggoffy/repos?per_page=100&page=1';
 echo "<br><br>Test read user repo:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo($url);
 $count = 0;
 foreach ($data as $key => $repo) {
@@ -72,7 +72,7 @@ foreach ($data as $key => $repo) {
 $data = [];
 $url = '/repos/XoopsModules25x/smallworld/readme';
 echo "<br><br>test read readme orgs:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo($url);
 echo '<br>name:' . $data['name'];
 echo '<br>download_url:' . $data['download_url'];
@@ -81,7 +81,7 @@ echo '<br>download_url:' . $data['download_url'];
 $data = [];
 $url = '/repos/ggoffy/wggithub/readme';
 echo "<br><br>test read readme user:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo($url);
 echo '<br>name:' . $data['name'];
 echo '<br>download_url:' . $data['download_url'];
@@ -94,7 +94,7 @@ echo "<br>-----------------------------------";
 $data = [];
 $url = '/orgs/XoopsModules25x/repos?per_page=100&page=1';
 echo "<br>Test read org repo:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo2($url);
 $count = 0;
 foreach ($data as $key => $repo) {
@@ -107,7 +107,7 @@ foreach ($data as $key => $repo) {
 $data = [];
 $url = '/users/ggoffy/repos?per_page=100&page=1';
 echo "<br><br>Test read user repo:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo2($url);
 $count = 0;
 foreach ($data as $key => $repo) {
@@ -120,7 +120,7 @@ foreach ($data as $key => $repo) {
 $data = [];
 $url = '/repos/XoopsModules25x/smallworld/readme';
 echo "<br><br>test read readme orgs:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo2($url);
 echo '<br>name:' . $data['name'];
 echo '<br>download_url:' . $data['download_url'];
@@ -129,7 +129,7 @@ echo '<br>download_url:' . $data['download_url'];
 $data = [];
 $url = '/repos/ggoffy/wggithub/readme';
 echo "<br><br>test read readme user:" . $url;
-$api = new XoopsModules\Wggithub\Github\GithubClient();
+$api = new \XoopsModules\Wggithub\Github\GithubClient();
 $data = $api->testMilo2($url);
 echo '<br>name:' . $data['name'];
 echo '<br>download_url:' . $data['download_url'];

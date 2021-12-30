@@ -42,9 +42,9 @@ class CurlClient extends AbstractClient
 
 
     /**
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     protected function process(Request $request)
     {

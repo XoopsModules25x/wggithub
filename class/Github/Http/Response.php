@@ -74,9 +74,9 @@ class Response extends Message
 
 
     /**
+     * @param Response|null $previous
      * @return self
      *
-     * @throws Github\LogicException
      */
     public function setPrevious(Response $previous = NULL)
     {

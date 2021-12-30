@@ -25,7 +25,7 @@ namespace XoopsModules\Wggithub;
 
 use XoopsModules\Wggithub;
 
-\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object Releases

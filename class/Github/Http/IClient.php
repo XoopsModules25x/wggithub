@@ -11,6 +11,7 @@ namespace XoopsModules\Wggithub\Github\Http;
 interface IClient
 {
     /**
+     * @param Request $request
      * @return Response
      */
     function request(Request $request);

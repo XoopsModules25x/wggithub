@@ -3,6 +3,12 @@
 ===================================================================
  - semantic versioning (mamba/goffy)
  - fixed missing criteria in search (alain01/goffy)
+ - update common files (goffy)
+ - security.md (goffy)
+ - added new update proc (goffy)
+ - code cleaning (goffy)
+ - added function qualifiers (goffy)
+ - update to php8 (goffy)
  
 ===================================================================
 2021/03/31 Version 1.04 RC1

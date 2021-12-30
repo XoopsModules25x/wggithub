@@ -25,7 +25,7 @@ namespace XoopsModules\Wggithub\Common;
 
 use XoopsModules\Wggithub;
 
-\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object XoopsConfirm
@@ -62,19 +62,19 @@ class XoopsConfirm
     public function getFormXoopsConfirm()
     {
         //in order to be accessable from user and admin area this should be place in language common.php
-        \define('CO__WGGITHUB_DELETE_CONFIRM', 'Confirm delete');
-        \define('CO__WGGITHUB_DELETE_LABEL', 'Do you really want to delete:');
+        \define('CO_WGGITHUB_DELETE_CONFIRM', 'Confirm delete');
+        \define('CO_WGGITHUB_DELETE_LABEL', 'Do you really want to delete:');
 
         // Get Theme Form
         if ('' === $this->action) {
             $this->action = \Xmf\Request::getString('REQUEST_URI', '', 'SERVER');
         }
         if ('' === $this->title) {
-            $this->title = CO__WGGITHUB_DELETE_CONFIRM;
+            $this->title = CO_WGGITHUB_DELETE_CONFIRM;
         }
         if ('' === $this->label) {
 
-            $this->label = CO__WGGITHUB_DELETE_LABEL;
+            $this->label = CO_WGGITHUB_DELETE_LABEL;
         }
 
         \xoops_load('XoopsFormLoader');
@@ -87,8 +87,8 @@ class XoopsConfirm
         }
         $form->addElement(new \XoopsFormHidden('ok', 1));
         $buttonTray = new \XoopsFormElementTray('');
-        $buttonTray->addElement(new \XoopsFormButton('', 'confirm_submit', _YES, 'submit'));
-        $buttonBack = new \XoopsFormButton('', 'confirm_back', _NO, 'button');
+        $buttonTray->addElement(new \XoopsFormButton('', 'confirm_submit', \_YES, 'submit'));
+        $buttonBack = new \XoopsFormButton('', 'confirm_back', \_NO, 'button');
         $buttonBack->setExtra('onclick="history.go(-1);return true;"');
         $buttonTray->addElement($buttonBack);
         $form->addElement($buttonTray);

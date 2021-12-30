@@ -50,7 +50,7 @@ class Resizer
             case 'image/jpeg':
                 $img = \imagecreatefromjpeg($this->sourceFile);
                 if (!$img) {
-                    $img = \imagecreatefromstring(file_get_contents($this->sourceFile));
+                    $img = \imagecreatefromstring(\file_get_contents($this->sourceFile));
                 }
                 break;
             case 'image/gif':
@@ -85,8 +85,8 @@ class Resizer
 
             // Create a new temporary image.
             $tmpimg = \imagecreatetruecolor($new_width, $new_height);
-            imagealphablending($tmpimg, false);
-            imagesavealpha($tmpimg, true);
+            \imagealphablending($tmpimg, false);
+            \imagesavealpha($tmpimg, true);
 
             // Copy and resize old image into new image.
             \imagecopyresampled($tmpimg, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);

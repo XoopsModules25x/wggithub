@@ -4,7 +4,7 @@ namespace XoopsModules\Wggithub\Github\Http;
 
 
 /**
- * Client which use the file_get_contents() with a HTTP context options.
+ * Client which use the \file_get_contents() with a HTTP context options.
  *
  * @author  Miloslav Hůla (https://github.com/milo)
  */
@@ -31,9 +31,9 @@ class StreamClient extends AbstractClient
 
 
     /**
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     protected function process(Request $request)
     {
@@ -82,14 +82,14 @@ class StreamClient extends AbstractClient
      */
     protected function fileGetContents($url, array $contextOptions)
     {
-        $context = stream_context_create($contextOptions);
+        $context = \stream_context_create($contextOptions);
 
         $e = NULL;
         set_error_handler(function($severity, $message, $file, $line) use (& $e) {
             $e = new \ErrorException($message, 0, $severity, $file, $line, $e);
         }, E_WARNING);
 
-        $content = file_get_contents($url, FALSE, $context);
+        $content = \file_get_contents($url, FALSE, $context);
         restore_error_handler();
 
         if (!isset($http_response_header)) {
@@ -102,6 +102,7 @@ class StreamClient extends AbstractClient
         unset($http_response_header[0]);
 
         $headers = [];
+        $last = '';
         foreach ($http_response_header as $header) {
             if (\in_array(\substr($header, 0, 1), [' ', "\t"], TRUE)) {
                 $headers[$last] .= ' ' . \trim($header);  # RFC2616, 2.2
