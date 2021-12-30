@@ -51,7 +51,7 @@ class FileCache extends Github\Sanity implements ICache
      */
     public function save($key, $value)
     {
-        file_put_contents(
+        \file_put_contents(
             $this->filePath($key),
             serialize($value),
             LOCK_EX
@@ -68,7 +68,7 @@ class FileCache extends Github\Sanity implements ICache
     public function load($key)
     {
         $path = $this->filePath($key);
-        if (is_file($path) && ($fd = fopen($path, 'rb')) && flock($fd, LOCK_SH)) {
+        if (\is_file($path) && ($fd = fopen($path, 'rb')) && flock($fd, LOCK_SH)) {
             $cached = stream_get_contents($fd);
             flock($fd, LOCK_UN);
             fclose($fd);

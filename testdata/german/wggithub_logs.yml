@@ -1,0 +1,3038 @@
+-
+    log_id: '1'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609777402'
+    log_submitter: '1'
+-
+    log_id: '2'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609777402'
+    log_submitter: '1'
+-
+    log_id: '3'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609777868'
+    log_submitter: '1'
+-
+    log_id: '4'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609777868'
+    log_submitter: '1'
+-
+    log_id: '5'
+    log_type: '1'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1609778184'
+    log_submitter: '1'
+-
+    log_id: '6'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=1'
+    log_result: START
+    log_datecreated: '1609778184'
+    log_submitter: '1'
+-
+    log_id: '7'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=1'
+    log_result: OK
+    log_datecreated: '1609778185'
+    log_submitter: '1'
+-
+    log_id: '8'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/marquee-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778185'
+    log_submitter: '1'
+-
+    log_id: '9'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/marquee-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778185'
+    log_submitter: '1'
+-
+    log_id: '10'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/marquee-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778185'
+    log_submitter: '1'
+-
+    log_id: '11'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/marquee-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '12'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/contact-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '13'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/contact-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '14'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/contact-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '15'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/contact-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '16'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-operations-guide/readme'
+    log_result: START
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '17'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-operations-guide/readme'
+    log_result: OK
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '18'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-operations-guide/releases'
+    log_result: START
+    log_datecreated: '1609778186'
+    log_submitter: '1'
+-
+    log_id: '19'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-operations-guide/releases'
+    log_result: OK
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '20'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-installation-guide/readme'
+    log_result: START
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '21'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-installation-guide/readme'
+    log_result: OK
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '22'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-installation-guide/releases'
+    log_result: START
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '23'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-installation-guide/releases'
+    log_result: OK
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '24'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsheadline-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '25'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsheadline-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '26'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsheadline-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '27'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsheadline-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '28'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tag-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778187'
+    log_submitter: '1'
+-
+    log_id: '29'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tag-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '30'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tag-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '31'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tag-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '32'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspoll-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '33'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspoll-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '34'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspoll-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778188'
+    log_submitter: '1'
+-
+    log_id: '35'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspoll-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '36'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mylinks-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '37'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mylinks-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '38'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mylinks-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '39'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mylinks-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '40'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mytabs-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '41'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mytabs-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '42'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mytabs-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '43'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mytabs-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '44'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/protector-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778189'
+    log_submitter: '1'
+-
+    log_id: '45'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/protector-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '46'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/protector-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '47'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/protector-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '48'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extcal-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '49'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extcal-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '50'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extcal-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '51'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extcal-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '52'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extgallery-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778190'
+    log_submitter: '1'
+-
+    log_id: '53'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extgallery-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '54'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extgallery-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '55'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/extgallery-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '56'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspartners-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '57'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspartners-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '58'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspartners-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '59'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopspartners-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '60'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-docs-process/readme'
+    log_result: START
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '61'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-docs-process/readme'
+    log_result: OK
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '62'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-docs-process/releases'
+    log_result: START
+    log_datecreated: '1609778191'
+    log_submitter: '1'
+-
+    log_id: '63'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-docs-process/releases'
+    log_result: OK
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '64'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gitbook-starterkit/readme'
+    log_result: START
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '65'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gitbook-starterkit/readme'
+    log_result: OK
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '66'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gitbook-starterkit/releases'
+    log_result: START
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '67'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gitbook-starterkit/releases'
+    log_result: OK
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '68'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartfaq-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '69'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartfaq-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '70'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartfaq-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '71'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartfaq-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '72'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/publisher-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778192'
+    log_submitter: '1'
+-
+    log_id: '73'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/publisher-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '74'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/publisher-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '75'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/publisher-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '76'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/newbb-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '77'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/newbb-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '78'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/newbb-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '79'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/newbb-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '80'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopstube-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '81'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopstube-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778193'
+    log_submitter: '1'
+-
+    log_id: '82'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopstube-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '83'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopstube-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '84'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfdownloads-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '85'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfdownloads-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '86'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfdownloads-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '87'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfdownloads-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '88'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_cookbook/readme'
+    log_result: START
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '89'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '90'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_cookbook/releases'
+    log_result: START
+    log_datecreated: '1609778194'
+    log_submitter: '1'
+-
+    log_id: '91'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_cookbook/releases'
+    log_result: OK
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '92'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_codex/readme'
+    log_result: START
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '93'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_codex/readme'
+    log_result: OK
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '94'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_codex/releases'
+    log_result: START
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '95'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_codex/releases'
+    log_result: OK
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '96'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/service_manager/readme'
+    log_result: START
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '97'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/service_manager/readme'
+    log_result: OK
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '98'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/service_manager/releases'
+    log_result: START
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '99'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/service_manager/releases'
+    log_result: OK
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '100'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assetics/readme'
+    log_result: START
+    log_datecreated: '1609778195'
+    log_submitter: '1'
+-
+    log_id: '101'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assetics/readme'
+    log_result: OK
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '102'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assetics/releases'
+    log_result: START
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '103'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assetics/releases'
+    log_result: OK
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '104'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_firebug/readme'
+    log_result: START
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '105'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_firebug/readme'
+    log_result: OK
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '106'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_firebug/releases'
+    log_result: START
+    log_datecreated: '1609778196'
+    log_submitter: '1'
+-
+    log_id: '107'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops_firebug/releases'
+    log_result: OK
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '108'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xhelp-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '109'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xhelp-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '110'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xhelp-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '111'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xhelp-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '112'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xasset-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '113'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xasset-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '114'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xasset-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '115'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xasset-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '116'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/repairshop-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778197'
+    log_submitter: '1'
+-
+    log_id: '117'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/repairshop-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '118'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/repairshop-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '119'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/repairshop-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '120'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xlanguage-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '121'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xlanguage-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '122'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xlanguage-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778198'
+    log_submitter: '1'
+-
+    log_id: '123'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xlanguage-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '124'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/kaotik-module-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '125'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/kaotik-module-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '126'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/kaotik-module-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '127'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/kaotik-module-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '128'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xnewsletter-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '129'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xnewsletter-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '130'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xnewsletter-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '131'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xnewsletter-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '132'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adslight-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778199'
+    log_submitter: '1'
+-
+    log_id: '133'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adslight-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '134'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adslight-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '135'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adslight-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '136'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/alumni-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '137'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/alumni-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '138'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/alumni-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '139'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/alumni-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '140'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/amreviews-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '141'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/amreviews-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '142'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/amreviews-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778200'
+    log_submitter: '1'
+-
+    log_id: '143'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/amreviews-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '144'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/backup-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '145'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/backup-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '146'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/backup-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '147'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/backup-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '148'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwiki-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '149'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwiki-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '150'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwiki-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '151'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwiki-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '152'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/news-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778201'
+    log_submitter: '1'
+-
+    log_id: '153'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/news-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '154'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/news-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '155'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/news-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '156'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rwbanner-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '157'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rwbanner-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '158'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rwbanner-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '159'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rwbanner-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '160'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/soapbox-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778202'
+    log_submitter: '1'
+-
+    log_id: '161'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/soapbox-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '162'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/soapbox-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '163'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/soapbox-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '164'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/jobs-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '165'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/jobs-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '166'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/jobs-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '167'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/jobs-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '168'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleadmin-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '169'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleadmin-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '170'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleadmin-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778203'
+    log_submitter: '1'
+-
+    log_id: '171'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleadmin-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '172'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/about-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '173'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/about-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '174'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/about-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '175'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/about-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '176'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/presenter-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '177'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/presenter-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '178'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/presenter-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '179'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/presenter-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '180'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/oledrion-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778204'
+    log_submitter: '1'
+-
+    log_id: '181'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/oledrion-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '182'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/oledrion-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '183'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/oledrion-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '184'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/avaman-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '185'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/avaman-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '186'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/avaman-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '187'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/avaman-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '188'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleinstaller-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778205'
+    log_submitter: '1'
+-
+    log_id: '189'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleinstaller-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '190'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleinstaller-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '191'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/moduleinstaller-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '192'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myalbum-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '193'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myalbum-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '194'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myalbum-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '195'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myalbum-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '196'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mymenus-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '197'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mymenus-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '198'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mymenus-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778206'
+    log_submitter: '1'
+-
+    log_id: '199'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mymenus-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '200'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pm-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '201'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pm-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '202'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pm-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '203'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pm-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '204'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/profile-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '205'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/profile-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '206'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/profile-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '207'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/profile-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '208'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/randomquote-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778207'
+    log_submitter: '1'
+-
+    log_id: '209'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/randomquote-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '210'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/randomquote-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '211'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/randomquote-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '212'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartobject-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '213'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartobject-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '214'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartobject-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '215'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartobject-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '216'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartpartner-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778208'
+    log_submitter: '1'
+-
+    log_id: '217'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartpartner-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '218'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartpartner-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '219'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/smartpartner-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '220'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/waiting-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '221'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/waiting-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '222'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/waiting-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '223'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/waiting-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '224'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wflinks-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '225'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wflinks-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '226'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wflinks-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778209'
+    log_submitter: '1'
+-
+    log_id: '227'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wflinks-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '228'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xforms-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '229'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xforms-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '230'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xforms-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '231'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xforms-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '232'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xsitemap-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '233'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xsitemap-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '234'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xsitemap-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '235'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xsitemap-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '236'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609778210'
+    log_submitter: '1'
+-
+    log_id: '237'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '238'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/releases'
+    log_result: START
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '239'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/releases'
+    log_result: OK
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '240'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfaq-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '241'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfaq-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '242'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfaq-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '243'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfaq-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '244'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gbook-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '245'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gbook-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '246'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gbook-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778211'
+    log_submitter: '1'
+-
+    log_id: '247'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gbook-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '248'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pedigree-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '249'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pedigree-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '250'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pedigree-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '251'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/pedigree-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '252'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfresource-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '253'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfresource-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '254'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfresource-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '255'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfresource-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '256'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfchannel-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778212'
+    log_submitter: '1'
+-
+    log_id: '257'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfchannel-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '258'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfchannel-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '259'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wfchannel-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '260'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfguestbook-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '261'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfguestbook-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '262'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfguestbook-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '263'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xfguestbook-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '264'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopshp-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '265'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopshp-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '266'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopshp-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778213'
+    log_submitter: '1'
+-
+    log_id: '267'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopshp-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '268'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assessment-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '269'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assessment-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '270'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assessment-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '271'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/assessment-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '272'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/biblioteca-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '273'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/biblioteca-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '274'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/biblioteca-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778214'
+    log_submitter: '1'
+-
+    log_id: '275'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/biblioteca-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '276'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsinfo-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '277'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsinfo-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '278'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsinfo-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '279'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopsinfo-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '280'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopscare-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '281'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopscare-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '282'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopscare-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '283'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoopscare-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '284'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/references-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778215'
+    log_submitter: '1'
+-
+    log_id: '285'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/references-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '286'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/references-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '287'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/references-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '288'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/webindex-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '289'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/webindex-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '290'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/webindex-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '291'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/webindex-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778216'
+    log_submitter: '1'
+-
+    log_id: '292'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/portfolioh-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '293'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/portfolioh-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '294'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/portfolioh-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '295'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/portfolioh-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '296'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/quest-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '297'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/quest-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '298'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/quest-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '299'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/quest-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '300'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/photoupload-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778217'
+    log_submitter: '1'
+-
+    log_id: '301'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/photoupload-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '302'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/photoupload-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '303'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/photoupload-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '304'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myservices-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '305'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myservices-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '306'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myservices-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '307'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myservices-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '308'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myjob-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '309'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myjob-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '310'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myjob-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778218'
+    log_submitter: '1'
+-
+    log_id: '311'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myjob-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778219'
+    log_submitter: '1'
+-
+    log_id: '312'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/bookshop-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778219'
+    log_submitter: '1'
+-
+    log_id: '313'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/bookshop-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778219'
+    log_submitter: '1'
+-
+    log_id: '314'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/bookshop-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778219'
+    log_submitter: '1'
+-
+    log_id: '315'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/bookshop-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '316'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adminer-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '317'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adminer-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '318'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adminer-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '319'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/adminer-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '320'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myconference-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '321'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myconference-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '322'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myconference-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '323'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/myconference-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '324'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwreports-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778220'
+    log_submitter: '1'
+-
+    log_id: '325'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwreports-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '326'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwreports-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '327'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwreports-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '328'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwloto-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '329'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwloto-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '330'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwloto-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '331'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/gwloto-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '332'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/planet-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778221'
+    log_submitter: '1'
+-
+    log_id: '333'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/planet-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '334'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/planet-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '335'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/planet-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '336'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/userlog-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '337'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/userlog-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '338'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/userlog-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '339'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/userlog-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '340'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/lexikon-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778222'
+    log_submitter: '1'
+-
+    log_id: '341'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/lexikon-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '342'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/lexikon-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '343'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/lexikon-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '344'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tdmpicture-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '345'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tdmpicture-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '346'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tdmpicture-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '347'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/tdmpicture-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '348'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '349'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '350'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778223'
+    log_submitter: '1'
+-
+    log_id: '351'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '352'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-developerguide/readme'
+    log_result: START
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '353'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-developerguide/readme'
+    log_result: OK
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '354'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-developerguide/releases'
+    log_result: START
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '355'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoonips-developerguide/releases'
+    log_result: OK
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '356'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtimelines-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '357'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtimelines-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '358'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtimelines-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778224'
+    log_submitter: '1'
+-
+    log_id: '359'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtimelines-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '360'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgsitenotice-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '361'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgsitenotice-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '362'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgsitenotice-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '363'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgsitenotice-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '364'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgxpiwik-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '365'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgxpiwik-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '366'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgxpiwik-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778225'
+    log_submitter: '1'
+-
+    log_id: '367'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgxpiwik-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '368'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgteams-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '369'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgteams-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '370'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgteams-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '371'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgteams-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '372'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/blocktools-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '373'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/blocktools-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '374'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/blocktools-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778226'
+    log_submitter: '1'
+-
+    log_id: '375'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/blocktools-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '376'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '377'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '378'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/releases'
+    log_result: START
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '379'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-modules-cookbook/releases'
+    log_result: OK
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '380'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mastop_go2-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778227'
+    log_submitter: '1'
+-
+    log_id: '381'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mastop_go2-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '382'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mastop_go2-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '383'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/mastop_go2-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '384'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-2.5.9-install-upgrade/readme'
+    log_result: START
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '385'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-2.5.9-install-upgrade/readme'
+    log_result: OK
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '386'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-2.5.9-install-upgrade/releases'
+    log_result: START
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '387'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-2.5.9-install-upgrade/releases'
+    log_result: OK
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '388'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rssfit-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '389'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rssfit-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778228'
+    log_submitter: '1'
+-
+    log_id: '390'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rssfit-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778229'
+    log_submitter: '1'
+-
+    log_id: '391'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/rssfit-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778229'
+    log_submitter: '1'
+-
+    log_id: '392'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cardealer-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778229'
+    log_submitter: '1'
+-
+    log_id: '393'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cardealer-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778229'
+    log_submitter: '1'
+-
+    log_id: '394'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cardealer-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778229'
+    log_submitter: '1'
+-
+    log_id: '395'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cardealer-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '396'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chat-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '397'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chat-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '398'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chat-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '399'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chat-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '400'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-install-upgrade/readme'
+    log_result: START
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '401'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-install-upgrade/readme'
+    log_result: OK
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '402'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-install-upgrade/releases'
+    log_result: START
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '403'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xoops-install-upgrade/releases'
+    log_result: OK
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '404'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wggallery-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778230'
+    log_submitter: '1'
+-
+    log_id: '405'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wggallery-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '406'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wggallery-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '407'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wggallery-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '408'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=2'
+    log_result: START
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '409'
+    log_type: '3'
+    log_details: 'https://api.github.com/orgs/XoopsDocs/repos?per_page=100&page=2'
+    log_result: OK
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '410'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/suico-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778231'
+    log_submitter: '1'
+-
+    log_id: '411'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/suico-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '412'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/suico-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '413'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/suico-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '414'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/modulebuilder-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '415'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/modulebuilder-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '416'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/modulebuilder-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778232'
+    log_submitter: '1'
+-
+    log_id: '417'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/modulebuilder-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '418'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chess-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '419'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chess-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '420'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chess-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '421'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/chess-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '422'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtransifex-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '423'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtransifex-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '424'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtransifex-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '425'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/wgtransifex-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '426'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cssholmes-tutorial/readme'
+    log_result: START
+    log_datecreated: '1609778233'
+    log_submitter: '1'
+-
+    log_id: '427'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cssholmes-tutorial/readme'
+    log_result: OK
+    log_datecreated: '1609778234'
+    log_submitter: '1'
+-
+    log_id: '428'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cssholmes-tutorial/releases'
+    log_result: START
+    log_datecreated: '1609778234'
+    log_submitter: '1'
+-
+    log_id: '429'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/cssholmes-tutorial/releases'
+    log_result: OK
+    log_datecreated: '1609778234'
+    log_submitter: '1'
+-
+    log_id: '430'
+    log_type: '2'
+    log_details: ''
+    log_result: OK
+    log_datecreated: '1609778234'
+    log_submitter: '1'
+-
+    log_id: '431'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609779151'
+    log_submitter: '1'
+-
+    log_id: '432'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609779152'
+    log_submitter: '1'
+-
+    log_id: '433'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: START
+    log_datecreated: '1609781862'
+    log_submitter: '1'
+-
+    log_id: '434'
+    log_type: '3'
+    log_details: 'https://api.github.com/repos/XoopsDocs/xmf-cookbook/readme'
+    log_result: OK
+    log_datecreated: '1609781862'
+    log_submitter: '1'

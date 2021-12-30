@@ -52,8 +52,8 @@ switch ($op) {
         $settingsCount = $settingsHandler->getCountSettings();
         $settingsAll = $settingsHandler->getAllSettings($start, $limit);
         $GLOBALS['xoopsTpl']->assign('settings_count', $settingsCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
         // Table view settings
         if ($settingsCount > 0) {
             foreach (\array_keys($settingsAll) as $i) {

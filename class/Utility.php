@@ -56,12 +56,12 @@ class Utility
     {
         if ($considerHtml) {
             // if the plain text is shorter than the maximum length, return the whole text
-            if (mb_strlen(\preg_replace('/<.*?' . '>/', '', $text)) <= $length) {
+            if (\mb_strlen(\preg_replace('/<.*?' . '>/', '', $text)) <= $length) {
                 return $text;
             }
             // splits all html-tags to scanable lines
             \preg_match_all('/(<.+?' . '>)?([^<>]*)/s', $text, $lines, PREG_SET_ORDER);
-            $total_length = mb_strlen($ending);
+            $total_length = \mb_strlen($ending);
             $open_tags    = [];
             $truncate     = '';
             foreach ($lines as $line_matchings) {
@@ -86,7 +86,7 @@ class Utility
                     $truncate .= $line_matchings[1];
                 }
                 // calculate the length of the plain text part of the line; handle entities as one character
-                $content_length = mb_strlen(\preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
+                $content_length = \mb_strlen(\preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
                 if ($total_length + $content_length > $length) {
                     // the number of characters which are left
                     $left            = $length - $total_length;
@@ -97,7 +97,7 @@ class Utility
                         foreach ($entities[0] as $entity) {
                             if ($left >= $entity[1] + 1 - $entities_length) {
                                 $left--;
-                                $entities_length += mb_strlen($entity[0]);
+                                $entities_length += \mb_strlen($entity[0]);
                             } else {
                                 // no more characters left
                                 break;
@@ -117,10 +117,10 @@ class Utility
                 }
             }
         } else {
-            if (mb_strlen($text) <= $length) {
+            if (\mb_strlen($text) <= $length) {
                 return $text;
             }
-            $truncate = mb_substr($text, 0, $length - mb_strlen($ending));
+            $truncate = mb_substr($text, 0, $length - \mb_strlen($ending));
         }
         // if the words shouldn't be cut in the middle...
         if (!$exact) {
@@ -165,7 +165,7 @@ class Utility
 
         $isAdmin = $helper->isUserAdmin();
 
-        if (\class_exists('XoopsFormEditor')) {
+        if (\class_exists('\XoopsFormEditor')) {
             if ($isAdmin) {
                 $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $helper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
             } else {
@@ -234,11 +234,11 @@ var hasSelected = false; var selectBox = myform.item[A][amount];for (i = 0; i < 
             }
         }
         $aboutRes = '';
-        $istart   = mb_strpos($about, $paypalform[0], 1);
-        $iend     = mb_strpos($about, $paypalform[5], $istart + 1) + mb_strlen($paypalform[5]) - 1;
+        $istart   = \mb_strpos($about, $paypalform[0], 1);
+        $iend     = \mb_strpos($about, $paypalform[5], $istart + 1) + \mb_strlen($paypalform[5]) - 1;
         $aboutRes .= mb_substr($about, 0, $istart - 1);
         $aboutRes .= \implode("\n", $donationform);
-        $aboutRes .= mb_substr($about, $iend + 1, mb_strlen($about) - $iend - 1);
+        $aboutRes .= mb_substr($about, $iend + 1, \mb_strlen($about) - $iend - 1);
 
         return $aboutRes;
     }

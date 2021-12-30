@@ -189,10 +189,10 @@ class Parsedown
 
             while (($beforeTab = strstr($line, "\t", true)) !== false)
             {
-                $shortage = 4 - mb_strlen($beforeTab, 'utf-8') % 4;
+                $shortage = 4 - \mb_strlen($beforeTab, 'utf-8') % 4;
 
                 $line = $beforeTab
-                    . str_repeat(' ', $shortage)
+                    . \str_repeat(' ', $shortage)
                     . \substr($line, \strlen($beforeTab) + 1)
                 ;
             }
@@ -375,7 +375,7 @@ class Parsedown
         {
             if (isset($Block['interrupted']))
             {
-                $Block['element']['element']['text'] .= str_repeat("\n", $Block['interrupted']);
+                $Block['element']['element']['text'] .= \str_repeat("\n", $Block['interrupted']);
 
                 unset($Block['interrupted']);
             }
@@ -506,7 +506,7 @@ class Parsedown
 
         if (isset($Block['interrupted']))
         {
-            $Block['element']['element']['text'] .= str_repeat("\n", $Block['interrupted']);
+            $Block['element']['element']['text'] .= \str_repeat("\n", $Block['interrupted']);
 
             unset($Block['interrupted']);
         }
@@ -581,7 +581,7 @@ class Parsedown
             {
                 $contentIndent -= 1;
                 $matches[1] = \substr($matches[1], 0, -$contentIndent);
-                $matches[3] = str_repeat(' ', $contentIndent) . $matches[3];
+                $matches[3] = \str_repeat(' ', $contentIndent) . $matches[3];
             } elseif ($contentIndent === 0) {
                 $matches[1] .= ' ';
             }
@@ -605,7 +605,7 @@ class Parsedown
 
             if ($name === 'ol')
             {
-                $listStart = ltrim(strstr($matches[1], $Block['data']['markerType'], true), '0') ?: '0';
+                $listStart = \ltrim(strstr($matches[1], $Block['data']['markerType'], true), '0') ?: '0';
 
                 if ($listStart !== '1')
                 {

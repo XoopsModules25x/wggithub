@@ -45,7 +45,7 @@ switch ($op) {
 
         $autoApproved = (int)$helper->getConfig('autoapproved');
         $GLOBALS['xoopsTpl']->assign('autoApproved', !$autoApproved);
-        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', WGGITHUB_ICONS_URL . '/16');
+        $GLOBALS['xoopsTpl']->assign('wggithub_icons_url_16', \WGGITHUB_ICONS_URL . '/16');
 
         $filterValue = '';
         $filterStatus = 0;
@@ -56,14 +56,14 @@ switch ($op) {
             $filterValue = Request::getString('filter_value', '');
             if ('' !== $filterValue) {
                 if (Constants::FILTER_OPERAND_EQUAL == $operand) {
-                    $crRepositories->add(new Criteria($filterField, $filterValue));
+                    $crRepositories->add(new \Criteria($filterField, $filterValue));
                 } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
-                    $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+                    $crRepositories->add(new \Criteria($filterField, "%$filterValue%", 'LIKE'));
                 }
             }
             $filterStatus = Request::getInt('filter_status');
             if ($filterStatus > 0) {
-                $crRepositories->add(new Criteria('repo_status', $filterStatus));
+                $crRepositories->add(new \Criteria('repo_status', $filterStatus));
             }
         }
         $crRepositories->setStart($start);
@@ -71,8 +71,8 @@ switch ($op) {
         $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
         $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
         $GLOBALS['xoopsTpl']->assign('repositories_count', $repositoriesCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
         // Table view repositories
         if ($repositoriesCount > 0) {
             foreach (\array_keys($repositoriesAll) as $i) {

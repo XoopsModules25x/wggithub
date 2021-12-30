@@ -49,9 +49,9 @@ switch ($op) {
             $filterField = Request::getString('filter_field', '');
             $filterValue = Request::getString('filter_value', 'none');
             if (Constants::FILTER_OPERAND_EQUAL == $operand) {
-                $crReleases->add(new Criteria($filterField, $filterValue));
+                $crReleases->add(new \Criteria($filterField, $filterValue));
             } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
-                $crReleases->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+                $crReleases->add(new \Criteria($filterField, "%$filterValue%", 'LIKE'));
             }
         }
         $crReleases->setStart($start);
@@ -59,8 +59,8 @@ switch ($op) {
         $releasesCount = $releasesHandler->getCount($crReleases);
         $releasesAll = $releasesHandler->getAll($crReleases);
         $GLOBALS['xoopsTpl']->assign('releases_count', $releasesCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
         // Table view releases
         if ($releasesCount > 0) {
             foreach (\array_keys($releasesAll) as $i) {

@@ -288,7 +288,7 @@ class GithubClient extends Api
                     $message = \_MA_WGGITHUB_READGH_ERROR_API . '(' .$code . ' - ' .  $errMsg . ')';
                     break;
             }
-            redirect_header('index.php?op=api_error&amp;message='. $message . '&amp;url='. $url, 5, $message);
+            \redirect_header('index.php?op=api_error&amp;message='. $message . '&amp;url='. $url, 5, $message);
             //throw new \RuntimeException('"' . $message . '"');
         } else {
             $data = (array)$api->decode($response);

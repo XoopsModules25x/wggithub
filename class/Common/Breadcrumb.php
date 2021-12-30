@@ -31,7 +31,7 @@ namespace XoopsModules\Wggithub\Common;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\Common;
 
-\defined('\XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+\defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /**
  * Class Breadcrumb

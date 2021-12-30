@@ -46,8 +46,8 @@ switch ($op) {
         $logsCount = $logsHandler->getCountLogs();
         $logsAll = $logsHandler->getAllLogs($start, $limit);
         $GLOBALS['xoopsTpl']->assign('logs_count', $logsCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
         // Table view logs
         if ($logsCount > 0) {
             foreach (\array_keys($logsAll) as $i) {

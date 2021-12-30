@@ -51,12 +51,12 @@ $GLOBALS['xoopsTpl']->assign('fsortby', $filterSortby);
 
 // Define Stylesheet
 $GLOBALS['xoTheme']->addStylesheet($style, null);
-$GLOBALS['xoTheme']->addStylesheet(WGGITHUB_URL . '/assets/css/tabs.css', null);
+$GLOBALS['xoTheme']->addStylesheet(\WGGITHUB_URL . '/assets/css/tabs.css', null);
 $keywords = [];
 // 
 $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
-$GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-$GLOBALS['xoopsTpl']->assign('wggithub_image_url', WGGITHUB_IMAGE_URL);
+$GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+$GLOBALS['xoopsTpl']->assign('wggithub_image_url', \WGGITHUB_IMAGE_URL);
 //
 $GLOBALS['xoopsTpl']->assign('permReadmeUpdate', $permReadmeUpdate);
 $GLOBALS['xoopsTpl']->assign('permGlobalRead', $permGlobalRead);
@@ -163,33 +163,33 @@ switch ($op) {
                 $repos = [];
                 $crRepositories = new \CriteriaCompo();
                 //first block/parentheses
-                $crRepo1 = new CriteriaCompo();
-                $crRepo1->add(new Criteria('repo_user', $dirName));
+                $crRepo1 = new \CriteriaCompo();
+                $crRepo1->add(new \Criteria('repo_user', $dirName));
                 $crRepositories->add($crRepo1);
                 //second
-                $crRepo2 = new CriteriaCompo();
-                $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPDATED));
-                $crRepo2->add(new Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
+                $crRepo2 = new \CriteriaCompo();
+                $crRepo2->add(new \Criteria('repo_status', Constants::STATUS_UPDATED));
+                $crRepo2->add(new \Criteria('repo_status', Constants::STATUS_UPTODATE), 'OR');
                 $crRepositories->add($crRepo2);
                 //third
                 $autoApproved = (int)$helper->getConfig('autoapproved');
                 if (!$autoApproved) {
                     //third
-                    $crRepo3 = new CriteriaCompo();
-                    $crRepo3->add(new Criteria('repo_approved', 1));
+                    $crRepo3 = new \CriteriaCompo();
+                    $crRepo3->add(new \Criteria('repo_approved', 1));
                     $crRepositories->add($crRepo3);
                 }
 
                 $repositoriesCountTotal = $repositoriesHandler->getCount($crRepositories);
                 //fourth
                 if ('any' === $filterRelease && $dirFilterRelease) {
-                    $crRepo4 = new CriteriaCompo();
-                    $crRepo4->add(new Criteria('repo_prerelease', 1));
-                    $crRepo4->add(new Criteria('repo_release', 1), 'OR');
+                    $crRepo4 = new \CriteriaCompo();
+                    $crRepo4->add(new \Criteria('repo_prerelease', 1));
+                    $crRepo4->add(new \Criteria('repo_release', 1), 'OR');
                     $crRepositories->add($crRepo4);
                 } elseif ('final' === $filterRelease && $dirFilterRelease) {
-                    $crRepo4 = new CriteriaCompo();
-                    $crRepo4->add(new Criteria('repo_release', 1));
+                    $crRepo4 = new \CriteriaCompo();
+                    $crRepo4->add(new \Criteria('repo_release', 1));
                     $crRepositories->add($crRepo4);
                 }
                 $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
@@ -315,7 +315,7 @@ wggithubMetaKeywords($helper->getConfig('keywords') . ', ' . \implode(',', $keyw
 unset($keywords);
 // Description
 wggithubMetaDescription(\_MA_WGGITHUB_INDEX_DESC);
-$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGGITHUB_URL.'/index.php');
+$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', \WGGITHUB_URL.'/index.php');
 $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
-$GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+$GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
 require __DIR__ . '/footer.php';

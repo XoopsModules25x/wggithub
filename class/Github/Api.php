@@ -254,7 +254,7 @@ class Api extends Sanity
             $urlPath = $this->expandUriTemplate($urlPath, $parameters, $this->defaultParameters);
         }
 
-        $url = rtrim($baseUrl, '/') . '/' . ltrim($urlPath, '/');
+        $url = \rtrim($baseUrl, '/') . '/' . \ltrim($urlPath, '/');
 
         if ($content !== NULL && (\is_array($content) || \is_object($content))) {
             $headers['Content-Type'] = 'application/json; charset=utf-8';
@@ -397,10 +397,10 @@ class Api extends Sanity
             return $m[1] . rawurlencode($parameter);
         }, $url);
 
-        $url = rtrim($url, '/');
+        $url = \rtrim($url, '/');
 
         if (\count($parameters)) {
-            $url .= '?' . http_build_query($parameters);
+            $url .= '?' . \http_build_query($parameters);
         }
 
         return $url;

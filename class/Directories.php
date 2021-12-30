@@ -26,7 +26,7 @@ namespace XoopsModules\Wggithub;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\Constants;
 
-\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object Directories

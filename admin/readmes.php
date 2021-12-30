@@ -50,9 +50,9 @@ switch ($op) {
             $filterField = Request::getString('filter_field', '');
             $filterValue = Request::getString('filter_value', 'none');
             if (Constants::FILTER_OPERAND_EQUAL == $operand) {
-                $crRepositories->add(new Criteria($filterField, $filterValue));
+                $crRepositories->add(new \Criteria($filterField, $filterValue));
             } elseif (Constants::FILTER_OPERAND_LIKE == $operand) {
-                $crRepositories->add(new Criteria($filterField, "%$filterValue%", 'LIKE'));
+                $crRepositories->add(new \Criteria($filterField, "%$filterValue%", 'LIKE'));
             }
             $repositoriesCount = $repositoriesHandler->getCount($crRepositories);
             $in = [];
@@ -63,15 +63,15 @@ switch ($op) {
                     $in[] = $i;
                 }
             }
-            $crReadmes->add(new Criteria('rm_repoid', '(' . \implode(',', $in) . ')', 'IN'));
+            $crReadmes->add(new \Criteria('rm_repoid', '(' . \implode(',', $in) . ')', 'IN'));
         }
         $crReadmes->setStart($start);
         $crReadmes->setLimit($limit);
         $readmesCount = $readmesHandler->getCount($crReadmes);
         $readmesAll = $readmesHandler->getAll($crReadmes);
         $GLOBALS['xoopsTpl']->assign('readmes_count', $readmesCount);
-        $GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
-        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
+        $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
         // Table view readmes
         if ($readmesCount > 0) {
             foreach (\array_keys($readmesAll) as $i) {

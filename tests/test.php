@@ -36,7 +36,7 @@ $GLOBALS['xoTheme']->addStylesheet($style, null);
 $keywords = [];
 // 
 $GLOBALS['xoopsTpl']->assign('xoops_icons32_url', XOOPS_ICONS32_URL);
-$GLOBALS['xoopsTpl']->assign('wggithub_url', WGGITHUB_URL);
+$GLOBALS['xoopsTpl']->assign('wggithub_url', \WGGITHUB_URL);
 //
 
 $libRepositories = new GithubClient();

@@ -35,7 +35,7 @@ function b_wggithub_repositories_show($options)
 {
     include_once \XOOPS_ROOT_PATH . '/modules/wggithub/class/repositories.php';
     $myts = MyTextSanitizer::getInstance();
-    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
     $block       = [];
     $typeBlock   = $options[0];
     $limit       = $options[1];
@@ -102,7 +102,7 @@ function b_wggithub_repositories_edit($options)
     include_once \XOOPS_ROOT_PATH . '/modules/wggithub/class/repositories.php';
     $helper = Helper::getInstance();
     $repositoriesHandler = $helper->getHandler('Repositories');
-    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', WGGITHUB_UPLOAD_URL);
+    $GLOBALS['xoopsTpl']->assign('wggithub_upload_url', \WGGITHUB_UPLOAD_URL);
     $form = \_MB_WGGITHUB_DISPLAY;
     $form .= "<input type='hidden' name='options[0]' value='".$options[0]."' />";
     $form .= "<input type='text' name='options[1]' size='5' maxlength='255' value='" . $options[1] . "' />&nbsp;<br>";

@@ -31,7 +31,7 @@ function wggithub_block_addCatSelect($cats)
     $cat_sql = '(';
     if (\is_array($cats)) {
         $cat_sql .= current($cats);
-        array_shift($cats);
+        \array_shift($cats);
         foreach ($cats as $cat) {
             $cat_sql .= ',' . $cat;
         }

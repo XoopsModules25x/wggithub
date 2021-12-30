@@ -60,7 +60,7 @@ function wggithub_search($queryarray, $andor, $limit, $offset, $userid)
     if ($elementCount > 0) {
         $crKeywords = new \CriteriaCompo();
         for ($i = 0; $i  <  $elementCount; $i++) {
-            $crKeywords->add(new Criteria('repo_name', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
+            $crKeywords->add(new \Criteria('repo_name', '%' . $queryarray[$i] . '%', 'LIKE'), 'OR');
         }
     }
     // search user(s)

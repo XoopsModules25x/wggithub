@@ -46,7 +46,7 @@ function wggithub_notify_iteminfo($category, $item_id)
             $result       = $xoopsDB->query($sql);
             $result_array = $xoopsDB->fetchArray($result);
             $item['name'] = $result_array['repo_name'];
-            $item['url']  = WGGITHUB_URL . '/repositories.php?repo_id=' . $item_id;
+            $item['url']  = \WGGITHUB_URL . '/repositories.php?repo_id=' . $item_id;
             return $item;
             break;
     }

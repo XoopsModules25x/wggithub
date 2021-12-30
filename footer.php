@@ -29,7 +29,7 @@ $GLOBALS['xoopsTpl']->assign('adv', $helper->getConfig('advertise'));
 $GLOBALS['xoopsTpl']->assign('bookmarks', $helper->getConfig('bookmarks'));
 $GLOBALS['xoopsTpl']->assign('fbcomments', $helper->getConfig('fbcomments'));
 // 
-$GLOBALS['xoopsTpl']->assign('admin', WGGITHUB_ADMIN);
+$GLOBALS['xoopsTpl']->assign('admin', \WGGITHUB_ADMIN);
 $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 // 
 include_once \XOOPS_ROOT_PATH . '/footer.php';
