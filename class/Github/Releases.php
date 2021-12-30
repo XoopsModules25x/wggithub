@@ -30,7 +30,7 @@ class Releases extends GitHub
      *
      * @param $user
      * @param $repository
-     * @return array
+     * @return bool|array
      */
     public function getReleases($user, $repository)
     {
@@ -45,7 +45,7 @@ class Releases extends GitHub
      * @param $user
      * @param $repository
      * @param bool $prerelease
-     * @return array
+     * @return bool|array
      */
     public function getLatestRelease($user, $repository, $prerelease = false)
     {
