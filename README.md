@@ -20,6 +20,20 @@ The database will be updated with each access to index page.
 
 For access to GitHub you need a GitHub account and you have to enter your user name and private access token in "settings"
 
+
+### Require:
+- XOOPS 2.5.11;
+- XOOPS Admin 1.2;
+- PHP 7.4 or higher;
+- MySQL 5.5; -> Minimum Recommended Using InnoDB Version 5.1 or Later
+
+wgGithub is ready for PHP 8.0
+
+#### Demos:
+* https://myxoops.org/modules/wggithub/
+* https://xoops.org/modules/wggithub/
+
+#### Tutorial:
 [![Tutorial Available](https://xoops.org/images/tutorial-available-blue.svg)](https://xoops.gitbook.io/wggithub-tutorial/) Tutorial: soon on [GitBook](https://xoops.gitbook.io/wggithub-module-tutorial/).
 To contribute to the Tutorial, [fork it on GitHub](https://github.com/XoopsDocs/wggithub-tutorial)
 
