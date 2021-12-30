@@ -1,0 +1,219 @@
+wggithub_settings:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: set_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: set_username
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: set_token
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: set_options
+            attributes: ' TEXT            NOT NULL '
+        -
+            name: set_primary
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: set_date
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: set_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: set_id
+            unique: true
+wggithub_directories:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: dir_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: dir_name
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: dir_descr
+            attributes: ' TEXT            NOT NULL '
+        -
+            name: dir_type
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_content
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_autoupdate
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_online
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_filterrelease
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_weight
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_datecreated
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: dir_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: dir_id
+            unique: true
+wggithub_logs:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: log_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: log_type
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: log_details
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: log_result
+            attributes: ' TEXT            NOT NULL '
+        -
+            name: log_datecreated
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: log_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: log_id
+            unique: true
+wggithub_repositories:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: repo_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: repo_nodeid
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: repo_user
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: repo_name
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: repo_fullname
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: repo_createdat
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_updatedat
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_htmlurl
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: repo_readme
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_prerelease
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_release
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_approved
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_status
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_datecreated
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: repo_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: repo_id
+            unique: true
+wggithub_readmes:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: rm_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: rm_repoid
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rm_name
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rm_type
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rm_content
+            attributes: ' TEXT            NOT NULL '
+        -
+            name: rm_encoding
+            attributes: ' VARCHAR(50)     NOT NULL DEFAULT '''''''' '
+        -
+            name: rm_downloadurl
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rm_baseurl
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rm_datecreated
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rm_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: rm_id
+            unique: true
+wggithub_releases:
+    options: 'ENGINE=InnoDB'
+    columns: 
+        -
+            name: rel_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: rel_repoid
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rel_type
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rel_name
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rel_prerelease
+            attributes: ' INT(1)          NOT NULL DEFAULT ''0'' '
+        -
+            name: rel_publishedat
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rel_tarballurl
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rel_zipballurl
+            attributes: ' VARCHAR(255)    NOT NULL DEFAULT '''''''' '
+        -
+            name: rel_datecreated
+            attributes: ' INT(11)         NOT NULL DEFAULT ''0'' '
+        -
+            name: rel_submitter
+            attributes: ' INT(10)         NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: rel_id
+            unique: true
