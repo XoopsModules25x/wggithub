@@ -42,22 +42,22 @@ $GLOBALS['xoopsTpl']->assign('repositories_result', \sprintf(\_AM_WGGITHUB_BROKE
 $crRepositories->setStart($start);
 $crRepositories->setLimit($limit);
 if ($repositoriesCount > 0) {
-	$repositoriesAll = $repositoriesHandler->getAll($crRepositories);
-	foreach (\array_keys($repositoriesAll) as $i) {
-		$repository['table'] = 'Repositories';
-		$repository['key'] = 'repo_id';
-		$repository['keyval'] = $repositoriesAll[$i]->getVar('repo_id');
-		$repository['main'] = $repositoriesAll[$i]->getVar('repo_name');
-		$GLOBALS['xoopsTpl']->append('repositories_list', $repository);
-	}
-	// Display Navigation
-	if ($repositoriesCount > $limit) {
-		include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
-		$pagenav = new \XoopsPageNav($repositoriesCount, $limit, $start, 'startRepositories', 'op=list&limitRepositories=' . $limit);
-		$GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-	}
+    $repositoriesAll = $repositoriesHandler->getAll($crRepositories);
+    foreach (\array_keys($repositoriesAll) as $i) {
+        $repository['table'] = 'Repositories';
+        $repository['key'] = 'repo_id';
+        $repository['keyval'] = $repositoriesAll[$i]->getVar('repo_id');
+        $repository['main'] = $repositoriesAll[$i]->getVar('repo_name');
+        $GLOBALS['xoopsTpl']->append('repositories_list', $repository);
+    }
+    // Display Navigation
+    if ($repositoriesCount > $limit) {
+        include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
+        $pagenav = new \XoopsPageNav($repositoriesCount, $limit, $start, 'startRepositories', 'op=list&limitRepositories=' . $limit);
+        $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+    }
 } else {
-	$GLOBALS['xoopsTpl']->assign('nodataRepositories', \sprintf(\_AM_WGGITHUB_BROKEN_NODATA, 'Repositories'));
+    $GLOBALS['xoopsTpl']->assign('nodataRepositories', \sprintf(\_AM_WGGITHUB_BROKEN_NODATA, 'Repositories'));
 }
 unset($crRepositories);
 
