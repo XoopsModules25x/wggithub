@@ -191,7 +191,7 @@ class Api extends Sanity
      * @see request()
      *
      * @param $urlPath
-     * @param null $content
+     * @param $content
      * @param array $parameters
      * @param array $headers
      * @return Http\Response

@@ -30,7 +30,7 @@ class Repositories extends GitHub
      * Get repositories of given user
      *
      * @param $username
-     * @return array
+     * @return bool|array
      */
     public function getUserRepositories($username)
     {
@@ -43,7 +43,7 @@ class Repositories extends GitHub
      * Get repositories of given organisation
      *
      * @param $org
-     * @return array
+     * @return bool|array
      */
     public function getOrgRepositories($org)
     {
@@ -61,7 +61,7 @@ class Repositories extends GitHub
      * @param string $username   the user who owns the repository
      * @param string $repository the name of the repository
      *
-     * @return string|array the readme content
+     * @return bool|array the readme content
      */
     public function getReadme($username, $repository)
     {
