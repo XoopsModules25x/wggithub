@@ -105,13 +105,6 @@ class GitHub extends GitHubClient
      */
     private function getSetting($user = false)
     {
-
-        $this->user = 'ggoffy';
-        $this->token = 'effca620d3b6a14813e53086c5477646743073aa';
-
-        return true;
-
-
         $helper = Helper::getInstance();
         $settingsHandler = $helper->getHandler('Settings');
         if ($user) {

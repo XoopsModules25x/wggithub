@@ -83,7 +83,11 @@ function b_wggithub_repositories_show($options)
     if (\count($repositoriesAll) > 0) {
         foreach (\array_keys($repositoriesAll) as $i) {
             $block[$i]['id'] = $repositoriesAll[$i]->getVar('repo_id');
-            $block[$i]['name'] = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_name'));
+            $repoName = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_name'));
+            if ($lenghtTitle > 0) {
+                $repoName = \substr($repoName, 0, $lenghtTitle);
+            }
+            $block[$i]['name'] = $repoName;
             $block[$i]['htmlurl'] = $myts->htmlSpecialChars($repositoriesAll[$i]->getVar('repo_htmlurl'));
         }
     }

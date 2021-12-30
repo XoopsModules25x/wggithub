@@ -82,6 +82,8 @@ class FileCache extends Github\Sanity implements ICache
                 return $cached;
             }
         }
+
+        return false;
     }
 
 

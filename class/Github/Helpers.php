@@ -61,10 +61,10 @@ class Helpers
 
 
     /**
-     * @param  mixed
+     * @param $json
+     * @param bool $assoc
      * @return string
      *
-     * @throws JsonException
      */
     public static function jsonDecode($json, $assoc = false)
     {

@@ -99,7 +99,10 @@ class Token extends Github\Sanity
     }
 
 
-    /** @internal */
+    /** @internal
+     * @param array $data
+     * @return Token
+     */
     public static function createFromArray(array $data)
     {
         return new static($data['value'], $data['type'], $data['scopes']);

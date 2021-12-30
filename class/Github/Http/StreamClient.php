@@ -31,9 +31,9 @@ class StreamClient extends AbstractClient
 
 
     /**
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     protected function process(Request $request)
     {
@@ -102,6 +102,7 @@ class StreamClient extends AbstractClient
         unset($http_response_header[0]);
 
         $headers = [];
+        $last = '';
         foreach ($http_response_header as $header) {
             if (\in_array(\substr($header, 0, 1), [' ', "\t"], TRUE)) {
                 $headers[$last] .= ' ' . \trim($header);  # RFC2616, 2.2

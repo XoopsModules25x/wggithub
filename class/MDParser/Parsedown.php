@@ -1789,6 +1789,10 @@ class Parsedown
     /**
      * Replace occurrences $regexp with $Elements in $text. Return an array of
      * elements representing the replacement.
+     * @param $regexp
+     * @param $Elements
+     * @param $text
+     * @return array
      */
     protected static function pregReplaceElements($regexp, $Elements, $text)
     {

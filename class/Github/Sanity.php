@@ -9,7 +9,7 @@ namespace XoopsModules\Wggithub\Github;
 abstract class Sanity
 {
     /**
-     * @throws LogicException
+     * @param $name
      */
     public function & __get($name)
     {
@@ -18,7 +18,8 @@ abstract class Sanity
 
 
     /**
-     * @throws LogicException
+     * @param $name
+     * @param $value
      */
     public function __set($name, $value)
     {

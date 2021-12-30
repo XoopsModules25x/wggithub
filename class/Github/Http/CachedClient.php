@@ -27,7 +27,7 @@ class CachedClient extends Github\Sanity implements IClient
 
 
     /**
-     * @param Storages\ICache
+     * @param Storages\ICache $cache
      * @param IClient
      * @param bool  forbid checking Github for new data; more or less development purpose only
      */
@@ -49,9 +49,9 @@ class CachedClient extends Github\Sanity implements IClient
 
 
     /**
+     * @param Request $request
      * @return Response
      *
-     * @throws BadResponseException
      */
     public function request(Request $request)
     {
@@ -126,6 +126,7 @@ class CachedClient extends Github\Sanity implements IClient
 
 
     /**
+     * @param Response $response
      * @return bool
      */
     protected function isCacheable(Response $response)
