@@ -53,6 +53,10 @@ return (object)[
     'oldFolders'  => [
     ],
     'renameTables'  => [
+        //'tablename_old' => 'tablename_new'
+    ],
+    'renameColumns'  => [
+        //'tablename' => ['columnname_old' => 'columnname_new'],
     ],
     'moduleStats'  => [
     ],

@@ -55,7 +55,7 @@ class Helpers
             throw new JsonException($message, $error);
         }
 
-        $json = \str_replace(array("\xe2\x80\xa8", "\xe2\x80\xa9"), array('\u2028', '\u2029'), $json);
+        $json = \str_replace(["\xe2\x80\xa8", "\xe2\x80\xa9"], ['\u2028', '\u2029'], $json);
         return $json;
     }
 

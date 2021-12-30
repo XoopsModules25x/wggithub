@@ -56,8 +56,8 @@ function b_wggithub_repositories_show($options)
             break;
         case 'new':
             // For the block: repositories new
-            $crRepositories->add(new \Criteria('repo_datecreated', \DateTime::createFromFormat(_SHORTDATESTRING), '>='));
-            $crRepositories->add(new \Criteria('repo_datecreated', \DateTime::createFromFormat(_SHORTDATESTRING) + 86400, '<='));
+            $crRepositories->add(new \Criteria('repo_datecreated', \time() - 604800, '>='));
+            $crRepositories->add(new \Criteria('repo_datecreated', \time(), '<='));
             $crRepositories->setSort('repo_datecreated');
             $crRepositories->setOrder('ASC');
             break;

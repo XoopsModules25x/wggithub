@@ -20,8 +20,6 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-//
-
 use XoopsModules\Wggithub\Constants;
 
 $moduleDirName      = \basename(__DIR__);
@@ -30,6 +28,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 $modversion = [
     'name'                => \_MI_WGGITHUB_NAME,
     'version'             => '1.5.0',
+    'module_status'       => 'RC1',
     'description'         => \_MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',
@@ -44,7 +43,7 @@ $modversion = [
     'release_date'        => '2021/03/31',
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL . '/modules/wggithub/docs/install.txt',
-    'min_php'             => '7.3',
+    'min_php'             => '7.4',
     'min_xoops'           => '2.5.11 Beta1',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.6', 'mysqli' => '5.6'],
@@ -62,7 +61,6 @@ $modversion = [
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS Project',
     'release'             => '2021-03-31',
-    'module_status'       => 'RC1',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
     'hasMain'             => 1,
