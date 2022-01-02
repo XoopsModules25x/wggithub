@@ -115,11 +115,11 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $logsObj->getHtmlErrors());
             }
         } else {
-            $xoopsconfirm = new Common\XoopsConfirm(
+            $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'log_id' => $logId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_details')));
-            $form = $xoopsconfirm->getFormXoopsConfirm();
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_id') . ': ' . $logsObj->getVar('log_details')));
+            $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
         break;
@@ -135,11 +135,11 @@ switch ($op) {
             $logsHandler->deleteAll(null, true);
             \redirect_header('logs.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
         } else {
-            $xoopsconfirm = new Common\XoopsConfirm(
+            $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'op' => 'clear'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETEALL, 'wggithub_logs'));
-            $form = $xoopsconfirm->getFormXoopsConfirm();
+            $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
         break;

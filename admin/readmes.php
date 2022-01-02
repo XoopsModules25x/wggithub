@@ -139,7 +139,6 @@ switch ($op) {
         $templateMain = 'wggithub_admin_readmes.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('readmes.php'));
         $readmesObj = $readmesHandler->get($rmId);
-        $rmName = $readmesObj->getVar('rm_name');
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('readmes.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -150,11 +149,12 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $readmesObj->getHtmlErrors());
             }
         } else {
-            $xoopsconfirm = new Common\XoopsConfirm(
+            $repositoriesObj = $repositoriesHandler->get($readmesObj->getVar('rm_repoid'));
+            $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'rm_id' => $rmId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $readmesObj->getVar('rm_name')));
-            $form = $xoopsconfirm->getFormXoopsConfirm();
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $repositoriesObj->getVar('repo_name') . ' - ' . $readmesObj->getVar('rm_name')));
+            $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
         break;
