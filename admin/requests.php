@@ -124,11 +124,11 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $requestsObj->getHtmlErrors());
             }
         } else {
-            $xoopsconfirm = new Common\XoopsConfirm(
+            $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'req_id' => $reqId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $requestsObj->getVar('req_request')));
-            $form = $xoopsconfirm->getFormXoopsConfirm();
+            $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
         break;

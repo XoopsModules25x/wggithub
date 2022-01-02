@@ -128,7 +128,6 @@ switch ($op) {
         $templateMain = 'wggithub_admin_releases.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('releases.php'));
         $releasesObj = $releasesHandler->get($relId);
-        $relName = $releasesObj->getVar('rel_name');
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('releases.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -139,11 +138,12 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $releasesObj->getHtmlErrors());
             }
         } else {
-            $xoopsconfirm = new Common\XoopsConfirm(
+            $repositoriesObj = $repositoriesHandler->get($releasesObj->getVar('rel_repoid'));
+            $customConfirm = new Common\Confirm(
                 ['ok' => 1, 'rel_id' => $relId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $releasesObj->getVar('rel_name')));
-            $form = $xoopsconfirm->getFormXoopsConfirm();
+                \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $repositoriesObj->getVar('repo_name') . ' - ' . $releasesObj->getVar('rel_name')));
+            $form = $customConfirm->getFormConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
         break;
