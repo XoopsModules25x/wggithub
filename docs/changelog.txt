@@ -9,7 +9,8 @@
  - code cleaning (goffy)
  - added function qualifiers (goffy)
  - update to php8 (goffy)
- - replaced Common/XoopsConfirm by Common/Confirm(mamba/goffy)
+ - replaced Common/XoopsConfirm by Common/Confirm (mamba/goffy)
+ - uninstall with bak-file creation (mamba/goffy)
  
 ===================================================================
 2021/03/31 Version 1.04 RC1
