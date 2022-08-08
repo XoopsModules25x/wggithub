@@ -12,6 +12,7 @@
  - replaced Common/XoopsConfirm by Common/Confirm (mamba/goffy)
  - uninstall with bak-file creation (mamba/goffy)
  - adapted update due to new semantic versioning (goffy)
+ - updated reading data from github: pulled_at/updated_at (goffy)
  
 ===================================================================
 2021/03/31 Version 1.04 RC1
