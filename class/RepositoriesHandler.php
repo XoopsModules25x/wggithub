@@ -156,7 +156,9 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
                     $repositoriesObj = $repositoriesAll[$i];
                 }
                 if ($repoId > 0) {
-                    if (\is_string($repo['updated_at'])) {
+                    if (\is_string($repo['pushed_at'])) {
+                        $updatedAtNew = \strtotime($repo['pushed_at']);
+                    } elseif (\is_string($repo['updated_at'])) {
                         $updatedAtNew = \strtotime($repo['updated_at']);
                     }
                     if ($updatedAtOld != Constants::STATUS_OFFLINE && $updatedAtOld != $updatedAtNew) {
