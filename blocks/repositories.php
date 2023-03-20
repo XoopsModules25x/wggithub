@@ -61,16 +61,6 @@ function b_wggithub_repositories_show($options)
             $crRepositories->setSort('repo_datecreated');
             $crRepositories->setOrder('ASC');
             break;
-        case 'hits':
-            // For the block: repositories hits
-            $crRepositories->setSort('repo_hits');
-            $crRepositories->setOrder('DESC');
-            break;
-        case 'top':
-            // For the block: repositories top
-            $crRepositories->setSort('repo_top');
-            $crRepositories->setOrder('ASC');
-            break;
         case 'random':
             // For the block: repositories random
             $crRepositories->setSort('RAND()');
