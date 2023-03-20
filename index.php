@@ -107,7 +107,7 @@ switch ($op) {
             $crLogs = new \CriteriaCompo();
             $crLogs->add(new \Criteria('log_datecreated', (\time() - 3600), '>'));
             $logsCount = $logsHandler->getCount($crLogs);
-            if ($permGlobalRead && $logsCount < 60 && 'list' == $op) {
+            if ($permGlobalRead && $logsCount < 60 && 'list' === $op) {
                 $githubClient = GithubClient::getInstance();
                 $githubClient->executeUpdate();
             }
