@@ -1,6 +1,6 @@
 <{include file='db:wggithub_header.tpl' }>
 
-<{if $error|default:''}>
+<{if !empty($error)}>
     <div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 

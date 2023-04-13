@@ -23,8 +23,8 @@
                 <td class='center'><{$request.datecreated}></td>
                 <td class='center'><{$request.submitter}></td>
                 <td class="center  width5">
-                    <a href="requests.php?op=edit&amp;req_id=<{$request.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> requests" /></a>
-                    <a href="requests.php?op=delete&amp;req_id=<{$request.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> requests" /></a>
+                    <a href="requests.php?op=edit&amp;req_id=<{$request.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> requests" /></a>
+                    <a href="requests.php?op=delete&amp;req_id=<{$request.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}> requests" /></a>
                 </td>
             </tr>
             <{/foreach}>

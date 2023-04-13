@@ -27,7 +27,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGGITHUB_NAME,
-    'version'             => '1.5.1',
+    'version'             => '1.5.2',
     'module_status'       => 'RC1',
     'description'         => \_MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
@@ -44,7 +44,7 @@ $modversion = [
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL . '/modules/wggithub/docs/install.txt',
     'min_php'             => '7.4',
-    'min_xoops'           => '2.5.11 Beta1',
+    'min_xoops'           => '2.5.11 RC1',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.6', 'mysqli' => '5.6'],
     'image'               => 'assets/images/logoModule.png',

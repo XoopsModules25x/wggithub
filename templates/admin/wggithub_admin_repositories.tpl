@@ -57,8 +57,8 @@
                 <td class='center'><{$repository.datecreated}></td>
                 <td class='center'><{$repository.submitter}></td>
                 <td class="center  width5">
-                    <a href="repositories.php?op=edit&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> repositories" /></a>
-                    <a href="repositories.php?op=delete&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> repositories" /></a>
+                    <a href="repositories.php?op=edit&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> repositories" /></a>
+                    <a href="repositories.php?op=delete&amp;repo_id=<{$repository.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}> repositories" /></a>
                 </td>
             </tr>
             <{/foreach}>
@@ -70,15 +70,15 @@
         </tbody>
     </table>
     <div class="clear">&nbsp;</div>
-    <{if $pagenav|default:''}>
+    <{if !empty($pagenav)}>
         <div class="xo-pagenav floatright"><{$pagenav}></div>
         <div class="clear spacer"></div>
     <{/if}>
 <{/if}>
-<{if $form|default:''}>
+<{if !empty($form)}>
     <{$form}>
 <{/if}>
-<{if $error|default:''}>
+<{if !empty($error)}>
     <div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 

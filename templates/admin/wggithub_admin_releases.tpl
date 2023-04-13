@@ -37,8 +37,8 @@
                 <td class='center'><{$release.datecreated}></td>
                 <td class='center'><{$release.submitter}></td>
                 <td class="center  width5">
-                    <a href="releases.php?op=edit&amp;rel_id=<{$release.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> releases" /></a>
-                    <a href="releases.php?op=delete&amp;rel_id=<{$release.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> releases" /></a>
+                    <a href="releases.php?op=edit&amp;rel_id=<{$release.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}> releases" /></a>
+                    <a href="releases.php?op=delete&amp;rel_id=<{$release.id}>&amp;start=<{$start}>&amp;limit=<{$limit}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}> releases" /></a>
                 </td>
             </tr>
             <{/foreach}>
@@ -50,15 +50,15 @@
         </tbody>
     </table>
     <div class="clear">&nbsp;</div>
-    <{if $pagenav|default:''}>
+    <{if !empty($pagenav)}>
         <div class="xo-pagenav floatright"><{$pagenav}></div>
         <div class="clear spacer"></div>
     <{/if}>
 <{/if}>
-<{if $form|default:''}>
+<{if !empty($form)}>
     <{$form}>
 <{/if}>
-<{if $error|default:''}>
+<{if !empty($error)}>
     <div class="errorMsg"><strong><{$error}></strong></div>
 <{/if}>
 
