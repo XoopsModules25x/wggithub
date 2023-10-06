@@ -17,8 +17,8 @@
                 <td class='center'><{$repository.table}></td>
                 <td class='center'><{$repository.main}></td>
                 <td class='center width5'>
-                    <a href='repositories.php?op=edit&amp;<{$repository.key}>=<{$repository.keyval}>' title='<{$smarty.const._EDIT}>'><img src='<{xoModuleIcons16 'edit.png'}>' alt='repositories' /></a>
-                    <a href='repositories.php?op=delete&amp;<{$repository.key}>=<{$repository.keyval}>' title='<{$smarty.const._DELETE}>'><img src='<{xoModuleIcons16 'delete.png'}>' alt='repositories' /></a>
+                    <a href='repositories.php?op=edit&amp;<{$repository.key}>=<{$repository.keyval}>' title='<{$smarty.const._EDIT}>'><img src="<{xoModuleIcons16 'edit.png'}>" alt='repositories' /></a>
+                    <a href='repositories.php?op=delete&amp;<{$repository.key}>=<{$repository.keyval}>' title='<{$smarty.const._DELETE}>'><img src="<{xoModuleIcons16 'delete.png'}>" alt='repositories' /></a>
                 </td>
             </tr>
             <{/foreach}>
@@ -32,7 +32,7 @@
 <{else}>
     <{if $nodataRepositories}>
         <div>
-            <{$nodataRepositories}><img src='<{xoModuleIcons32 'button_ok.png'}>' alt='repositories' />
+            <{$nodataRepositories}><img src="<{xoModuleIcons32 'button_ok.png'}>" alt='repositories' />
         </div>
         <div class='clear spacer'></div>
         <br />
