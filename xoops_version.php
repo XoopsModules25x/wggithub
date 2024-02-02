@@ -44,7 +44,7 @@ $modversion = [
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL . '/modules/wggithub/docs/install.txt',
     'min_php'             => '7.4',
-    'min_xoops'           => '2.5.11 RC1',
+    'min_xoops'           => '2.5.11 Stable',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.5', 'mysqli' => '5.6'],
     'image'               => 'assets/images/logoModule.png',

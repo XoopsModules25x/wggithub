@@ -3,6 +3,7 @@
 ===================================================================
  - updates smarty 3 (goffy)
  - fixed smarty errors (mamba/goffy)
+ - updates for XOOPS 2.5.11 Stable (goffy)
 
 ===================================================================
 2023/03/20 Version 1.5.1 RC1
