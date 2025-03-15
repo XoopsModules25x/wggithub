@@ -27,7 +27,9 @@ For access to GitHub you need a GitHub account and you have to enter your user n
 - PHP 7.4 or higher;
 - MySQL 5.5; -> Minimum Recommended Using InnoDB Version 5.1 or Later
 
-wgGithub is ready for PHP 8.0
+# Info
+
+**wgGithub is ready for PHP 8.4**
 
 #### Demos:
 * https://myxoops.org/modules/wggithub/

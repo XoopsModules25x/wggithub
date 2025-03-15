@@ -1,1 +1,8 @@
-{ }
+-
+    set_id: '1'
+    set_username: my_username
+    set_token: my_token
+    set_options: ''
+    set_primary: '1'
+    set_date: '1742042422'
+    set_submitter: '1'
